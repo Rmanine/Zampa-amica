@@ -368,7 +368,8 @@ form label {
     display: block;
     text-align: left;
     width: 50%;
-    margin: 0.5em auto;
+    margin: auto;
+    margin-top: 2em;
     font-weight: bold;
 }
 
@@ -379,14 +380,22 @@ form p {
     margin: 0.5em auto;
 }
 
-input[type=text], input[type=password], input[type="email"], input[type="tel"]{
+form .req {
+    color: #f00;
+    font-weight: bold;
+}
+
+input {
     display: block;
-    margin: 0.5em auto;
-    margin-bottom: 2.5em;
+    margin: auto;
     width: 50%;
     border: 2px solid var(--widgetcolor);
     border-radius: 15px;
     padding: 0.8em 1em;
+}
+
+form .esempio {
+    margin: auto;
 }
 
 .info-form{

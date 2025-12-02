@@ -45,13 +45,17 @@
                     </dt>
                     <dd>
                         <p>
-                            Ogni giorno ci sono animali che aspettano una seconda possibilità, desiderosi di trovare qualcuno che si prenda cura di loro, anche solo per un momento.
+                            Ogni giorno ci sono animali che aspettano una seconda possibilità, desiderosi di trovare
+                            qualcuno che si prenda cura di loro, anche solo per un momento.
                         </p>
                         <p>
-                            <strong>Diventare volontario</strong> significa questo: donare il proprio tempo, le proprie attenzioni e il proprio affetto. Non servono esperienze particolari ma solo la voglia di esserci. Ogni gesto, anche il più piccolo, può fare la differenza.
+                            <strong>Diventare volontario</strong> significa questo: donare il proprio tempo, le proprie
+                            attenzioni e il proprio affetto. Non servono esperienze particolari ma solo la voglia di
+                            esserci. Ogni gesto, anche il più piccolo, può fare la differenza.
                         </p>
                         <p>
-                            Diventando volontario non aiuterai solo noi nel nostro lavoro ma potrai anche rendere felici molti animali che hanno bisogno di amore quando non ne hanno avuto abbastanza in passato. 
+                            Diventando volontario non aiuterai solo noi nel nostro lavoro ma potrai anche rendere felici
+                            molti animali che hanno bisogno di amore quando non ne hanno avuto abbastanza in passato.
                         </p>
                     </dd>
                 </div>
@@ -63,20 +67,25 @@
         <div class="terzo-contenuto">
             <h2>Compila il modulo a seguire per diventare volontario</h2>
             <p>
-                Ti contatteremo presto per conoscerti e accompagnarti nei primi passi come volontario. 
+                Ti contatteremo presto per conoscerti e accompagnarti nei primi passi come volontario.
             </p>
         </div>
         <form action="" method="POST">
-            <label for="nome_cognome">Nome e Cognome: <span class="req">*</span></label>
-            <input type="text" id="nome_cognome" name="nome_cognome" autocomplete="name" required>
+            <label for="nome">Nome: <span class="req">(richiesto)</span></label>
+            <input type="text" id="nome" name="nome" autocomplete="given-name" required />
+            <p class="esempio">Esempio: Mario</p>
 
-            <label for="telefono">Numero di telefono: <span class="req">*</span></label>
-            <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" required>
+            <label for="cognome">Cognome: <span class="req">(richiesto)</span></label>
+            <input type="text" id="cognome" name="cognome" autocomplete="family-name" required />
+            <p class="esempio">Esempio: Rossi</p>
 
-            <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">*</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
-            
-            <p><span class="req">*</span> - Indica campi richiesti</p>
+            <label for="telefono">Numero di telefono: <span class="req">(richiesto)</span></label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" required />
+            <p class="esempio">Esempio: 123 456 7890</p>
+
+            <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+            <p class="esempio">Esempio: mario.rossi@gmail.com</p>
             <button type="submit" name="invia" value="Invia">Invia</button>
         </form>
     </main>

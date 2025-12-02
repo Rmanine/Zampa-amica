@@ -298,6 +298,11 @@ main h1 {
     line-height: 1em;
 }
 
+.terzo-contenuto-sottocontenuto p {
+    text-align: left;
+    margin-bottom: 0.5em;
+}
+
 .piu-info {
     max-width: 50%;
     margin: auto;
@@ -361,28 +366,26 @@ form {
     margin: auto;
     margin-top: 1em;
     max-width: 600px;
-    width: 90%;
 }
 
 form label {
+    font-size: 1.1em;
     display: block;
     text-align: left;
     width: 50%;
     margin: auto;
-    margin-top: 2em;
+    margin-top: 1.3em;
     font-weight: bold;
 }
 
 form p {
-    display: block;
     text-align: left;
     width: 50%;
-    margin: 0.5em auto;
+    margin: auto;
 }
 
 form .req {
     color: #f00;
-    font-weight: bold;
 }
 
 input {
@@ -394,13 +397,9 @@ input {
     padding: 0.8em 1em;
 }
 
-form .esempio {
-    margin: auto;
-}
-
 .info-form{
     width: 50%;
-    margin: -1.6em auto 1.5em auto; 
+    margin: auto; 
     text-align: left;
     font-size: 0.9em;
     line-height: 1.4em;

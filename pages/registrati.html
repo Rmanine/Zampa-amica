@@ -42,15 +42,17 @@
         <p>Hai già un <span lang="en">account</span>? <a href="./accedi.html">Accedi</a></p>
 
         <form action="" method="post">
-            <label for="username"><span lang="en">Username: </span><span class="req">*</span></label>
-            <input type="text" id="username" name="username" placeholder="Es: mario.rossi" autocomplete="username" required>
+            <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
+            <input type="text" id="username" name="username" autocomplete="username" required>
+            <p class="info-form">Esempio: MarioR</p>
             <p class="info-form">Deve contenere almeno 4 caratteri e può includere solo lettere.</p>
 
             
-            <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">*</span></label>
-            <input type="email" id="email" name="email" placeholder="Es: mario.rossi@gmail.com" autocomplete="email" required>
+            <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <p class="info-form">Esempio: mariorossi@gmail.com</p>
             
-            <label for="password"><span lang="en">Password: </span><span class="req">*</span></label>
+            <label for="password"><span lang="en">Password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="password" name="password" autocomplete="new-password" required>
             <p class="info-form">La password deve contenere:</p>
             <ul class="info-form">
@@ -61,9 +63,8 @@
                 <li>Un numero (0-9)</li>
             </ul>
             
-            <label for="confirmed-password">Conferma <span lang="en">password: </span><span class="req">*</span></label>
+            <label for="confirmed-password">Conferma <span lang="en">password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="confirmed-password" name="confirmed-password" autocomplete="new-password" required>
-            <p><span class="req">*</span> - Indica campi richiesti</p>
 
             <button type="submit">Registrati</button>
         </form>

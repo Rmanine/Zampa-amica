@@ -195,17 +195,24 @@ a.stile-bottone-3:hover {
 /* MAIN */
 
 main {
-    padding: 2rem;
+    padding: 0.8em;
     text-align: center;
 }
 
-main h1, h2, h3 {
-    margin-bottom: 0.5em;
+main h1 {
+    font-size: 2.5em;
+    padding-bottom: 0.8em;
 }
 
-main h1 {
-    font-size: 3em;
+.desc {
+    font-size: 1.2em;
 }
+
+.desc.uno {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
 
 .secondo-contenuto {
     background-color: var(--widgetcolor);

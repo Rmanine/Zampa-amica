@@ -39,6 +39,11 @@ header, main {
     margin-right: auto;
 }
 
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 1em;
+}
+
 a:link {
     color: var(--maintxtcolor);
 }
@@ -67,7 +72,7 @@ header {
     justify-content: space-between;
 }
 
-#menu h1 {
+#menu p, a.logo-menu {
     width: 60px;
     height: 60px;
     min-width: 60px; /* Dimensione fissa perché non vogliamo che rimpicciolisca */
@@ -210,17 +215,12 @@ main h1 {
     margin-right: calc(-50vw + 50%);
 }
 
-.secondo-contenuto > * {
+.secondo-contenuto > *, .terzo-contenuto > * {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 2em;
     padding-right: 2em;
-}
-
-.secondo-contenuto h2, .terzo-contenuto h2 {
-    font-size: 2em;
-    margin-bottom: 1em;
 }
 
 .secondo-contenuto ol {
@@ -264,25 +264,26 @@ main h1 {
     text-indent: 0em;
 }
 
-.terzo-contenuto dl {
+.terzo-contenuto dl, .terzo-contenuto {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     padding: 0;
     margin: 2em 0;
 }
 
-.terzo-contenuto dl div {
+.terzo-contenuto dl div, .terzo-contenuto div {
     flex: 1 1 300px;
     padding: 1em;
 }
 
 .terzo-contenuto dt {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
     margin-bottom: 0.5em;
 }
 
-.terzo-contenuto dd {
+.terzo-contenuto {
     max-width: 80%;
     margin: auto;
 }
@@ -293,12 +294,8 @@ main h1 {
     border-radius: 30px;
 }
 
-.terzo-contenuto h1, h2 {
-    font-size: 2em;
-    line-height: 1em;
-}
-
 .terzo-contenuto-sottocontenuto p {
+    font-size: 1.1em;
     text-align: left;
     margin-bottom: 0.5em;
 }

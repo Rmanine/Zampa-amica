@@ -7,7 +7,7 @@ CREATE TABLE
 
 CREATE TABLE
 	Animale (
-		ID SERIAL PRIMARY KEY,
+		ID INT AUTO_INCREMENT PRIMARY KEY,
 		Nome VARCHAR(50),
 		Specie VARCHAR(50),
 		Eta INT,
@@ -20,7 +20,7 @@ CREATE TABLE
 	Cane (
 		ID INT PRIMARY KEY,
 		Taglia VARCHAR(50),
-		FOREIGN KEY (ID) REFERENCES Animale (ID)
+		FOREIGN KEY (ID) REFERENCES Animale (ID) ON DELETE CASCADE
 	);
 
 CREATE TABLE
@@ -28,18 +28,18 @@ CREATE TABLE
 		Utente VARCHAR(50),
 		Animale INT,
 		PRIMARY KEY (Utente, Animale),
-		FOREIGN KEY (Utente) REFERENCES Utente (Email),
-		FOREIGN KEY (Animale) REFERENCES Animale (ID)
+		FOREIGN KEY (Utente) REFERENCES Utente (Email) ON DELETE CASCADE,
+		FOREIGN KEY (Animale) REFERENCES Animale (ID) ON DELETE CASCADE
 	);
 
 CREATE TABLE
 	Prenotazione (
-		ID SERIAL PRIMARY KEY,
+		ID INT AUTO_INCREMENT PRIMARY KEY,
 		Utente VARCHAR(50),
 		Animale INT,
 		DataOra TIMESTAMP,
-		FOREIGN KEY (Utente) REFERENCES Utente (Email),
-		FOREIGN KEY (Animale) REFERENCES Animale (ID)
+		FOREIGN KEY (Utente) REFERENCES Utente (Email) ON DELETE CASCADE,
+		FOREIGN KEY (Animale) REFERENCES Animale (ID) ON DELETE CASCADE
 	);
 
 CREATE TABLE
@@ -49,7 +49,6 @@ CREATE TABLE
 		Cognome VARCHAR(255) NOT NULL,
 		Telefono VARCHAR(255) NOT NULL
 	);
-
 
 INSERT INTO
 	Utente (Email, Username, Password)
@@ -69,83 +68,190 @@ INSERT INTO
 	)
 VALUES
 	(
-		DEFAULT,
-		'Alfredo',
+		1,
+		'Lucky',
+		'Cane',
+		3,
+		'Maschio',
+		'Lucky è un esplosione di energia con un bellissimo mantello bianco e nero. Ha uno sguardo intelligente e vive per giocare: se hai una pallina da lanciargli, sarai il suo migliore amico per sempre. Cerca un compagno che ami le avventure all’aria aperta.',
+		'1.jpg'
+	),
+	(
+		2,
+		'Thor',
+		'Cane',
+		5,
+		'Maschio',
+		'Non lasciarti ingannare dal suo aspetto fiero: Thor è in realtà un gigante dal cuore dolce. Ha un portamento nobile e attento, ma appena varca la soglia di casa si trasforma in un cucciolone che cerca solo carezze e un posto morbido dove accucciarsi vicino a te.',
+		'2.jpg'
+	),
+	(
+		3,
+		'Felix',
+		'Gatto',
+		4,
+		'Maschio',
+		'Con la sua elegante livrea bianca e nera, Felix sembra indossare perennemente uno smoking. È un gatto di grande classe, tranquillo e osservatore. Adora posizionarsi nei punti strategici della casa per controllare il suo regno, ma non rifiuta mai una sessione di grattini dietro le orecchie.',
+		'3.jpg'
+	),
+	(
+		4,
+		'Brusco',
+		'Cane',
+		6,
+		'Maschio',
+		'Brusco è un simpaticissimo Bulldog dall’espressione imbronciata che nasconde un carattere d’oro. La vita atletica non fa per lui: è un professionista del relax, campione olimpico di pisolini sul divano e grande amante del buon cibo. Il compagno perfetto per serate film e coccole.',
+		'4.jpg'
+	),
+	(
+		5,
+		'Luna',
+		'Gatto',
+		2,
+		'Femmina',
+		'Luna è una creatura delicata e silenziosa, con un musetto dolcissimo. Inizialmente può sembrare timida, ma basta un po’ di pazienza per scoprire il suo lato affettuoso. Cerca un ambiente sereno e mani gentili che sappiano rassicurarla e farla sentire protetta.',
+		'5.jpg'
+	),
+	(
+		6,
+		'Spike',
+		'Cane',
+		8,
+		'Maschio',
+		'Un piccoletto che non dimostra affatto la sua età. Spike ha lo spirito di un leone in un corpo tascabile: è curioso, vigile e incredibilmente devoto al suo padrone. Adora passeggiare annusando ogni angolo del mondo per poi tornare felice nella sua cuccia.',
+		'6.jpg'
+	),
+	(
+		7,
+		'Molly',
+		'Gatto',
+		3,
+		'Femmina',
+		'Molly ha due occhi verdi magnetici che sembrano smeraldi. È la classica gatta di casa: curiosa quanto basta, indipendente ma presente. Ama esplorare buste della spesa e scatole di cartone, per poi venire a cercarti facendo le fusa quando è ora della pappa o delle coccole.',
+		'7.jpg'
+	),
+	(
+		8,
+		'Argo',
 		'Cane',
 		4,
 		'Maschio',
-		'Alfredo è un magnifico esemplare di Corgi, caratterizzato dal tipico corpo allungato e dalle zampette corte, che gli conferiscono un aspetto irresistibile.
-Alfredo è un cane di taglia piccola, estremamente intelligente, attento e molto affettuoso. Possiede un’indole vivace e giocosa ed è alla ricerca di una famiglia stabile e amorevole che possa garantirgli l’esercizio fisico e la stimolazione mentale di cui ha bisogno. È il compagno ideale per chi cerca un cane fedele e di grande carattere.',
-		'img_database/alfredo.jpg'
+		'Argo ha l’eleganza innata dei cani da caccia e un fisico atletico scolpito per il movimento. È un cane dall’anima nobile e sensibile, che ha bisogno di sfogare la sua energia correndo libero. Perfetto per chi ama il trekking e cerca un compagno fedele che non si stanca mai.',
+		'8.jpg'
 	),
 	(
-		DEFAULT,
-		'Bagigio',
+		9,
+		'Nuvola',
 		'Gatto',
 		5,
-		'Maschio',
-		'Bagigio è uno splendido gatto con un mantello Silver Tabby di grande impatto visivo. Le sue marcature grigie scure e argentate lo rendono un esemplare di notevole bellezza ed eleganza.
-Con una corporatura robusta e occhi grandi ed espressivi, Bagigio è un gatto tranquillo, ideale per chi cerca un compagno felino che apprezzi i ritmi domestici. È profondamente affettuoso e ama le sessioni di coccole, specialmente quando è rilassato. Bagigio si adatta bene alla vita d’appartamento, portando calma e raffinatezza nell’ambiente.',
-		'img_database/bagigio.jpg'
+		'Femmina',
+		'Una vera regina di bellezza, con un pelo lungo e soffice che richiede cure ma ripaga con una morbidezza incredibile. Nuvola sa di essere stupenda e si muove per casa con maestosità. È calma, pacifica e adora essere spazzolata mentre ti guarda con gratitudine.',
+		'9.jpg'
 	),
 	(
-		DEFAULT,
-		'Franco',
+		10,
+		'Gizmo',
+		'Cane',
+		2,
+		'Maschio',
+		'Impossibile non sorridere guardando Gizmo! Con quelle orecchie enormi che sembrano captare ogni segnale e il suo sguardo vispo, è un concentrato di simpatia. È un cagnolino da compagnia eccezionale, sempre pronto a strapparti un sorriso con le sue buffe espressioni.',
+		'10.jpg'
+	),
+	(
+		11,
+		'Lassie',
+		'Cane',
+		1,
+		'Femmina',
+		'Un batuffolo di pelo tricolore con occhi che brillano di intelligenza. Questa cucciola è dolcissima, impara alla velocità della luce ed è ansiosa di compiacere. È in quella fase meravigliosa in cui tutto è una scoperta: ha bisogno di una guida affettuosa per diventare una splendida adulta.',
+		'11.jpg'
+	),
+	(
+		12,
+		'Birba',
+		'Gatto',
+		1,
+		'Maschio',
+		'Il nome dice tutto: Birba è un uragano di allegria. Per lui la vita è un gioco continuo, che si tratti di inseguire un filo d’erba o fare agguati amichevoli alle tue caviglie. Se cerchi un gattino che porti vita, risate e un pizzico di caos felice in casa, lui è quello giusto.',
+		'12.jpg'
+	),
+	(
+		13,
+		'Oreo',
 		'Cane',
 		7,
 		'Maschio',
-		'Franco è un adorabile cane di taglia piccola, con un pelo corto color fulvo.
-Franco è un cane estremamente dolce e sensibile. È probabile che si adatti bene alla vita domestica, cercando la vicinanza dei suoi umani. Cerca una famiglia che apprezzi la sua natura tranquilla e lo coinvolga in momenti di gioco e, soprattutto, in lunghe sessioni di coccole sul divano.
-Franco è pronto a dimostrare quanto può essere grande l’amore in un formato compatto.',
-		'img_database/franco.jpg'
+		'Oreo ha lo sguardo profondo e saggio di chi ne ha viste tante ma non ha perso la fiducia nell’uomo. È un cane equilibrato, tranquillo, che non chiede molto se non una cuccia calda e una mano amica che lo accarezzi. La sua gratitudine sarà silenziosa ma immensa.',
+		'13.jpg'
 	),
 	(
-		DEFAULT,
-		'Gigia',
+		14,
+		'Ronf',
+		'Gatto',
+		6,
+		'Maschio',
+		'Ronf ha capito tutto della vita: perché correre quando si può dormire? È un maestro zen del riposo, capace di addormentarsi nelle posizioni più improbabili. È il gatto ideale per chi vuole una presenza rassicurante e pacifica in casa, un amico peloso che emana tranquillità.',
+		'14.jpg'
+	),
+	(
+		15,
+		'Cleo',
 		'Gatto',
 		3,
 		'Femmina',
-		'Gigia è una splendida gatta bicolore, con un elegante mantello bianco e nero. È una gatta che ricerca la comodità e la vicinanza umana. Gigia è l’ideale per chi cerca una compagnia felina che sappia apprezzare le routine rilassate della casa. 
-Gigia è in attesa di un divano accogliente e di una famiglia che si innamori della sua maestosa semplicità.',
-		'img_database/gigia.jpg'
+		'Cleo è una gatta tricolore dallo spirito libero e indipendente. Ama godersi i raggi del sole in giardino o sul balcone e osservare la natura. Non è una gatta appiccicosa, ma sa regalare momenti di grande affetto quando è lei a decidere che è il momento delle coccole.',
+		'15.jpg'
 	),
 	(
-		DEFAULT,
-		'Rex',
+		16,
+		'Pom',
 		'Cane',
-		3,
+		4,
 		'Maschio',
-		'Rex è un cane di taglia media con un mantello bicolore bianco e fulvo, che spicca per la sua espressione intelligente e il portamento fiero.
-Questo cane è un compagno leale e attento: è energico e apprezza le passeggiate regolari e i giochi che stimolano la sua mente. Rex cerca una famiglia coinvolta e dinamica, pronta a dedicargli tempo ed educazione positiva.',
-		'img_database/rex.jpg'
+		'Un piccolo leoncino da salotto, soffice e vanitoso. Pom è un Volpino che adora essere al centro dell’attenzione e farsi ammirare. Molto vivace e chiacchierone, è un ottimo compagno di vita e avventure',
+		'16.jpg'
 	),
 	(
-		DEFAULT,
-		'Wanda',
+		17,
+		'Iggy',
+		'Cane',
+		2,
+		'Maschio',
+		'Compatto, muscoloso e con una faccia da fumetto, Iggy è un Boston Terrier pieno di gioia di vivere. È un cane socievole che va d’accordo con tutti e adora giocare e stare in compagnia. Impossibile sentirsi soli con lui nei paraggi.',
+		'17.jpg'
+	),
+	(
+		18,
+		'Simba',
+		'Gatto',
+		1,
+		'Maschio',
+		'Una piccola tigre domestica dal manto rosso fuoco. Simba è avventuroso, coraggioso e atletico. Adora arrampicarsi sui tiragraffi più alti e osservare il mondo dall’alto. Ha un carattere solare ed espansivo, tipico dei gatti rossi, ed è sempre pronto a interagire con gli umani.',
+		'18.jpg'
+	),
+	(
+		19,
+		'Ombra',
 		'Gatto',
 		4,
 		'Femmina',
-		'Wanda è una splendida gatta con un mantello tricolore, dove il bianco brillante si mescola con eleganti sfumature color crema e marrone chiaro.
-È una gatta che cattura l’attenzione non solo per la sua bellezza, ma per la sua espressione intelligente e misurata. Ha una personalità decisa ma affettuosa. Wanda cerca una casa che rispetti i suoi tempi e che la riempia di attenzioni. È la compagna ideale per chi desidera un gatto con una forte personalità e un aspetto unico.',
-		'img_database/wanda.jpg'
-	),
-	(
-		DEFAULT,
-		'Lilli',
-		'Cane',
-		13,
-		'Femmina',
-		'AGGIUNGERE DESCRIZIONE',
-		'img_database/lilli.jpg'
+		'Con il suo manto grigio vellutato e gli occhi color ambra, Ombra è l’eleganza fatta gatto. È una presenza discreta e silenziosa, quasi mistica. Non ama il caos, ma si lega profondamente a chi sa rispettare i suoi tempi, diventando un’ombra affettuosa che ti segue per casa.',
+		'19.jpg'
 	);
 
 INSERT INTO
 	Cane (ID, Taglia)
 VALUES
-	(1, 'Piccola'),
-	(3, 'Piccola'),
-	(5, 'Media'),
-	(7, 'Piccola');
+	(1, 'Media'),
+	(2, 'Grande'),
+	(4, 'Media'),
+	(6, 'Piccola'),
+	(8, 'Grande'),
+	(10, 'Piccola'),
+	(11, 'Media'),
+	(13, 'Media'),
+	(16, 'Piccola'),
+	(17, 'Piccola');
 
 INSERT INTO
 	Preferiti (Utente, Animale)
@@ -154,14 +260,9 @@ VALUES
 	('user@email.com', 2);
 
 INSERT INTO
-	Prenotazione (ID, Utente, Animale, DataOra)
+	Prenotazione (Utente, Animale, DataOra)
 VALUES
-	(
-		DEFAULT,
-		'user@email.com',
-		3,
-		'2025-12-05 15:30:00'
-	);
+	('user@email.com', 3, '2025-12-05 15:30:00');
 
 INSERT INTO
 	Richieste (Email, Nome, Cognome, Telefono)

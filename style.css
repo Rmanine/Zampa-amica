@@ -463,7 +463,7 @@ input {
         margin: 0;
         padding: 0;
         list-style: none;
-        z-index: 1000;     
+        z-index: 1000;  
     }
 
     #menu ul li {
@@ -480,11 +480,22 @@ input {
         flex-direction: column;
     }
 
-    #hamburger .bar {
+    .bar1, .bar2, .bar3 {
         width: 35px;
         height: 5px;
-        border-radius: 30px;
         background-color: var(--widgetcolor);
+        border-radius: 30px;
         margin: 6px 0;
+        transition: 0.4s;
+    }
+
+    .change .bar1 {
+        transform: translate(0, 11px) rotate(-45deg);
+    }
+
+    .change .bar2 {opacity: 0;}
+
+    .change .bar3 {
+        transform: translate(0, -11px) rotate(45deg);
     }
 }

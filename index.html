@@ -9,7 +9,6 @@
         content="Zampa Amica è un'associazione di Padova gestita da volontari, impegnata nell'adozione e nella cura di animali domestici.">
     <meta name="keywords" content="Zampa Amica, adozione, Padova, animali, volontari, donazione">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css" media="(max-width: 600px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,8 +18,17 @@
 </head>
 
 <body>
+    <script>
+        const toggle = () => {
+            document.getElementById("menu").classList.toggle("navactive");
+      };
+    </script>
     <a class="aiuto" href="#contenuto">Salta al contenuto</a>
     <header>
+        <div>
+            <a href="index.html"></a>
+            <button class="stile-bottone-1" id="ham-menu" onclick="toggle()">Menu</button>
+        </div>
         <nav id="menu">
             <p>Zampa Amica</p>
             <ul>

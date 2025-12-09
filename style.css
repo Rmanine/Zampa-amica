@@ -168,6 +168,11 @@ a.stile-bottone-3:hover {
     border: 6px solid var(--visitedlinkcolor2);
 }
 
+/* MENU PER MOBILE */
+#ham-menu {
+    display: none;
+}
+
 /* BREADCRUMB */
 
 #breadcrumb {
@@ -212,7 +217,6 @@ main h1 {
     font-size: 1.3em;
     font-weight: bold;
 }
-
 
 .secondo-contenuto {
     background-color: var(--widgetcolor);
@@ -422,4 +426,62 @@ input {
     display: block;
     margin-top: -2px;
     margin-bottom: -2px;
+}
+
+@media (max-width: 600px){
+    header {
+        padding: 0;
+        margin: 0;
+    }
+
+    header div {
+        background-color: var(--widgetcolor);
+        color: var(--bgcolor);
+        padding: 1rem 2rem;
+        margin-bottom: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    header div #ham-menu {
+        display: flex;
+    }
+
+    header div a {
+        width: 60px;
+        height: 60px;
+        min-width: 60px; /* Dimensione fissa perché non vogliamo che rimpicciolisca */
+        background-image: url("./img/logo_chiaro.svg");
+        background-size: contain;
+        display: flex;
+    }
+
+    .secondo-contenuto img {
+        display: none;
+    }
+
+    #menu {
+        position: relative;
+        display: block;
+        width: 60%;
+        display: none;
+    }
+
+    #menu.navactive {
+        display: inline;
+    }
+
+    #menu ul {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--widgetcolor);
+    }
+
+    #menu ul li {
+        
+    }
 }

@@ -18,20 +18,19 @@
 </head>
 
 <body>
-    <script>
-        const toggle = () => {
-            document.getElementById("menu").classList.toggle("navactive");
-      };
-    </script>
     <a class="aiuto" href="#contenuto">Salta al contenuto</a>
     <header>
-        <div>
-            <a href="index.html"></a>
-            <button class="stile-bottone-1" id="ham-menu" onclick="toggle()">Menu</button>
-        </div>
+        <script src="js/scripts.js"></script>
         <nav id="menu">
+            <a id="hamburger" class="stile-bottone-3" onclick="myFunction()">
+                <div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </a>
             <p>Zampa Amica</p>
-            <ul>
+            <ul id="menu-list">
                 <li lang="en">Home</li>
                 <li><a href="./pages/i_nostri_animali.html">I nostri animali</a></li>
                 <li><a href="./pages/volontariato.html">Volontariato</a></li>

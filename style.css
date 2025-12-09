@@ -446,6 +446,13 @@ input {
         font-weight: bold;
     }
 
+    .bar {
+        height: 2px;
+        width: 27px;
+        background-color: #fff;
+        margin: 5px 0;
+    }
+
     header div #ham-menu {
         display: flex;
     }
@@ -463,25 +470,31 @@ input {
         display: none;
     }
 
-    #menu {
-        position: relative;
-        display: block;
-        width: 60%;
-        display: none;
-    }
-
     #menu.navactive {
         display: inline;
     }
 
-    #menu ul {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
+    #menu {
+        position: fixed;
+        top: 90px;
         background-color: var(--widgetcolor);
+        left: 0;
+        width: 100%;
+        padding: 10px 0 25px;
     }
 
-    #menu ul li {
-        
+    #menu ul {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+
+    }
+
+    #menu ul li a {
+        font-size: 1em;
+    }
+
+    #menu p {
+        display: none;
     }
 }

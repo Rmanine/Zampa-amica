@@ -9,21 +9,30 @@
         content="Zampa Amica è un'associazione di Padova gestita da volontari, impegnata nell'adozione e nella cura di animali domestici.">
     <meta name="keywords" content="Zampa Amica, adozione, Padova, animali, volontari, donazione">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css" media="(max-width: 600px)">
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="mobile.css">
+    <link rel="stylesheet" media="print" href="print.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
+    <script async src="js/scripts.js"></script>
 </head>
 
 <body>
     <a class="aiuto" href="#contenuto">Salta al contenuto</a>
     <header>
         <nav id="menu">
+            <a id="hamburger" class="stile-bottone-3" onclick="myFunction(this)">
+                <div>
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </a>
             <p>Zampa Amica</p>
-            <ul>
+            <ul id="menu-list">
                 <li lang="en">Home</li>
                 <li><a href="./pages/i_nostri_animali.html">I nostri animali</a></li>
                 <li><a href="./pages/volontariato.html">Volontariato</a></li>

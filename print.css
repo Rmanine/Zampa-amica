@@ -1,0 +1,18 @@
+* {
+    font-family: "Times New Roman", Times, serif;
+    text-decoration: none;
+    color: #000;
+    background: #fff;
+}
+
+nav, #menu, .stile-bottone-1, .stile-bottone-2, .stile-bottone-3, #hamburger, .wave, hr, .terzo-contenuto img, .terzo-contenuto-sottocontenuto img {
+    display: none !important;
+}
+
+form, img, footer {
+    page-break-inside: avoid;
+}
+
+footer {
+    border: 2px solid #000;
+}

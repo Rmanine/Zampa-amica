@@ -484,7 +484,7 @@ input {
     .bar1, .bar2, .bar3 {
         width: 35px;
         height: 5px;
-        background-color: var(--widgetcolor);
+        background-color: var(--widgettxtcolor);
         border-radius: 30px;
         margin: 6px 0;
         transition: 0.4s;
@@ -500,16 +500,24 @@ input {
         transform: translate(0, -11px) rotate(45deg);
     }
 
+    #menu .stile-bottone-3 {
+        background-color: var(--widgetcolor);
+        border: 0;
+    }
+
     .secondo-contenuto img {
         display: none;
     }
 
-    .piu-info {
-        width: 90%;
-        max-width: none;
-        margin: 1em auto;
-        padding: 0 1em; 
-        box-sizing: border-box;
+    .terzo-contenuto {
+        max-width: 90%;
+    }
+
+    .terzo-contenuto-sottocontenuto p{
         text-align: center;
+    }
+
+    .piu-info {
+        max-width: 90%;
     }
 }

@@ -162,6 +162,11 @@ button:hover, .stile-bottone-2:hover {
     background-color:var(--bgcolor);
 }
 
+#menu .stile-bottone-3 {
+    margin: 0;
+    border: 3px solid var(--bgcolor);
+}
+
 a.stile-bottone-3 {
     color: var(--widgetcolor);
     background-color: var(--bgcolor);
@@ -448,10 +453,6 @@ input {
         padding: 1rem;
     }
 
-    .secondo-contenuto img {
-        display: none;
-    }
-
     #menu ul {
         display: none;
         flex-direction: column;
@@ -497,5 +498,18 @@ input {
 
     .change .bar3 {
         transform: translate(0, -11px) rotate(45deg);
+    }
+
+    .secondo-contenuto img {
+        display: none;
+    }
+
+    .piu-info {
+        width: 90%;
+        max-width: none;
+        margin: 1em auto;
+        padding: 0 1em; 
+        box-sizing: border-box;
+        text-align: center;
     }
 }

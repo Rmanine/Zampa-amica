@@ -243,6 +243,12 @@ main h1 {
     padding-right: 2em;
 }
 
+.secondo-contenuto img {
+    width: 30%;
+    height: auto;
+    min-width: 300px;
+}
+
 .secondo-contenuto ol {
     list-style: none;
     display: flex;
@@ -505,9 +511,9 @@ input {
         border: 0;
     }
 
-    .secondo-contenuto img {
+    /* .secondo-contenuto img {
         display: none;
-    }
+    } */
 
     .terzo-contenuto {
         max-width: 90%;

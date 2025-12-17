@@ -395,11 +395,11 @@ form label {
     font-weight: bold;
 }
 
-form p {
+/* form p {
     text-align: left;
     width: 50%;
     margin: auto;
-}
+} */
 
 form .req {
     color: #f00;
@@ -519,5 +519,17 @@ input {
 
     .piu-info {
         max-width: 90%;
+    }
+
+    form label {
+        width: 80%;
+    }
+
+    input {
+        width: 80%;
+    }
+
+    .info-form {
+        width: 80%;
     }
 }

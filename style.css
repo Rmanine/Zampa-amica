@@ -378,7 +378,7 @@ footer .stile-bottone-3 {
     margin-bottom: 3em;
 }
 
-footer a::before {
+.torna-su::before {
     content: "";
     display: inline-block;
     width: 1.6em;
@@ -388,6 +388,14 @@ footer a::before {
     background-repeat: no-repeat;
     vertical-align: middle;
     margin-right: 0.5em;
+}
+
+footer .crediti {
+    color: var(--bgcolor);
+}
+
+.crediti:visited {
+    color: var(--visitedlinkcolor2);
 }
 
 /*FORM*/

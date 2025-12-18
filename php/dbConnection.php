@@ -16,21 +16,18 @@ class DBAccess {
 		
 		$this->connection = mysqli_connect(DBAccess::HOST_DB, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DATABASE_NAME);
 		
-		if (mysqli_connect_errono()) {
+		if (mysqli_connect_errno()) {
 			return false;
 		} else {
 			return true;
 		}
-		
 	}
 
 	public function closeConnection() {
 		mysqli_close($this->connection);
 	}
 
-
 	public function getList() {
-
 		$query = "SELECT * FROM Animale ORDER BY ID ASC";
 		
 		$queryResult = mysqli_query($this->connection, $query) or die("Errorre in dbConnection: " . mysqli_error($this->connection)); #controllo di errori per il debug, questo non è l'errore che deve essere mostrato all'utente

@@ -337,6 +337,17 @@ hr {
     margin: 3em;
 }
 
+/* GALLERIA ANIMALI */
+
+.galleria {
+    display: flex;
+}
+
+.elemento-galleria {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* FOOTER */
 
 footer {

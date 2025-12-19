@@ -30,7 +30,7 @@ class DBAccess {
 	public function getList() {
 		$query = "SELECT * FROM Animale ORDER BY ID ASC";
 		
-		$queryResult = mysqli_query($this->connection, $query) or die("Errorre in dbConnection: " . mysqli_error($this->connection)); #controllo di errori per il debug, questo non è l'errore che deve essere mostrato all'utente
+		$queryResult = mysqli_query($this->connection, $query) or die("Errorre in dbConnection: " . mysqli_error($this->connection));
 		
 		if(mysqli_num_rows($queryResult) != 0) {
 			$result = array();

@@ -352,11 +352,33 @@ hr {
 
 .galleria {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 2rem auto;
+    box-sizing: border-box;
 }
 
 .elemento-galleria {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.elemento-galleria img {
+    width: 100%;
+    height: 200px;
+    display: block;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.elemento-galleria > div {
+    width: 100%;
+    padding: 0.5rem 0;
+    color: var(--maintxtcolor);
 }
 
 /* FOOTER */

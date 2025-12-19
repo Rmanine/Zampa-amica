@@ -11,19 +11,18 @@ $connessioneOK = $connessione->openDBConnection();
 $animali = '';
 $stringaAnimali = '';
 
-if (!$stringaAnimali && $connessioneOK) {
+if ($connessioneOK) {
 	$animali = $connessione->getList(); 
-	$connection->closeConnection();
+	$connessione->closeConnection();
 	
-	if ($animali != null) {
+	if ($animali && is_array($animali)) {
 		$stringaAnimali .= '<ul class="galleria">';
 			foreach ($animali as $animale) {
 
-				$stringaAnimali .= '<li class="elemento-galleria">' . '<img src="' . $animale['Immagine'] . '" alt="" >';
+				$stringaAnimali .= '<li class="elemento-galleria">' . '<img src="../' . $animale['Immagine'] . '" alt="" >';
 				$stringaAnimali .= '<div>' . $animale['Nome'] . '</div>';
 				$stringaAnimali .= '</li>'; 
 			}
-			
 		$stringaAnimali .= '</ul>';
 	}
 	else {

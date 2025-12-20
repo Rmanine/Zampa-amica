@@ -10,11 +10,12 @@ $connessioneOK = $connessione->openDBConnection();
 
 $stringaAnimali = '';
 
-function getGenere($genere) {
+function getIconGenere($genere) {
 	$generi = array(
 		'Femmina' => 'img/female-icon.png',
 		'Maschio' => 'img/male-icon.png'
 	);
+	return $generi[$genere];
 }
 
 if ($connessioneOK) {
@@ -28,14 +29,7 @@ if ($connessioneOK) {
 				$stringaAnimali .= '<li class="elemento-galleria">' . '<img src="../' . $animale['Immagine'] . '" alt="" >';
 				$stringaAnimali .= '<div>';
 				$stringaAnimali .= '<div class="label-elemento>' . $animale['Nome'] . '</div>';
-				$stringaAnimali .= '<img class="genere" src="../' . getGenere($animale['Genere']) . '" alt="Maschio">';
-
-				/* if ($animale['Genere'] == 'Maschio') {
-					$stringaAnimali .= '<img class="genere" src="../img/male-icon.png" alt="Maschio">';
-				}
-				else if ($animale['Genere'] == 'Femmina') {
-					$stringaAnimali .= '<img class="genere" src="../img/female-icon.png" alt="Femmina">';
-				} */
+				$stringaAnimali .= '<img class="genere" src="../' . getIconGenere($animale['Genere']) . '" alt="Maschio">';
 				$stringaAnimali .= '</div>';
 				$stringaAnimali .= '</li>'; 
 			}

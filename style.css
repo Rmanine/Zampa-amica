@@ -179,7 +179,9 @@ a.stile-bottone-3:hover {
 
 /* MENU PER MOBILE */
 #ham-menu {
-    display: none;
+    position: absolute;
+    height: 0;
+    overflow: hidden;
 }
 
 /* BREADCRUMB */
@@ -353,32 +355,51 @@ hr {
 .galleria {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: row;
+    gap: 1em;
     list-style: none;
-    padding: 0;
-    margin: 0 auto 2rem auto;
-    box-sizing: border-box;
+    margin: 2.5em 0 2.5em 0;
 }
 
 .elemento-galleria {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: 1em;
+    width: 300px;
     text-align: center;
 }
 
 .elemento-galleria img {
     width: 100%;
-    height: 200px;
-    display: block;
-    border-radius: 12px;
+    height: 300px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     object-fit: cover;
 }
 
 .elemento-galleria > div {
+    position: relative;
     width: 100%;
-    padding: 0.5rem 0;
-    color: var(--maintxtcolor);
+    padding: 0.7rem 1.8rem;
+    font-size: 1.5em;
+    color: var(--bgcolor);
+    background-color: var(--widgetcolor);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.elemento-galleria .label-elemento {
+    text-align: center;
+    width: 100%;
+}
+
+.elemento-galleria .genere {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5em;
+    height: 1.5em;
 }
 
 /* FOOTER */
@@ -551,10 +572,6 @@ input {
         background-color: var(--widgetcolor);
         border: 0;
     }
-
-    /* .secondo-contenuto img {
-        display: none;
-    } */
 
     .terzo-contenuto {
         max-width: 90%;

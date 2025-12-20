@@ -8,8 +8,14 @@ $paginaHTML = file_get_contents('..' . DIRECTORY_SEPARATOR .'pages'. DIRECTORY_S
 $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
 
-$animali = '';
 $stringaAnimali = '';
+
+function getGenere($genere) {
+	$generi = array(
+		'Femmina' => 'img/female-icon.png',
+		'Maschio' => 'img/male-icon.png'
+	);
+}
 
 if ($connessioneOK) {
 	$animali = $connessione->getList(); 
@@ -20,7 +26,17 @@ if ($connessioneOK) {
 			foreach ($animali as $animale) {
 
 				$stringaAnimali .= '<li class="elemento-galleria">' . '<img src="../' . $animale['Immagine'] . '" alt="" >';
-				$stringaAnimali .= '<div>' . $animale['Nome'] . '</div>';
+				$stringaAnimali .= '<div>';
+				$stringaAnimali .= '<div class="label-elemento>' . $animale['Nome'] . '</div>';
+				$stringaAnimali .= '<img class="genere" src="../' . getGenere($animale['Genere']) . '" alt="Maschio">';
+
+				/* if ($animale['Genere'] == 'Maschio') {
+					$stringaAnimali .= '<img class="genere" src="../img/male-icon.png" alt="Maschio">';
+				}
+				else if ($animale['Genere'] == 'Femmina') {
+					$stringaAnimali .= '<img class="genere" src="../img/female-icon.png" alt="Femmina">';
+				} */
+				$stringaAnimali .= '</div>';
 				$stringaAnimali .= '</li>'; 
 			}
 		$stringaAnimali .= '</ul>';
@@ -33,7 +49,7 @@ if ($connessioneOK) {
 	$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
 }
 
-$paginaHTML = str_replace("[listaAnimali]", $stringaAnimali, $paginaHTML);
+$paginaHTML = str_replace('[listaAnimali]', $stringaAnimali, $paginaHTML);
 echo $paginaHTML;
 
 ?>

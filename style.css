@@ -480,9 +480,47 @@ input {
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     display: block;
-    margin-top: -2px;
-    margin-bottom: -2px;
+    margin-top: -0.1em;
+    margin-bottom: -0.1em;
 }
+
+#filtri, #catalogo {
+    float: left;
+    width: 80%;
+    margin-top: 2em;
+}
+
+#filtri {
+    width: 20%;
+}
+
+.piu-info {
+    clear: both; /* Lo forzo ad andare giù per non seguire il float */
+}
+
+fieldset {
+    border: 2px solid #ddd;
+    border-radius: 0.5em;
+    background-color: #fafafa;
+    padding: 1em;
+}
+
+legend {
+    font-weight: bold;
+}
+
+fieldset label {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 0.75em;
+    cursor: pointer;
+}
+
+fieldset input[type="radio"] {
+    margin: 0;
+}
+
 
 @media (max-width: 600px){
 

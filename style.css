@@ -300,12 +300,12 @@ main h1 {
     margin: 2em 0;
 }
 
-.terzo-contenuto dl div, .terzo-contenuto div {
+.terzo-contenuto dl div, .terzo-contenuto div, .terzo-contenuto article {
     flex: 1 1 300px;
     padding: 1em;
 }
 
-.terzo-contenuto dt {
+.terzo-contenuto dt, .terzo-contenuto li{
     font-size: 1.3em;
     font-weight: bold;
     margin-bottom: 0.5em;
@@ -355,18 +355,15 @@ hr {
 .galleria {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    gap: 1em;
     list-style: none;
-    margin: 2.5em 0 2.5em 0;
+    justify-content: center;
 }
 
-.elemento-galleria {
+.elemento-galleria a, .card {
     display: flex;
     flex-direction: column;
     margin: 1em;
     width: 300px;
-    text-align: center;
 }
 
 .elemento-galleria img {
@@ -377,20 +374,19 @@ hr {
     object-fit: cover;
 }
 
-.elemento-galleria > div {
+.elemento-galleria a > div, .dettagli-animale .card > p {
     position: relative;
     width: 100%;
     padding: 0.7rem 1.8rem;
-    font-size: 1.5em;
     color: var(--bgcolor);
     background-color: var(--widgetcolor);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
 
-.elemento-galleria .label-elemento {
+.elemento-galleria .label-elemento, .dettagli-animale .label-elemento {
     text-align: center;
-    width: 100%;
+    font-size: 1.5em;
 }
 
 .elemento-galleria .genere {
@@ -400,6 +396,21 @@ hr {
     transform: translateY(-50%);
     width: 1.5em;
     height: 1.5em;
+}
+
+/* DETTAGLI ANIMALE */
+
+.dettagli-animale ul {
+    list-style: none;
+    text-align: left;
+}
+
+.dettagli-animale .card img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    object-fit: cover;
 }
 
 /* FOOTER */

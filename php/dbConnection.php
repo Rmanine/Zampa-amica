@@ -44,21 +44,19 @@ class DBAccess {
 		}
 	}
 
-	/* public function insertNewElement($nome, $capitano, $dataNascita, $luogo, $squadra, $ruolo, $altezza, $maglia, $magliaNazionale, $punti, $riconoscimenti, $note, $genere) {
-		$queryInsert = "INSERT INTO atleti(nome, capitano, dataNascita, luogo, squadra, ruolo, altrezza, maglia, magliaNqzionale, punti, riconosccimenti, note, genere) VALUES(\"$nome\", \"$capitano\", \"$dataNascita\", \"$luogo\", \"$squadra\", \"$ruolo\", \"$altrezza\", \"$maglia\", \"$magliaNqzionale\", \"$punti\", \"$riconosccimenti\", \"$note\", \"$genere\")";
+	public function getElement($id) {
+		$query = "SELECT * FROM Animale WHERE ID = '$id'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errorre in dbConnection: " . mysqli_error($this->connection)); #controllo di errori per il debug, questo non è l'errore che deve essere mostrato all'utente
-		
-		if(mysqli_affected_rows($this->connection) > 0) {
-			return true;
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in dbConnection: " . mysqli_error($this->connection));
+
+		if (mysqli_num_rows($queryResult) != 0) {
+			$row = mysqli_fetch_assoc($queryResult);
+			$queryResult->free();
+			return $row;
 		} else {
-
 			return false;
 		}
-		
-	} */
-
-	
+	}
 }
 
 

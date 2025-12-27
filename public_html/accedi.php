@@ -3,50 +3,12 @@
 require_once ".." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
 use DB\DBAccess;
 
+require_once '../php/login.php';
+
 $paginaHTML = file_get_contents('..' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'accedi.html');
 
 $messaggiPerForm = '';
 $erroreLogin = '';
-
-class Auth{
-
-    public function __construct($db) {
-        $this->db = $db;
-    }
-
-    public function authenticate( string $username, string $password) {
-        $user = $this->db->getUser($username);
-        if ($user === false) {
-            return false;
-        }
-
-        $verify = password_verify($password, $user['Password']);
-        if( $verify == true) {
-            return $user['ID'];
-        }
-        
-        return false;
-    }
-
-    public function log_user_in( int $user_ID) {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        $_SESSION["logged_in_user"] = $user_ID;
-    }
-
-    public function logged_in_user() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        if (!isset($_SESSION["logged_in_user"])) {
-            return false;
-        }
-
-        return intval($_SESSION["logged_in_user"]);
-    }
-}
 
 function pulisciInput($value){
  	$value = trim($value);
@@ -78,9 +40,8 @@ if (isset($_POST['submit'])) {
 		$connessione = new DBAccess();
 		$connessioneOK = $connessione->openDBConnection();
 
-
 		if ($connessioneOK) {
-			$auth = new Auth($connessione);
+			$auth = new login($connessione);
             $userID = $auth->authenticate($username, $password);
             if ($userID) {
                 $auth->log_user_in($userID);

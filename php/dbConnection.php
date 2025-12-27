@@ -57,7 +57,11 @@ class DBAccess {
 			return false;
 		}
 	}
-
+	/*
+	PRE: accetta un nome utente
+	POST: ritorna un array con le info dell'utente t.c. $row['Username'] == $username
+			false se non ha trovato l'utente con Username == $username
+	*/
 	public function getUser($username) {
 		$query = "SELECT ID, Password FROM Utente WHERE Username = ?";
 
@@ -76,11 +80,59 @@ class DBAccess {
 			mysqli_stmt_close($stmt);
 			return $row;
 		}
-
 		mysqli_stmt_close($stmt);
 		return false;
 	}
-}
+	
+	/* 
+	PRE: accetta una stringa 
+	POST: true se esiste un utente con Username == $username 
+			false se non esiste
+	*/
+	public function usernameExists($username) {
+		$query = "SELECT 1 FROM Utente WHERE Username = ? LIMIT 1";
 
+		$stmt = mysqli_prepare($this->connection, $query);
+		if ($stmt === false) {
+			return false;
+		}
+
+		mysqli_stmt_bind_param($stmt, "s", $username);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_store_result($stmt);
+
+		if (mysqli_stmt_num_rows($stmt) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+		mysqli_stmt_close($stmt);
+	}
+	
+	public function addUser($username, $email, $hashedPassword) {
+		$queryInsert = "INSERT INTO Utente(Username, Email, Password) VALUES(\"$username\", \"$email\", \"$hashedPassword\")";
+
+		$queryResult = mysqli_query($this->connection, $queryInsert) or die("Errorre in dbConnection: " . mysqli_error($this->connection));
+		
+		if(mysqli_affected_rows($this->connection) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function addItemWishList($item_ID, $user_ID) {
+		$queryInsert = "INSERT INTO Preferito(UtenteID, AnimaleID) VALUES($user_ID, $item_ID)";
+
+		$queryResult = mysqli_query($this->connection, $queryInsert) or die("Errorre in dbConnection: " . mysqli_error($this->connection)); #controllo di errori per il debug, questo non è l'errore che deve essere mostrato all'utente
+		
+		if(mysqli_affected_rows($this->connection) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+}
 
 ?>

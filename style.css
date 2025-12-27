@@ -396,6 +396,7 @@ hr {
     transform: translateY(-50%);
     width: 1.5em;
     height: 1.5em;
+    border-radius: 0px;
 }
 
 /* DETTAGLI ANIMALE */

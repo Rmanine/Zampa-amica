@@ -41,7 +41,7 @@ if ($connessioneOK && $id !== 0) {
 }
 
 $paginaHTML = str_replace('[Animale]', $stringaAnimale, $paginaHTML);
-$paginaHTML = str_replace('[AnimaleCorrente]', $stringaAnimale, $paginaHTML);
+$paginaHTML = str_replace('[AnimaleCorrente]', $animaleVisualizzato, $paginaHTML);
 echo $paginaHTML;
 
 ?>

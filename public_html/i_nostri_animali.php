@@ -9,7 +9,7 @@ use DB\DBAccess;
 session_start();
 
 $paginaHTML = file_get_contents('..' . DIRECTORY_SEPARATOR .'pages'. DIRECTORY_SEPARATOR . 'i_nostri_animali.html');
-$stringaAnimali = ''; 
+$stringaAnimali = '';
 
 $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
@@ -19,7 +19,7 @@ function getIconGenere($genere) {
 		'Femmina' => 'img/female-icon.png',
 		'Maschio' => 'img/male-icon.png'
 	);
-	return $generi[$genere] ?? 'img/default-img.png';
+	return $generi[$genere];
 }
 
 if ($connessioneOK) {

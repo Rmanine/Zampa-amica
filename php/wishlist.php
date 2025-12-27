@@ -1,4 +1,4 @@
-<?<php>
+<?php
 
 class WishList {
 
@@ -14,4 +14,4 @@ class WishList {
     
 }
 
-</php>
+?>

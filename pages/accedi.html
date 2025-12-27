@@ -42,6 +42,7 @@
         <h1>Accedi</h1>
         <p>Non hai ancora un <span lang="en">account</span>? <a href="./registrati.html">Registrati</a></p>
         
+        [messaggiForm]
         <form action="" method="post">
             <label for="username"><span lang="en">Username</span></label>
             <input type="text" id="username" name="username" autocomplete="username" required>
@@ -50,7 +51,8 @@
             <label for="password"><span lang="en">Password</span></label>
             <input type="password" id="password" name="password" autocomplete="current-password" required>
             
-            <button type="submit">Accedi</button>
+            [erroreLogin]
+            <button type="submit" name="submit">Accedi</button>
         </form>
     </main>
 

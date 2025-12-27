@@ -13,7 +13,7 @@ $animaleVisualizzato = '';
 $id = (int)$_GET['id'] ?? 0;
 
 if ($connessioneOK && $id !== 0) {
-    $animale = $connessione->getElement($id);
+    $animale = $connessione->getAnimale($id);
     $connessione->closeConnection();
 
     if ($animale && is_array($animale)) {

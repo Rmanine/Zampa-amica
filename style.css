@@ -480,10 +480,6 @@ form label {
     margin: auto;
 } */
 
-form .req {
-    color: #f00;
-}
-
 input {
     display: block;
     margin: auto;
@@ -502,9 +498,8 @@ input {
     list-style-position: inside;
 }
 
-.req {
-  color: 000;
-  font-weight: bold;
+form .req {
+    color: #f00;
 }
 
 .wave {

@@ -7,15 +7,3 @@ function myFunction(y) {
     }
     y.classList.toggle("change");
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    const params = new URLSearchParams(window.location.search);
-
-    params.forEach((value, key) => {
-        const input = document.querySelector(`input[name="${key}"][value="${value}"]`);
-        if (input) {
-            input.checked = true;
-        }
-    });
-});

@@ -31,7 +31,7 @@ if ($connessioneOK && $id !== 0) {
         $animaleVisualizzato = $animale['Nome'];
 
         $stringaAnimale .= '<article class="card">';
-        $stringaAnimale .= '<img src="../' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '">';
+        $stringaAnimale .= '<img src="../' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . 'di nome' . $animale['Nome'] . '">';
         $stringaAnimale .= '<p class="label-elemento">' . $animale['Nome'] . '</p>';
         $stringaAnimale .= '</article>';
 

@@ -31,7 +31,7 @@ if ($connessioneOK) {
 				foreach ($animali as $animale) {
 					$stringaAnimali .= '<li class="elemento-galleria">';
 					$stringaAnimali .= '<a href="dettagli_animale.php?id=' . $animale['ID'] . '">';
-					$stringaAnimali .= '<img src="../' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '" >';
+					$stringaAnimali .= '<img src="../' . $animale['Immagine'] . '" alt="' . 'di nome' . $animale['Nome'] . '" >';
 					$stringaAnimali .= '<div>';
 					$stringaAnimali .= '<p class="label-elemento">' . htmlspecialchars($animale['Nome']) . '</p>';
 					$stringaAnimali .= '<img class="genere" src="../' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';

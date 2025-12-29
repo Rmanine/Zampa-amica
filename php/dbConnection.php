@@ -48,13 +48,13 @@ class DBAccess {
 		if ($filtri['taglia'] !== 'all') {
 			switch($filtri['taglia']) {
 				case 'piccola':
-					$conditions[] = "Taglia = Piccolo";
+					$conditions[] = "Taglia = 'Piccolo'";
 					break;
 				case 'media':
-					$conditions[] = "Taglia = Medio";
+					$conditions[] = "Taglia = 'Medio'";
 					break;
 				case 'grande':
-					$conditions[] = "Taglia = Grande";
+					$conditions[] = "Taglia = 'Grande'";
 					break;
 			}
 		}

@@ -490,7 +490,7 @@ input {
     margin: auto;
     width: 50%;
     border: 2px solid var(--widgetcolor);
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 0.8em 1em;
 }
 
@@ -516,13 +516,9 @@ form .req {
     margin-bottom: -0.1em;
 }
 
-#filtri, #catalogo {
-    float: left;
-    width: 80%;
-    margin-top: 2em;
-}
-
 #filtri {
+    float: left;
+    margin-top: 2em;
     width: 20%;
     border: none;
 }
@@ -533,7 +529,7 @@ form .req {
 
 fieldset {
     border: 2px solid #ddd;
-    border-radius: 0.5em;
+    border-radius: 10px;
     background-color: #fafafa;
     padding: 1em;
 }

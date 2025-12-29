@@ -1,7 +1,6 @@
 <?php
 
 require_once "../php/session.php";
-require_once "../php/wishlist.php";
 require_once ".." . DIRECTORY_SEPARATOR . "php". DIRECTORY_SEPARATOR . "dbConnection.php";
 
 use DB\DBAccess;

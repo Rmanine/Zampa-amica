@@ -61,8 +61,13 @@
 
 \newpage
 \section{Introduzione}
-\subsection{Qual è l'idea dietro il nostro progetto}
-\subsection{L'obiettivo di \textit{Zampa Amica}}
+\subsection{Scopo del prodotto}
+Zampa Amica è un sito web a supporto di \textbf{un rifugio per animali domestici}, in grado di ospitare cani, gatti e altre specie. \\
+L’obiettivo principale della piattaforma è favorire l’incontro tra il rifugio e le persone interessate all’adozione, consentendo la visualizzazione degli animali attualmente presenti nella struttura.\\
+Il sito mira a raggiungere un pubblico il più ampio possibile, promuovendo l’adozione, di animali. Fornisce contenuti informativi riguardo agli animali ospitati attualmente nella struttura.\\
+La piattaforma fa riferimento a un’unica struttura, ipotizzata dal gruppo essere situata nel territorio di Padova.\\
+È inoltre prevista la possibilità per gli utenti di candidarsi come volontari del rifugio. Tale funzionalità consente, ad esempio, a persone impossibilitate a possedere un animale domestico di contribuire attivamente alle attività della struttura. 
+La candidatura richiede esclusivamente la condivisione dei propri contatti, che vengono successivamente gestiti dal personale interno incaricato di contattare i potenziali volontari.
 
 \section{Organizzazione del gruppo}
 \subsection{Modalità di lavoro}
@@ -74,8 +79,37 @@
 
 \section{Progettazione}
 \subsection{Tipi di utente}
+\subsection{Tipi di utente}
+Il sito prevede due tipologie di utenti:
+\begin{itemize}
+    \item utente non registrato, con accesso ai contenuti informativi e alla visualizzazione del catalogo degli animali presenti nella struttura;
+    \item utente registrato, in grado di aggiungere gli animali ad una lista dei preferiti.
+\end{itemize}
+
 \subsection{Struttura del sito}
+
+\subsection{Header}
+Nell’header è presente il logo del rifugio, utilizzato come collegamento alla home page, secondo una convenzione ampiamente consolidata nell’esperienza di navigazione web.  
+Il menu di navigazione è realizzato tramite una lista non ordinata e contiene i collegamenti alle principali sezioni del sito. È inoltre presente un pulsante dedicato all’accesso dell’utente.
+
+\subsubsection{Breadcrumb}
+Il breadcrumb è stato inserito per migliorare l’usabilità e l’accessibilità del sito, riducendo il rischio di disorientamento dell’utente durante la navigazione.  
+Esso funge da supporto contestuale, indicando la posizione corrente all’interno della struttura del sito.  
+È stato utilizzato il tag semantico \texttt{nav}; per la pagina corrente il collegamento è stato intenzionalmente omesso, al fine di evitare link circolari.
+
+\subsubsection{Footer}
+Nel footer sono riportati l’indirizzo del rifugio e i contatti della struttura, oltre alle informazioni relative ai diritti e ai crediti del sito.
+
 \subsection{Funzionalità}
+Di seguito sono elencate le principali funzionalità offerte dal sito:
+\begin{itemize}
+    \item accesso e registrazione dell’utente;
+    \item candidatura come volontario, mediante l’inserimento del nominativo e dei contatti (telefono ed email); questo sistema è pensato in modo che gli impiegati vadano a contattare personalmente i candidati;
+    \item visualizzazione dell’elenco degli animali presenti nel rifugio e disponibili per l’adozione;
+    \item visualizzazione di una pagina dedicata per ciascun animale, contenente informazioni quali nome, specie, età, sesso, taglia, descrizione e immagine;
+    \item gestione di una lista dei preferiti, che consente di salvare gli animali a cui si è interessati, facilitando il recupero delle informazioni durante la navigazione; corrisponde al metodo di etichettatura descritto dalla metafora della boa di segnalazione.
+\end{itemize}
+
 \subsection{Convenzioni interne}
 \subsection{Schema database}
 

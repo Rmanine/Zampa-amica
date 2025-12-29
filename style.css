@@ -177,6 +177,10 @@ a.stile-bottone-3:hover {
     border: 6px solid var(--visitedlinkcolor2);
 }
 
+#bottone-indietro {
+    float: left;
+}
+
 /* MENU PER MOBILE */
 #ham-menu {
     position: absolute;

@@ -12,6 +12,17 @@ $stringaAnimale = '';
 $animaleVisualizzato = '';
 $id = (int)$_GET['id'] ?? 0;
 
+function  createStringaEtaAnimale($etaAnimale) {
+    $stringaEta = '';
+    if ($etaAnimale < 12) {
+        $stringaEta .= $etaAnimale . ' mesi';
+    }
+    elseif ($etaAnimale >= 12) {
+        $stringaEta = intdiv(intval($etaAnimale), 12) . ' anni';
+    }
+    return $stringaEta;
+}
+
 if ($connessioneOK && $id !== 0) {
     $animale = $connessione->getAnimale($id);
     $connessione->closeConnection();
@@ -27,7 +38,7 @@ if ($connessioneOK && $id !== 0) {
         $stringaAnimale .= '<div class="terzo-contenuto-sottocontenuto">';
         $stringaAnimale .= '<ul>';
         $stringaAnimale .= '<li>Razza: ' . $animale['Specie'] . '</li>';
-        $stringaAnimale .= '<li>Età: ' . $animale['EtaMesi'] . '</li>';
+        $stringaAnimale .= '<li>Età: ' . createStringaEtaAnimale($animale['EtaMesi']) . '</li>';
         $stringaAnimale .= '<li>Sesso: ' . $animale['Genere'] . '</li>';
         $stringaAnimale .= '<li>Taglia: ' . $animale['Taglia'] . '</li>';
         $stringaAnimale .= '</ul>';

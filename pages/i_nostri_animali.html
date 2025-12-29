@@ -40,7 +40,7 @@
     <main id="contenuto">
         <h1>I nostri animali</h1>
         <p>Seleziona le tue preferenze attraverso i filtri ed esplora i cani e i gatti in cerca di una casa.</p>
-        <section id="filtri">
+        <form id="filtri" action="" method="get">
             <h2>Filtri</h2>
             <fieldset>
                 <legend>Tipo</legend>
@@ -72,8 +72,8 @@
                 <label><input type="radio" name="taglia" value="media">Media</label>
                 <label><input type="radio" name="taglia" value="grande">Grande</label>
             </fieldset>
-        <button>Applica filtri</button>
-        </section>
+            <button type="submit" name="submit-filters">Applica filtri</button>
+        </form>
 
         [listaAnimali]
 

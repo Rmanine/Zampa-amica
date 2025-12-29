@@ -9,10 +9,17 @@ use DB\DBAccess;
 session_start();
 
 $paginaHTML = file_get_contents('..' . DIRECTORY_SEPARATOR .'pages'. DIRECTORY_SEPARATOR . 'i_nostri_animali.html');
-$stringaAnimali = '';
 
 $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
+
+$stringaAnimali = '';
+$filtri = [
+    'tipo'   => $_GET['tipo']   ?? 'all',
+    'eta'    => $_GET['eta']    ?? 'all',
+    'sesso'  => $_GET['sesso']  ?? 'all',
+    'taglia' => $_GET['taglia'] ?? 'all'
+];
 
 function getIconGenere($genere) {
 	$generi = array(
@@ -23,7 +30,7 @@ function getIconGenere($genere) {
 }
 
 if ($connessioneOK) {
-	$animali = $connessione->getList(); 
+	$animali = $connessione->getList($filtri);
 	$connessione->closeConnection();
 	
 	if ($animali && is_array($animali)) {

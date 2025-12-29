@@ -27,9 +27,60 @@ class DBAccess {
 		mysqli_close($this->connection);
 	}
 
-	public function getList() {
-		$query = "SELECT * FROM Animale ORDER BY ID ASC";
-		
+	public function getList($filtri) {
+		$conditions = [];
+		$query = "SELECT * FROM Animale";
+
+		if ($filtri['tipo'] !== 'all') {
+			if ($filtri['tipo'] === 'cane') {
+				$conditions[] = "Specie = 'Cane'";
+			} elseif ($filtri['tipo'] === 'gatto') {
+				$conditions[] = "Specie = 'Gatto'";
+			}
+		}
+		if ($filtri['sesso'] !== 'all') {
+			if ($filtri['sesso'] === 'maschio') {
+				$conditions[] = "Genere = 'Maschio'";
+			} elseif ($filtri['sesso'] === 'femmina') {
+				$conditions[] = "Genere = 'Femmina'";
+			}
+		}
+		if ($filtri['taglia'] !== 'all') {
+			switch($filtri['taglia']) {
+				case 'piccola':
+					$conditions[] = "Taglia = Piccolo";
+					break;
+				case 'media':
+					$conditions[] = "Taglia = Medio";
+					break;
+				case 'grande':
+					$conditions[] = "Taglia = Grande";
+					break;
+			}
+		}
+
+		if ($filtri['eta'] !== 'all') {
+			switch ($filtri['eta']) {
+				case '0-12':
+					$conditions[] = "EtaMesi BETWEEN 0 AND 12";
+					break;
+				case '1-3':
+					$conditions[] = "EtaMesi BETWEEN 13 AND 36";
+					break;
+				case '4-8':
+					$conditions[] = "EtaMesi BETWEEN 37 AND 96";
+					break;
+				case '8+':
+					$conditions[] = "EtaMesi > 96";
+					break;
+			}
+		}
+		if (!empty($conditions)) {
+			$query .= " WHERE " . implode(" AND ", $conditions);
+		}
+
+		$query .= " ORDER BY ID ASC";
+
 		$queryResult = mysqli_query($this->connection, $query) or die("Errorre in dbConnection: " . mysqli_error($this->connection));
 		
 		if(mysqli_num_rows($queryResult) != 0) {
@@ -120,19 +171,6 @@ class DBAccess {
 			return false;
 		}
 	}
-
-	public function addItemWishList($item_ID, $user_ID) {
-		$queryInsert = "INSERT INTO Preferito(UtenteID, AnimaleID) VALUES($user_ID, $item_ID)";
-
-		$queryResult = mysqli_query($this->connection, $queryInsert) or die("Errorre in dbConnection: " . mysqli_error($this->connection)); #controllo di errori per il debug, questo non è l'errore che deve essere mostrato all'utente
-		
-		if(mysqli_affected_rows($this->connection) > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 }
 
 ?>

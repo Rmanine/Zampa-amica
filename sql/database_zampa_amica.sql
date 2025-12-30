@@ -1,8 +1,8 @@
 CREATE TABLE
 	Utente (
 		ID INT AUTO_INCREMENT PRIMARY KEY,
-		Email VARCHAR(50) NOT NULL,
-		Username VARCHAR(50) NOT NULL,
+		Email VARCHAR(50) NOT NULL UNIQUE,
+		Username VARCHAR(50) NOT NULL UNIQUE,
 		Password VARCHAR(64) NOT NULL -- Memorizzato in SHA256 che produce sempre 64 caratteri
 	);
 
@@ -14,17 +14,8 @@ CREATE TABLE
 		EtaMesi INT NOT NULL, -- Età in mesi
 		Genere VARCHAR(50) NOT NULL,
 		Taglia VARCHAR(50), -- Opzionale poichè attributo legato solo ai cani
-		Descrizione VARCHAR(255), -- Opzionale
+		Descrizione VARCHAR(500), -- Opzionale
 		Immagine VARCHAR(255) -- Opzionale
-	);
-
-CREATE TABLE
-	Preferito (
-		UtenteID INT NOT NULL,
-		AnimaleID INT NOT NULL,
-		PRIMARY KEY (UtenteID, AnimaleID),
-		FOREIGN KEY (UtenteID) REFERENCES Utente (ID) ON DELETE CASCADE,
-		FOREIGN KEY (AnimaleID) REFERENCES Animale (ID) ON DELETE CASCADE
 	);
 
 CREATE TABLE
@@ -43,7 +34,7 @@ CREATE TABLE
 		Email VARCHAR(50) PRIMARY KEY,
 		Nome VARCHAR(50) NOT NULL,
 		Cognome VARCHAR(50) NOT NULL,
-		Telefono VARCHAR(10) NOT NULL,
+		Telefono VARCHAR(20) NOT NULL,
 		DataOra TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 	);
 
@@ -53,7 +44,8 @@ VALUES
 	('user@email.com', 'user', '04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb'),
 	('user1@email.com', 'user1', '0a041b9462caa4a31bac3567e0b6e6fd9100787db2ab433d96f6d178cabfce90');
 
-INSERT INTO Animale (Nome, Specie, EtaMesi, Genere, Taglia, Descrizione, Immagine) 
+INSERT INTO 
+	Animale (Nome, Specie, EtaMesi, Genere, Taglia, Descrizione, Immagine) 
 VALUES 
     ('Lucky','Cane',36,'Maschio','Medio','Lucky è un''esplosione di energia con un bellissimo mantello bianco e nero. Ha uno sguardo intelligente e vive per giocare: se hai una pallina da lanciargli, sarai il suo migliore amico per sempre. Cerca un compagno che ami le avventure all''aria aperta.','img/assets/1.jpg'),
     ('Thor','Cane',60,'Maschio','Grande', 'Non lasciarti ingannare dal suo aspetto fiero: Thor è in realtà un gigante dal cuore dolce. Ha un portamento nobile e attento, ma appena varca la soglia di casa si trasforma in un cucciolone che cerca solo carezze e un posto morbido dove accucciarsi vicino a te.','img/assets/2.jpg'),
@@ -75,16 +67,11 @@ VALUES
     ('Simba','Gatto',12,'Maschio',NULL,'Una piccola tigre domestica dal manto rosso fuoco. Simba è avventuroso, coraggioso e atletico. Adora arrampicarsi sui tiragraffi più alti e osservare il mondo dall''alto. Ha un carattere solare ed espansivo, tipico dei gatti rossi, ed è sempre pronto a interagire con gli umani.','img/assets/18.jpg'),
     ('Ombra','Gatto',48,'Femmina',NULL,'Con il suo manto grigio vellutato e gli occhi color ambra, Ombra è l''eleganza fatta gatto. È una presenza discreta e silenziosa, quasi mistica. Non ama il caos, ma si lega profondamente a chi sa rispettare i suoi tempi, diventando un''ombra affettuosa che ti segue per casa.','img/assets/19.jpg');
 
-INSERT INTO
-	Preferito (UtenteID, AnimaleID)
-VALUES
-	(1,3),
-	(1,2);
-
-INSERT INTO
-	Prenotazione (UtenteID, AnimaleID)
-VALUES
-	(1, 3);
+INSERT INTO 
+	Prenotazione (UtenteID, AnimaleID, DataOra, Note)
+VALUES 
+    (1, 3, '2025-12-31 10:30:00', 'Prenotazione per visita conoscitiva'),
+    (1, 2, '2026-01-15 15:00:00', NULL);
 
 INSERT INTO
 	Richiesta_Volontariato (Email, Nome, Cognome, Telefono)

@@ -174,6 +174,33 @@ class DBAccess {
 		}
 	}
 
+	// Aggiunge un volontario
+	public function addVolontario($email, $nome, $cognome, $telefono) {
+		$query = "INSERT INTO Richiesta_volontariato (Email, Nome, Cognome, Telefono) VALUES (?, ?, ?, ?)";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+
+		if (!$stmt) {
+			return false;
+		}
+
+		if (!mysqli_stmt_bind_param($stmt, "ssss", $email, $nome, $cognome, $telefono)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		if (!mysqli_stmt_execute($stmt)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		$affected_rows = mysqli_stmt_affected_rows($stmt);
+
+		mysqli_stmt_close($stmt);
+
+		return ($affected_rows > 0);
+	}
+
 	// Ritorna la lista delle prenotazioni, dato un id utente
 	public function getListaPrenotazioni($id_user)
 	{

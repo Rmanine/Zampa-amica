@@ -163,15 +163,22 @@ class DBAccess {
 	}
 	
 	public function addUser($username, $email, $hashedPassword) {
-		$queryInsert = "INSERT INTO Utente(Username, Email, Password) VALUES(\"$username\", \"$email\", \"$hashedPassword\")";
+		$queryInsert = "INSERT INTO Utente(Username, Email, Password) VALUES(?, ?, ?)";
 
-		$queryResult = mysqli_query($this->connection, $queryInsert) or die("Errorre in dbConnection: " . mysqli_error($this->connection));
-		
-		if(mysqli_affected_rows($this->connection) > 0) {
-			return true;
-		} else {
+		$stmt = mysqli_prepare($this->connection, $queryInsert);
+
+		if($stmt === false)
+		{
 			return false;
 		}
+
+		mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPassword);
+
+		$result = mysqli_stmt_execute($stmt);
+
+		mysqli_stmt_close($stmt);
+
+		return $result;
 	}
 
 	// Aggiunge un volontario

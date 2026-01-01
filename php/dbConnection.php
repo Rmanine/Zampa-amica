@@ -171,6 +171,21 @@ class DBAccess {
 			return false;
 		}
 	}
+
+	public function addVolontario($email, $nome, $cognome, $telefono) {
+    	$queryInsert = "INSERT INTO Richiesta_Volontariato (Email, Nome, Cognome, Telefono) VALUES (\"$email\", \"$nome\", \"$cognome\", \"$telefono\");";
+		
+		//Da tenere solamente in fase di debug (mostra gli errori in chiaro)
+    	$queryResult = mysqli_query($this->connection, $queryInsert)  or die("Errorre in dbConnection: " . mysqli_error($this->connection));
+
+		if(mysqli_affected_rows($this->connection) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+
 }
 
 ?>

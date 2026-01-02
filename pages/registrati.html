@@ -43,15 +43,20 @@
         <h1>Registrati</h1>
         <p>Hai già un <span lang="en">account</span>? <a href="./accedi.html">Accedi</a></p>
 
-        <form action="" method="post">
+        <div id="messaggi-form">
+            [messaggiForm]
+        </div>
+
+        <form action="../php/registrazione.php" method="post">
+            
             <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
-            <input type="text" id="username" name="username" autocomplete="username" required>
+            <input type="text" id="username" name="username" autocomplete="username" value="[valUsername]" required>
             <p class="info-form">Esempio: mario.rossi</p>
             <p class="info-form">Deve contenere almeno 4 caratteri e può includere solo lettere.</p>
 
             
             <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+            <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required>
             <p class="info-form">Esempio: mario.rossi@gmail.com</p>
             
             <label for="password"><span lang="en">Password: </span><span class="req">(richiesto)</span></label>
@@ -68,7 +73,7 @@
             <label for="confirmed-password">Conferma <span lang="en">password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="confirmed-password" name="confirmed-password" autocomplete="new-password" required>
 
-            <button type="submit">Registrati</button>
+            <button type="submit" name="submit">Registrati</button>
         </form>
     </main>
 

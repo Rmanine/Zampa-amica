@@ -28,6 +28,6 @@ if (isset($_SESSION['logged_in_user'])) {
 }
 
 // Torna alla modifica profilo se qualcosa va storto
-header("Location: modifica_user.php");
+header("Location: ../pages/modifica_user.php");
 exit();
 ?>

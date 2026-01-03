@@ -249,7 +249,10 @@ class DBAccess {
 	// Ritorna le informazioni della prenotazione con id = $id
 	public function getPrenotazione($id)
 	{
-		$query = "SELECT * FROM Prenotazione WHERE ID = ?";
+		$query = "SELECT p.ID, p.UtenteID, p.AnimaleID, p.DataOra, p.Note, a.Nome, a.Immagine 
+              		FROM Prenotazione p 
+              		JOIN Animale a ON p.AnimaleID = a.ID 
+              		WHERE p.ID = ?";
 		$stmt = mysqli_prepare($this->connection, $query);
 
 		if ($stmt === false) {
@@ -265,7 +268,7 @@ class DBAccess {
 			mysqli_stmt_close($stmt);
 			return false;
 		}
-		mysqli_stmt_bind_result($stmt, $id, $userID, $animaleID, $dataora, $note);
+		mysqli_stmt_bind_result($stmt, $id, $userID, $animaleID, $dataora, $note, $nomeAnimale, $immagineAnimale);
 
 		$prenotazione = null;
 
@@ -276,7 +279,9 @@ class DBAccess {
 				"UtenteID" => $userID,
 				"AnimaleID" => $animaleID,
 				"DataOra" => $dataora,
-				"Note" => $note
+				"Note" => $note,
+				"NomeAnimale" => $nomeAnimale,
+				"ImmagineAnimale" => $immagineAnimale
 			);
 		}
 
@@ -315,10 +320,10 @@ class DBAccess {
 
 
 	// Modifica una prenotazione già esistente
-	public function updatePrenotazione($id, $id_user, $id_animale, $dataora, $note)
+	public function updatePrenotazione($id, $dataora, $note)
 	{
 		$query = "UPDATE Prenotazione 
-              SET UtenteID = ?, AnimaleID = ?, DataOra = ?, Note = ? 
+              SET DataOra = ?, Note = ? 
               WHERE ID = ?";
 
 		$stmt = mysqli_prepare($this->connection, $query);
@@ -326,7 +331,7 @@ class DBAccess {
 			return false;
 		}
 
-		if (!mysqli_stmt_bind_param($stmt, "iissi", $id_user, $id_animale, $dataora, $note, $id)) {
+		if (!mysqli_stmt_bind_param($stmt, "ssi", $dataora, $note, $id)) {
 			mysqli_stmt_close($stmt);
 			return false;
 		}

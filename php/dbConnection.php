@@ -116,7 +116,7 @@ class DBAccess {
 			false se non ha trovato l'utente con Username == $username
 	*/
 	public function getUser($username) {
-		$query = "SELECT ID, Password FROM Utente WHERE Username = ?";
+		$query = "SELECT ID, Password, Email FROM Utente WHERE Username = ?";
 
 		$stmt = mysqli_prepare($this->connection, $query);
 		if ($stmt === false) {
@@ -136,6 +136,36 @@ class DBAccess {
 		mysqli_stmt_close($stmt);
 		return false;
 	}
+
+
+	/*
+    PRE: accetta l'ID dell'utente (numero intero)
+    POST: ritorna un array con le info dell'utente (ID, Username, Email, Password)
+          restituisce false se l'utente non viene trovato
+	*/
+	public function getUserByID($id) {
+		$query = "SELECT ID, Username, Email, Password FROM Utente WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+		if ($stmt === false) {
+			return false;
+		}
+
+		mysqli_stmt_bind_param($stmt, "i", $id); // "i" sta per integer (ID)
+		mysqli_stmt_execute($stmt);
+
+		$result = mysqli_stmt_get_result($stmt);
+
+		if ($result && mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			mysqli_stmt_close($stmt);
+			return $row;
+		}
+
+		mysqli_stmt_close($stmt);
+		return false;
+	}
+
 	
 	/* 
 	PRE: accetta una stringa 
@@ -180,6 +210,36 @@ class DBAccess {
 
 		return $result;
 	}
+
+
+	// Modifica un utente già esistente
+	public function updateUser($id, $email, $username, $password)
+	{
+		$query = "UPDATE Utente 
+			SET Email = ?, Username = ?, Password = ? 
+			WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+		if (!$stmt) {
+			return false;
+		}
+
+		if (!mysqli_stmt_bind_param($stmt, "sssi", $email, $username, $password, $id)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		if (!mysqli_stmt_execute($stmt)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		$affected_rows = mysqli_stmt_affected_rows($stmt);
+		mysqli_stmt_close($stmt);
+
+		return ($affected_rows > 0);
+	}
+
 
 	// Aggiunge un volontario
 	public function addVolontario($email, $nome, $cognome, $telefono) {

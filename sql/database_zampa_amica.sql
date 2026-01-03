@@ -70,8 +70,8 @@ VALUES
 INSERT INTO 
 	Prenotazione (UtenteID, AnimaleID, DataOra, Note)
 VALUES 
-    (1, 3, '2025-12-31 10:30:00', 'Prenotazione per visita conoscitiva'),
-    (1, 2, '2026-01-15 15:00:00', NULL);
+    (1, 3, '2025-12-31', 'Prenotazione per visita conoscitiva'),
+    (1, 2, '2026-01-15', NULL);
 
 INSERT INTO
 	Richiesta_Volontariato (Email, Nome, Cognome, Telefono)

@@ -115,3 +115,11 @@ input {
 .info-form {
   width: 80%;
 }
+
+.form-appuntamenti {
+  flex-direction: column-reverse;
+}
+
+.form-appuntamenti div {
+  flex: 1 1 50px;
+}

@@ -241,7 +241,7 @@ main h1 {
     margin-right: calc(-50vw + 50%);
 }
 
-.secondo-contenuto > *, .terzo-contenuto > * {
+.secondo-contenuto > *, .terzo-contenuto > *, .form-appuntamenti > * {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -296,7 +296,7 @@ main h1 {
     text-indent: 0em;
 }
 
-.terzo-contenuto dl, .terzo-contenuto {
+.terzo-contenuto dl, .terzo-contenuto, .form-appuntamenti {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -304,23 +304,23 @@ main h1 {
     margin: 2em 0;
 }
 
-.terzo-contenuto dl div, .terzo-contenuto div, .terzo-contenuto article {
+.terzo-contenuto dl div, .terzo-contenuto div, .terzo-contenuto article, .form-appuntamenti div {
     flex: 1 1 300px;
     padding: 1em;
 }
 
-.terzo-contenuto dt, .terzo-contenuto li{
+.terzo-contenuto dt, .terzo-contenuto li, .form-appuntamenti li{
     font-size: 1.3em;
     font-weight: bold;
     margin-bottom: 0.5em;
 }
 
-.terzo-contenuto {
+.terzo-contenuto, .form-appuntamenti {
     max-width: 80%;
     margin: auto;
 }
 
-.terzo-contenuto img {
+.terzo-contenuto img, .form-appuntamenti img {
     max-width: 100%;
     height: auto;
     border-radius: 30px;
@@ -619,4 +619,9 @@ fieldset input[type="radio"] {
 
 .appuntamenti {
     margin-top: 3em;
+}
+
+.pre-appuntamenti {
+    margin: auto;
+    padding-bottom: 2em;
 }

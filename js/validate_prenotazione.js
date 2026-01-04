@@ -1,25 +1,30 @@
 
 window.addEventListener('load', function () {
-	validatePrenotazione();
+    validatePrenotazione();
     setupRealtimeValidation();
 });
 
 function validatePrenotazione() {
     let form = document.getElementById('form_prenotazione');
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
+
+        if (!event.submitter || event.submitter.name !== "submit") {
+            return;
+        }
+
         let err = document.getElementsByClassName("form-errors")[0];
         err.innerHTML = "";
 
         let msg = "<ul>";
         let validated = true;
 
-        if(!validateDate()) {
+        if (!validateDate()) {
             msg += "<li>La data selezionata deve essere un giorno valido a partire da domani.</li>";
             validated = false;
         }
         msg += "</ul>";
 
-        if(!validated) {
+        if (!validated) {
             err.innerHTML += msg;
             event.preventDefault();
         }
@@ -29,11 +34,11 @@ function validatePrenotazione() {
 function setupRealtimeValidation() {
     const dateInput = document.getElementById("date");
     const err = document.getElementsByClassName("form-errors")[0];
-    
+
     // Si attiva quando l'utente cambia la data
-    dateInput.addEventListener('change', function() {
+    dateInput.addEventListener('change', function () {
         err.innerHTML = "";
-        
+
         if (!validateDate()) {
             err.innerHTML = "<ul><li>La data selezionata deve essere un giorno valido a partire da domani.</li></ul>";
         }

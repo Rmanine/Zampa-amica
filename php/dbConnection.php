@@ -136,6 +136,28 @@ class DBAccess {
 		mysqli_stmt_close($stmt);
 		return false;
 	}
+
+	public function getUserById($id_user) {
+		$query = "SELECT ID, Email, Username, Password FROM Utente WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+		if ($stmt === false) {
+			return false;
+		}
+
+		mysqli_stmt_bind_param($stmt, "i", $id_user);
+		mysqli_stmt_execute($stmt);
+
+		$result = mysqli_stmt_get_result($stmt);
+
+		if ($result && mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			mysqli_stmt_close($stmt);
+			return $row;
+		}
+		mysqli_stmt_close($stmt);
+		return false;
+	}
 	
 	/* 
 	PRE: accetta una stringa 
@@ -208,10 +230,15 @@ class DBAccess {
 		return ($affected_rows > 0);
 	}
 
-	// Ritorna la lista delle prenotazioni, dato un id utente
+	// Ritorna la lista delle prenotazioni in arrivo (non quelle passate), dato un id utente
 	public function getListaPrenotazioni($id_user)
 	{
-		$query = "SELECT * FROM Prenotazione WHERE UtenteID = ?";
+		$query = "SELECT p.ID, p.UtenteID, p.AnimaleID, p.DataOra, p.Note, a.Nome
+				FROM Prenotazione p
+				JOIN Animale a ON p.AnimaleID = a.ID
+				WHERE UtenteID = ?
+				AND p.DataOra >= CURRENT_DATE()
+            	ORDER BY p.DataOra ASC";
 
 		$stmt = mysqli_prepare($this->connection, $query);
 		if ($stmt === false) {

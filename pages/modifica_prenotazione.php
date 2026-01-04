@@ -40,13 +40,14 @@ $paginaHTML = file_get_contents('modifica_prenotazione.html');
 
 $connessione = new DBAccess();
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') { // Se è GET
     if (!isset($_GET['id'])) {
         header("Location: profilo_utente.php");
         exit();
     }
     $idPrenotazione = intval($_GET['id']);
-} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) { // Se è POST
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Se è POST (sumbit form o elimina appuntamento)
     if (empty($_POST['idPrenotazione'])) {
         header("Location: profilo_utente.php");
         exit();
@@ -85,6 +86,28 @@ $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
 $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
 $idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
 $imgAnimale = '<img src="../img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="Foto di ' . $nomeAnimale . '">';
+
+
+//Elimina appuntamento
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
+        $connessioneOK = $connessione->openDBConnection();
+
+        if (!$connessioneOK) {
+            header("Location: errore_500.html");
+            exit();
+        }
+
+        $eliminaPrenotazione = $connessione->deletePrenotazione($idPrenotazione);
+        $connessione->closeConnection();
+
+        if ($eliminaPrenotazione) {
+            header("Location: profilo_utente.php?delete=1");
+            exit();
+        } else {
+            header("Location: errore_500.html");
+            exit();
+        }
+    }
 
 // Invio form (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
@@ -141,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $connessione->closeConnection();
 
     if ($risultato) {
-        header("Location: profilo_utente.php?success=1");
+        header("Location: profilo_utente.php?update=1");
         exit();
     } else {
         //echo "Risultato false";

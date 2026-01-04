@@ -550,96 +550,73 @@ fieldset input[type="radio"] {
     margin: 0;
 }
 
+.prenotazioni {
+    width: 60%;
+    margin: auto;
+}
 
-@media (max-width: 600px){
+.prenotazioni ul {
+    list-style: none;
+    padding: 0;
+}
 
-    header {
-        padding: 0;
-        margin: 0 0 1em 0;
-    }
+.prenotazioni li {
+    border: 2px solid #ddd;
+    padding: 1.2em;
+    padding-left: 2em;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    #menu {
-        border-radius: 0;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        padding: 1rem;
-    }
+.prenotazioni p:first-child {
+    font-size: 1.4em;
+    font-weight: bold;
+}
 
-    #menu ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--widgetcolor);
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        z-index: 1000;  
-    }
+.prenotazioni li p {
+    margin: 0.3rem 0;
+}
 
-    #menu ul li {
-        padding: 14px 16px;
-        display: block;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
+.profilo {
+    margin: auto;
+    text-align: center;
+}
 
-    header #menu a#hamburger {
-        display: flex;
-    }
+.profilo img {
+    width: 120px;
+    height: 120px;
+    padding: 0.5rem;
+    margin-right: 2em;
+    display: inline-block;
+    vertical-align: middle;
+}
 
-    #hamburger div {
-        flex-direction: column;
-    }
+.profilo div {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
 
-    .bar1, .bar2, .bar3 {
-        width: 35px;
-        height: 5px;
-        background-color: var(--widgettxtcolor);
-        border-radius: 30px;
-        margin: 6px 0;
-        transition: 0.4s;
-    }
+.profilo p {
+    font-size: 1.2em;
+    margin: 0;
+    padding-bottom: 1em;
+}
 
-    .change .bar1 {
-        transform: translate(0, 11px) rotate(-45deg);
-    }
+.profilo p:first-child {
+    font-weight: bold;
+    font-size: 1.4em;
+}
 
-    .change .bar2 {opacity: 0;}
+.success {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 1.5em;
+}
 
-    .change .bar3 {
-        transform: translate(0, -11px) rotate(45deg);
-    }
-
-    #menu .stile-bottone-3 {
-        background-color: var(--widgetcolor);
-        border: 0;
-    }
-
-    .terzo-contenuto {
-        max-width: 90%;
-    }
-
-    .terzo-contenuto-sottocontenuto p{
-        text-align: center;
-    }
-
-    .piu-info {
-        max-width: 90%;
-    }
-
-    form label {
-        width: 80%;
-    }
-
-    input {
-        width: 80%;
-    }
-
-    .info-form {
-        width: 80%;
-    }
+.appuntamenti {
+    margin-top: 3em;
 }

@@ -1,8 +1,8 @@
 .menu {
-    position: relative;
-    display: block;
-    width: 60%;
-    display: none;
+  position: relative;
+  display: block;
+  width: 60%;
+  display: none;
 }
 
 .menu ul {
@@ -10,4 +10,108 @@
   width: 100%;
   height: 100vh;
   background-color: var(--widgetcolor);
+}
+
+header {
+  padding: 0;
+  margin: 0 0 1em 0;
+}
+
+#breadcrumb {
+  display: block;
+  white-space: normal;
+  transform: none;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+#menu {
+  border-radius: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+}
+
+#menu ul {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--widgetcolor);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 1000;
+}
+
+#menu ul li {
+  padding: 14px 16px;
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header #menu a#hamburger {
+  display: flex;
+}
+
+#hamburger div {
+  flex-direction: column;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: var(--widgettxtcolor);
+  border-radius: 30px;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+#menu .stile-bottone-3 {
+  background-color: var(--widgetcolor);
+  border: 0;
+}
+
+.terzo-contenuto {
+  max-width: 90%;
+}
+
+.terzo-contenuto-sottocontenuto p {
+  text-align: center;
+}
+
+.piu-info {
+  max-width: 90%;
+}
+
+form label {
+  width: 80%;
+}
+
+input {
+  width: 80%;
+}
+
+.info-form {
+  width: 80%;
 }

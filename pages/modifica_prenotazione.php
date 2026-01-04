@@ -21,13 +21,11 @@ function pulisciNote($value)
 }
 
 // Verifica che l'utente sia autenticato
-/*
-session_start();
-if (!isset($_SESSION['user_id'])) {
+/*session_start();
+if (!isset($_SESSION["logged_in_user"])) {
     header("Location: accedi.html");
     exit();
-}
-*/
+}*/
 
 $nomeAnimale = "";
 $data = "";
@@ -42,113 +40,95 @@ $paginaHTML = file_get_contents('modifica_prenotazione.html');
 
 $connessione = new DBAccess();
 
-// Recupero dati prenotazione (GET)
-if (!isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') { // Se è GET
     if (!isset($_GET['id'])) {
         header("Location: profilo_utente.php");
         exit();
     }
-
     $idPrenotazione = intval($_GET['id']);
-
-    $connessioneOK = $connessione->openDBConnection();
-
-    if (!$connessioneOK) {
-        header("Location: errore_500.html");
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) { // Se è POST
+    if (empty($_POST['idPrenotazione'])) {
+        header("Location: profilo_utente.php");
         exit();
     }
-
-    $prenotazione = $connessione->getPrenotazione($idPrenotazione);
-    $connessione->closeConnection();
-
-    if ($prenotazione == null) {
-        header("Location: errore_500.html");
-        exit();
-    }
-
-    // Verifica che la prenotazione appartenga all'utente loggato
-    /*
-    if ($prenotazione['UtenteID'] != $_SESSION['user_id']) {
-        header("Location: errore_500.html");
-        exit();
-    }
-    */
-
-    $nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
-    $data = is_null($prenotazione['DataOra']) ? '' : $prenotazione['DataOra'];
-    $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
-    $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
-    $idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
-
-    $imgAnimale = '<img src="../img/assets/' . htmlspecialchars($prenotazione['ImmagineAnimale']) . '" alt="Foto di ' . htmlspecialchars($nomeAnimale) . '">';
+    $idPrenotazione = intval($_POST['idPrenotazione']);
+} else {
+    header("Location: profilo_utente.php");
+    exit();
 }
 
+$connessioneOK = $connessione->openDBConnection();
+
+if (!$connessioneOK) {
+    header("Location: errore_500.html");
+    exit();
+}
+
+$prenotazione = $connessione->getPrenotazione($idPrenotazione);
+$connessione->closeConnection();
+
+if ($prenotazione == null) {
+    header("Location: errore_500.html");
+    exit();
+}
+
+// Verifica che la prenotazione appartenga all'utente loggato
+/*if ($prenotazione['UtenteID'] != $_SESSION["logged_in_user"]) {
+    //header("Location: errore_500.html");
+    header("Location: profilo_utente.php");
+    exit();
+}*/
+
+$nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
+$data = is_null($prenotazione['DataOra']) ? '' : $prenotazione['DataOra'];
+$note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
+$idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
+$idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
+$imgAnimale = '<img src="../img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="Foto di ' . $nomeAnimale . '">';
+
 // Invio form (POST)
-if (isset($_POST['submit'])) {
-    $idPrenotazione = intval($_POST['idPrenotazione']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
-    // Ricarica i dati della prenotazione per avere nome e immagine
-    $connessioneOK = $connessione->openDBConnection();
-
-    if (!$connessioneOK) {
-        header("Location: errore_500.html");
+    // controllo se l'utente ha fatto modifiche sui campi. Se sono identici alle info nel database non eseguo niente
+    $dataPost = isset($_POST['date']) ? pulisciInput($_POST['date']) : '';
+    $notePost = isset($_POST['note']) ? pulisciNote($_POST['note']) : '';
+    if ($dataPost == $data && $notePost == $note) {
+        header("Location: profilo_utente.php");
         exit();
     }
 
-    $prenotazione = $connessione->getPrenotazione($idPrenotazione);
-    $connessione->closeConnection();
-
-    if ($prenotazione == null) {
-        header("Location: errore_500.html");
-        exit();
-    }
-
-    // Verifica che la prenotazione appartenga all'utente loggato
-    /*
-    if ($prenotazione['UtenteID'] != $_SESSION['user_id']) {
-        $connessione->closeConnection();
-        header("Location: errore_500.html");
-        exit();
-    }
-    */
-
-    $nomeAnimale = $prenotazione['NomeAnimale'];
-    $imgAnimale = '<img src="../img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="Foto di ' . $nomeAnimale . '">';
-
-    if (empty($_POST['date'])) { // Data è campo obbligatorio
-        $errors .= "<p>Compilare i campi richiesti.</p>";
+    $errors .= "<ul>";
+    if (empty($dataPost)) { // Data è campo obbligatorio
+        $errors .= "<li>Compilare tutti i campi richiesti.</li>";
     } else {
-        $data = pulisciInput($_POST['date']);
-        if (strlen($data) == 0) {
-            $errors .= "<p>Selezionare un giorno valido.</p>";
+        if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $dataPost)) {
+            $errors .= "<li>Inserire la data nel formato AAAA-MM-DD.</li>";
         } else {
-            if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $data)) {
-                $errors .= "<p>Inserire la data nel formato AAAA-MM-DD.</p>";
-            } else {
-                $domani = date('Y-m-d', strtotime('+1 day'));
-                if ($data < $domani) {
-                    $errors .= '<p>La data deve corrispondere ad un giorno valido partendo da domani.</p>';
-                }
+            $domani = date('Y-m-d', strtotime('+1 day'));
+            if ($dataPost < $domani) {
+                $errors .= '<li>La data deve corrispondere ad un giorno valido, partendo da domani.</li>';
             }
         }
     }
+    $errors .= "</ul>";
 
-    if (isset($_POST['note']) && !empty($_POST['note'])) { // Note è campo opzionale
-        $note = pulisciNote($_POST['note']);
-    } else {
-        $note = "";
-    }
+    // if (isset($_POST['note']) && !empty($_POST['note'])) { // Note è campo opzionale
+    //     $note = pulisciNote($_POST['note']);
+    // } else {
+    //     $note = "";
+    // }
 
-    if (!empty($errors)) {
+    if ($errors != "<ul></ul>") { // Se ci sono errori li mostro
         $paginaHTML = str_replace("[idPrenotazione]", $idPrenotazione, $paginaHTML);
         $paginaHTML = str_replace("[NomeAnimale]", $nomeAnimale, $paginaHTML);
         $paginaHTML = str_replace("[ImgAnimale]", $imgAnimale, $paginaHTML);
-        $paginaHTML = str_replace("[data]", $data, $paginaHTML);
-        $paginaHTML = str_replace("[note]", $note, $paginaHTML);
+        $paginaHTML = str_replace("[data]", $dataPost, $paginaHTML);
+        $paginaHTML = str_replace("[note]", $notePost, $paginaHTML);
         $paginaHTML = str_replace("[errors]", $errors, $paginaHTML);
         echo $paginaHTML;
         exit();
     }
+    $errors = "";
 
     $connessioneOK = $connessione->openDBConnection();
 
@@ -157,13 +137,14 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    $risultato = $connessione->updatePrenotazione($idPrenotazione, $data, $note);
+    $risultato = $connessione->updatePrenotazione($idPrenotazione, $dataPost, $notePost);
     $connessione->closeConnection();
 
     if ($risultato) {
         header("Location: profilo_utente.php?success=1");
         exit();
     } else {
+        //echo "Risultato false";
         header("Location: errore_500.html");
         exit();
     }

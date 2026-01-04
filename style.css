@@ -494,7 +494,7 @@ input {
     padding: 0.8em 1em;
 }
 
-.info-form{
+.info-form, .form-errors ul li {
     width: 50%;
     margin: auto; 
     text-align: left;
@@ -503,7 +503,7 @@ input {
     list-style-position: inside;
 }
 
-form .req {
+form .req, .form-errors ul li {
     color: #f00;
 }
 

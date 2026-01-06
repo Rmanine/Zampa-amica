@@ -108,7 +108,7 @@ form label {
   width: 80%;
 }
 
-input {
+input, textarea {
   width: 80%;
 }
 

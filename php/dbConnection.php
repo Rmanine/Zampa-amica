@@ -98,17 +98,25 @@ class DBAccess {
 	}
 
 	public function getAnimale($id) {
-		$query = "SELECT * FROM Animale WHERE ID = '$id'";
+		$query = "SELECT * FROM Animale WHERE ID = ?";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in dbConnection: " . mysqli_error($this->connection));
-
-		if (mysqli_num_rows($queryResult) != 0) {
-			$row = mysqli_fetch_assoc($queryResult);
-			$queryResult->free();
-			return $row;
-		} else {
+		$stmt = mysqli_prepare($this->connection, $query);
+		if ($stmt === false) {
 			return false;
 		}
+
+		mysqli_stmt_bind_param($stmt, "i", $id);
+		mysqli_stmt_execute($stmt);
+
+		$result = mysqli_stmt_get_result($stmt);
+
+		if ($result && mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			mysqli_stmt_close($stmt);
+			return $row;
+		}
+		mysqli_stmt_close($stmt);
+		return false;
 	}
 	/*
 	PRE: accetta un nome utente

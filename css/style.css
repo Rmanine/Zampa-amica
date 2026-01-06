@@ -76,7 +76,7 @@ header {
     width: 60px;
     height: 60px;
     min-width: 60px; /* Dimensione fissa perché non vogliamo che rimpicciolisca */
-    background-image: url("./img/logo_chiaro.svg");
+    background-image: url("../img/logo_chiaro.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center left;
@@ -442,7 +442,7 @@ footer .stile-bottone-3 {
     display: inline-block;
     width: 1.6em;
     height: 1.6em;
-    background-image: url("./img/freccia-su.webp");
+    background-image: url("../img/freccia-su.webp");
     background-size: contain;
     background-repeat: no-repeat;
     vertical-align: middle;
@@ -485,13 +485,18 @@ form label {
     margin: auto;
 } */
 
-input {
+input, textarea {
     display: block;
     margin: auto;
     width: 50%;
     border: 2px solid var(--widgetcolor);
     border-radius: 10px;
     padding: 0.8em 1em;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 5em;
 }
 
 .info-form, .form-errors ul li {
@@ -553,6 +558,7 @@ fieldset input[type="radio"] {
 .prenotazioni {
     width: 60%;
     margin: auto;
+    text-align: left;
 }
 
 .prenotazioni ul {
@@ -619,9 +625,4 @@ fieldset input[type="radio"] {
 
 .appuntamenti {
     margin-top: 3em;
-}
-
-.pre-appuntamenti {
-    margin: auto;
-    padding-bottom: 2em;
 }

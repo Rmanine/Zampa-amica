@@ -1,9 +1,9 @@
 <?php
 
-require_once ".." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
 use DB\DBAccess;
 
-$paginaHTML = file_get_contents('..' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'dettagli_animale.html');
+$paginaHTML = file_get_contents('dettagli_animale.html');
 
 $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
@@ -31,7 +31,7 @@ if ($connessioneOK && $id !== 0) {
         $animaleVisualizzato = $animale['Nome'];
 
         $stringaAnimale .= '<article class="card">';
-        $stringaAnimale .= '<img src="../' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . 'di nome' . $animale['Nome'] . '">';
+        $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . 'di nome' . $animale['Nome'] . '">';
         $stringaAnimale .= '<p class="label-elemento">' . $animale['Nome'] . '</p>';
         $stringaAnimale .= '</article>';
 
@@ -53,6 +53,7 @@ if ($connessioneOK && $id !== 0) {
 
 $paginaHTML = str_replace('[Animale]', $stringaAnimale, $paginaHTML);
 $paginaHTML = str_replace('[AnimaleCorrente]', $animaleVisualizzato, $paginaHTML);
+$paginaHTML = str_replace('[idAnimale]', $id, $paginaHTML);
 echo $paginaHTML;
 
 ?>

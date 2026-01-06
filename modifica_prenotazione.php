@@ -1,6 +1,6 @@
 <?php
 
-require_once ".." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
 use DB\DBAccess;
 
 function pulisciInput($value)
@@ -21,11 +21,11 @@ function pulisciNote($value)
 }
 
 // Verifica che l'utente sia autenticato
-/*session_start();
+session_start();
 if (!isset($_SESSION["logged_in_user"])) {
-    header("Location: accedi.html");
+    header("Location: accedi.php");
     exit();
-}*/
+}
 
 $nomeAnimale = "";
 $data = "";
@@ -74,18 +74,18 @@ if ($prenotazione == null) {
 }
 
 // Verifica che la prenotazione appartenga all'utente loggato
-/*if ($prenotazione['UtenteID'] != $_SESSION["logged_in_user"]) {
-    //header("Location: errore_500.html");
-    header("Location: profilo_utente.php");
+if ($prenotazione['UtenteID'] != $_SESSION["logged_in_user"]) {
+    header("Location: errore_403.html");
+    //header("Location: profilo_utente.php");
     exit();
-}*/
+}
 
 $nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
 $data = is_null($prenotazione['DataOra']) ? '' : $prenotazione['DataOra'];
 $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
 $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
 $idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
-$imgAnimale = '<img src="../img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="Foto di ' . $nomeAnimale . '">';
+$imgAnimale = '<img src="./img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="Foto di ' . $nomeAnimale . '">';
 
 
 //Elimina appuntamento

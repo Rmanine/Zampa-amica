@@ -1,6 +1,6 @@
 <?php
 
-require_once ".." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
 use DB\DBAccess;
 
 function troncaTesto($testo, $maxlength = 40)
@@ -44,15 +44,14 @@ $paginaHTML = file_get_contents('profilo_utente.html');
 $connessione = new DBAccess();
 
 // Verifica che l'utente sia autenticato
-/*session_start();
+session_start();
 if (!isset($_SESSION["logged_in_user"])) {
-    header("Location: accedi.html");
+    header("Location: accedi.php");
     exit();
-}*/
+}
 
 $success = "";
-//$idUtente = $_SESSION["logged_in_user"];
-$idUtente = 1;
+$idUtente = $_SESSION["logged_in_user"];
 $msgPrenotazioni = "";
 $id = null;
 $nomeAnimale = "";
@@ -96,34 +95,30 @@ if ($listaPrenotazioni == null) {
     $msgPrenotazioni = "<ul>";
 
     foreach ($listaPrenotazioni as $prenotazione) {
-        $id = $prenotazione['ID'];
-        $nomeAnimale = $prenotazione['Nome'];
-        $data = $prenotazione['DataOra'];
-        $note = !empty($prenotazione['Note']) ? $prenotazione['Note'] : 'Nessuna nota';
-        $note = troncaTesto($note);
-        $dataFormatoIta = formattaData($data);
+        // controllo che ogni prenotazione appartenga all'utente loggato
+        if ($prenotazione['UtenteID'] == $idUtente) {
+            $id = $prenotazione['ID'];
+            $nomeAnimale = $prenotazione['Nome'];
+            $data = $prenotazione['DataOra'];
+            $note = !empty($prenotazione['Note']) ? $prenotazione['Note'] : 'Nessuna nota';
+            $note = troncaTesto($note);
+            $dataFormatoIta = formattaData($data);
 
-        $msgPrenotazioni .= "<li>";
-        $msgPrenotazioni .= "<div>";
-        $msgPrenotazioni .= "<p>" . $nomeAnimale . "</p>";
-        $msgPrenotazioni .= "<p>Data: <time datetime='" . $data . "'>" . $dataFormatoIta . "</time></p>";
-        $msgPrenotazioni .= "<p>Note: " . $note . "</p>";
-        $msgPrenotazioni .= "</div>";
-        $msgPrenotazioni .= "<div>";
-        $msgPrenotazioni .= "<a class='stile-bottone-2' href='modifica_prenotazione.php?id=" . $id . "'>Gestisci appuntamento</a>";
-        $msgPrenotazioni .= "</div>";
-        $msgPrenotazioni .= "</li>";
+            $msgPrenotazioni .= "<li>";
+            $msgPrenotazioni .= "<div>";
+            $msgPrenotazioni .= "<p>" . $nomeAnimale . "</p>";
+            $msgPrenotazioni .= "<p>Data: <time datetime='" . $data . "'>" . $dataFormatoIta . "</time></p>";
+            $msgPrenotazioni .= "<p>Note: " . $note . "</p>";
+            $msgPrenotazioni .= "</div>";
+            $msgPrenotazioni .= "<div>";
+            $msgPrenotazioni .= "<a class='stile-bottone-2' href='modifica_prenotazione.php?id=" . $id . "'>Gestisci appuntamento</a>";
+            $msgPrenotazioni .= "</div>";
+            $msgPrenotazioni .= "</li>";
+        }
     }
 
     $msgPrenotazioni .= "</ul>";
 }
-
-// Verifica che la prenotazione appartenga all'utente loggato
-/*if ($listaPrenotazioni['UtenteID'] != $_SESSION["logged_in_user"]) {
-    //header("Location: errore_500.html");
-    header("Location: profilo_utente.php");
-    exit();
-}*/
 
 $paginaHTML = str_replace("[success]", $success, $paginaHTML);
 $paginaHTML = str_replace("[Lista Prenotazioni]", $msgPrenotazioni, $paginaHTML);

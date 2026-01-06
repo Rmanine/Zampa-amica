@@ -1,13 +1,13 @@
 <?php
 
-require_once "../php/session.php";
-require_once ".." . DIRECTORY_SEPARATOR . "php". DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "." . DIRECTORY_SEPARATOR . "php". DIRECTORY_SEPARATOR . "session.php";
+require_once "." . DIRECTORY_SEPARATOR . "php". DIRECTORY_SEPARATOR . "dbConnection.php";
 
 use DB\DBAccess;
 
 session_start();
 
-$paginaHTML = file_get_contents('..' . DIRECTORY_SEPARATOR .'pages'. DIRECTORY_SEPARATOR . 'i_nostri_animali.html');
+$paginaHTML = file_get_contents('i_nostri_animali.html');
 
 $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
@@ -37,10 +37,10 @@ if ($connessioneOK) {
 				foreach ($animali as $animale) {
 					$stringaAnimali .= '<li class="elemento-galleria">';
 					$stringaAnimali .= '<a href="dettagli_animale.php?id=' . $animale['ID'] . '">';
-					$stringaAnimali .= '<img src="../' . $animale['Immagine'] . '" alt="' . 'di nome' . $animale['Nome'] . '" >';
+					$stringaAnimali .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . 'di nome' . $animale['Nome'] . '" >';
 					$stringaAnimali .= '<div>';
 					$stringaAnimali .= '<p class="label-elemento">' . htmlspecialchars($animale['Nome']) . '</p>';
-					$stringaAnimali .= '<img class="genere" src="../' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
+					$stringaAnimali .= '<img class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
 					$stringaAnimali .= '</div>';
 					$stringaAnimali .= '</a>';
 					$stringaAnimali .= '</li>';
@@ -53,23 +53,6 @@ if ($connessioneOK) {
 } else {
 	$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
 	//possibilità di mettere pagina 404
-}
-
-if (isset($_POST['liked_item']) && isset($_SESSION['logged_in_user'])) {
-	$connessione = new DBAccess();
-	$connessioneOK = $connessione->openDBConnection();
-
-	if ($connessioneOK) {
-		$wishlist = new WishList($connessione);
-		$wishlist->addLikedItem(
-    		intval($_POST['liked_item']),
-    		intval($_SESSION['logged_in_user'])
-		);
-		$connessione->closeConnection();
-	}
-	else {
-		//possibilità di mettere pagina 404
-	}
 }
 
 $paginaHTML = str_replace('[listaAnimali]', $stringaAnimali, $paginaHTML);

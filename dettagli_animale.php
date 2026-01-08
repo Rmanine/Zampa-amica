@@ -37,7 +37,7 @@ if ($connessioneOK && $id !== 0) {
 
         $stringaAnimale .= '<div class="terzo-contenuto-sottocontenuto">';
         $stringaAnimale .= '<ul>';
-        $stringaAnimale .= '<li>Razza: ' . $animale['Specie'] . '</li>';
+        $stringaAnimale .= '<li>Specie: ' . $animale['Specie'] . '</li>';
         $stringaAnimale .= '<li>Età: ' . createStringaEtaAnimale($animale['EtaMesi']) . '</li>';
         $stringaAnimale .= '<li>Sesso: ' . $animale['Genere'] . '</li>';
         $stringaAnimale .= '<li>Taglia: ' . $animale['Taglia'] . '</li>';

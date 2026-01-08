@@ -22,8 +22,8 @@ $filtri = [
 
 function getIconGenere($genere) {
 	$generi = array(
-		'Femmina' => 'img/female-icon.png',
-		'Maschio' => 'img/male-icon.png'
+		'Femmina' => 'img/female-icon.svg',
+		'Maschio' => 'img/male-icon.svg'
 	);
 	return $generi[$genere];
 }

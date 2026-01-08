@@ -382,7 +382,7 @@ hr {
     object-fit: cover;
 }
 
-.elemento-galleria a > div, .dettagli-animale .card > p {
+.elemento-galleria a > div {
     position: relative;
     width: 100%;
     padding: 0.7rem 1.8rem;
@@ -392,7 +392,7 @@ hr {
     border-bottom-right-radius: 12px;
 }
 
-.elemento-galleria .label-elemento, .dettagli-animale .label-elemento {
+.elemento-galleria .label-elemento {
     text-align: center;
     font-size: 1.5em;
 }
@@ -415,10 +415,7 @@ hr {
 }
 
 .dettagli-animale .card img {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-radius: 12px;
     object-fit: cover;
 }
 

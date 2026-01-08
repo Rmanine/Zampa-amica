@@ -10,6 +10,7 @@ $connessioneOK = $connessione->openDBConnection();
 
 $stringaAnimale = '';
 $animaleVisualizzato = '';
+$titoloAnimale = '';
 $id = (int)$_GET['id'] ?? 0;
 
 function  createStringaEtaAnimale($etaAnimale) {
@@ -29,11 +30,11 @@ if ($connessioneOK && $id !== 0) {
 
     if ($animale && is_array($animale)) {
         $animaleVisualizzato = $animale['Nome'];
+        $titoloAnimale = '<h1>' . $animale['Nome'] . '</h1>';
 
-        $stringaAnimale .= '<article class="card">';
-        $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . 'di nome' . $animale['Nome'] . '">';
-        $stringaAnimale .= '<p class="label-elemento">' . $animale['Nome'] . '</p>';
-        $stringaAnimale .= '</article>';
+        $stringaAnimale .= '<div class="card">';
+        $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="">';
+        $stringaAnimale .= '</div>';
 
         $stringaAnimale .= '<div class="terzo-contenuto-sottocontenuto">';
         $stringaAnimale .= '<ul>';
@@ -51,8 +52,9 @@ if ($connessioneOK && $id !== 0) {
     $stringaAnimale = '<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
 }
 
-$paginaHTML = str_replace('[Animale]', $stringaAnimale, $paginaHTML);
 $paginaHTML = str_replace('[AnimaleCorrente]', $animaleVisualizzato, $paginaHTML);
+$paginaHTML = str_replace('[AnimaleTitolo]', $titoloAnimale, $paginaHTML);
+$paginaHTML = str_replace('[Animale]', $stringaAnimale, $paginaHTML);
 $paginaHTML = str_replace('[idAnimale]', $id, $paginaHTML);
 echo $paginaHTML;
 

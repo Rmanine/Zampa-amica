@@ -1,9 +1,5 @@
 function myFunction(y) {
-    var x = document.getElementById("menu-list");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
+    var nav = document.getElementById("menu");
+    nav.classList.toggle("open");
     y.classList.toggle("change");
 }

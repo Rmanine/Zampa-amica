@@ -19,6 +19,8 @@ $filtri = [
 	'sesso' => $_GET['sesso'] ?? 'all',
 	'taglia' => $_GET['taglia'] ?? 'all'
 ];
+$filtriAttivi = '';
+$filtriAttiviArray = [];
 
 function getTagliaFemminile($taglia)
 {
@@ -43,6 +45,25 @@ function getIconGenere($genere)
 	return $generi[$genere];
 }
 
+if ($filtri['tipo'] !== 'all') {
+    $filtriAttiviArray[] = 'Tipo (' . $filtri['tipo'] . ')';
+}
+if ($filtri['sesso'] !== 'all') {
+    $filtriAttiviArray[] = 'Sesso (' . $filtri['sesso'] . ')';
+}
+if ($filtri['taglia'] !== 'all') {
+    $filtriAttiviArray[] = 'Taglia (' . $filtri['taglia'] . ')';
+}
+if ($filtri['eta'] !== 'all') {
+    $filtriAttiviArray[] = 'Età (' . $filtri['eta'] . ')';
+}
+
+if (!empty($filtriAttiviArray)) {
+    $filtriAttivi .= 'Filtri attivi: ' . implode(', ', $filtriAttiviArray);
+} else {
+    $filtriAttivi = 'Nessun filtro attivo';
+}
+
 $connessioneOK = $connessione->openDBConnection();
 if ($connessioneOK) {
 	$animali = $connessione->getList($filtri);
@@ -58,10 +79,14 @@ if ($connessioneOK) {
 			}
 			$stringaAnimali .= '<li class="elemento-galleria">';
 			$stringaAnimali .= '<a href="dettagli_animale.php?id=' . $animale['ID'] . '">';
-			$stringaAnimali .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . '" >';
+			if($animale['Specie'] == "Cane"){
+				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . '" >';
+			} else {
+				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '" >';
+			}
 			$stringaAnimali .= '<div>';
 			$stringaAnimali .= '<p class="label-elemento">' . $nomeAnimale . '</p>';
-			$stringaAnimali .= '<img class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
+			$stringaAnimali .= '<img width="20" height="20" class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
 			$stringaAnimali .= '</div>';
 			$stringaAnimali .= '</a>';
 			$stringaAnimali .= '</li>';
@@ -71,11 +96,12 @@ if ($connessioneOK) {
 		$stringaAnimali = '<p>Nessun animale presente</p>';
 	}
 } else {
-	$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci stiamo occupando del problema.. Riprova più tardi oppure contattaci a questa email miao@gmail.com</p>';
-	//possibilità di mettere pagina 404
+	$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci stiamo occupando del problema. Riprova più tardi oppure contattaci a questa email miao@gmail.com</p>';
+	//possibilità di mettere pagina 500
 }
 
 $paginaHTML = str_replace('[listaAnimali]', $stringaAnimali, $paginaHTML);
+$paginaHTML = str_replace('[filtriAttivi]', $filtriAttivi, $paginaHTML);
 echo $paginaHTML;
 
 ?>

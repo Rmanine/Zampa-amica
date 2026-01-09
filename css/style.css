@@ -360,7 +360,7 @@ hr {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .elemento-galleria a, .card {
@@ -376,7 +376,6 @@ hr {
 
 .elemento-galleria img {
     width: 100%;
-    height: 300px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     object-fit: cover;
@@ -553,36 +552,65 @@ form .req, .form-errors ul li {
 
 #filtri {
     float: left;
-    margin-top: 2em;
     width: 20%;
+    margin-top: 2em;
+    box-sizing: border-box;
+}
+
+#filtri h2 {
+    margin: 0 0 1em;
+    font-size: 1.3em;
+}
+
+#filtri details {
+    border-bottom: 1px solid #ddd;
+    padding: 0.8em;
+}
+
+#filtri legend {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    margin: -1em;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+#filtri summary {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+#filtri fieldset {
     border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#filtri input[type="radio"] {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+#filtri label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    gap: 0.3em;
 }
 
 .piu-info {
     clear: both; /* Lo forzo ad andare giù per non seguire il float */
-}
-
-fieldset {
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    background-color: #fafafa;
-    padding: 1em;
-}
-
-legend {
-    font-weight: bold;
-}
-
-fieldset label {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    margin-bottom: 0.75em;
-    cursor: pointer;
-}
-
-fieldset input[type="radio"] {
-    margin: 0;
 }
 
 .prenotazioni {

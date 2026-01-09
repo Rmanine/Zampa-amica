@@ -72,10 +72,18 @@ if ($animale == null) {
     exit();
 }
 
-$nomeAnimale = is_null($animale['Nome']) ? '' : $animale['Nome'];
+if (is_null($animale['Nome'])) {
+    $nomeAnimale = '';
+} else {
+    if ($animale['Lingua'] == 'en') {
+        $nomeAnimale = '<span lang=\'en\'>' . $animale['Nome'] . '</span>';
+    } else {
+        $nomeAnimale = $animale['Nome'];
+    }
+}
 $idAnimale = is_null($animale['ID']) ? '' : $animale['ID'];
 $idUtente = $_SESSION["logged_in_user"];
-$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="Foto di ' . $nomeAnimale . '">';
+$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '">';
 
 // Invio form (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
@@ -132,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 
 $paginaHTML = str_replace("[idAnimale]", htmlspecialchars($idAnimale), $paginaHTML);
-$paginaHTML = str_replace("[NomeAnimale]", htmlspecialchars($nomeAnimale), $paginaHTML);
+$paginaHTML = str_replace("[NomeAnimale]", $nomeAnimale, $paginaHTML);
 $paginaHTML = str_replace("[data]", $dataPost, $paginaHTML);
 $paginaHTML = str_replace("[note]", $notePost, $paginaHTML);
 $paginaHTML = str_replace("[ImgAnimale]", $imgAnimale, $paginaHTML);

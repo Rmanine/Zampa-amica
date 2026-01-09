@@ -241,7 +241,7 @@ main h1 {
     margin-right: calc(-50vw + 50%);
 }
 
-.secondo-contenuto > *, .terzo-contenuto > *, .form-appuntamenti > * {
+.secondo-contenuto > *, .terzo-contenuto > *, .form-appuntamenti > *, .dettagli-animale > * {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -409,14 +409,43 @@ hr {
 
 /* DETTAGLI ANIMALE */
 
-.dettagli-animale ul {
-    list-style: none;
+.dettagli-animale {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    align-items: center;
+}
+
+.dettagli-animale > div:first-child {
+    flex-shrink: 0;
+}
+
+.dettagli-animale img {
+    width: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.dettagli-animale > div:last-child {
+    flex: 1;
+}
+
+.dettagli-animale dl {
+    margin: 0;
     text-align: left;
 }
 
-.dettagli-animale .card img {
-    border-radius: 12px;
-    object-fit: cover;
+.dettagli-animale dt {
+    float: left;
+    clear: left;
+    font-weight: bold;
+    margin-right: 1em;
+}
+
+.dettagli-animale dd {
+    margin-bottom: 0.5em;
 }
 
 /* FOOTER */

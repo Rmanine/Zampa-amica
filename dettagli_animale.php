@@ -11,14 +11,15 @@ $connessioneOK = $connessione->openDBConnection();
 $stringaAnimale = '';
 $animaleVisualizzato = '';
 $titoloAnimale = '';
-$id = (int)$_GET['id'] ?? 0;
+$nomeAnimale = '';
+$id = (int) $_GET['id'] ?? 0;
 
-function  createStringaEtaAnimale($etaAnimale) {
+function createStringaEtaAnimale($etaAnimale)
+{
     $stringaEta = '';
     if ($etaAnimale < 12) {
         $stringaEta .= $etaAnimale . ' mesi';
-    }
-    elseif ($etaAnimale >= 12) {
+    } elseif ($etaAnimale >= 12) {
         $stringaEta = intdiv(intval($etaAnimale), 12) . ' anni';
     }
     return $stringaEta;
@@ -29,21 +30,33 @@ if ($connessioneOK && $id !== 0) {
     $connessione->closeConnection();
 
     if ($animale && is_array($animale)) {
+        if ($animale['Lingua'] == 'en') {
+            $nomeAnimale = '<span lang=\'en\'>' . $animale['Nome'] . '</span>';
+        } else {
+            $nomeAnimale = $animale['Nome'];
+        }
         $animaleVisualizzato = $animale['Nome'];
-        $titoloAnimale = '<h1>' . $animale['Nome'] . '</h1>';
+        $titoloAnimale = '<h1>' . $nomeAnimale . '</h1>';
 
-        $stringaAnimale .= '<div class="card">';
+        $stringaAnimale .= '<div>';
         $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="">';
         $stringaAnimale .= '</div>';
 
-        $stringaAnimale .= '<div class="terzo-contenuto-sottocontenuto">';
-        $stringaAnimale .= '<ul>';
-        $stringaAnimale .= '<li>Specie: ' . $animale['Specie'] . '</li>';
-        $stringaAnimale .= '<li>Età: ' . createStringaEtaAnimale($animale['EtaMesi']) . '</li>';
-        $stringaAnimale .= '<li>Sesso: ' . $animale['Genere'] . '</li>';
-        $stringaAnimale .= '<li>Taglia: ' . $animale['Taglia'] . '</li>';
-        $stringaAnimale .= '</ul>';
-        $stringaAnimale .= '<p>' . nl2br($animale['Descrizione']) . '</p>';
+        $stringaAnimale .= '<div>';
+        $stringaAnimale .= '<dl>';
+        $stringaAnimale .= '<dt>Specie: </dt>';
+        $stringaAnimale .= '<dd>' . $animale['Specie'] . '</dd>';
+        $stringaAnimale .= '<dt>Et&agrave;: </dt>';
+        $stringaAnimale .= '<dd>' . createStringaEtaAnimale($animale['EtaMesi']) . '</dd>';
+        $stringaAnimale .= '<dt>Sesso: </dt>';
+        $stringaAnimale .= '<dd>' . $animale['Genere'] . '</dd>';
+        if(!is_null($animale['Taglia'])) {
+            $stringaAnimale .= '<dt>Taglia: </dt>';
+            $stringaAnimale .= '<dd>' . $animale['Taglia'] . '</dd>';
+        }
+        $stringaAnimale .= '<dt>Descrizione: </dt>';
+        $stringaAnimale .= '<dd>' . $animale['Descrizione'] . '</dd>';
+        $stringaAnimale .= '</dl>';
         $stringaAnimale .= '</div>';
     } else {
         $stringaAnimale = '<p>Le informazioni per questo amico a quattro zampe non sono disponibili</p>';

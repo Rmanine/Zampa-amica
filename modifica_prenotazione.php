@@ -73,41 +73,60 @@ if ($prenotazione == null) {
     exit();
 }
 
-// Verifica che la prenotazione appartenga all'utente loggato
-if ($prenotazione['UtenteID'] != $_SESSION["logged_in_user"]) {
-    header("Location: errore_403.html");
-    //header("Location: profilo_utente.php");
+$connessioneOK = $connessione->openDBConnection();
+
+if (!$connessioneOK) {
+    header("Location: errore_500.html");
     exit();
 }
 
-$nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
+$animale = $connessione->getAnimale($prenotazione['AnimaleID']);
+$connessione->closeConnection();
+
+// Verifica che la prenotazione appartenga all'utente loggato
+if ($prenotazione['UtenteID'] != $_SESSION["logged_in_user"]) {
+    header("Location: errore_403.html");
+    exit();
+}
+
+if (is_null($animale['Nome'])) {
+    $nomeAnimale = '';
+} else {
+    if ($animale['Lingua'] == 'en') {
+        $nomeAnimale = '<span lang=\'en\'>' . $animale['Nome'] . '</span>';
+    } else {
+        $nomeAnimale = $animale['Nome'];
+    }
+}
+
+//$nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
 $data = is_null($prenotazione['DataOra']) ? '' : $prenotazione['DataOra'];
 $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
 $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
 $idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
-$imgAnimale = '<img src="./img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="Foto di ' . $nomeAnimale . '">';
+$imgAnimale = '<img src="./img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '">';
 
 
 //Elimina appuntamento
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
-        $connessioneOK = $connessione->openDBConnection();
+    $connessioneOK = $connessione->openDBConnection();
 
-        if (!$connessioneOK) {
-            header("Location: errore_500.html");
-            exit();
-        }
-
-        $eliminaPrenotazione = $connessione->deletePrenotazione($idPrenotazione);
-        $connessione->closeConnection();
-
-        if ($eliminaPrenotazione) {
-            header("Location: profilo_utente.php?delete=1");
-            exit();
-        } else {
-            header("Location: errore_500.html");
-            exit();
-        }
+    if (!$connessioneOK) {
+        header("Location: errore_500.html");
+        exit();
     }
+
+    $eliminaPrenotazione = $connessione->deletePrenotazione($idPrenotazione);
+    $connessione->closeConnection();
+
+    if ($eliminaPrenotazione) {
+        header("Location: profilo_utente.php?delete=1");
+        exit();
+    } else {
+        header("Location: errore_500.html");
+        exit();
+    }
+}
 
 // Invio form (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
@@ -175,10 +194,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 
 $paginaHTML = str_replace("[idPrenotazione]", htmlspecialchars($idPrenotazione), $paginaHTML);
-$paginaHTML = str_replace("[NomeAnimale]", htmlspecialchars($nomeAnimale), $paginaHTML);
+$paginaHTML = str_replace("[NomeAnimale]", $nomeAnimale, $paginaHTML);
 $paginaHTML = str_replace("[ImgAnimale]", $imgAnimale, $paginaHTML);
 $paginaHTML = str_replace("[data]", htmlspecialchars($data), $paginaHTML);
-$paginaHTML = str_replace("[note]", htmlspecialchars($note), $paginaHTML);
+$paginaHTML = str_replace("[note]", $note, $paginaHTML);
 $paginaHTML = str_replace("[errors]", $errors, $paginaHTML);
 
 echo $paginaHTML;

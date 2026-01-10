@@ -17,6 +17,7 @@
         rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
     <script async src="js/scripts.js"></script>
+    <script src="js/filtri.js" defer></script>
 </head>
 
 <body>
@@ -48,8 +49,16 @@
     <main id="contenuto">
         <h1>I nostri animali</h1>
         <p>Seleziona le tue preferenze attraverso i filtri ed esplora i cani e i gatti in cerca di una casa.</p>
+
+        <button id="toggle-filtri" aria-expanded="false" aria-controls="filtri">
+            Mostra i filtri
+        </button>
+        <div id="overlay-filtri" aria-hidden="true"></div>
+
         <p>[filtriAttivi]</p>
-        <form id="filtri" action="" method="get">
+
+        <form id="filtri" aria-label="Filtri animali" role="dialog" aria-modal="true">
+
             <h2>Filtri</h2>
             <details>
                 <summary>Tipo</summary>
@@ -94,6 +103,7 @@
                 </fieldset>
             </details>
             <button type="submit" name="submit-filters">Applica filtri</button>
+            <button type="button" id="chiudi-filtri">Chiudi filtri</button>
         </form>
         [listaAnimali]
     </main>

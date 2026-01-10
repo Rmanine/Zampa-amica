@@ -59,7 +59,7 @@ if ($filtri['eta'] !== 'all') {
 }
 
 if (!empty($filtriAttiviArray)) {
-    $filtriAttivi .= 'Filtri attivi: ' . implode(', ', $filtriAttiviArray);
+    $filtriAttivi .= '<span class="importante">Filtri attivi</span>: ' . implode(', ', $filtriAttiviArray);
 } else {
     $filtriAttivi = 'Nessun filtro attivo';
 }
@@ -93,7 +93,11 @@ if ($connessioneOK) {
 		}
 		$stringaAnimali .= '</ul>';
 	} else {
-		$stringaAnimali = '<p>Nessun animale presente</p>';
+		if(!empty($filtriAttiviArray)){
+			$stringaAnimali = '<p class="galleria no-result">Non abbiamo trovato animali con le caratteristiche che hai scelto. Prova a modificare i filtri: potresti scoprire nuovi amici in cerca di una casa.</p>';
+		} else {
+			$stringaAnimali = '<p class="galleria no-result">Nessun animale presente</p>';
+		}
 	}
 } else {
 	//$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci stiamo occupando del problema. Riprova più tardi oppure contattaci a questa email miao@gmail.com</p>';

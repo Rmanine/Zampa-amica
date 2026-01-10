@@ -86,7 +86,7 @@ header {
 
 #menu ul {
     display: flex;
-    overflow-x: hidden; /* Correzione MOMENTANEA per evitare lo split dello schermo su mobile. DA CAMBIARE */
+    overflow-x: hidden;
     padding: 0 2em;
     gap: 3em;
     list-style: none;
@@ -366,6 +366,8 @@ hr {
     flex-wrap: wrap;
     list-style: none;
     justify-content: space-evenly;
+    min-height: 400px; /* Aggiungi un'altezza minima */
+    align-items: center; /* Centra verticalmente il contenuto */
 }
 
 .elemento-galleria a, .card {
@@ -409,6 +411,12 @@ hr {
     width: 1.5em;
     height: 1.5em;
     border-radius: 0px;
+}
+
+.no-result {
+    margin: auto;
+    width: 50%;
+    text-align: center;
 }
 
 /* DETTAGLI ANIMALE */
@@ -614,6 +622,10 @@ form .req, .form-errors ul li {
     gap: 0.3em;
 }
 
+#toggle-filtri, #chiudi-filtri, #overlay-filtri {
+    display: none;
+}
+
 .piu-info {
     clear: both; /* Lo forzo ad andare giù per non seguire il float */
 }
@@ -688,4 +700,8 @@ form .req, .form-errors ul li {
 
 .appuntamenti {
     margin-top: 3em;
+}
+
+.importante {
+    font-weight: bold;
 }

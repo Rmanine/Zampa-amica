@@ -118,6 +118,11 @@ button {
     cursor: pointer;
 }
 
+button:focus-visible, a.stile-bottone-2:focus-visible {
+    outline-offset: 3px;
+    outline: 2px solid var(--visitedlinkcolor1);
+}
+
 #hamburger {
     display: none;
 }

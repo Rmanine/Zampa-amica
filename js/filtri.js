@@ -1,4 +1,3 @@
-// Gestione filtri mobile accessibile
 document.addEventListener('DOMContentLoaded', function () {
     const toggleFiltri = document.getElementById('toggle-filtri');
     const filtri = document.getElementById('filtri');
@@ -6,16 +5,45 @@ document.addEventListener('DOMContentLoaded', function () {
     const chiudiFiltri = document.getElementById('chiudi-filtri');
     let ultimoFocusPrimaApertura = null;
 
-    // Elementi focusabili nel menu
+    // Verifica se siamo su mobile
+    const isMobile = () => window.innerWidth <= 768;
+
+    // Disabilita/abilita elementi focusabili nel menu filtri
+    const setFiltriInert = (inert) => {
+        if (!isMobile()) return; // Solo su mobile
+
+        const elementi = filtri.querySelectorAll(
+            'button, [href], input, select, textarea, summary, [tabindex]:not([tabindex="-1"])'
+        );
+
+        elementi.forEach(el => {
+            if (inert) {
+                el.setAttribute('tabindex', '-1');
+                el.setAttribute('data-was-focusable', 'true');
+            } else {
+                if (el.getAttribute('data-was-focusable')) {
+                    el.removeAttribute('tabindex');
+                    el.removeAttribute('data-was-focusable');
+                }
+            }
+        });
+    };
+
+    // Elementi focusabili nel menu (quando aperto)
     const getFocusableElements = () => {
         return filtri.querySelectorAll(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            'button:not([tabindex="-1"]), [href]:not([tabindex="-1"]), input:not([tabindex="-1"]), select:not([tabindex="-1"]), textarea:not([tabindex="-1"]), summary:not([tabindex="-1"])'
         );
     };
 
     // Blocco il focus nel menu
     const trapFocus = (e) => {
-        const focusabili = getFocusableElements();
+        if (!isMobile()) return;
+
+        const focusabili = Array.from(getFocusableElements());
+
+        if (focusabili.length === 0) return;
+
         const primoFocusabile = focusabili[0];
         const ultimoFocusabile = focusabili[focusabili.length - 1];
 
@@ -34,8 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Funzione per aprire i filtri
     const apriFiltri = () => {
+        if (!isMobile()) return;
+
         ultimoFocusPrimaApertura = document.activeElement;
 
         filtri.classList.add('aperto');
@@ -44,42 +73,74 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.setAttribute('aria-hidden', 'false');
         toggleFiltri.setAttribute('aria-expanded', 'true');
 
+        setFiltriInert(false);
+
         // Impedisci scroll del body
         document.body.style.overflow = 'hidden';
 
-        // Attiva trap focus
+        setTimeout(() => {
+            const primoElemento = getFocusableElements()[0];
+            if (primoElemento) {
+                primoElemento.focus();
+            }
+        }, 100);
+
         document.addEventListener('keydown', trapFocus);
         document.addEventListener('keydown', handleEscape);
     };
 
     const chiudiFiltriFunc = () => {
+        if (!isMobile()) return;
+
         filtri.classList.remove('aperto');
         overlay.classList.remove('attivo');
         filtri.setAttribute('aria-hidden', 'true');
         overlay.setAttribute('aria-hidden', 'true');
         toggleFiltri.setAttribute('aria-expanded', 'false');
 
-        // Ripristina scroll del body
+        setFiltriInert(true);
+
         document.body.style.overflow = '';
 
-        // Riporta focus al bottone che ha aperto il menu
         if (ultimoFocusPrimaApertura) {
             ultimoFocusPrimaApertura.focus();
         }
 
-        // Rimuovi trap focus
         document.removeEventListener('keydown', trapFocus);
-        document.removeEventListener('keydown', handleEscape);
     };
 
     if (toggleFiltri && filtri && overlay) {
-        filtri.setAttribute('aria-hidden', 'true');
+        if (isMobile()) {
+            filtri.setAttribute('aria-hidden', 'true');
+            setFiltriInert(true);
+        }
 
         toggleFiltri.addEventListener('click', apriFiltri);
 
         if (chiudiFiltri) {
             chiudiFiltri.addEventListener('click', chiudiFiltriFunc);
         }
+
         overlay.addEventListener('click', chiudiFiltriFunc);
+
+        window.addEventListener('resize', () => {
+            if (!isMobile()) {
+                filtri.classList.remove('aperto');
+                overlay.classList.remove('attivo');
+                filtri.removeAttribute('aria-hidden');
+                document.body.style.overflow = '';
+
+                const elementi = filtri.querySelectorAll('[data-was-focusable]');
+                elementi.forEach(el => {
+                    el.removeAttribute('tabindex');
+                    el.removeAttribute('data-was-focusable');
+                });
+            } else {
+                if (!filtri.classList.contains('aperto')) {
+                    filtri.setAttribute('aria-hidden', 'true');
+                    setFiltriInert(true);
+                }
+            }
+        });
     }
 });

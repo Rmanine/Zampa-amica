@@ -631,7 +631,8 @@ form .req, .form-errors ul li {
 }
 
 .prenotazioni {
-    width: 60%;
+    width: 50%;
+    min-width: 450px;
     margin: auto;
     text-align: left;
 }

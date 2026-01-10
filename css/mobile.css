@@ -135,6 +135,16 @@ input, textarea {
   height: auto;
 }
 
+@media screen and (max-width: 500px) {
+  .prenotazioni {
+    min-width: 200px;
+  }
+
+  .prenotazioni li {
+    display: block;
+  }
+}
+
 #toggle-filtri {
   display: block;
   margin: auto;

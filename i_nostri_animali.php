@@ -84,17 +84,10 @@ if ($connessioneOK) {
 			} else {
 				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '" >';
 			}
-<<<<<<< HEAD
 			$stringaAnimali .= '<footer>';
 			$stringaAnimali .= '<p class="label-elemento">' . $nomeAnimale . '</p>';
 			$stringaAnimali .= '<img width="20" height="20" class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
 			$stringaAnimali .= '</footer>';
-=======
-			$stringaAnimali .= '<div>';
-			$stringaAnimali .= '<h3 class="label-elemento">' . $nomeAnimale . '</h3>';
-			$stringaAnimali .= '<img class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
-			$stringaAnimali .= '</div>';
->>>>>>> c1f28c48dfee78c77891a3d5f6ca1a4d74de41fc
 			$stringaAnimali .= '</a>';
 			$stringaAnimali .= '</li>';
 		}

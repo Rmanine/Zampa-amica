@@ -86,7 +86,7 @@ header {
 
 #menu ul {
     display: flex;
-    overflow-x: hidden; /* Correzione MOMENTANEA per evitare lo split dello schermo su mobile. DA CAMBIARE */
+    overflow-x: hidden;
     padding: 0 2em;
     gap: 3em;
     list-style: none;
@@ -116,6 +116,11 @@ button, a.stile-bottone-1, a.stile-bottone-2, a.stile-bottone-3 {
 
 button {
     cursor: pointer;
+}
+
+button:focus-visible, a.stile-bottone-2:focus-visible {
+    outline-offset: 3px;
+    outline: 2px solid var(--visitedlinkcolor1);
 }
 
 #hamburger {
@@ -361,6 +366,8 @@ hr {
     flex-wrap: wrap;
     list-style: none;
     justify-content: space-evenly;
+    min-height: 400px; /* Aggiungi un'altezza minima */
+    align-items: center; /* Centra verticalmente il contenuto */
 }
 
 .elemento-galleria a, .card {
@@ -404,6 +411,12 @@ hr {
     width: 1.5em;
     height: 1.5em;
     border-radius: 0px;
+}
+
+.no-result {
+    margin: auto;
+    width: 50%;
+    text-align: center;
 }
 
 /* DETTAGLI ANIMALE */
@@ -609,12 +622,17 @@ form .req, .form-errors ul li {
     gap: 0.3em;
 }
 
+#toggle-filtri, #chiudi-filtri, #overlay-filtri {
+    display: none;
+}
+
 .piu-info {
     clear: both; /* Lo forzo ad andare giù per non seguire il float */
 }
 
 .prenotazioni {
-    width: 60%;
+    width: 50%;
+    min-width: 450px;
     margin: auto;
     text-align: left;
 }
@@ -683,4 +701,8 @@ form .req, .form-errors ul li {
 
 .appuntamenti {
     margin-top: 3em;
+}
+
+.importante {
+    font-weight: bold;
 }

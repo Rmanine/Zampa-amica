@@ -59,7 +59,7 @@ if ($filtri['eta'] !== 'all') {
 }
 
 if (!empty($filtriAttiviArray)) {
-    $filtriAttivi .= 'Filtri attivi: ' . implode(', ', $filtriAttiviArray);
+    $filtriAttivi .= '<span class="importante">Filtri attivi</span>: ' . implode(', ', $filtriAttiviArray);
 } else {
     $filtriAttivi = 'Nessun filtro attivo';
 }
@@ -84,20 +84,32 @@ if ($connessioneOK) {
 			} else {
 				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '" >';
 			}
+<<<<<<< HEAD
 			$stringaAnimali .= '<footer>';
 			$stringaAnimali .= '<p class="label-elemento">' . $nomeAnimale . '</p>';
 			$stringaAnimali .= '<img width="20" height="20" class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
 			$stringaAnimali .= '</footer>';
+=======
+			$stringaAnimali .= '<div>';
+			$stringaAnimali .= '<h3 class="label-elemento">' . $nomeAnimale . '</h3>';
+			$stringaAnimali .= '<img class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
+			$stringaAnimali .= '</div>';
+>>>>>>> c1f28c48dfee78c77891a3d5f6ca1a4d74de41fc
 			$stringaAnimali .= '</a>';
 			$stringaAnimali .= '</li>';
 		}
 		$stringaAnimali .= '</ul>';
 	} else {
-		$stringaAnimali = '<p>Nessun animale presente</p>';
+		if(!empty($filtriAttiviArray)){
+			$stringaAnimali = '<p class="galleria no-result">Non abbiamo trovato animali con le caratteristiche che hai scelto. Prova a modificare i filtri: potresti scoprire nuovi amici in cerca di una casa.</p>';
+		} else {
+			$stringaAnimali = '<p class="galleria no-result">Nessun animale presente</p>';
+		}
 	}
 } else {
-	$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci stiamo occupando del problema. Riprova più tardi oppure contattaci a questa email miao@gmail.com</p>';
-	//possibilità di mettere pagina 500
+	//$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci stiamo occupando del problema. Riprova più tardi oppure contattaci a questa email miao@gmail.com</p>';
+	header("Location: errore_500.html");
+    exit();
 }
 
 $paginaHTML = str_replace('[listaAnimali]', $stringaAnimali, $paginaHTML);

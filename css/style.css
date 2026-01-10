@@ -381,7 +381,7 @@ hr {
     object-fit: cover;
 }
 
-.elemento-galleria a > div {
+.elemento-galleria a > footer {
     position: relative;
     width: 100%;
     padding: 0.7rem 1.8rem;

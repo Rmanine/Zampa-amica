@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Modifica le informazioni relative al tuo profilo su Zampa Amica.">
     <meta name="keywords" content="Zampa Amica, informazioni, profilo">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" media="screen and (max-width:768px)" href="../mobile.css">
-    <link rel="stylesheet" media="print" href="../print.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="./css/mobile.css">
+    <link rel="stylesheet" media="print" href="./css/print.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="../img/icona_logo.ico">
+    <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
+    <script async src="js/scripts.js"></script>
 </head>
 
 
@@ -23,9 +24,16 @@
     <a class="aiuto" href="#contenuto">Salta al contenuto</a>
     <header>
         <nav id="menu">
-            <a class="logo-menu" href="../index.html">Zampa Amica</a>
+            <button id="hamburger" class="stile-bottone-3" aria-label="Apri menu di navigazione" aria-expanded="false" onclick="myFunction(this)">
+                <div>
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </button>
+            <a class="logo-menu" href="./index.html">Zampa Amica</a>
             <ul>
-                <li lang="en"><a href="../index.html">Home</a></li>
+                <li lang="en"><a href="./index.html">Home</a></li>
                 <li><a href="./i_nostri_animali.html">I nostri animali</a></li>
                 <li><a href="./volontariato.html">Volontariato</a></li>
                 <li><a href="./chi_siamo.html">Chi siamo</a></li>
@@ -35,32 +43,34 @@
     </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../index.html" lang="en">Home</a> / <a href="./profilo_utente.html">Profilo utente</a> /
+        <p>Ti trovi in: <a href="./index.html" lang="en">Home</a> / <a href="./profilo_utente.html">Profilo utente</a> /
             Modifica profilo</p>
     </nav>
 
     <main id="contenuto">
         <a id="bottone-indietro" class="stile-bottone-1" href="">Torna indietro</a> 
-
+ 
         <h1>Modifica le impostazioni del profilo:</h1>
-        <form action="" method="POST" >
+        <form action="modifica_user.php" method="POST" >
             <label for="username"><span lang="en">Username</span></label>
-            <input type="text" id="username" maxlength="60" />
+            <input type="text" id="username" name="username" maxlength="60" value="[valUsername]"/>
 
             <label for="email">Indirizzo <span lang="en">e-mail</span></label>
-            <input type="email" id="email" />
+            <input type="email" id="email" name="email" value="[valEmail]"/>
 
             <label for="new_password">Nuova <span lang="en">password</span></label>
-            <input type="text" id="new_password" />
+            <input type="password" id="new_password" name="new_password"/>
 
             <label for="repeat_new_password">
                 <p>Conferma <span lang="en">password</span></p>
             </label>
-            <input type="text" id="repeat_new_password">
-            <input type="submit" value="Salva" class="stile-bottone-2">
+            <input type="password" id="repeat_new_password" name="repeat_new_password">
+            <input type="submit" name="submit" value="Salva" class="stile-bottone-2">
 
-            <button class="elimina">Elimina profilo</button>
+            <button type="submit" formaction="php/elimina_user.php" class="elimina">Elimina profilo</button>
         </form>
+
+        [messaggiForm]
     </main>
 
     <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140">

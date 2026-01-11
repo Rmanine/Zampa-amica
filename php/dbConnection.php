@@ -98,17 +98,25 @@ class DBAccess {
 	}
 
 	public function getAnimale($id) {
-		$query = "SELECT * FROM Animale WHERE ID = '$id'";
+		$query = "SELECT * FROM Animale WHERE ID = ?";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in dbConnection: " . mysqli_error($this->connection));
-
-		if (mysqli_num_rows($queryResult) != 0) {
-			$row = mysqli_fetch_assoc($queryResult);
-			$queryResult->free();
-			return $row;
-		} else {
+		$stmt = mysqli_prepare($this->connection, $query);
+		if ($stmt === false) {
 			return false;
 		}
+
+		mysqli_stmt_bind_param($stmt, "i", $id);
+		mysqli_stmt_execute($stmt);
+
+		$result = mysqli_stmt_get_result($stmt);
+
+		if ($result && mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			mysqli_stmt_close($stmt);
+			return $row;
+		}
+		mysqli_stmt_close($stmt);
+		return false;
 	}
 	/*
 	PRE: accetta un nome utente
@@ -116,7 +124,7 @@ class DBAccess {
 			false se non ha trovato l'utente con Username == $username
 	*/
 	public function getUser($username) {
-		$query = "SELECT ID, Password FROM Utente WHERE Username = ?";
+		$query = "SELECT ID, Password, Email FROM Utente WHERE Username = ?";
 
 		$stmt = mysqli_prepare($this->connection, $query);
 		if ($stmt === false) {
@@ -124,6 +132,33 @@ class DBAccess {
 		}
 
 		mysqli_stmt_bind_param($stmt, "s", $username);
+		mysqli_stmt_execute($stmt);
+
+		$result = mysqli_stmt_get_result($stmt);
+
+		if ($result && mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			mysqli_stmt_close($stmt);
+			return $row;
+		}
+		mysqli_stmt_close($stmt);
+		return false;
+	}
+
+	/*
+    PRE: accetta l'ID dell'utente (numero intero)
+    POST: ritorna un array con le info dell'utente (ID, Username, Email, Password)
+          restituisce false se l'utente non viene trovato
+    */
+	public function getUserById($id_user) {
+		$query = "SELECT ID, Email, Username, Password FROM Utente WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+		if ($stmt === false) {
+			return false;
+		}
+
+		mysqli_stmt_bind_param($stmt, "i", $id_user);
 		mysqli_stmt_execute($stmt);
 
 		$result = mysqli_stmt_get_result($stmt);
@@ -155,24 +190,89 @@ class DBAccess {
 		mysqli_stmt_store_result($stmt);
 
 		if (mysqli_stmt_num_rows($stmt) > 0) {
+			mysqli_stmt_close($stmt);
 			return true;
 		} else {
+			mysqli_stmt_close($stmt);
 			return false;
 		}
-		mysqli_stmt_close($stmt);
 	}
 	
 	public function addUser($username, $email, $hashedPassword) {
-		$queryInsert = "INSERT INTO Utente(Username, Email, Password) VALUES(\"$username\", \"$email\", \"$hashedPassword\")";
+		$queryInsert = "INSERT INTO Utente(Username, Email, Password) VALUES(?, ?, ?)";
 
-		$queryResult = mysqli_query($this->connection, $queryInsert) or die("Errorre in dbConnection: " . mysqli_error($this->connection));
-		
-		if(mysqli_affected_rows($this->connection) > 0) {
-			return true;
-		} else {
+		$stmt = mysqli_prepare($this->connection, $queryInsert);
+
+		if($stmt === false)
+		{
 			return false;
 		}
+
+		mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPassword);
+
+		$result = mysqli_stmt_execute($stmt);
+
+		mysqli_stmt_close($stmt);
+
+		return $result;
 	}
+
+
+	// Modifica un utente già esistente
+	public function updateUser($id, $email, $username, $password)
+	{
+		$query = "UPDATE Utente 
+			SET Email = ?, Username = ?, Password = ? 
+			WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+		if (!$stmt) {
+			return false;
+		}
+
+		if (!mysqli_stmt_bind_param($stmt, "sssi", $email, $username, $password, $id)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		if (!mysqli_stmt_execute($stmt)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		$affected_rows = mysqli_stmt_affected_rows($stmt);
+		mysqli_stmt_close($stmt);
+
+		return ($affected_rows > 0);
+	}
+
+
+	// Eliminazione user
+	public function deleteUser($id){
+		$query = "DELETE FROM Utente WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+
+		if (!$stmt) {
+			return false;
+		}
+
+		if (!mysqli_stmt_bind_param($stmt, "i", $id)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		if (!mysqli_stmt_execute($stmt)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		$affected_rows = mysqli_stmt_affected_rows($stmt);
+		mysqli_stmt_close($stmt);
+
+		return ($affected_rows > 0);
+	}
+
 
 	// Aggiunge un volontario
 	public function addVolontario($email, $nome, $cognome, $telefono) {
@@ -201,10 +301,15 @@ class DBAccess {
 		return ($affected_rows > 0);
 	}
 
-	// Ritorna la lista delle prenotazioni, dato un id utente
+	// Ritorna la lista delle prenotazioni in arrivo (non quelle passate), dato un id utente
 	public function getListaPrenotazioni($id_user)
 	{
-		$query = "SELECT * FROM Prenotazione WHERE UtenteID = ?";
+		$query = "SELECT p.ID, p.UtenteID, p.AnimaleID, p.DataOra, p.Note, a.Nome
+				FROM Prenotazione p
+				JOIN Animale a ON p.AnimaleID = a.ID
+				WHERE UtenteID = ?
+				AND p.DataOra >= CURRENT_DATE()
+            	ORDER BY p.DataOra ASC";
 
 		$stmt = mysqli_prepare($this->connection, $query);
 		if ($stmt === false) {
@@ -242,7 +347,10 @@ class DBAccess {
 	// Ritorna le informazioni della prenotazione con id = $id
 	public function getPrenotazione($id)
 	{
-		$query = "SELECT * FROM Prenotazione WHERE ID = ?";
+		$query = "SELECT p.ID, p.UtenteID, p.AnimaleID, p.DataOra, p.Note, a.Nome, a.Immagine 
+              		FROM Prenotazione p 
+              		JOIN Animale a ON p.AnimaleID = a.ID 
+              		WHERE p.ID = ?";
 		$stmt = mysqli_prepare($this->connection, $query);
 
 		if ($stmt === false) {
@@ -258,7 +366,7 @@ class DBAccess {
 			mysqli_stmt_close($stmt);
 			return false;
 		}
-		mysqli_stmt_bind_result($stmt, $id, $userID, $animaleID, $dataora, $note);
+		mysqli_stmt_bind_result($stmt, $id, $userID, $animaleID, $dataora, $note, $nomeAnimale, $immagineAnimale);
 
 		$prenotazione = null;
 
@@ -269,7 +377,9 @@ class DBAccess {
 				"UtenteID" => $userID,
 				"AnimaleID" => $animaleID,
 				"DataOra" => $dataora,
-				"Note" => $note
+				"Note" => $note,
+				"NomeAnimale" => $nomeAnimale,
+				"ImmagineAnimale" => $immagineAnimale
 			);
 		}
 
@@ -308,10 +418,10 @@ class DBAccess {
 
 
 	// Modifica una prenotazione già esistente
-	public function updatePrenotazione($id, $id_user, $id_animale, $dataora, $note)
+	public function updatePrenotazione($id, $dataora, $note)
 	{
 		$query = "UPDATE Prenotazione 
-              SET UtenteID = ?, AnimaleID = ?, DataOra = ?, Note = ? 
+              SET DataOra = ?, Note = ? 
               WHERE ID = ?";
 
 		$stmt = mysqli_prepare($this->connection, $query);
@@ -319,7 +429,7 @@ class DBAccess {
 			return false;
 		}
 
-		if (!mysqli_stmt_bind_param($stmt, "iissi", $id_user, $id_animale, $dataora, $note, $id)) {
+		if (!mysqli_stmt_bind_param($stmt, "ssi", $dataora, $note, $id)) {
 			mysqli_stmt_close($stmt);
 			return false;
 		}

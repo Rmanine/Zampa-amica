@@ -1,5 +1,5 @@
 <?php
-require_once "../php/dbConnection.php";
+require_once "php/dbConnection.php";
 use DB\DBAccess;
 
 

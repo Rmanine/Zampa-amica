@@ -8,24 +8,32 @@
     <meta name="description"
         content="Gestisci il tuo profilo utente di Zampa Amica e le visite prenotate con i nostri animali.">
     <meta name="keywords" content="Zampa Amica, visite, animali, profilo, utente, appuntamenti">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" media="screen and (max-width:768px)" href="../mobile.css">
-    <link rel="stylesheet" media="print" href="../print.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="./css/mobile.css">
+    <link rel="stylesheet" media="print" href="./css/print.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="../img/icona_logo.ico">
+    <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
+    <script async src="js/scripts.js"></script>
 </head>
 
 <body>
     <a class="aiuto" href="#contenuto">Salta al contenuto</a>
     <header>
         <nav id="menu">
-            <a class="logo-menu" href="../index.html">Zampa Amica</a>
+            <button id="hamburger" class="stile-bottone-3" aria-label="Apri menu di navigazione" aria-expanded="false" onclick="myFunction(this)">
+                <div>
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </button>
+            <a class="logo-menu" href="./index.html">Zampa Amica</a>
             <ul>
-                <li lang="en"><a href="../index.html">Home</a></li>
+                <li lang="en"><a href="./index.html">Home</a></li>
                 <li><a href="./i_nostri_animali.html">I nostri animali</a></li>
                 <li><a href="./volontariato.html">Volontariato</a></li>
                 <li><a href="./chi_siamo.html">Chi siamo</a></li>
@@ -35,22 +43,30 @@
     </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../index.html"><span lang="en">Home</span></a> / Profilo utente</p>
+        <p>Ti trovi in: <a href="./index.html"><span lang="en">Home</span></a> / Profilo utente</p>
     </nav>
 
     <main id="contenuto">
-        <section>
-            <img src="../img/profilo_utente.svg" alt="">
-            <h1>Profilo utente</h1>
-            <a href="./modifica_profilo.html" class="stile-bottone-2">Modifica profilo</a>
+        [success]
+        <h1>Profilo utente</h1>
+        <section class="profilo">
+            <img src="./img/profilo_utente.svg" alt="">
+            <div>
+                <p>[username]</p>
+                <p>[email]</p>
+            </div>
         </section>
-        
-         <section>
-            <h2>I tuoi animali preferiti</h2>
-        </section>
-        
-        <section>
+        <div>
+            <a href="./modifica_profilo.php" class="stile-bottone-2">Modifica profilo</a>
+            <button>Esci</button>
+            <button>Elimina profilo</button>
+        </div>
+
+        <section class="appuntamenti">
             <h2>I tuoi appuntamenti</h2>
+            <div class="prenotazioni">
+                [Lista Prenotazioni]
+            </div>
         </section>
     </main>
 
@@ -60,11 +76,12 @@
         </path>
     </svg>
     <!-- SVG Generated with getwaves.io-->
-    
+
     <footer>
         <a class="stile-bottone-3 torna-su" href="#contenuto">Torna al contenuto</a>
         <p>
-            Tutte le immagini presenti sul sito sono state fornite da <a class= "crediti" href="https://pixabay.com/it/">pixabay</a> <span lang="en">Copyright</span> 2025 Zampa
+            Tutte le immagini presenti sul sito sono state fornite da <a class="crediti"
+                href="https://pixabay.com/it/">pixabay</a> <span lang="en">Copyright</span> 2025 Zampa
             Amica. Tutti i diritti riservati.
             Sito web realizzato da Baleanu Valeria, Ballardin Sara, Loparco Davide, Manisi Riccardo.
         </p>

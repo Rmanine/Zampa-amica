@@ -134,26 +134,53 @@ Il sito prevede due tipologie principali di utenza, differenziate in base ai per
 
 L'invio della richiesta per diventare volontario, tramite la pagina \textit{volontariato}, è un'operazione che può essere completata con successo sia da utenti visitatori che da utenti autenticati.
 
+\subsection{SEO}
+L'indicizzazione del portale è stata curata seguendo le moderne linee guida SEO, con l'obiettivo di migliorare la visibilità e garantire una corretta scansione da parte dei \textit{crawler} dei motori di ricerca. Le principali strategie adottate includono:
 
-
-
-
-
+\begin{itemize}
+    \item \textbf{Sintassi semantica}: L'architettura delle pagine si basa sull'utilizzo di tag semantici HTML5 (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}), fondamentali per comunicare ai motori di ricerca la gerarchia e il valore informativo dei contenuti.
+    \item \textbf{Metadati univoci}: Ogni pagina del sito è stata dotata di tag \texttt{<title>} e \texttt{<meta name="description">} personalizzati. Questo assicura che ogni contenuto sia indicizzato correttamente e che il testo visualizzato nei risultati di ricerca sia pertinente e accattivante per l'utente.
+    \item \textbf{Ottimizzazione mobile}: Il design è stato ottimizzato per la visualizzazione su dispositivi mobili tramite fogli di stile responsivi, un fattore determinante per il posizionamento nei risultati di ricerca.
+    \item \textbf{Autorità social}: La presenza del collegamento al profilo Instagram nel \textit{footer} contribuisce alla creazione di una rete di segnali sociali che incrementano l'autorità del dominio.
+\end{itemize}
 
 \subsection{Struttura del sito}
+Il portale segue un'architettura modulare e coerente, strutturata per facilitare la navigazione e garantire la piena accessibilità dei contenuti.
 
-\subsection{Header}
-Nell’header è presente il logo del rifugio, utilizzato come collegamento alla home page, secondo una convenzione ampiamente consolidata nell’esperienza di navigazione web.  
-Il menu di navigazione è realizzato tramite una lista non ordinata e contiene i collegamenti alle principali sezioni del sito. È inoltre presente un pulsante dedicato all’accesso dell’utente.
-Il menu per il mobile è stato realizzato tramite l'implementazione di un pulsante ad hamburger, quando l'utente attiva questo pulsante viene visualizzata la lista dei link del mene in modo da non coprire nessun elemento della pagina.
+\subsubsection{Header} 
+L'\textit{header} funge da elemento cardine per la navigazione. Il logo del rifugio è posizionato come collegamento testuale alla pagina principale (\textit{index}), rispettando i \textit{pattern} consolidati dell'esperienza utente.
 
-\subsubsection{Breadcrumb}
-Il breadcrumb è stato inserito per migliorare l’usabilità e l’accessibilità del sito, riducendo il rischio di disorientamento dell’utente durante la navigazione.  
-Esso funge da supporto contestuale, indicando la posizione corrente all’interno della struttura del sito.  
-È stato utilizzato il tag semantico \texttt{nav}; per la pagina corrente il collegamento è stato intenzionalmente omesso, al fine di evitare link circolari.
+Il menù di navigazione è racchiuso nel tag semantico \texttt{<nav id="menu">} e implementato tramite una lista non ordinata. Per quanto riguarda l'accessibilità e il supporto multilingua, è stato utilizzato l'attributo \texttt{lang="en"} per il collegamento alla \textit{Home}. Per la visualizzazione su dispositivi mobili, è stato sviluppato un \textit{menù hamburger} che include attributi \textbf{ARIA} per le tecnologie assistive: 
+\begin{itemize} 
+    \item \texttt{aria-label="Apri menu di navigazione"}: fornisce una descrizione testuale chiara dell'azione del pulsante; 
+    \item \texttt{aria-expanded="false"}: indica lo stato (aperto/chiuso) del menù. 
+\end{itemize} 
 
-\subsubsection{Footer}
-Nel footer sono riportati l’indirizzo del rifugio e i contatti della struttura, oltre alle informazioni relative ai diritti e ai crediti del sito.
+Oltre ai collegamenti informativi, l'\textit{header} ospita un pulsante di accesso (\texttt{accedi.html}) differenziato visivamente tramite la classe \texttt{stile-bottone-1}. A seconda della pagina visualizzata o dello stato della sessione, il pulsante di interazione modifica la propria \textit{Call to Action} e la relativa destinazione logica:
+
+\begin{itemize}
+    \item \textbf{Utente non autenticato}: il pulsante invita all'accesso (``Accedi'') o, qualora l'utente si trovi già nella pagina di \textit{login}, cambia contestualmente in ``Registrati'' per favorire la conversione e la creazione di un nuovo \textit{account};
+    \item \textbf{Utente autenticato}: una volta effettuato l'accesso, il pulsante muta in ``Profilo'', fornendo un collegamento diretto all'area riservata e semplificando la gestione dei propri dati e delle prenotazioni.
+\end{itemize}
+
+\subsubsection{Breadcrumb} 
+Il sistema di \textit{breadcrumb} è stato implementato all'interno di un tag \texttt{<nav id="breadcrumb">}. Per potenziare l'orientamento dell'utente, il percorso è introdotto dalla dicitura ``Ti trovi in:'', che fornisce un immediato supporto contestuale. 
+
+Seguendo le linee guida sull'accessibilità: 
+\begin{itemize} 
+    \item Il termine \textit{Home} è marcato con \texttt{lang="en"}; 
+    \item La pagina corrente è indicata come testo semplice, omettendo il link ipertestuale per evitare la creazione di \textit{link circolari} che potrebbero confondere l'utente o i \textit{browser} vocali. 
+\end{itemize}
+
+\subsubsection{Footer} 
+Il \textit{footer} rappresenta la chiusura informativa della pagina, preceduto da un elemento grafico \textbf{SVG} che riproduce un'onda stilizzata. Questa scelta estetica garantisce una transizione fluida senza appesantire il caricamento della pagina.
+
+All'interno del \textit{footer} sono stati integrati: 
+\begin{itemize} 
+    \item \textbf{Ancora di risalita}: Un pulsante ``Torna al contenuto'' che punta all'ID \texttt{#contenuto}, migliorando l'usabilità per utenti che utilizzano la navigazione da tastiera o dispositivi mobili. 
+    \item \textbf{Attribuzioni e Copyright}: I crediti per le immagini (Pixabay) e la nota di \textit{Copyright} 2025. Il termine è stato inserito in un tag \texttt{<span lang="en">} per assicurarne la corretta pronuncia da parte dei sintetizzatori vocali. 
+    \item \textbf{Disclaimer}: Una nota esplicativa che identifica il portale come progetto universitario, riportando chiaramente i nomi degli sviluppatori.
+\end{itemize}
 
 \subsection{Funzionalità}
 Di seguito sono elencate le principali funzionalità offerte dal sito:

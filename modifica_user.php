@@ -33,7 +33,7 @@ $connessione->openDBConnection();
 
 
 // Recupero dei dati attuali per riempire il form
-$datiUtente = $connessione->getUserByID($_SESSION['logged_in_user']);
+$datiUtente = $connessione->getUserById($_SESSION['logged_in_user']);
 if (!$datiUtente) { // Se l'utente non viene trovato ritorno alla pagine di login
     $connessione->closeConnection();
     header("Location: ../php/login.php");

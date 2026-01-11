@@ -23,7 +23,7 @@
 % --- Pagina del titolo personalizzata ---
 \begin{titlepage}
     \begin{center}
-        \includegraphics[width=0.2\textwidth]{./docs_assets/logo_sito.png}
+        \includegraphics[width=0.2\textwidth]{./docs_assets/logo_piattaforma.png}
         \hspace{2cm}
         \includegraphics[width=0.2\textwidth]{./docs_assets/logo_unipd.png}
         \\[1cm]
@@ -62,16 +62,39 @@
 \newpage
 \section{Introduzione}
 \subsection{Scopo del prodotto}
-Zampa Amica è un sito web a supporto di \textbf{un rifugio per animali domestici}, in grado di ospitare cani, gatti e altre specie. \\
-L’obiettivo principale della piattaforma è favorire l’incontro tra il rifugio e le persone interessate all’adozione, consentendo la visualizzazione degli animali attualmente presenti nella struttura.\\
-Il sito mira a raggiungere un pubblico il più ampio possibile, promuovendo l’adozione, di animali. Fornisce contenuti informativi riguardo agli animali ospitati attualmente nella struttura.\\
-La piattaforma fa riferimento a un’unica struttura, ipotizzata dal gruppo essere situata nel territorio di Padova.\\
-È inoltre prevista la possibilità per gli utenti di candidarsi come volontari del rifugio. Tale funzionalità consente, ad esempio, a persone impossibilitate a possedere un animale domestico di contribuire attivamente alle attività della struttura. 
-La candidatura richiede esclusivamente la condivisione dei propri contatti, che vengono successivamente gestiti dal personale interno incaricato di contattare i potenziali volontari.
+Zampa Amica è una piattaforma web nata per supportare la visibilità di un \textbf{rifugio per animali domestici} situato nel territorio di Padova (struttura fittizia, ideata esclusivamente per le finalità del progetto).
+L'obiettivo principale del progetto è facilitare l'incontro tra la struttura e le persone interessate all'adozione, offrendo una vetrina digitale dove consultare agevolmente le schede di cani e gatti ospitati.
+
+Oltre alla funzione di catalogo, la piattaforma integra un sistema dedicato al volontariato: gli utenti possono candidarsi per supportare attivamente le attività del rifugio, offrendo un'alternativa concreta a chi, pur non potendo accogliere un animale nella propria abitazione, desidera contribuire al loro benessere.
+La procedura di candidatura richiede la condivisione dei propri contatti, che verranno poi gestiti dal personale della struttura incaricato di contattare i potenziali nuovi collaboratori.
 
 \section{Organizzazione del gruppo}
 \subsection{Modalità di lavoro}
+La gestione dei file è avvenuta tramite Git, utilizzando GitHub come piattaforma di collaborazione. Questa scelta ha permesso ai membri del gruppo di lavorare in parallelo sulle diverse componenti del sito e della documentazione, garantendo la sincronizzazione del codice.
+La comunicazione interna è stata gestita tramite messaggistica e incontri periodici, che hanno permesso di monitorare lo stato di avanzamento del progetto e risolvere tempestivamente eventuali criticità.
 \subsection{Suddivisione dei compiti}
+La ripartizione delle attività tra i componenti del gruppo è stata pianificata con l'obiettivo di rendere il carico di lavoro il più bilanciato possibile. I compiti sono stati assegnati seguendo le competenze e gli interessi individuali, garantendo il coinvolgimento di tutti i componenti in ogni fase del progetto.
+\begin{itemize}
+    \item \textbf{Baleanu Valeria}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item \textbf{Ballarin Sara}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item \textbf{Loparco Davide}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item \textbf{Manisi Riccardo}
+    \begin{itemize}
+        \item HTML per la pagina chi siamo
+        \item CSS per il mobile
+        \item Pagina per visualizzazione della lista degli animali con PHP conseguente
+        \item Pagina per la visualizzazione dettagli di un'animale con PHP conseguente 
+    \end{itemize}
+\end{itemize}
 
 \section{Analisi dei requisiti}
 \subsection{Analisi utente}
@@ -91,6 +114,7 @@ Il sito prevede due tipologie di utenti:
 \subsection{Header}
 Nell’header è presente il logo del rifugio, utilizzato come collegamento alla home page, secondo una convenzione ampiamente consolidata nell’esperienza di navigazione web.  
 Il menu di navigazione è realizzato tramite una lista non ordinata e contiene i collegamenti alle principali sezioni del sito. È inoltre presente un pulsante dedicato all’accesso dell’utente.
+Il menu per il mobile è stato realizzato tramite l'implementazione di un pulsante ad hamburger, quando l'utente attiva questo pulsante viene visualizzata la lista dei link del mene in modo da non coprire nessun elemento della pagina.
 
 \subsubsection{Breadcrumb}
 Il breadcrumb è stato inserito per migliorare l’usabilità e l’accessibilità del sito, riducendo il rischio di disorientamento dell’utente durante la navigazione.  
@@ -120,16 +144,13 @@ Di seguito sono elencate le principali funzionalità offerte dal sito:
 \subsection{PHP}
 
 \subsubsection{Autenticazione}
-La gestione dell'autenticazione è stata implementata tramite una classe dedicata Auth, la quale si occupa di verificare le credenziali degli utenti e gestire la sessione. La funzione authenticate riceve lo username e la password inseriti dall’utente e recupera dal database la corrispondente password hashata. La verifica della corrispondenza tra la password fornita e quella memorizzata avviene tramite la funzione nativa password_verify, garantendo la protezione contro l’accesso non autorizzato.
+La gestione dell'autenticazione è stata implementata tramite una classe dedicata \texttt{Auth}, la quale si occupa di verificare le credenziali degli utenti e gestire la sessione. La funzione \texttt{authenticate} riceve lo username e la password inseriti dall’utente e recupera dal database la corrispondente password hashata. La verifica della corrispondenza tra la password fornita e quella memorizzata avviene tramite la funzione nativa \texttt{password\_verify}, garantendo la protezione contro l’accesso non autorizzato.
 
-L’avvio della sessione è gestito all’interno della classe, verificando lo stato della sessione e registrando l’ID dell’utente autenticato nella variabile \$_SESSION. L’identificazione dell’utente loggato viene fornita da un metodo logged_in_user, che restituisce l’ID dell’utente se presente, altrimenti false.
+L’avvio della sessione è gestito all’interno della classe, verificando lo stato della sessione e registrando l’ID dell’utente autenticato nella variabile \texttt{\$\_SESSION}. L’identificazione dell’utente loggato viene fornita da un metodo \texttt{logged\_in\_user}, che restituisce l’ID dell’utente se presente, altrimenti \texttt{false}.
 
-Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database relative al recupero delle credenziali sono state realizzate tramite prepared statements nativi di PHP (mysqli), separando i dati forniti dall’utente dalla struttura della query. In questo modo si evita l’esecuzione di istruzioni SQL non previste.
+La sanificazione dei dati in input avviene tramite la funzione \texttt{pulisciInput}, che rimuove spazi superflui e tag HTML. Lo username e la password vengono validati per verificare l’assenza di spazi interni e la correttezza minima della lunghezza, garantendo al contempo la possibilità di utilizzare caratteri speciali nelle password per aumentare l’entropia. In caso di errori di login o di input non valido, viene fornito un messaggio generico per non divulgare informazioni sensibili sull’esistenza degli account.
 
-La sanificazione dei dati in input avviene tramite la funzione pulisciInput, che rimuove spazi superflui e tag HTML. Lo username e la password vengono validati per verificare l’assenza di spazi interni e la correttezza minima della lunghezza, garantendo al contempo la possibilità di utilizzare caratteri speciali nelle password per aumentare l’entropia.
-
-In caso di errori di login o di input non valido, viene fornito un messaggio generico, in modo da non divulgare informazioni sensibili sull’esistenza degli account.
-Per prevenire attacchi di SQL Injection, l’accesso al database è stato implementato tramite prepared statements nativi di PHP (mysqli). Tale approccio consente di separare la struttura della query dai dati forniti dall’utente, garantendo che questi ultimi non vengano interpretati come codice SQL.
+Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database sono state realizzate tramite \textbf{prepared statements} nativi di PHP (mysqli). Questo approccio permette di separare la struttura della query dai dati forniti dall'utente, garantendo che questi ultimi non vengano mai interpretati come codice SQL eseguibile.
 
 \subsection{Database}
 \subsection{Errori di navigazione o del server}

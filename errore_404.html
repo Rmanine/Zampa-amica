@@ -2,30 +2,38 @@
 <html lang="it">
 
 <head>
-    <title>Errore interno | Zampa Amica</title>
+    <title>Pagina non trovata | Zampa Amica</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Errore interno del server (errore 500). Si è verificato un problema tecnico temporaneo su Zampa Amica.">
-    <meta name="keywords" content="Zampa Amica, errore interno, 500">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" media="screen and (max-width:768px)" href="../mobile.css">
-    <link rel="stylesheet" media="print" href="../print.css">
+        content="Pagina non trovata (errore 404). La risorsa cercata su Zampa Amica non esiste o è stata spostata.">
+    <meta name="keywords" content="Zampa Amica, pagina non trovata, errore 404">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="./css/mobile.css">
+    <link rel="stylesheet" media="print" href="./css/print.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="../img/icona_logo.ico">
+    <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
+    <script async src="js/scripts.js"></script>
 </head>
 
 <body>
     <a class="aiuto" href="#contenuto">Salta al contenuto</a>
     <header>
         <nav id="menu">
-            <a class="logo-menu" href="../index.html">Zampa Amica</a>
+            <button id="hamburger" class="stile-bottone-3" aria-label="Apri menu di navigazione" aria-expanded="false" onclick="myFunction(this)">
+                <div>
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </button>
+            <a class="logo-menu" href="./index.html">Zampa Amica</a>
             <ul>
-                <li lang="en"><a href="../index.html">Home</a></li>
+                <li lang="en"><a href="./index.html">Home</a></li>
                 <li><a href="./i_nostri_animali.html">I nostri animali</a></li>
                 <li><a href="./volontariato.html">Volontariato</a></li>
                 <li><a href="./chi_siamo.html">Chi siamo</a></li>
@@ -35,24 +43,22 @@
     </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: Errore interno</p>
+        <p>Ti trovi in: Pagina non trovata</p>
     </nav>
 
     <main id="contenuto">
-        <h1>Errore interno: errore 500</h1>
+        <h1>Pagina non trovata: errore 404</h1>
         <section class="terzo-contenuto">
             <div class="terzo-contenuto-sottocontenuto">
-                <h2>Ops... che groviglio!</h2>
-                <p>Sembra che uno dei nostri felini abbia scambiato i cavi della sala <span lang="en">server</span> per un gomitolo di lana.
-                </p>
-                <p>I nostri tecnici stanno già districando la matassa e rimettendo tutto in ordine.</p>
+                <h2>Pagina... sotterrata!</h2>
+                <p>Purtroppo la risorsa che stai cercando non è disponibile o l'indirizzo è errato. Sembra che questa
+                    pagina sia finita in una buca profonda insieme a un osso prezioso.</p>
                 <p>
-                    Ti chiediamo un attimo di pazienza: ricarica la pagina tra qualche minuto! Nel frattempo, puoi
-                    tornare alla <a lang="en" href="../index.html">Home</a>.
+                    Mentre noi scaviamo per recuperarla, tu torna pure alla <a lang="en" href="./index.html">Home</a>!
                 </p>
             </div>
             <div>
-                <img src="../img/errore_500.jpg" alt="">
+                <img src="./img/errore_404.jpg" alt="">
             </div>
         </section>
     </main>

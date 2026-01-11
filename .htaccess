@@ -1,2 +1,20 @@
-ErrorDocument 404 /vbaleanu/error/404.html
-ErrorDocument 500 /vbaleanu/error/500.html
+ErrorDocument 404 /vbaleanu/errore_404.html
+ErrorDocument 500 /vbaleanu/errore_500.html
+ErrorDocument 403 /vbaleanu/errore_403.html
+
+# Non bloccare se la richiesta viene da una pagina di errore
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} ^/vbaleanu/(img|js)/
+RewriteCond %{HTTP_REFERER} ^$
+RewriteRule .* /vbaleanu/errore_403.html [L]
+
+RewriteEngine On
+RewriteRule ^accedi\.html$ /vbaleanu/accedi.php [L,R=301]
+RewriteRule ^dettagli_animale\.html$ /vbaleanu/dettagli_animale.php [L,R=301]
+RewriteRule ^i_nostri_animali\.html$ /vbaleanu/i_nostri_animali.php [L,R=301]
+RewriteRule ^modifica_prenotazione\.html$ /vbaleanu/modifica_prenotazione.php [L,R=301]
+# RewriteRule ^modifica_profilo\.html$ /vbaleanu/modifica_profilo.php [L,R=301]
+RewriteRule ^profilo_utente\.html$ /vbaleanu/profilo_utente.php [L,R=301]
+# RewriteRule ^registrati\.html$ /vbaleanu/registrati.php [L,R=301]
+RewriteRule ^dbConnection\.php$ /vbaleanu/errore_403.html [L,R=301]
+RewriteRule ^$ /vbaleanu/index.html [L,R=301]

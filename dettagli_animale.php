@@ -1,0 +1,74 @@
+<?php
+
+require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+use DB\DBAccess;
+
+$paginaHTML = file_get_contents('dettagli_animale.html');
+
+$connessione = new DBAccess();
+$connessioneOK = $connessione->openDBConnection();
+
+$stringaAnimale = '';
+$animaleVisualizzato = '';
+$titoloAnimale = '';
+$nomeAnimale = '';
+$id = (int) $_GET['id'] ?? 0;
+
+function createStringaEtaAnimale($etaAnimale)
+{
+    $stringaEta = '';
+    if ($etaAnimale < 12) {
+        $stringaEta .= $etaAnimale . ' mesi';
+    } elseif ($etaAnimale >= 12) {
+        $stringaEta = intdiv(intval($etaAnimale), 12) . ' anni';
+    }
+    return $stringaEta;
+}
+
+if ($connessioneOK && $id !== 0) {
+    $animale = $connessione->getAnimale($id);
+    $connessione->closeConnection();
+
+    if ($animale && is_array($animale)) {
+        if ($animale['Lingua'] == 'en') {
+            $nomeAnimale = '<span lang=\'en\'>' . $animale['Nome'] . '</span>';
+        } else {
+            $nomeAnimale = $animale['Nome'];
+        }
+        $animaleVisualizzato = $animale['Nome'];
+        $titoloAnimale = '<h1>' . $nomeAnimale . '</h1>';
+
+        $stringaAnimale .= '<div>';
+        $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="">';
+        $stringaAnimale .= '</div>';
+
+        $stringaAnimale .= '<div>';
+        $stringaAnimale .= '<dl>';
+        $stringaAnimale .= '<dt>Specie: </dt>';
+        $stringaAnimale .= '<dd>' . $animale['Specie'] . '</dd>';
+        $stringaAnimale .= '<dt>Et&agrave;: </dt>';
+        $stringaAnimale .= '<dd>' . createStringaEtaAnimale($animale['EtaMesi']) . '</dd>';
+        $stringaAnimale .= '<dt>Sesso: </dt>';
+        $stringaAnimale .= '<dd>' . $animale['Genere'] . '</dd>';
+        if(!is_null($animale['Taglia'])) {
+            $stringaAnimale .= '<dt>Taglia: </dt>';
+            $stringaAnimale .= '<dd>' . $animale['Taglia'] . '</dd>';
+        }
+        $stringaAnimale .= '<dt>Descrizione: </dt>';
+        $stringaAnimale .= '<dd>' . $animale['Descrizione'] . '</dd>';
+        $stringaAnimale .= '</dl>';
+        $stringaAnimale .= '</div>';
+    } else {
+        $stringaAnimale = '<p>Le informazioni per questo amico a quattro zampe non sono disponibili</p>';
+    }
+} else {
+    $stringaAnimale = '<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
+}
+
+$paginaHTML = str_replace('[AnimaleCorrente]', $animaleVisualizzato, $paginaHTML);
+$paginaHTML = str_replace('[AnimaleTitolo]', $titoloAnimale, $paginaHTML);
+$paginaHTML = str_replace('[Animale]', $stringaAnimale, $paginaHTML);
+$paginaHTML = str_replace('[idAnimale]', $id, $paginaHTML);
+echo $paginaHTML;
+
+?>

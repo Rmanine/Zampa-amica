@@ -276,7 +276,7 @@ class DBAccess {
 
 	// Aggiunge un volontario
 	public function addVolontario($email, $nome, $cognome, $telefono) {
-		$query = "INSERT INTO Richiesta_volontariato (Email, Nome, Cognome, Telefono) VALUES (?, ?, ?, ?)";
+		$query = "INSERT INTO Richiesta_Volontariato (Email, Nome, Cognome, Telefono) VALUES (?, ?, ?, ?)";
 
 		$stmt = mysqli_prepare($this->connection, $query);
 

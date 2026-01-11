@@ -63,51 +63,80 @@
 \section{Introduzione}
 \subsection{Scopo del prodotto}
 Zampa Amica è una piattaforma web nata per supportare la visibilità di un \textbf{rifugio per animali domestici} situato nel territorio di Padova (struttura fittizia, ideata esclusivamente per le finalità del progetto).
-L'obiettivo principale del progetto è facilitare l'incontro tra la struttura e le persone interessate all'adozione, offrendo una vetrina digitale dove consultare agevolmente le schede di cani e gatti ospitati.
+L'obiettivo principale del sito è facilitare l'incontro tra la struttura e le persone interessate all'adozione, offrendo una vetrina digitale dove consultare agevolmente le schede di cani e gatti ospitati.
 
-Oltre alla funzione di catalogo, la piattaforma integra un sistema dedicato al volontariato: gli utenti possono candidarsi per supportare attivamente le attività del rifugio, offrendo un'alternativa concreta a chi, pur non potendo accogliere un animale nella propria abitazione, desidera contribuire al loro benessere.
-La procedura di candidatura richiede la condivisione dei propri contatti, che verranno poi gestiti dal personale della struttura incaricato di contattare i potenziali nuovi collaboratori.
+Oltre alla funzione di catalogo, la piattaforma integra un sistema dedicato al volontariato: gli utenti possono candidarsi per supportare concretamente le attività del rifugio, offrendo la possibilità di contribuire al benessere degli animali.
+La procedura di candidatura richiede la condivisione dei propri dati, che verranno poi gestiti dal personale della struttura incaricato di contattare i potenziali nuovi collaboratori.
 
 \section{Organizzazione del gruppo}
 \subsection{Modalità di lavoro}
 La gestione dei file è avvenuta tramite Git, utilizzando GitHub come piattaforma di collaborazione. Questa scelta ha permesso ai membri del gruppo di lavorare in parallelo sulle diverse componenti del sito e della documentazione, garantendo la sincronizzazione del codice.
 La comunicazione interna è stata gestita tramite messaggistica e incontri periodici, che hanno permesso di monitorare lo stato di avanzamento del progetto e risolvere tempestivamente eventuali criticità.
 \subsection{Suddivisione dei compiti}
+La definizione del layout generale, la scelta del nome del progetto e lo studio della palette cromatica sono stati il frutto di un lavoro collettivo. 
+
 La ripartizione delle attività tra i componenti del gruppo è stata pianificata con l'obiettivo di rendere il carico di lavoro il più bilanciato possibile. I compiti sono stati assegnati seguendo le competenze e gli interessi individuali, garantendo il coinvolgimento di tutti i componenti in ogni fase del progetto.
+Di seguito viene riportato il dettaglio delle attività individuali suddivise per area di intervento.
+
+\item \textbf{Valeria Baleanu}
 \begin{itemize}
-    \item \textbf{Baleanu Valeria}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-    \item \textbf{Ballarin Sara}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-    \item \textbf{Loparco Davide}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-    \item \textbf{Manisi Riccardo}
-    \begin{itemize}
-        \item HTML per la pagina chi siamo
-        \item CSS per il mobile
-        \item Pagina per visualizzazione della lista degli animali con PHP conseguente
-        \item Pagina per la visualizzazione dettagli di un'animale con PHP conseguente 
-    \end{itemize}
+    \item \textbf{Design:} Progettazione dell'interfaccia grafica per le pagine \textit{volontariato} e \textit{registrati};
+    \item \textbf{HTML:} Realizzazione delle pagine \textit{index}, \textit{errore\_403} e \textit{modifica\_profilo}; sviluppo della sezione relativa alla gestione delle prenotazioni con le pagine \textit{prenotazione} e \textit{modifica\_prenotazione};
+    \item \textbf{CSS:} Sviluppo del sistema di filtri con menù hamburger per la ricerca degli animali nella pagina \textit{i\_nostri\_animali}, gestione del menù di navigazione principale, collaborazione alla stesura del foglio di stile per la stampa (\texttt{print.css}) e definizione del layout strutturale degli elementi di pagina;
+    \item \textbf{PHP:} Implementazione del sistema \textbf{CRUD} completo per la gestione delle prenotazioni (metodi: \texttt{add}, \texttt{update}, \texttt{get}, \texttt{delete}) e della logica dei filtri di ricerca;
+    \item \textbf{Altro:} Ottimizzazione dei parametri \textbf{SEO} del sito e revisione tecnica del codice \textbf{SQL}.
 \end{itemize}
 
-\section{Analisi dei requisiti}
-\subsection{Analisi utente}
-\subsection{SEO}
+\item \textbf{Sara Ballardin}
+\begin{itemize}
+    \item \textbf{Design:} Studio della palette cromatica, creazione del set di icone personalizzate, gestione degli asset grafici e progettazione dell'interfaccia per le pagine \textit{index}, \textit{chi\_siamo} e \textit{errore\_404};
+    \item \textbf{HTML:} Sviluppo della struttura per le pagine \textit{volontariato} e \textit{chi\_siamo}; realizzazione della pagina di \textit{errore\_404} e collaborazione alla creazione della pagina \textit{errore\_500};
+    \item \textbf{CSS:} Definizione dello stile per pulsanti e collegamenti ipertestuali, garantendo coerenza visiva e accessibilità cromatica;
+    \item \textbf{PHP:} Sviluppo della logica di gestione per la pagina \textit{volontariato} e implementazione delle funzioni lato server per la gestione utente (metodi: \texttt{update}, \texttt{get}, \texttt{delete});
+    \item \textbf{SQL:} Progettazione dello schema logico della base di dati (in collaborazione) e stesura del codice SQL per la creazione e il popolamento del database;
+    \item \textbf{Altro:} Stesura della relazione e collaborazione alla gestione del profilo Instagram del progetto.
+\end{itemize}
+
+\item \textbf{Davide Loparco}
+\begin{itemize}
+    \item \textbf{Design:} Prototipazione delle interfacce per le pagine \textit{dettagli\_animale}, \textit{i\_nostri\_animali} e \textit{errore\_500};
+    \item \textbf{HTML:} Sviluppo della struttura per la pagina \textit{dettagli\_animale}, della pagina \textit{registrati} e del footer; collaborazione alla creazione della pagina \textit{errore\_500};
+    \item \textbf{CSS:} Stilizzazione completa e unificata di tutti i form presenti nel sito per le pagine \textit{accedi}, \textit{registrati}, \textit{volontariato} e \textit{modifica\_profilo};
+    \item \textbf{PHP:} Collaborazione all'integrazione dei metodi di autenticazione e della logica di gestione del database;
+    \item \textbf{SQL:} Progettazione dello schema logico della base di dati (in collaborazione);
+    \item \textbf{Altro:} Stesura della drelazione e collaborazione alla gestione del profilo Instagram del progetto.
+\end{itemize}
+
+\item \textbf{Riccardo Manisi}
+\begin{itemize}
+    \item \textbf{Design:} Progettazione grafica delle interfacce per le pagine \textit{profilo\_utente}, \textit{modifica\_profilo} e \textit{accedi};
+    \item \textbf{HTML:} Realizzazione della struttura per le pagine \textit{profilo\_utente}, \textit{i\_nostri\_animali} e \textit{accedi};
+    \item \textbf{CSS:} Implementazione del foglio di stile per il Responsive Design (\texttt{mobile.css}) e collaborazione alla creazione del file per la stampa (\texttt{print.css});
+    \item \textbf{PHP:} Sviluppo della classe di gestione del database (\texttt{DBAccess}), implementazione del sistema di gestione delle sessioni (\textit{login/logout}) e logica per il popolamento dinamico della pagina \textit{i\_nostri\_animali};
+    \item \textbf{Altro:} Organizzazione dell'architettura delle directory nel repository e setup iniziale dell'ambiente di sviluppo.
+\end{itemize}
 
 \section{Progettazione}
+\subsection{Analisi utente}
+Il progetto è stato sviluppato per interfacciarsi con un'utenza eterogenea. Dato lo scopo del portale, il target di riferimento abbraccia ogni fascia anagrafica --- dai giovani agli anziani in cerca di compagnia --- indipendentemente da genere, provenienza culturale o livello di istruzione.
+
+A causa di queste considerazioni, l'interfaccia adotta i principi dell'usabilità e dell'accessibilità, avvalendosi di un linguaggio semplice e di una gerarchia visiva ben definita. Tali accorgimenti sono volti a minimizzare il carico cognitivo, permettendo una navigazione fluida anche a utenti con limitate competenze informatiche, garantendo loro un accesso paritario alle informazioni del catalogo e alle funzionalità di interazione con la struttura.
+
 \subsection{Tipi di utente}
-\subsection{Tipi di utente}
-Il sito prevede due tipologie di utenti:
+Il sito prevede due tipologie principali di utenza, differenziate in base ai permessi di accesso e alle funzionalità disponibili:
+
 \begin{itemize}
-    \item utente non registrato, con accesso ai contenuti informativi e alla visualizzazione del catalogo degli animali presenti nella struttura;
-    \item utente registrato, in grado di aggiungere gli animali ad una lista dei preferiti.
+    \item \textbf{Utente non registrato}: ha accesso ai contenuti puramente informativi (pagine \textit{index} e \textit{chi\_siamo}) e alla visualizzazione del catalogo completo degli animali presso la struttura (pagina \textit{i\_nostri\_animali}). Può manifestare il proprio interesse per l'attività sociale compilando il form nella pagina \textit{volontariato}.
+    \item \textbf{Utente registrato}: oltre alle funzionalità riservate agli utenti non registrati, dispone di un'area personale (\textit{profilo\_utente}) per la gestione e modifica dei propri dati. Dispone inoltre di un sistema di prenotazione e gestione delle visite in struttura tramite le pagine \textit{prenotazione} e \textit{modifica\_prenotazione}.
 \end{itemize}
+
+L'invio della richiesta per diventare volontario, tramite la pagina \textit{volontariato}, è un'operazione che può essere completata con successo sia da utenti visitatori che da utenti autenticati.
+
+
+
+
+
+
 
 \subsection{Struttura del sito}
 

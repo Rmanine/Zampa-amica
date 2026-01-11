@@ -141,16 +141,13 @@ Di seguito sono elencate le principali funzionalità offerte dal sito:
 \subsection{PHP}
 
 \subsubsection{Autenticazione}
-La gestione dell'autenticazione è stata implementata tramite una classe dedicata Auth, la quale si occupa di verificare le credenziali degli utenti e gestire la sessione. La funzione authenticate riceve lo username e la password inseriti dall’utente e recupera dal database la corrispondente password hashata. La verifica della corrispondenza tra la password fornita e quella memorizzata avviene tramite la funzione nativa password_verify, garantendo la protezione contro l’accesso non autorizzato.
+La gestione dell'autenticazione è stata implementata tramite una classe dedicata \texttt{Auth}, la quale si occupa di verificare le credenziali degli utenti e gestire la sessione. La funzione \texttt{authenticate} riceve lo username e la password inseriti dall’utente e recupera dal database la corrispondente password hashata. La verifica della corrispondenza tra la password fornita e quella memorizzata avviene tramite la funzione nativa \texttt{password\_verify}, garantendo la protezione contro l’accesso non autorizzato.
 
-L’avvio della sessione è gestito all’interno della classe, verificando lo stato della sessione e registrando l’ID dell’utente autenticato nella variabile \$_SESSION. L’identificazione dell’utente loggato viene fornita da un metodo logged_in_user, che restituisce l’ID dell’utente se presente, altrimenti false.
+L’avvio della sessione è gestito all’interno della classe, verificando lo stato della sessione e registrando l’ID dell’utente autenticato nella variabile \texttt{\$\_SESSION}. L’identificazione dell’utente loggato viene fornita da un metodo \texttt{logged\_in\_user}, che restituisce l’ID dell’utente se presente, altrimenti \texttt{false}.
 
-Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database relative al recupero delle credenziali sono state realizzate tramite prepared statements nativi di PHP (mysqli), separando i dati forniti dall’utente dalla struttura della query. In questo modo si evita l’esecuzione di istruzioni SQL non previste.
+La sanificazione dei dati in input avviene tramite la funzione \texttt{pulisciInput}, che rimuove spazi superflui e tag HTML. Lo username e la password vengono validati per verificare l’assenza di spazi interni e la correttezza minima della lunghezza, garantendo al contempo la possibilità di utilizzare caratteri speciali nelle password per aumentare l’entropia. In caso di errori di login o di input non valido, viene fornito un messaggio generico per non divulgare informazioni sensibili sull’esistenza degli account.
 
-La sanificazione dei dati in input avviene tramite la funzione pulisciInput, che rimuove spazi superflui e tag HTML. Lo username e la password vengono validati per verificare l’assenza di spazi interni e la correttezza minima della lunghezza, garantendo al contempo la possibilità di utilizzare caratteri speciali nelle password per aumentare l’entropia.
-
-In caso di errori di login o di input non valido, viene fornito un messaggio generico, in modo da non divulgare informazioni sensibili sull’esistenza degli account.
-Per prevenire attacchi di SQL Injection, l’accesso al database è stato implementato tramite prepared statements nativi di PHP (mysqli). Tale approccio consente di separare la struttura della query dai dati forniti dall’utente, garantendo che questi ultimi non vengano interpretati come codice SQL.
+Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database sono state realizzate tramite \textbf{prepared statements} nativi di PHP (mysqli). Questo approccio permette di separare la struttura della query dai dati forniti dall'utente, garantendo che questi ultimi non vengano mai interpretati come codice SQL eseguibile.
 
 \subsection{Database}
 \subsection{Errori di navigazione o del server}

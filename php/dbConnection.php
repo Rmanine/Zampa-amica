@@ -124,7 +124,7 @@ class DBAccess {
 			false se non ha trovato l'utente con Username == $username
 	*/
 	public function getUser($username) {
-		$query = "SELECT ID, Password FROM Utente WHERE Username = ?";
+		$query = "SELECT ID, Password, Email FROM Utente WHERE Username = ?";
 
 		$stmt = mysqli_prepare($this->connection, $query);
 		if ($stmt === false) {
@@ -145,6 +145,11 @@ class DBAccess {
 		return false;
 	}
 
+	/*
+    PRE: accetta l'ID dell'utente (numero intero)
+    POST: ritorna un array con le info dell'utente (ID, Username, Email, Password)
+          restituisce false se l'utente non viene trovato
+    */
 	public function getUserById($id_user) {
 		$query = "SELECT ID, Email, Username, Password FROM Utente WHERE ID = ?";
 
@@ -185,11 +190,12 @@ class DBAccess {
 		mysqli_stmt_store_result($stmt);
 
 		if (mysqli_stmt_num_rows($stmt) > 0) {
+			mysqli_stmt_close($stmt);
 			return true;
 		} else {
+			mysqli_stmt_close($stmt);
 			return false;
 		}
-		mysqli_stmt_close($stmt);
 	}
 	
 	public function addUser($username, $email, $hashedPassword) {
@@ -210,6 +216,63 @@ class DBAccess {
 
 		return $result;
 	}
+
+
+	// Modifica un utente già esistente
+	public function updateUser($id, $email, $username, $password)
+	{
+		$query = "UPDATE Utente 
+			SET Email = ?, Username = ?, Password = ? 
+			WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+		if (!$stmt) {
+			return false;
+		}
+
+		if (!mysqli_stmt_bind_param($stmt, "sssi", $email, $username, $password, $id)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		if (!mysqli_stmt_execute($stmt)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		$affected_rows = mysqli_stmt_affected_rows($stmt);
+		mysqli_stmt_close($stmt);
+
+		return ($affected_rows > 0);
+	}
+
+
+	// Eliminazione user
+	public function deleteUser($id){
+		$query = "DELETE FROM Utente WHERE ID = ?";
+
+		$stmt = mysqli_prepare($this->connection, $query);
+
+		if (!$stmt) {
+			return false;
+		}
+
+		if (!mysqli_stmt_bind_param($stmt, "i", $id)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		if (!mysqli_stmt_execute($stmt)) {
+			mysqli_stmt_close($stmt);
+			return false;
+		}
+
+		$affected_rows = mysqli_stmt_affected_rows($stmt);
+		mysqli_stmt_close($stmt);
+
+		return ($affected_rows > 0);
+	}
+
 
 	// Aggiunge un volontario
 	public function addVolontario($email, $nome, $cognome, $telefono) {

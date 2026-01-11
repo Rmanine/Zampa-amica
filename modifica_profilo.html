@@ -49,26 +49,28 @@
 
     <main id="contenuto">
         <a id="bottone-indietro" class="stile-bottone-1" href="">Torna indietro</a> 
-
+ 
         <h1>Modifica le impostazioni del profilo:</h1>
-        <form action="" method="POST" >
+        <form action="modifica_user.php" method="POST" >
             <label for="username"><span lang="en">Username</span></label>
-            <input type="text" id="username" maxlength="60" />
+            <input type="text" id="username" name="username" maxlength="60" value="[valUsername]"/>
 
             <label for="email">Indirizzo <span lang="en">e-mail</span></label>
-            <input type="email" id="email" />
+            <input type="email" id="email" name="email" value="[valEmail]"/>
 
             <label for="new_password">Nuova <span lang="en">password</span></label>
-            <input type="text" id="new_password" />
+            <input type="password" id="new_password" name="new_password"/>
 
             <label for="repeat_new_password">
                 <p>Conferma <span lang="en">password</span></p>
             </label>
-            <input type="text" id="repeat_new_password">
-            <input type="submit" value="Salva" class="stile-bottone-2">
+            <input type="password" id="repeat_new_password" name="repeat_new_password">
+            <input type="submit" name="submit" value="Salva" class="stile-bottone-2">
 
-            <button class="elimina">Elimina profilo</button>
+            <button type="submit" formaction="php/elimina_user.php" class="elimina">Elimina profilo</button>
         </form>
+
+        [messaggiForm]
     </main>
 
     <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140">

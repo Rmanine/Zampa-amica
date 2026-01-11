@@ -1,12 +1,12 @@
 <?php
-require_once "../php/dbConnection.php";
+require_once "php/dbConnection.php";
 use DB\DBAccess;
 
 
 // Controllo sessione
 session_start();
 if (!isset($_SESSION['logged_in_user'])) {
-    header("Location: ../php/login.php"); // Reindirizza se non loggato
+    header("Location: php/login.php"); // Reindirizza se non loggato
     exit();
 }
 
@@ -36,7 +36,7 @@ $connessione->openDBConnection();
 $datiUtente = $connessione->getUserById($_SESSION['logged_in_user']);
 if (!$datiUtente) { // Se l'utente non viene trovato ritorno alla pagine di login
     $connessione->closeConnection();
-    header("Location: ../php/login.php");
+    header("Location: php/login.php");
     exit();
 }
 $id_utente = $datiUtente['ID'];

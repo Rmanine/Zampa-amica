@@ -23,7 +23,7 @@ function pulisciNote($value)
 // Verifica che l'utente sia autenticato
 session_start();
 if (!isset($_SESSION["logged_in_user"])) {
-    header("Location: accedi.php");
+    header("Location: errore_403.php");
     exit();
 }
 

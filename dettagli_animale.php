@@ -13,6 +13,15 @@ $animaleVisualizzato = '';
 $titoloAnimale = '';
 $nomeAnimale = '';
 $id = (int) $_GET['id'] ?? 0;
+$stringaPrenota = '';
+
+session_start();
+if(isset($_SESSION["logged_in_user"])) {
+    $stringaPrenota .= '<a class="stile-bottone-2" href="./prenotazione.php?id=' . $id . '">Prenota un incontro</a>';
+} else {
+    $stringaPrenota .= '<p>Per prenotare un incontro è necessario effettuare l\'accesso.</p>';
+    $stringaPrenota .= '<a class="stile-bottone-2" href="./accedi.php">Accedi</a>';
+}
 
 function createStringaEtaAnimale($etaAnimale)
 {
@@ -69,6 +78,7 @@ $paginaHTML = str_replace('[AnimaleCorrente]', $animaleVisualizzato, $paginaHTML
 $paginaHTML = str_replace('[AnimaleTitolo]', $titoloAnimale, $paginaHTML);
 $paginaHTML = str_replace('[Animale]', $stringaAnimale, $paginaHTML);
 $paginaHTML = str_replace('[idAnimale]', $id, $paginaHTML);
+$paginaHTML = str_replace('[Prenota]', $stringaPrenota, $paginaHTML);
 echo $paginaHTML;
 
 ?>

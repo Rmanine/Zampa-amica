@@ -201,28 +201,26 @@ Le tabelle fondamentali del database sono:
     \item \textbf{Utente}: contiene le credenziali di accesso e le informazioni di registrazione. Ogni utente è identificato da un campo \texttt{ID} univoco, e dispone di \texttt{Email}, \texttt{Username} (entrambi unici) e \texttt{Password}, memorizzata in SHA-256 per sicurezza.
     \item \textbf{Animale}: memorizza i dati sugli animali presenti nel rifugio, tra cui \texttt{Nome}, \texttt{Specie}, \texttt{Genere}, \texttt{EtàMesi}, \texttt{Taglia} (quando l'animale è un cane) e \texttt{Descrizione}. L’attributo \texttt{Lingua} indica la lingua in cui è stato definito il nome dell’animale. A ciascun animale è associata anche un’immagine tramite l'attributo \texttt{Immagine}.
     \item \textbf{Prenotazione}: registra gli appuntamenti per visite conoscitive o adozioni. La tabella collega un \texttt{UtenteID} a un \texttt{AnimaleID} e memorizza la \texttt{Data} della prenotazione e eventuali note aggiuntive. Le chiavi esterne assicurano l’integrità referenziale con le tabelle \texttt{Utente} e \texttt{Animale}.
-    \item \textbf{Richiesta_Volontariato}: conserva le informazioni relative alle candidature di volontari, tra cui \texttt{Email}, \texttt{Nome}, \texttt{Cognome}, \texttt{Telefono} e la data di invio della richiesta.
+    \item \textbf{Richiesta\_Volontariato}: conserva le informazioni relative alle candidature di volontari, tra cui \texttt{Email}, \texttt{Nome}, \texttt{Cognome}, \texttt{Telefono} e la data di invio della richiesta.
 \end{itemize}
 
-\subsubsection{Popolamento iniziale}
-Il database è inizialmente popolato con esempi di utenti, animali e prenotazioni per permettere il corretto funzionamento delle pagine dinamiche. 
-Ogni tabella include dati realistici, come descrizioni dettagliate degli animali e informazioni sui volontari, in modo da testare tutte le funzionalità del sito.
-
-\subsubsection{Gestione delle relazioni}
-Le relazioni tra le tabelle sono progettate per garantire coerenza e integrità dei dati:
-
-\begin{itemize}
-    \item Un \texttt{Utente} può avere più \texttt{Prenotazioni}, ma ciascuna prenotazione si riferisce a un solo animale.
-    \item Gli \texttt{Animali} possono essere associati a più prenotazioni nel tempo.
-    \item Le richieste di volontariato sono indipendenti dagli utenti registrati e permettono di raccogliere candidature e contatti in modo ordinato.
-\end{itemize}
+\subsubsection{Popolamento e relazioni}
+Il database è popolato con dati di esempio per utenti, animali, prenotazioni e volontariato, garantendo il corretto funzionamento delle pagine dinamiche. 
+Le relazioni tra le tabelle assicurano coerenza: un utente può avere più prenotazioni, ciascuna collegata a un solo animale, mentre le richieste di volontariato restano indipendenti dagli utenti registrati.
 
 \section{Accessibilità}
 \subsection{Supporto alle tecnologie assistive}
 (Testo da inserire)
 \subsection{Contrasti e validazione}
+
 \subsubsection{Font}
-(Testo da inserire)
+Per garantire leggibilità e accessibilità, il sito utilizza il font Atkinson Hyperlegible, importato tramite Google Fonts:
+
+\begin{verbatim}
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> \end{verbatim}
+
+Questo font, progettato specificamente per una facile lettura, è applicato a tutti i testi del portale, migliorando l’esperienza d’uso per tutti gli utenti.
+
 \subsubsection{Falsi Positivi di Total Validator}
 (Testo da inserire)
 

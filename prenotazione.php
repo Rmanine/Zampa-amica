@@ -1,6 +1,7 @@
 <?php
 
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "template.php";
 use DB\DBAccess;
 
 function pulisciInput($value)
@@ -23,7 +24,7 @@ function pulisciNote($value)
 // Verifica che l'utente sia autenticato
 session_start();
 if (!isset($_SESSION["logged_in_user"])) {
-    header("Location: errore_403.php");
+    header("Location: errore_403.html");
     exit();
 }
 
@@ -42,18 +43,18 @@ $connessione = new DBAccess();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') { // Se è GET
     if (!isset($_GET['id'])) {
-        header("Location: errore_500.php");
+        header("Location: errore_500.html");
         exit();
     }
     $idAnimale = intval($_GET['id']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Se è POST (sumbit form)
     if (empty($_POST['idAnimale'])) {
-        header("Location: errore_500.php");
+        header("Location: errore_500.html");
         exit();
     }
     $idAnimale = intval($_POST['idAnimale']);
 } else {
-    header("Location: errore_500.php");
+    header("Location: errore_500.html");
     exit();
 }
 
@@ -137,6 +138,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         exit();
     }
 }
+
+$template = new Template();
+$headerProcessato = $template->getHeader('prenotazione');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 
 $paginaHTML = str_replace("[idAnimale]", htmlspecialchars($idAnimale), $paginaHTML);

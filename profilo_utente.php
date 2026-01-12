@@ -1,6 +1,7 @@
 <?php
 
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "template.php";
 use DB\DBAccess;
 
 function troncaTesto($testo, $maxlength = 40)
@@ -119,6 +120,12 @@ if ($listaPrenotazioni == null) {
 
     $msgPrenotazioni .= "</ul>";
 }
+
+$template = new Template();
+$headerProcessato = $template->getHeader('profilo_utente');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace("[success]", $success, $paginaHTML);
 $paginaHTML = str_replace("[Lista Prenotazioni]", $msgPrenotazioni, $paginaHTML);

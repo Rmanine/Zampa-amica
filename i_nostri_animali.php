@@ -2,6 +2,7 @@
 
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "session.php";
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "template.php";
 
 use DB\DBAccess;
 
@@ -104,6 +105,12 @@ if ($connessioneOK) {
 	header("Location: errore_500.html");
     exit();
 }
+
+$template = new Template();
+$headerProcessato = $template->getHeader('i_nostri_animali');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace('[listaAnimali]', $stringaAnimali, $paginaHTML);
 $paginaHTML = str_replace('[filtriAttivi]', $filtriAttivi, $paginaHTML);

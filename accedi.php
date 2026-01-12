@@ -2,6 +2,7 @@
 
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "login.php";
+require_once "template.php";
 use DB\DBAccess;
 
 $paginaHTML = file_get_contents('accedi.html');
@@ -64,6 +65,12 @@ if (isset($_POST['submit'])) {
     }
 
 }
+
+$template = new Template();
+$headerProcessato = $template->getHeader('accedi');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace('[messaggiForm]', $messaggiPerForm, $paginaHTML);
 $paginaHTML = str_replace('[erroreLogin]', $erroreLogin, $paginaHTML);

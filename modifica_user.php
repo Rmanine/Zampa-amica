@@ -1,5 +1,6 @@
 <?php
-require_once "php/dbConnection.php";
+require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "template.php";
 use DB\DBAccess;
 
 
@@ -20,23 +21,28 @@ $messaggiPerForm = "";
 
 
 // Funzione di pulizia
-function pulisciInput($value) {
-    $value = trim($value); 
-    $value = strip_tags($value); 
+function pulisciInput($value)
+{
+    $value = trim($value);
+    $value = strip_tags($value);
     $value = htmlentities($value);
     return $value;
 }
 
 
 $connessione = new DBAccess();
-$connessione->openDBConnection();
+$connessioneOK = $connessione->openDBConnection();
 
+if (!$connessioneOK) {
+    header("Location: errore_500.html");
+    exit();
+}
 
 // Recupero dei dati attuali per riempire il form
 $datiUtente = $connessione->getUserById($_SESSION['logged_in_user']);
-if (!$datiUtente) { // Se l'utente non viene trovato ritorno alla pagine di login
-    $connessione->closeConnection();
-    header("Location: php/login.php");
+$connessione->closeConnection();
+if (!$datiUtente) { // Se l'utente non viene trovato errore 403
+    header("Location: errore_403.html");
     exit();
 }
 $id_utente = $datiUtente['ID'];
@@ -87,9 +93,17 @@ if (isset($_POST['submit'])) {
     // Inserimento
     if ($messaggiPerForm == "<ul></ul>") { // Lista errori vuota
         $messaggiPerForm = "";
-        
+
+        $connessioneOK = $connessione->openDBConnection();
+
+        if (!$connessioneOK) {
+            header("Location: errore_500.html");
+            exit();
+        }
+
         $risultato = $connessione->updateUser($id_utente, $email_form, $username_form, $password_da_salvare);
-        
+        $connessione->closeConnection();
+
         if ($risultato) {
             $messaggiPerForm = '<p>Profilo aggiornato con successo!</p>';
         } else {
@@ -99,8 +113,11 @@ if (isset($_POST['submit'])) {
     }
 }
 
-$connessione->closeConnection(); 
-// Fuori dal blocco if: la connessione viene chiusa anche se l'utente non preme il tasto "Salva"
+$template = new Template();
+$headerProcessato = $template->getHeader('modifica_profilo');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 // Output
 $paginaHTML = str_replace('[messaggiForm]', $messaggiPerForm, $paginaHTML);

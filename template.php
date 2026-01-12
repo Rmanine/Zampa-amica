@@ -54,6 +54,12 @@ class Template
                 $volontariato = '<a href="./volontariato.php">Volontariato</a>';
                 $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
                 $accediProfilo = 'Profilo';
+            case 'accedi':
+                $home = '<a href="./index.php">Home</a>';
+                $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
+                $volontariato = '<a href="./volontariato.php">Volontariato</a>';
+                $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
+                $accediProfilo = 'Accedi';
             default:
                 $home = '<a href="./index.php">Home</a>';
                 $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';

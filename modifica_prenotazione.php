@@ -1,6 +1,7 @@
 <?php
 
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "template.php";
 use DB\DBAccess;
 
 function pulisciInput($value)
@@ -192,6 +193,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 }
 
+$template = new Template();
+$headerProcessato = $template->getHeader('modifica_prenotazione');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace("[idPrenotazione]", htmlspecialchars($idPrenotazione), $paginaHTML);
 $paginaHTML = str_replace("[NomeAnimale]", $nomeAnimale, $paginaHTML);

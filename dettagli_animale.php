@@ -1,6 +1,7 @@
 <?php
 
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
+require_once "template.php";
 use DB\DBAccess;
 
 $paginaHTML = file_get_contents('dettagli_animale.html');
@@ -73,6 +74,12 @@ if ($connessioneOK && $id !== 0) {
 } else {
     $stringaAnimale = '<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
 }
+
+$template = new Template();
+$headerProcessato = $template->getHeader('dettagli_animali');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace('[AnimaleCorrente]', $animaleVisualizzato, $paginaHTML);
 $paginaHTML = str_replace('[AnimaleTitolo]', $titoloAnimale, $paginaHTML);

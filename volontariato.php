@@ -1,5 +1,6 @@
 <?php
 require_once "php/dbConnection.php";
+require_once "template.php";
 use DB\DBAccess;
 
 
@@ -87,12 +88,18 @@ if (isset($_POST['submit'])) {
     }
 }
 
+$template = new Template();
+$headerProcessato = $template->getHeader('volontariato');
+$footerProcessato = $template->getFooter();
+
 // Output
 $paginaHTML = str_replace('[messaggiForm]', $messaggiPerForm, $paginaHTML);
 $paginaHTML = str_replace('[valNome]', $nome, $paginaHTML);
 $paginaHTML = str_replace('[valCognome]', $cognome, $paginaHTML);
 $paginaHTML = str_replace('[valEmail]', $email, $paginaHTML);
 $paginaHTML = str_replace('[valTelefono]', $telefono, $paginaHTML);
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 echo $paginaHTML;
 ?>

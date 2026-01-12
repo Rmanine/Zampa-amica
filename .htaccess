@@ -17,4 +17,5 @@ RewriteRule ^modifica_prenotazione\.html$ /vbaleanu/modifica_prenotazione.php [L
 RewriteRule ^profilo_utente\.html$ /vbaleanu/profilo_utente.php [L,R=301]
 # RewriteRule ^registrati\.html$ /vbaleanu/registrati.php [L,R=301]
 RewriteRule ^dbConnection\.php$ /vbaleanu/errore_403.html [L,R=301]
-RewriteRule ^$ /vbaleanu/index.html [L,R=301]
+RewriteRule ^index\.html$ /vbaleanu/index.php [L,R=301]
+RewriteRule ^$ /vbaleanu/index.php [L,R=301]

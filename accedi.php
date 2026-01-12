@@ -16,6 +16,12 @@ function pulisciInput($value)
     return $value;
 }
 
+session_start();
+if (isset($_SESSION["logged_in_user"])) {
+    header("Location: profilo_utente.php");
+    exit();
+}
+
 if (isset($_POST['submit'])) {
 
     $username = pulisciInput($_POST['username']);

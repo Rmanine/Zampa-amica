@@ -62,93 +62,91 @@
 \newpage
 \section{Introduzione}
 \subsection{Scopo del prodotto}
-Zampa Amica è una piattaforma web nata per supportare la visibilità di un rifugio per animali domestici situato nel territorio di Padova (struttura fittizia, ideata esclusivamente per le finalità del progetto). 
+Zampa Amica è una piattaforma web progettata per aumentare la visibilità di un rifugio per animali domestici situato nel territorio di Padova (struttura fittizia, realizzata esclusivamente a fini didattici).
 
-L'obiettivo principale del sito è facilitare l'incontro tra la struttura e le persone interessate all'adozione, offrendo una vetrina digitale dove consultare agevolmente le schede di cani e gatti ospitati.
+L’obiettivo principale del sito è facilitare l’incontro tra il rifugio e le persone interessate all’adozione, offrendo una vetrina digitale che consente di consultare in modo semplice e intuitivo le schede dei cani e dei gatti ospitati.
 
-Oltre alla funzione di catalogo, la piattaforma mira a favorire il coinvolgimento della comunità locale: gli utenti possono candidarsi per supportare concretamente le attività del rifugio, offrendo la possibilità di contribuire al benessere degli animali. 
+Oltre alla funzione informativa, la piattaforma promuove il coinvolgimento della comunità locale: gli utenti possono candidarsi per supportare le attività del rifugio, contribuendo in modo concreto al benessere degli animali.
 
 \section{Analisi dei requisiti}
 \subsection{Analisi del target}
-Il progetto è stato sviluppato per interfacciarsi con un'utenza eterogenea. Dato lo scopo del portale, il target di riferimento abbraccia ogni fascia anagrafica: dai giovani agli anziani in cerca di compagnia, indipendentemente da genere, provenienza culturale o livello di istruzione.
+Il progetto è stato pensato per rivolgersi a un’utenza ampia ed eterogenea. In linea con le finalità del portale, il target include utenti di ogni fascia d’età, dai più giovani agli anziani in cerca di compagnia, senza distinzioni di genere, provenienza culturale o livello di istruzione.
 
-A causa di queste considerazioni, l'interfaccia utilizza un linguaggio semplice e una gerarchia visiva ben definita.
-Tali accorgimenti sono volti a minimizzare il carico cognitivo, permettendo una navigazione fluida anche a utenti con limitate competenze informatiche, garantendo loro un accesso paritario alle informazioni del catalogo e alle funzionalità di interazione con la struttura.
+Per questo motivo, l’interfaccia adotta un linguaggio semplice e una gerarchia visiva chiara. Queste scelte mirano a ridurre il carico cognitivo e a rendere la navigazione fluida anche per utenti con competenze informatiche limitate, garantendo un accesso equo alle informazioni e alle funzionalità offerte dal sito.
 
 \subsection{Tipi di utente}
-Il sito prevede due tipologie principali di utenza, differenziate in base ai permessi di accesso e alle funzionalità disponibili:
+Il portale prevede due principali tipologie di utenti, differenziate in base ai permessi di accesso e alle funzionalità disponibili:
 \begin{itemize}
-    \item \textbf{Utente non registrato}: ha accesso ai contenuti puramente informativi e alla visualizzazione del catalogo completo degli animali presso la struttura. Può manifestare il proprio interesse per l'attività sociale compilando il form per diventare volontario.
-    \item \textbf{Utente registrato}: oltre alle funzionalità riservate agli utenti non registrati, dispone di un'area personale per la gestione e modifica dei propri dati. Dispone inoltre di un sistema di prenotazione e gestione delle visite in struttura.
+    \item \textbf{Utente non registrato}: può accedere ai contenuti informativi e consultare il catalogo completo degli animali presenti nella struttura. Ha inoltre la possibilità di manifestare il proprio interesse per l’attività di volontariato compilando l’apposito form.
+    \item \textbf{Utente registrato}: oltre alle funzionalità disponibili per gli utenti non registrati, dispone di un’area personale per la visualizzazione e la modifica dei propri dati. Può inoltre prenotare e gestire le visite presso la struttura.
 \end{itemize}
-L'invio della richiesta per diventare volontario è un'operazione che può essere completata con successo sia da utenti visitatori che da utenti autenticati.
+
+La candidatura per il volontariato può essere inviata sia dagli utenti non registrati sia da quelli autenticati.
 
 \subsection{Funzionalità}
-Il portale offre un set di funzionalità studiate per rispondere alle esigenze di diverse tipologie di utenti, garantendo un'esperienza completa e intuitiva:
+Il portale mette a disposizione un insieme di funzionalità pensate per rispondere alle esigenze delle diverse tipologie di utenti e offrire un’esperienza completa e intuitiva:
 \begin{itemize}
-    \item \textbf{Autenticazione e profilo}: Gestione dell'accesso e della registrazione. Gli utenti autenticati dispongono di un'area personale per gestire i propri dati.
-    \item \textbf{Gestione prenotazioni}: Sistema riservato agli utenti registrati per la prenotazione di visite in struttura. Include la possibilità di visualizzare, modificare o annullare i propri appuntamenti tramite un sistema CRUD (Create, Read, Update, Delete).
-    \item \textbf{Candidatura volontariato}: Sistema dedicato al reclutamento di nuovi collaboratori. Gli utenti (sia visitatori che registrati) possono inviare la propria candidatura inserendo nominativo e recapiti (telefono ed email); i dati vengono raccolti affinché il personale della struttura possa ricontattare personalmente i candidati per i colloqui conoscitivi.
-    \item \textbf{Catalogo animali}: Visualizzazione dinamica degli animali presenti nel rifugio. La navigazione è supportata da un sistema di filtraggio avanzato per specie, sesso, taglia ed età, permettendo una ricerca mirata.
-    \item \textbf{Schede dettaglio}: Pagina dedicata per ciascun animale, contenente informazioni descrittive e una foto.
+    \item \textbf{Autenticazione e profilo}: gestione della registrazione e dell’accesso al sistema. Gli utenti autenticati dispongono di un’area personale per la gestione dei propri dati.
+    \item \textbf{Gestione delle prenotazioni}: funzionalità riservata agli utenti registrati che consente di prenotare visite in struttura e di visualizzare, modificare o annullare gli appuntamenti tramite operazioni di tipo CRUD (Create, Read, Update, Delete).
+    \item \textbf{Candidatura al volontariato}: sistema dedicato alla raccolta delle richieste di collaborazione. Gli utenti possono inviare la propria candidatura inserendo nome, cognome e recapiti (telefono ed email), permettendo al personale della struttura di ricontattarli per un colloquio conoscitivo.
+    \item \textbf{Catalogo animali}: sezione dinamica per la consultazione degli animali presenti nel rifugio, supportata da un sistema di filtraggio per specie, sesso, taglia ed età, che facilita una ricerca mirata.
+    \item \textbf{Schede di dettaglio}: pagine dedicate ai singoli animali, contenenti informazioni descrittive e una foto identificativa.
 \end{itemize}
 
 \section{Progettazione}
 \subsection{Struttura del sito}
-L'architettura del portale è stata progettata per garantire un'esperienza d'uso coerente e un orientamento immediato. La navigazione si sviluppa attraverso una gerarchia chiara, supportata da una struttura HTML5 semantica condivisa da tutte le pagine del sito.
+L’architettura del portale è stata progettata per offrire un’esperienza d’uso coerente e un orientamento immediato. La navigazione si basa su una gerarchia chiara e su una struttura HTML5 semantica condivisa da tutte le pagine, così da garantire uniformità e facilità di utilizzo.
 
 \subsubsection{Scheletro comune}
-Ogni pagina del portale è costruita su una struttura modulare che assicura accessibilità e continuità visiva. I componenti principali che definiscono il layout sono:
+Tutte le pagine del portale condividono una struttura modulare pensata per assicurare continuità visiva e accessibilità. I principali elementi che compongono il layout sono:
 \begin{itemize}
-    \item \textbf{Header}: Rappresenta il cardine della navigazione. Include un link di accesso rapido ("Salta al contenuto") posto all'inizio del codice per permettere agli utenti che utilizzano tecnologie assistive o tastiera di saltare i blocchi di navigazione ripetitivi. Al suo interno sono stati implementati i seguenti elementi:
+    \item \textbf{Header}: Costituisce il punto centrale della navigazione. Include un link di accesso rapido (``Salta al contenuto''), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
     \begin{itemize}
-        \item \textbf{Identità visiva}: Il logo della struttura è inserito all'interno di un collegamento ipertestuale che punta alla Home. Questa scelta rispetta i pattern consolidati di User Experience, che prevedono il ritorno alla pagina principale cliccando sull'identità visiva del sito, facilitando l'orientamento.
-        \item \textbf{Menù di navigazione}: All'interno del tag \texttt{<nav id="menu">} è ospitata una lista non ordinata di collegamenti e un pulsante di azione dinamico.
-        \item \textbf{Dinamicità della call to action}: Il pulsante di accesso modifica il proprio testo e la destinazione in base allo stato della sessione: gli utenti anonimi visualizzano "Accedi" (o "Registrati" se già nella pagina di login), mentre gli utenti autenticati hanno accesso diretto al proprio "Profilo".
-        \item \textbf{Ottimizzazione mobile}: Per le risoluzioni ridotte, è stato implementato un menù hamburger gestito tramite script. Per garantire la piena accessibilità, il pulsante è arricchito da attributi ARIA (aria-label, aria-expanded), fondamentali per comunicare lo stato del menù (aperto/chiuso) agli screen reader.
+        \item \textbf{Identità visiva}: Il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
+        Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità dell’header.
+        \item \textbf{Menù di navigazione}: All’interno del tag \texttt{<nav id="menu">} è presente una lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
+        \item \textbf{Call to action dinamica}: Il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano ``Accedi'' (o ``Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione ``Profilo''.
+        \item \textbf{Ottimizzazione mobile}: Nelle risoluzioni ridotte viene visualizzato un menù hamburger gestito tramite script.
     \end{itemize}
-
-    \item \textbf{Breadcrumb}: Posizionato immediatamente sotto l'header all'interno del tag \texttt{<nav id="breadcrumb">}, fornisce un supporto contestuale indicando il percorso gerarchico. La pagina corrente è resa come testo semplice per evitare link circolari e ottimizzare l'esperienza di chi utilizza browser vocali.
-
-    \item \textbf{Main}: Il corpo centrale, identificato dal tag \texttt{<main id="contenuto">}, ospita i contenuti specifici di ogni pagina, fungendo da ancoraggio per i link di salto presenti nell'header e nel footer.
-
-    \item \textbf{Footer}: Rappresenta la chiusura informativa del sito. Include un'ancora di risalita ("Torna al contenuto") per agevolare la navigazione da tastiera, i crediti per le immagini (Pixabay), le note di copyright, i nomi degli sviluppatori e il disclaimer relativo alla natura universitaria e fittizia del progetto.
+    \item \textbf{Breadcrumb}: Posizionato immediatamente sotto l’header all’interno del tag \texttt{<nav id="breadcrumb">}, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari e migliorare l’esperienza di navigazione assistita.
+    \item \textbf{Main}: L’area principale dei contenuti, identificata dal tag \texttt{<main id="contenuto">}, ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
+    \item \textbf{Footer}: Chiude la struttura informativa del sito e include un’ancora di risalita (``Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright, i nomi degli sviluppatori e il disclaimer relativo alla natura universitaria e fittizia del progetto.
 \end{itemize}
 
 \subsubsection{Organizzazione delle pagine}
-Il portale articola in tre macro-aree principali, distinte per finalità e permessi di accesso:
+Il portale è suddiviso in tre macro-aree, differenziate in base alle funzionalità offerte e ai permessi di accesso.
 
 \paragraph{Area informativa}
 \begin{itemize}
-    \item \textbf{Home (index)}: Presenta la missione del rifugio e i dati relativi all'impatto sociale (animali salvati, adozioni, volontari attivi).
-    \item \textbf{Chi siamo}: Racconta la storia dell'associazione e presenta il team composto da studenti universitari uniti dalla passione per gli animali.
+    \item \textbf{Home (index)}: Presenta la missione del rifugio e alcuni dati sull’impatto sociale (il numero di animali salvati, le adozioni effettuate e i volontari attivi).
+    \item \textbf{Chi siamo}: Racconta la storia dell’associazione e presenta il team, composto da studenti universitari accomunati dalla passione per gli animali.
 \end{itemize}
 
-\paragraph{Area di interazione sociale}
+\paragraph{Area di coinvolgimento}
 \begin{itemize}
-    \item \textbf{I nostri animali}: Una vetrina dinamica che permette di consultare le schede degli ospiti del rifugio tramite un sistema di filtraggio.
-    \item \textbf{Dettagli animale}: Fornisce approfondimenti e foto identificativa del singolo animale.
-    \item \textbf{Volontariato}: Una sezione dedicata a chi desidera donare il proprio tempo. Include un form di candidatura completo di validazione e suggerimenti per l'inserimento dei dati (nome, cognome, telefono, email).
+    \item \textbf{I nostri animali}: Una sezione dinamica che consente di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio.
+    \item \textbf{Dettagli animale}: Fornisce informazioni approfondite e una foto identificativa del singolo animale.
+    \item \textbf{Volontariato}: Sezione dedicata a chi desidera offrire il proprio supporto. Include un form di candidatura con validazione dei campi e suggerimenti per l’inserimento dei dati principali.
 \end{itemize}
 
 \paragraph{Area riservata (utente autenticato)}
 \begin{itemize}
-    \item \textbf{Profilo utente}: Cruscotto personale per la visualizzazione dei propri dati e delle visite prenotate.
-    \item \textbf{Modifica profilo}: Pagina tecnica per l'aggiornamento dei dati personali dell'utente.
-    \item \textbf{Prenotazione}: Sistema per fissare appuntamenti in struttura selezionando la data e un animale.
-    \item \textbf{Modifica prenotazione}: Interfaccia per la gestione (modifica o cancellazione) degli appuntamenti esistenti.
+    \item \textbf{Profilo utente}: Area personale per la visualizzazione dei dati dell’utente e delle visite prenotate.
+    \item \textbf{Modifica profilo}: Pagina dedicata all’aggiornamento delle informazioni personali.
+    \item \textbf{Prenotazione}: Sistema che consente di fissare un appuntamento in struttura selezionando una data e un animale.
+    \item \textbf{Modifica prenotazione}: Interfaccia per modificare o annullare le prenotazioni esistenti.
 \end{itemize}
 
 \subsubsection{Pagine di servizio}
-Le pagine di errore (403, 404, 500) sono state progettate con una particolare attenzione all'esperienza utente. Utilizzano un linguaggio simpatico e rassicurante volto a spiegare l'accaduto e a guidare l'utente verso una navigazione sicura. Queste pagine mantengono inalterato lo scheletro comune (Header, Breadcrumb e Footer), garantendo che l'utente possa riprendere l'esplorazione del sito in qualsiasi momento, riducendo il senso di smarrimento.
+Le pagine di errore (403, 404 e 500) sono state progettate ponendo particolare attenzione all’esperienza utente. Utilizzano un linguaggio semplice e rassicurante per spiegare l’errore e guidare l’utente verso una navigazione sicura. Queste pagine mantengono lo stesso scheletro delle altre pagine, consentendo di riprendere facilmente l’esplorazione del sito e riducendo il senso di smarrimento.
 
 \subsection{SEO}
-L'indicizzazione del portale è stata curata seguendo le moderne linee guida SEO, con l'obiettivo di migliorare la visibilità e garantire una corretta scansione da parte dei crawler dei motori di ricerca. Le principali strategie adottate includono:
+L’indicizzazione del portale è stata curata seguendo le principali linee guida SEO, con l’obiettivo di migliorare la visibilità sui motori di ricerca e garantire una corretta scansione delle pagine da parte dei crawler. Le strategie adottate comprendono:
 \begin{itemize}
-    \item \textbf{Markup semantico}: L'architettura delle pagine si basa sull'utilizzo sistematico di tag semantici HTML5 (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}). Questa scelta è fondamentale per comunicare ai motori di ricerca la gerarchia strutturale e il valore informativo dei contenuti, facilitando l'estrazione delle informazioni rilevanti.
-    \item \textbf{Personalizzazione dei metadati}: Ogni pagina del sito è stata dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e pertinenti. Tale accuratezza assicura che ogni risorsa sia indicizzata correttamente e che lo \textit{snippet} visualizzato nei risultati di ricerca (SERP) sia accattivante e coerente con le aspettative dell'utente.
-    \item \textbf{Responsive Web Design}: Il design è stato ottimizzato per la visualizzazione su dispositivi mobili attraverso l'uso di fogli di stile responsivi. Dato che la compatibilità \textit{mobile} è un fattore determinante per il posizionamento, questa ottimizzazione garantisce una fruibilità universale e un miglior ranking nei motori di ricerca.
-    \item \textbf{Segnali sociali e autorità}: La presenza di collegamenti diretti al profilo Instagram nel \textit{footer} contribuisce alla creazione di una rete di segnali sociali. Questo tipo di integrazione aiuta a incrementare l'autorità del dominio e la fiducia nel brand agli occhi dei motori di ricerca.
+    \item \textbf{Markup semantico}: La struttura delle pagine utilizza in modo coerente i tag semantici HTML5 (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}). Questa scelta consente ai motori di ricerca di interpretare correttamente la gerarchia dei contenuti e di individuare più facilmente le informazioni rilevanti.
+    \item \textbf{Metadati descrittivi}: Ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Ciò favorisce un’indicizzazione accurata e contribuisce a rendere lo \textit{snippet} nei risultati di ricerca chiaro per l’utente.
+    \item \textbf{Responsive web design}: Il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile responsivi. Poiché la compatibilità mobile è un fattore rilevante per il posizionamento, questa scelta migliora sia l’esperienza di navigazione sia il ranking nei motori di ricerca.
+    \item \textbf{Presenza sui social}: Nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione contribuisce a rafforzare la visibilità del progetto e a trasmettere maggiore affidabilità e continuità del brand.
 \end{itemize}
 
 \section{Implementazione front-end}
@@ -186,49 +184,60 @@ Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database s
 
 \section{Organizzazione del gruppo}
 \subsection{Modalità di lavoro}
-La gestione dei file è avvenuta tramite Git, utilizzando GitHub come piattaforma di collaborazione. 
-Questa scelta ha permesso ai membri del gruppo di lavorare in parallelo sulle diverse componenti del sito e della documentazione, garantendo la sincronizzazione del codice. La comunicazione interna è stata gestita tramite messaggistica e incontri periodici, che hanno permesso di monitorare lo stato di avanzamento del progetto e risolvere tempestivamente eventuali criticità.
+La gestione dei file è stata effettuata tramite Git, utilizzando GitHub come piattaforma di collaborazione. 
+Questa scelta ha consentito ai membri del gruppo di lavorare in parallelo sulle diverse componenti del sito e della documentazione, mantenendo il codice sincronizzato.
+
+La comunicazione interna è avvenuta tramite messaggistica e incontri periodici, che hanno consentito di monitorare l’avanzamento del progetto e affrontare tempestivamente eventuali criticità.
 
 \subsection{Suddivisione dei compiti}
-La definizione del layout generale, la scelta del nome del progetto e lo studio della palette cromatica sono stati il frutto di un lavoro collettivo. 
-La ripartizione delle attività tra i componenti del gruppo è stata pianificata con l'obiettivo di rendere il carico di lavoro il più bilanciato possibile. I compiti sono stati assegnati seguendo le competenze e gli interessi individuali, garantendo il coinvolgimento di tutti i componenti in ogni fase del progetto. 
+La definizione del layout generale, la scelta del nome del progetto e lo studio della palette cromatica sono stati il risultato di un lavoro condiviso.
+La ripartizione delle attività è stata pianificata con l’obiettivo di bilanciare il carico di lavoro e valorizzare le competenze e gli interessi di ciascun componente, garantendo il coinvolgimento di tutti nelle diverse fasi del progetto.
+
+Per chiarezza, si specifica che:
+\begin{itemize}
+    \item \textbf{Design}: comprende la scelta dei contenuti e la progettazione del layout delle pagine tramite Canva; non tutte le pagine dispongono di un modello dedicato, in quanto per alcune sezioni ci si è basati su strutture già progettate in precedenza per pagine con funzionalità simili.
+    \item \textbf{HTML} riguarda la realizzazione della struttura delle pagine tramite codice;
+    \item \textbf{CSS} concerne la definizione dello stile grafico e dell’impaginazione;
+    \item \textbf{PHP} fa riferimento allo sviluppo della logica lato server;
+    \item \textbf{SQL} riguarda la progettazione e la gestione della base di dati.
+\end{itemize}
 
 \subsubsection{Valeria Baleanu}
 \begin{itemize}
-    \item \textbf{Design}: Progettazione dell'interfaccia grafica per le pagine volontariato e registrati;
-    \item \textbf{HTML}: Realizzazione delle pagine index, errore\_403 e modifica\_profilo; sviluppo della sezione relativa alla gestione delle prenotazioni con le pagine prenotazione e modifica\_prenotazione;
-    \item \textbf{CSS}: Sviluppo del sistema di filtri con menù hamburger per la ricerca degli animali nella pagina i\_nostri\_animali, gestione del menù di navigazione principale, collaborazione alla stesura del foglio di stile per la stampa (print.css) e definizione del layout strutturale degli elementi di pagina;
-    \item \textbf{PHP}: Implementazione del sistema CRUD completo per la gestione delle prenotazioni (metodi: add, update, get, delete) e della logica dei filtri di ricerca;
-    \item \textbf{Altro}: Ottimizzazione dei parametri SEO del sito e revisione tecnica del codice SQL.
+    \item \textbf{Design}: volontariato, registrati;
+    \item \textbf{HTML}: index, errore\_403, modifica\_profilo, prenotazione, modifica\_prenotazione;
+    \item \textbf{CSS}: i\_nostri\_animali (sistema di filtri e menù hamburger), menù di navigazione principale, collaborazione a print.css, layout strutturale delle pagine;
+    \item \textbf{PHP}: gestione prenotazioni (CRUD), logica dei filtri di ricerca;
+    \item \textbf{Altro}: ottimizzazione SEO e revisione del codice SQL.
 \end{itemize}
 
 \subsubsection{Sara Ballardin}
 \begin{itemize}
-    \item \textbf{Design}: Studio della palette cromatica, creazione del set di icone personalizzate, gestione degli asset grafici e progettazione dell'interfaccia per le pagine index, chi\_siamo e errore\_404;
-    \item \textbf{HTML}: Sviluppo della struttura per le pagine volontariato e chi\_siamo; realizzazione della pagina di errore\_404 e collaborazione alla creazione della pagina errore\_500;
-    \item \textbf{CSS}: Definizione dello stile per pulsanti e collegamenti ipertestuali, garantendo coerenza visiva e accessibilità cromatica;
-    \item \textbf{PHP}: Sviluppo della logica di gestione per la pagina volontariato e implementazione delle funzioni lato server per la gestione utente (metodi: update, get, delete);
-    \item \textbf{SQL}: Progettazione dello schema logico della base di dati (in collaborazione) e stesura del codice SQL per la creazione e il popolamento del database;
-    \item \textbf{Altro}: Stesura della relazione e collaborazione alla gestione del profilo Instagram del progetto.
+    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404, errore\_500;
+    \item \textbf{HTML}: volontariato, chi\_siamo, errore\_404, collaborazione a errore\_500;
+    \item \textbf{CSS}: stile di pulsanti e link, con attenzione alla coerenza visiva e all’accessibilità cromatica;
+    \item \textbf{PHP}: gestione della pagina volontariato, funzioni utente (update, get, delete);
+    \item \textbf{SQL}: progettazione dello schema logico (in collaborazione) e creazione del database;
+    \item \textbf{Altro}: stesura della relazione e gestione del profilo Instagram del progetto.
 \end{itemize}
 
 \subsubsection{Davide Loparco}
 \begin{itemize}
-    \item \textbf{Design}: Prototipazione delle interfacce per le pagine dettagli\_animale, i\_nostri\_animali e errore\_500;
-    \item \textbf{HTML}: Sviluppo della struttura per la pagina dettagli\_animale, della pagina registrati e del footer; collaborazione alla creazione della pagina errore\_500;
-    \item \textbf{CSS}: Stilizzazione completa e unificata di tutti i form presenti nel sito per le pagine accedi, registrati, volontariato e modifica\_profilo;
-    \item \textbf{PHP}: Collaborazione all'integrazione dei metodi di autenticazione e della logica di gestione del database;
-    \item \textbf{SQL}: Progettazione dello schema logico della base di dati (in collaborazione);
-    \item \textbf{Altro}: Stesura della relazione e collaborazione alla gestione del profilo Instagram del progetto.
+    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali;
+    \item \textbf{HTML}: dettagli\_animale, registrati, footer, collaborazione a errore\_500;
+    \item \textbf{CSS}: stilizzazione unificata dei form (accedi, registrati, volontariato, modifica\_profilo);
+    \item \textbf{PHP}: collaborazione all’autenticazione e alla gestione del database;
+    \item \textbf{SQL}: progettazione dello schema logico (in collaborazione);
+    \item \textbf{Altro}: stesura della relazione e gestione del profilo Instagram del progetto.
 \end{itemize}
 
 \subsubsection{Riccardo Manisi}
 \begin{itemize}
-    \item \textbf{Design}: Progettazione grafica delle interfacce per le pagine profilo\_utente, modifica\_profilo e accedi;
-    \item \textbf{HTML}: Realizzazione della struttura per le pagine profilo\_utente, i\_nostri\_animali e accedi;
-    \item \textbf{CSS}: Implementazione del foglio di stile per il Responsive Design (mobile.css) e collaborazione alla creazione del file per la stampa (print.css);
-    \item \textbf{PHP}: Sviluppo della classe di gestione del database (DBAccess), implementazione del sistema di gestione delle sessioni (login/logout) e logica per il popolamento dinamico della pagina i\_nostri\_animali;
-    \item \textbf{Altro}: Organizzazione dell'architettura delle directory nel repository e setup iniziale dell'ambiente di sviluppo.
+    \item \textbf{Design}: profilo\_utente, modifica\_profilo, accedi;
+    \item \textbf{HTML}: profilo\_utente, i\_nostri\_animali, accedi;
+    \item \textbf{CSS}: responsive design (mobile.css), collaborazione a print.css;
+    \item \textbf{PHP}: classe DBAccess, gestione sessioni (login/logout), popolamento dinamico di i\_nostri\_animali;
+    \item \textbf{Altro}: organizzazione delle directory del repository e configurazione iniziale dell’ambiente di sviluppo.
 \end{itemize}
 
 \end{document}

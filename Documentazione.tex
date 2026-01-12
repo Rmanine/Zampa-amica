@@ -42,7 +42,7 @@
         \hline
         Ballardin Sara & 2101048 & \href{mailto:sara.ballardin1@studenti.unipd.it}{sara.ballardin.1@studenti.unipd.it} \\
         \hline
-        Loparco Davide & 2101088 & \href{mailto:davide.loparco@studenti.unipd.it}{loparco.davide@studenti.unipd.it} \\
+        Loparco Davide & 2101088 & \href{mailto:davide.loparco@studenti.unipd.it}{davide.loparco@studenti.unipd.it} \\
         \hline
         Manisi Riccardo & 2111948 & \href{mailto:riccardo.manisi@studenti.unipd.it}{riccardo.manisi@studenti.unipd.it} \\
         \hline
@@ -151,11 +151,33 @@ L’indicizzazione del portale è stata curata seguendo le principali linee guid
 
 \section{Implementazione front-end}
 \subsection{HTML}
-(Testo da inserire)
+Le pagine del sito sono state realizzate seguendo lo standard HTML5, con un approccio modulare e semantico. Questa scelta garantisce leggibilità del codice, facilità di manutenzione e supporto per l’accessibilità.
+
+Ogni pagina adotta uno scheletro comune composto dai principali elementi: \texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}. L’header ospita il menu di navigazione, comprensivo del pulsante “hamburger” per dispositivi mobili. La voce relativa alla pagina corrente è mostrata come testo semplice, evitando collegamenti ridondanti.
+Il contenuto principale è racchiuso nel tag \texttt{<main id="contenuto">}, punto di arrivo per i link di salto (“Salta al contenuto” e “Torna al contenuto”), che migliorano la navigazione tramite tastiera e tecnologie assistive. All’interno del main, i blocchi di contenuto sono organizzati in \texttt{<section>} per evidenziare le parti semanticamente distinte del sito.
+
+Per facilitare stili e interazioni, vengono utilizzati gli attributi \texttt{id} e \texttt{class}, che permettono di identificare i blocchi e di applicare CSS e script in maniera modulare.
+
+Tutte le pagine sono validate secondo lo standard W3C e arricchite con metadati descrittivi (\texttt{<title>}, \texttt{<meta description>}, \texttt{<meta keywords>}) e l’attributo \texttt{lang}, per garantire compatibilità, accessibilità e corretto supporto multilingua.
+
 \subsection{CSS}
-(Testo da inserire)
+Lo stile grafico del sito è stato sviluppato seguendo il principio di separazione tra struttura e presentazione, utilizzando fogli di stile esterni. In particolare, il progetto si basa su tre file CSS distinti:
+\begin{itemize}
+    \item \texttt{style.css} per la versione desktop;
+    \item \texttt{mobile.css} per la visualizzazione su dispositivi mobili;
+    \item \texttt{print.css} per l’ottimizzazione della stampa.
+\end{itemize}
+
+L’approccio adottato è quello del \textit{Responsive Web Design}, che consente al layout di adattarsi dinamicamente alle diverse dimensioni dello schermo. Per la disposizione degli elementi sono stati utilizzati Flexbox e, in alcune sezioni, tecniche di layout fluido basate sulla larghezza della viewport.
+
+La coerenza visiva è garantita dall’uso di variabili CSS definite nel selettore \texttt{:root}, che centralizzano la gestione dei colori principali e permettono di mantenere un’identità grafica uniforme in tutte le pagine. 
+
+Il foglio di stile è organizzato in sezioni tematiche (header, navigazione, breadcrumb, contenuto principale, footer, form, pagine di dettaglio), facilitando la manutenzione del codice e l’estensione futura del progetto.
+Sono inoltre previsti stili specifici per gli stati di interazione (\texttt{:hover}, \texttt{:focus-visible}) degli elementi cliccabili, al fine di migliorare l’esperienza d’uso e l’accessibilità.
+
 \subsection{JavaScript}
 (Testo da inserire)
+
 \subsection{Convenzioni interne}
 (Testo da inserire)
 
@@ -171,9 +193,31 @@ La sanificazione dei dati in input avviene tramite la funzione \texttt{pulisciIn
 Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database sono state realizzate tramite \textit{prepared statements} nativi di PHP (mysqli). Questo approccio permette di separare la struttura della query dai dati forniti dall'utente, garantendo che questi ultimi non vengano mai interpretati come codice SQL eseguibile.
 
 \subsection{Database}
-(Testo da inserire)
+Il sito web si appoggia su un database relazionale per la gestione delle informazioni relative agli utenti, agli animali, alle prenotazioni e alle richieste di volontariato.
 
-\section{Accessibilità e Test}
+\subsubsection{Struttura delle tabelle principali}
+Le tabelle fondamentali del database sono:
+\begin{itemize}
+    \item \textbf{Utente}: contiene le credenziali di accesso e le informazioni di registrazione. Ogni utente è identificato da un campo \texttt{ID} univoco, e dispone di \texttt{Email}, \texttt{Username} (entrambi unici) e \texttt{Password}, memorizzata in SHA-256 per sicurezza.
+    \item \textbf{Animale}: memorizza i dati sugli animali presenti nel rifugio, tra cui \texttt{Nome}, \texttt{Specie}, \texttt{Genere}, \texttt{EtàMesi}, \texttt{Taglia} (quando l'animale è un cane) e \texttt{Descrizione}. L’attributo \texttt{Lingua} indica la lingua in cui è stato definito il nome dell’animale. A ciascun animale è associata anche un’immagine tramite l'attributo \texttt{Immagine}.
+    \item \textbf{Prenotazione}: registra gli appuntamenti per visite conoscitive o adozioni. La tabella collega un \texttt{UtenteID} a un \texttt{AnimaleID} e memorizza la \texttt{Data} della prenotazione e eventuali note aggiuntive. Le chiavi esterne assicurano l’integrità referenziale con le tabelle \texttt{Utente} e \texttt{Animale}.
+    \item \textbf{Richiesta_Volontariato}: conserva le informazioni relative alle candidature di volontari, tra cui \texttt{Email}, \texttt{Nome}, \texttt{Cognome}, \texttt{Telefono} e la data di invio della richiesta.
+\end{itemize}
+
+\subsubsection{Popolamento iniziale}
+Il database è inizialmente popolato con esempi di utenti, animali e prenotazioni per permettere il corretto funzionamento delle pagine dinamiche. 
+Ogni tabella include dati realistici, come descrizioni dettagliate degli animali e informazioni sui volontari, in modo da testare tutte le funzionalità del sito.
+
+\subsubsection{Gestione delle relazioni}
+Le relazioni tra le tabelle sono progettate per garantire coerenza e integrità dei dati:
+
+\begin{itemize}
+    \item Un \texttt{Utente} può avere più \texttt{Prenotazioni}, ma ciascuna prenotazione si riferisce a un solo animale.
+    \item Gli \texttt{Animali} possono essere associati a più prenotazioni nel tempo.
+    \item Le richieste di volontariato sono indipendenti dagli utenti registrati e permettono di raccogliere candidature e contatti in modo ordinato.
+\end{itemize}
+
+\section{Accessibilità}
 \subsection{Supporto alle tecnologie assistive}
 (Testo da inserire)
 \subsection{Contrasti e validazione}

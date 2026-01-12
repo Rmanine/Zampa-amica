@@ -100,17 +100,17 @@ L’architettura del portale è stata progettata per offrire un’esperienza d�
 \subsubsection{Scheletro comune}
 Tutte le pagine del portale condividono una struttura modulare pensata per assicurare continuità visiva e accessibilità. I principali elementi che compongono il layout sono:
 \begin{itemize}
-    \item \textbf{Header}: Costituisce il punto centrale della navigazione. Include un link di accesso rapido (“Salta al contenuto”), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
+    \item \textbf{Header}: Costituisce il punto centrale della navigazione. Include un link di accesso rapido (``Salta al contenuto''), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
     \begin{itemize}
         \item \textbf{Identità visiva}: Il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
         Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità dell’header.
         \item \textbf{Menù di navigazione}: All’interno del tag \texttt{<nav id="menu">} è presente una lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
-        \item \textbf{Call to action dinamica}: Il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano “Accedi” (o “Registrati” nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione “Profilo”.
+        \item \textbf{Call to action dinamica}: Il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano ``Accedi'' (o ``Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione ``Profilo''.
         \item \textbf{Ottimizzazione mobile}: Nelle risoluzioni ridotte viene visualizzato un menù hamburger gestito tramite script.
     \end{itemize}
     \item \textbf{Breadcrumb}: Posizionato immediatamente sotto l’header all’interno del tag \texttt{<nav id="breadcrumb">}, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari e migliorare l’esperienza di navigazione assistita.
     \item \textbf{Main}: L’area principale dei contenuti, identificata dal tag \texttt{<main id="contenuto">}, ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
-    \item \textbf{Footer}: Chiude la struttura informativa del sito e include un’ancora di risalita (“Torna al contenuto”) per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright, i nomi degli sviluppatori e il disclaimer relativo alla natura universitaria e fittizia del progetto.
+    \item \textbf{Footer}: Chiude la struttura informativa del sito e include un’ancora di risalita (``Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright, i nomi degli sviluppatori e il disclaimer relativo alla natura universitaria e fittizia del progetto.
 \end{itemize}
 
 \subsubsection{Organizzazione delle pagine}
@@ -195,7 +195,7 @@ La ripartizione delle attività è stata pianificata con l’obiettivo di bilanc
 
 Per chiarezza, si specifica che:
 \begin{itemize}
-    \textbf{Design}: comprende la scelta dei contenuti e la progettazione del layout delle pagine tramite Canva; non tutte le pagine dispongono di un modello dedicato, in quanto per alcune sezioni ci si è basati su strutture già progettate in precedenza per pagine con funzionalità simili.
+    \item \textbf{Design}: comprende la scelta dei contenuti e la progettazione del layout delle pagine tramite Canva; non tutte le pagine dispongono di un modello dedicato, in quanto per alcune sezioni ci si è basati su strutture già progettate in precedenza per pagine con funzionalità simili.
     \item \textbf{HTML} riguarda la realizzazione della struttura delle pagine tramite codice;
     \item \textbf{CSS} concerne la definizione dello stile grafico e dell’impaginazione;
     \item \textbf{PHP} fa riferimento allo sviluppo della logica lato server;
@@ -205,16 +205,16 @@ Per chiarezza, si specifica che:
 \subsubsection{Valeria Baleanu}
 \begin{itemize}
     \item \textbf{Design}: volontariato, registrati;
-    \item \textbf{HTML}: index, errore_403, modifica_profilo, prenotazione, modifica_prenotazione;
-    \item \textbf{CSS}: i_nostri_animali (sistema di filtri e menù hamburger), menù di navigazione principale, collaborazione a print.css, layout strutturale delle pagine;
+    \item \textbf{HTML}: index, errore\_403, modifica\_profilo, prenotazione, modifica\_prenotazione;
+    \item \textbf{CSS}: i\_nostri\_animali (sistema di filtri e menù hamburger), menù di navigazione principale, collaborazione a print.css, layout strutturale delle pagine;
     \item \textbf{PHP}: gestione prenotazioni (CRUD), logica dei filtri di ricerca;
     \item \textbf{Altro}: ottimizzazione SEO e revisione del codice SQL.
 \end{itemize}
 
 \subsubsection{Sara Ballardin}
 \begin{itemize}
-    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi_siamo, errore_404, errore_500;
-    \item \textbf{HTML}: volontariato, chi_siamo, errore_404, collaborazione a errore_500;
+    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404, errore\_500;
+    \item \textbf{HTML}: volontariato, chi\_siamo, errore\_404, collaborazione a errore\_500;
     \item \textbf{CSS}: stile di pulsanti e link, con attenzione alla coerenza visiva e all’accessibilità cromatica;
     \item \textbf{PHP}: gestione della pagina volontariato, funzioni utente (update, get, delete);
     \item \textbf{SQL}: progettazione dello schema logico (in collaborazione) e creazione del database;
@@ -223,9 +223,9 @@ Per chiarezza, si specifica che:
 
 \subsubsection{Davide Loparco}
 \begin{itemize}
-    \item \textbf{Design}: dettagli_animale, i_nostri_animali;
-    \item \textbf{HTML}: dettagli_animale, registrati, footer, collaborazione a errore_500;
-    \item \textbf{CSS}: stilizzazione unificata dei form (accedi, registrati, volontariato, modifica_profilo);
+    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali;
+    \item \textbf{HTML}: dettagli\_animale, registrati, footer, collaborazione a errore\_500;
+    \item \textbf{CSS}: stilizzazione unificata dei form (accedi, registrati, volontariato, modifica\_profilo);
     \item \textbf{PHP}: collaborazione all’autenticazione e alla gestione del database;
     \item \textbf{SQL}: progettazione dello schema logico (in collaborazione);
     \item \textbf{Altro}: stesura della relazione e gestione del profilo Instagram del progetto.
@@ -233,10 +233,10 @@ Per chiarezza, si specifica che:
 
 \subsubsection{Riccardo Manisi}
 \begin{itemize}
-    \item \textbf{Design}: profilo_utente, modifica_profilo, accedi;
-    \item \textbf{HTML}: profilo_utente, i_nostri_animali, accedi;
+    \item \textbf{Design}: profilo\_utente, modifica\_profilo, accedi;
+    \item \textbf{HTML}: profilo\_utente, i\_nostri\_animali, accedi;
     \item \textbf{CSS}: responsive design (mobile.css), collaborazione a print.css;
-    \item \textbf{PHP}: classe DBAccess, gestione sessioni (login/logout), popolamento dinamico di i_nostri_animali;
+    \item \textbf{PHP}: classe DBAccess, gestione sessioni (login/logout), popolamento dinamico di i\_nostri\_animali;
     \item \textbf{Altro}: organizzazione delle directory del repository e configurazione iniziale dell’ambiente di sviluppo.
 \end{itemize}
 

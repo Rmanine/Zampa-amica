@@ -374,7 +374,6 @@ hr {
     display: flex;
     flex-direction: column;
     margin: 1em;
-    width: 300px;
 }
 
 .elemento-galleria a:link {
@@ -382,7 +381,6 @@ hr {
 }
 
 .elemento-galleria img {
-    width: 100%;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     object-fit: cover;

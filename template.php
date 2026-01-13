@@ -23,48 +23,29 @@ class Template
             $accediProfilo = '<a class="stile-bottone-1" href="./profilo_utente.php">Profilo</a>';
         }
 
+        $home = '<a href="./index.php">Home</a>';
+        $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
+        $volontariato = '<a href="./volontariato.php">Volontariato</a>';
+        $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
+
         switch ($pagina) {
             case 'index':
                 $home = "Home";
-                $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
-                $volontariato = '<a href="./volontariato.php">Volontariato</a>';
-                $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
                 break;
             case 'i_nostri_animali':
-                $home = '<a href="./index.php">Home</a>';
                 $animali = 'I nostri animali';
-                $volontariato = '<a href="./volontariato.php">Volontariato</a>';
-                $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
                 break;
             case 'volontariato':
-                $home = '<a href="./index.php">Home</a>';
-                $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
                 $volontariato = 'Volontariato';
-                $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
                 break;
             case 'chi_siamo':
-                $home = '<a href="./index.php">Home</a>';
-                $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
-                $volontariato = '<a href="./volontariato.php">Volontariato</a>';
                 $chisiamo = 'Chi siamo';
                 break;
             case 'profilo_utente':
-                $home = '<a href="./index.php">Home</a>';
-                $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
-                $volontariato = '<a href="./volontariato.php">Volontariato</a>';
-                $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
                 $accediProfilo = 'Profilo';
+                break;
             case 'accedi':
-                $home = '<a href="./index.php">Home</a>';
-                $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
-                $volontariato = '<a href="./volontariato.php">Volontariato</a>';
-                $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
                 $accediProfilo = 'Accedi';
-            default:
-                $home = '<a href="./index.php">Home</a>';
-                $animali = '<a href="./i_nostri_animali.php">I nostri animali</a>';
-                $volontariato = '<a href="./volontariato.php">Volontariato</a>';
-                $chisiamo = '<a href="./chi_siamo.php">Chi siamo</a>';
                 break;
         }
 

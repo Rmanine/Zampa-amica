@@ -17,6 +17,7 @@ $id = (int) $_GET['id'] ?? 0;
 $stringaPrenota = '';
 
 session_start();
+$_SESSION['return_url'] = $_SERVER['REQUEST_URI']; // Permette di tornare indietro a questa pagina, se l'utente fa l'accesso
 if(isset($_SESSION["logged_in_user"])) {
     $stringaPrenota .= '<a class="stile-bottone-2" href="./prenotazione.php?id=' . $id . '">Prenota un incontro</a>';
 } else {

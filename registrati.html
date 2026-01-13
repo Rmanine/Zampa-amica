@@ -34,13 +34,13 @@
 
         <form action="" method="post">
             <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
-            <input type="text" id="username" name="username" autocomplete="username" required>
+            <input type="text" id="username" name="username" autocomplete="username" value="[valUsername]" required>
             <p class="info-form">Esempio: mario.rossi</p>
-            <p class="info-form">Deve contenere almeno 4 caratteri e può includere solo lettere.</p>
+            <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo lettere, numeri o punti.</p>
 
             
             <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+            <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required>
             <p class="info-form">Esempio: mario.rossi@gmail.com</p>
             
             <label for="password"><span lang="en">Password: </span><span class="req">(richiesto)</span></label>
@@ -56,8 +56,9 @@
             
             <label for="confirmed-password">Conferma <span lang="en">password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="confirmed-password" name="confirmed-password" autocomplete="new-password" required>
+            <div class="form-errors">[messaggiForm]</div>
 
-            <button type="submit">Registrati</button>
+            <button type="submit" name="submit">Registrati</button>
         </form>
     </main>
 

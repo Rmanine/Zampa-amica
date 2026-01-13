@@ -52,6 +52,12 @@ if (isset($_POST['submit'])) {
             $userID = $auth->authenticate($username, $password);
             if ($userID) {
                 $auth->log_user_in($userID);
+                if (isset($_SESSION['return_url'])) {
+                    $returnUrl = $_SESSION['return_url'];
+                    unset($_SESSION['return_url']); // pulisci la sessione
+                    header("Location: " . $returnUrl);
+                    exit();
+                }
                 header("Location: profilo_utente.php");
                 exit();
             } else {

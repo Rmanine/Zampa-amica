@@ -91,7 +91,7 @@ $email = is_null($infoUtente['Email']) ? '' : $infoUtente['Email'];
 
 if ($listaPrenotazioni == null) {
     // l'utente non ha effettuato nessuna prenotazione
-    $msgPrenotazioni = "<p>Nessuna prenotazione trovata.</p>";
+    $msgPrenotazioni = '<p class="label-elemento">Nessuna prenotazione trovata.</p>';
 } else {
     $msgPrenotazioni = "<ul>";
 

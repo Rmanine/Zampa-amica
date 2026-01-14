@@ -8,6 +8,7 @@ use DB\DBAccess;
 $paginaHTML = file_get_contents('accedi.html');
 
 $messaggiPerForm = '';
+$success = '';
 
 function pulisciInput($value)
 {
@@ -20,6 +21,12 @@ session_start();
 if (isset($_SESSION["logged_in_user"])) {
     header("Location: profilo_utente.php");
     exit();
+}
+
+if (isset($_GET['account_deleted'])) {
+    if ($_GET['account_deleted'] == 1) {
+        $success = '<p class="success" role="status">Eliminazione del profilo avvenuta con successo.</p>';
+    }
 }
 
 if (isset($_POST['submit'])) {
@@ -81,6 +88,7 @@ $paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
 $paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace('[messaggiForm]', $messaggiPerForm, $paginaHTML);
+$paginaHTML = str_replace('[success]', $success, $paginaHTML);
 
 echo $paginaHTML;
 

@@ -17,6 +17,7 @@
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
+    <script src="js/elimina_profilo.js" defer></script>
     <script async src="js/scripts.js"></script>
 </head>
 
@@ -44,7 +45,23 @@
                 <form id="logout-form" action="php/logout.php" method="post">
                     <button type="submit" aria-label="Esci dal profilo">Esci</button>
                 </form>
-                <button class="elimina">Elimina profilo</button>
+                <button type="button" class="elimina" id="btn-elimina-profilo" aria-haspopup="dialog"
+                    aria-controls="dialog-elimina-profilo">Elimina profilo</button>
+            </div>
+        </div>
+
+        <div id="dialog-elimina-profilo" class="dialog-overlay" role="dialog" aria-labelledby="dialog-title"
+            aria-describedby="dialog-desc" aria-modal="true" hidden>
+            <div class="dialog-content">
+                <h2 id="dialog-title">Conferma eliminazione profilo</h2>
+                <p id="dialog-desc">Sei sicuro di voler eliminare il tuo profilo? Questa azione è irreversibile e
+                    cancellerà tutti i tuoi dati e appuntamenti.</p>
+                <div class="dialog-buttons">
+                    <button type="button" class="stile-bottone-2" id="btn-annulla">Annulla</button>
+                    <form id="form-elimina-profilo" action="php/elimina_user.php" method="post">
+                        <button type="submit" class="elimina">Conferma eliminazione</button>
+                    </form>
+                </div>
             </div>
         </div>
 

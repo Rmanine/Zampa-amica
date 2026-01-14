@@ -61,12 +61,12 @@ $note = "";
 
 if (isset($_GET['update'])) {
     if ($_GET['update'] == 1) {
-        $success = "<p class='success'>Modifica avvenuta con successo.</p>";
+        $success = '<p class="success" role="status">Modifica avvenuta con successo.</p>';
     }
 }
 if (isset($_GET['delete'])) {
     if ($_GET['delete'] == 1) {
-        $success = "<p class='success'>Eliminazione avvenuta con successo.</p>";
+        $success = '<p class="success" role="status">Eliminazione avvenuta con successo.</p>';
     }
 }
 

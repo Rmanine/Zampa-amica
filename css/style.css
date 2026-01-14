@@ -544,6 +544,7 @@ textarea {
 }
 
 .form-errors ul li {
+    width: 90%;
     text-align: center;
     font-size: 1em;
 }
@@ -734,4 +735,38 @@ form .req, .form-errors {
 
 .importante {
     font-weight: bold;
+}
+
+/* Dialog modale */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-overlay[hidden] {
+    display: none;
+}
+
+.dialog-content {
+    background-color: var(--bgcolor);
+    border: 3px solid var(--widgetcolor);
+    border-radius: 30px;
+    padding: 2em;
+    max-width: 1200px;
+    width: 90%;
+}
+
+#form-elimina-profilo {
+    border: none;
+    padding: 0;
+    margin: 0;
+    max-width: none;
 }

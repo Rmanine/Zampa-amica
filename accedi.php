@@ -26,19 +26,19 @@ if (isset($_POST['submit'])) {
 
     $username = pulisciInput($_POST['username']);
     if (strlen($username) == 0) {
-        $messaggiPerForm .= "<li>Inserire username</li>";
+        $messaggiPerForm .= '<li>Inserire lo <span lang="en">username</span></li>';
     } else {
         if (!preg_match('/^\S+$/', $username)) {
-            $messaggiPerForm .= "<li>Lo username non deve contenere spazi</li>";
+            $messaggiPerForm .= '<li>Lo <span lang="en">username</span> non deve contenere spazi</li>';
         }
     }
 
     $password = pulisciInput($_POST['password']);
     if (strlen($password) == 0) {
-        $messaggiPerForm .= "<li>Inserire password</li>";
+        $messaggiPerForm .= '<li>Inserire la <span lang="en">password</span></li>';
     } else {
         if (!preg_match('/^\S+$/', $password)) { //da rivedere
-            $messaggiPerForm .= "<li>La password non deve contenere spazi</li>";
+            $messaggiPerForm .= '<li>La <span lang="en">password</span> non deve contenere spazi</li>';
         }
     }
 
@@ -60,11 +60,11 @@ if (isset($_POST['submit'])) {
                 header("Location: profilo_utente.php");
                 exit();
             } else {
-                $messaggiPerForm = '<li><span lang="en">Username</span> o <span lang="en">password</span> sono errati.</li>';
+                $messaggiPerForm = '<li><span lang="en">Username</span> o <span lang="en">password</span> errati.</li>';
             }
         } else {
             //$messaggiPerForm = '<p class="req">I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
-            header("Location: profilo_utente.php");
+            header("Location: errore_500.html");
             exit();
         }
     }

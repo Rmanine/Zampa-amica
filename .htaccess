@@ -10,6 +10,9 @@ RewriteRule .* /vbaleanu/errore_403.html [L]
 
 RewriteEngine On
 RewriteRule ^accedi\.html$ /vbaleanu/accedi.php [L,R=301]
+RewriteRule ^errore_403\.html$ /vbaleanu/errore_403.php [L,R=301]
+RewriteRule ^errore_404\.html$ /vbaleanu/errore_404.php [L,R=301]
+RewriteRule ^errore_500\.html$ /vbaleanu/errore_500.php [L,R=301]
 RewriteRule ^dettagli_animale\.html$ /vbaleanu/dettagli_animale.php [L,R=301]
 RewriteRule ^i_nostri_animali\.html$ /vbaleanu/i_nostri_animali.php [L,R=301]
 RewriteRule ^modifica_prenotazione\.html$ /vbaleanu/modifica_prenotazione.php [L,R=301]

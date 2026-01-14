@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
                     header("Location: profilo_utente.php");
                     exit();
                 } else {
-                    $messaggiPerForm = '<li><span lang="en">username</span> gi&agrave; esistente.</li>';
+                    $messaggiPerForm = '<li><span lang="en">username</span> o <span lang="en">email</span> gi&agrave; esistenti.</li>';
                 }
             } else {
                 header("Location: errore_500.html");
@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
 
     // raccolta errori
     if (!empty($messaggiPerForm)) {
-        $messaggiPerForm = "<ul>" . $messaggiPerForm . "</ul>";
+        $messaggiPerForm = '<div class="form-errors"><ul role="alert">Errore:' . $messaggiPerForm . '</ul></div>';
     }
 }
 

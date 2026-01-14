@@ -99,7 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $dataPost = isset($_POST['date']) ? pulisciInput($_POST['date']) : '';
     $notePost = isset($_POST['note']) ? pulisciNote($_POST['note']) : '';
 
-    $errors .= "<ul>";
     if (empty($dataPost)) { // Data è campo obbligatorio
         $errors .= "<li>Compilare tutti i campi richiesti.</li>";
     } else {
@@ -138,9 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $errors .= '<li>Hai gi&agrave; una prenotazione per questo animale nella data selezionata.</li>';
     }
 
-    $errors .= "</ul>";
-
-    if ($errors != "<ul></ul>") { // Se ci sono errori li mostro
+    if (!empty($errors)) { // Se ci sono errori li mostro
+        $errors = '<div class="form-errors"><ul role="alert">Errore:' . $errors . '</ul></div>';
         $paginaHTML = str_replace("[idAnimale]", $idAnimale, $paginaHTML);
         $paginaHTML = str_replace("[NomeAnimale]", $nomeAnimale, $paginaHTML);
         $paginaHTML = str_replace("[data]", $dataPost, $paginaHTML);
@@ -150,8 +148,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         echo $paginaHTML;
         exit();
     }
-    $errors = "";
-
 
     $connessioneOK = $connessione->openDBConnection();
 

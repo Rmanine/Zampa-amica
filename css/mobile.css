@@ -194,3 +194,26 @@ input, textarea {
   width: 50%;
   gap: 0;
 }
+
+.profilo-contenitore {
+  display: block;
+  text-align: center;
+}
+
+.account-buttons {
+  text-align: center;
+}
+
+.profilo {
+  margin: auto;
+}
+
+@media screen and (max-width: 340px) {
+  .profilo div {
+    text-align: center;
+  }
+
+  .profilo img {
+    margin-right: 0;
+  }
+}

@@ -145,8 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         header("Location: profilo_utente.php");
         exit();
     }
-
-    $errors .= "<ul>";
+    
     if (empty($dataPost)) { // Data è campo obbligatorio
         $errors .= "<li>Compilare tutti i campi richiesti.</li>";
     } else {
@@ -185,9 +184,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $errors .= '<li>Hai gi&agrave; una prenotazione per questo animale nella data selezionata.</li>';
     }
 
-    $errors .= "</ul>";
-
-    if ($errors != "<ul></ul>") { // Se ci sono errori li mostro
+    if (!empty($errors)) { // Se ci sono errori li mostro
+        $errors = '<div class="form-errors"><ul role="alert">Errore:' . $errors . '</ul></div>';
         $paginaHTML = str_replace("[idPrenotazione]", $idPrenotazione, $paginaHTML);
         $paginaHTML = str_replace("[NomeAnimale]", $nomeAnimale, $paginaHTML);
         $paginaHTML = str_replace("[ImgAnimale]", $imgAnimale, $paginaHTML);

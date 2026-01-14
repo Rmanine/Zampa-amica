@@ -8,7 +8,6 @@ use DB\DBAccess;
 $paginaHTML = file_get_contents('accedi.html');
 
 $messaggiPerForm = '';
-$erroreLogin = '';
 
 function pulisciInput($value)
 {
@@ -61,13 +60,16 @@ if (isset($_POST['submit'])) {
                 header("Location: profilo_utente.php");
                 exit();
             } else {
-                $erroreLogin = '<p class="req">Username o password non corretti.</p>';
+                $messaggiPerForm = '<li><span lang="en">Username</span> o <span lang="en">password</span> sono errati.</li>';
             }
         } else {
-            $erroreLogin = '<p class="req">I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
+            //$messaggiPerForm = '<p class="req">I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova più tardi, contattaci a questa email miao@gmail.com</p>';
+            header("Location: profilo_utente.php");
+            exit();
         }
-    } else {
-        $messaggiPerForm = "<div id=\"errorMessage\"><ul>" . $messaggiPerForm . "</ul></div>";
+    }
+    if ($messaggiPerForm != "") {
+        $messaggiPerForm = '<div class="form-errors"><ul role="alert">Errore:' . $messaggiPerForm . '</ul></div>';
     }
 
 }
@@ -79,7 +81,6 @@ $paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
 $paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace('[messaggiForm]', $messaggiPerForm, $paginaHTML);
-$paginaHTML = str_replace('[erroreLogin]', $erroreLogin, $paginaHTML);
 
 echo $paginaHTML;
 

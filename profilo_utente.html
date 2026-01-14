@@ -31,17 +31,21 @@
     <main id="contenuto">
         [success]
         <h1>Profilo utente</h1>
-        <section class="profilo">
-            <img src="./img/profilo_utente.svg" alt="">
-            <div>
-                <h2>[username]</h2>
-                <p>[email]</p>
+        <div class="profilo-contenitore">
+            <section class="profilo">
+                <img src="./img/profilo_utente.svg" alt="">
+                <div>
+                    <h2>[username]</h2>
+                    <p>[email]</p>
+                </div>
+            </section>
+            <div class="account-buttons">
+                <a href="./modifica_profilo.php" class="stile-bottone-2">Modifica profilo</a>
+                <form id="logout-form" action="php/logout.php" method="post">
+                    <button type="submit" aria-label="Esci dal profilo">Esci</button>
+                </form>
+                <button class="elimina">Elimina profilo</button>
             </div>
-        </section>
-        <div>
-            <a href="./modifica_profilo.php" class="stile-bottone-2">Modifica profilo</a>
-            <button>Esci</button>
-            <button>Elimina profilo</button>
         </div>
 
         <section class="appuntamenti">

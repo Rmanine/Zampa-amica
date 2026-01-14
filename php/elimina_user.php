@@ -20,14 +20,14 @@ if (isset($_SESSION['logged_in_user'])) {
             session_unset(); // Libera le variabili di sessione
             session_destroy();
 
-            // Reindirizzamento alla home
-            header("Location: ../index.html"); 
+            // Reindirizzamento alla pagina di accesso
+            header("Location: ../accedi.php"); 
             exit();
         }
     }
 }
 
-// Torna alla modifica profilo se qualcosa va storto
-header("Location: ../modifica_user.php");
+// se qualcosa va storto
+header("Location: ../errore_500.html");
 exit();
 ?>

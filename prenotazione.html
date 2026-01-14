@@ -41,7 +41,6 @@
             <div>
                 <h2>[NomeAnimale]</h2>
                 <form id="form_prenotazione" method="post" action="prenotazione.php">
-                    [errors]
                     <input type="hidden" name="idAnimale" value="[idAnimale]">
 
                     <label for="date">Giorno della visita:<span class="req">(richiesto)</span></label>
@@ -52,6 +51,8 @@
                     <textarea id="note" name="note" maxlength="255" rows="4" cols="50">[note]</textarea>
                     <p class="info-form">Inserire un massimo di 255 caratteri.</p>
                     <p class="info-form">Esempio: "Non ho mai avuto animali", "Preferirei un incontro guidato."</p>
+
+                    [errors]
 
                     <button class="stile-bottone-2" type="submit" name="submit">Prenota</button>
                     <a class="stile-bottone-2" href="./dettagli_animale.php?id=[idAnimale]">Annulla la prenotazione</a>

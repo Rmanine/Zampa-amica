@@ -33,7 +33,6 @@
  
         <h1>Modifica le impostazioni del profilo:</h1>
         <form action="modifica_profilo.php" method="post">
-            [messaggiForm]
             <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
             <input type="text" id="username" name="username" maxlength="50" autocomplete="username" value="[valUsername]" required/>
             <p class="info-form">Esempio: mario.rossi</p>
@@ -56,6 +55,8 @@
 
             <label for="repeat_new_password">Conferma nuova <span lang="en">password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="repeat_new_password" name="repeat_new_password">
+
+            [messaggiForm]
             
             <button type="submit" name="submit">Salva</button>
             <a class="stile-bottone-4" href="./profilo_utente.php">Annulla operazione</a>

@@ -42,7 +42,6 @@
             <div>
                 <h2>[NomeAnimale]</h2>
                 <form id="form_prenotazione" method="post" action="modifica_prenotazione.php">
-                    [errors]
                     <input type="hidden" name="idPrenotazione" value="[idPrenotazione]">
 
                     <label for="date">Giorno della visita:<span class="req">(richiesto)</span></label>
@@ -53,6 +52,8 @@
                     <textarea id="note" name="note" maxlength="255" rows="4" cols="50">[note]</textarea>
                     <p class="info-form">Inserire un massimo di 255 caratteri.</p>
                     <p class="info-form">Esempio: "Non ho mai avuto animali", "Preferirei un incontro guidato."</p>
+
+                    [errors]
 
                     <button class="stile-bottone-2" type="submit" name="submit">Salva modifiche</button>
                     <button class="elimina" type="submit" name="delete">Elimina appuntamento</button>

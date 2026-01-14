@@ -13,6 +13,7 @@
     --widgettxtcolor: #a5d6a7;
     --visitedlinkcolor1: #ad522b;
     --visitedlinkcolor2: #dd6a38;
+    --error: #db0000;
 }
 
 html, body {
@@ -163,7 +164,7 @@ button:hover, .stile-bottone-2:hover {
 }
 
 .elimina {
-    color: #f00;
+    color: var(--error);
     background-color:var(--bgcolor);
 }
 
@@ -549,7 +550,7 @@ textarea {
 }
 
 form .req, .form-errors ul li {
-    color: #f00;
+    color: var(--error);
 }
 
 .wave {
@@ -693,7 +694,7 @@ form .req, .form-errors ul li {
 .success {
     font-size: 1.2em;
     font-weight: bold;
-    color: red;
+    color: var(--error);
     margin-bottom: 1.5em;
 }
 

@@ -86,7 +86,7 @@ if ($connessioneOK) {
 				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '" >';
 			}
 			$stringaAnimali .= '<footer>';
-			$stringaAnimali .= '<p class="label-elemento">' . $nomeAnimale . '</p>';
+			$stringaAnimali .= '<h3 class="label-elemento">' . $nomeAnimale . '</h3>';
 			$stringaAnimali .= '<img width="20" height="20" class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '">';
 			$stringaAnimali .= '</footer>';
 			$stringaAnimali .= '</a>';

@@ -39,6 +39,12 @@ $idUtente = null;
 
 $paginaHTML = file_get_contents('modifica_prenotazione.html');
 
+$template = new Template();
+$headerProcessato = $template->getHeader('modifica_prenotazione');
+$footerProcessato = $template->getFooter();
+$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
+$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
+
 $connessione = new DBAccess();
 
 
@@ -153,13 +159,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             }
         }
     }
-    $errors .= "</ul>";
 
-    // if (isset($_POST['note']) && !empty($_POST['note'])) { // Note è campo opzionale
-    //     $note = pulisciNote($_POST['note']);
-    // } else {
-    //     $note = "";
-    // }
+    $connessioneOK = $connessione->openDBConnection();
+
+    if (!$connessioneOK) {
+        header("Location: errore_500.html");
+        exit();
+    }
+
+    // controllo se per quell'utente esiste già una prenotazione allo stesso animale nello stesso giorno
+    $prenotazioniUtente = $connessione->getListaPrenotazioni($idUtente);
+    $connessione->closeConnection();
+    $prenotazioneEsistente = false;
+
+    if ($prenotazioniUtente != null) {
+        foreach ($prenotazioniUtente as $prenotazione) {
+            if ($prenotazione['AnimaleID'] == $idAnimale && $prenotazione['DataOra'] == $dataPost && $prenotazione['ID'] != $idPrenotazione) {
+                $prenotazioneEsistente = true;
+                break;
+            }
+        }
+    }
+
+    if ($prenotazioneEsistente) {
+        $errors .= '<li>Hai gi&agrave; una prenotazione per questo animale nella data selezionata.</li>';
+    }
+
+    $errors .= "</ul>";
 
     if ($errors != "<ul></ul>") { // Se ci sono errori li mostro
         $paginaHTML = str_replace("[idPrenotazione]", $idPrenotazione, $paginaHTML);
@@ -192,12 +218,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         exit();
     }
 }
-
-$template = new Template();
-$headerProcessato = $template->getHeader('modifica_prenotazione');
-$footerProcessato = $template->getFooter();
-$paginaHTML = str_replace('[header]', $headerProcessato, $paginaHTML);
-$paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 
 $paginaHTML = str_replace("[idPrenotazione]", htmlspecialchars($idPrenotazione), $paginaHTML);
 $paginaHTML = str_replace("[NomeAnimale]", $nomeAnimale, $paginaHTML);

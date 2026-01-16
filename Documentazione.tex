@@ -179,7 +179,28 @@ Sono inoltre previsti stili specifici per gli stati di interazione (\texttt{:hov
 (Testo da inserire)
 
 \subsection{Convenzioni interne}
-(Testo da inserire)
+Nel corso dello sviluppo del sito sono state adottate alcune convenzioni progettuali specifiche.
+Tali scelte mirano a garantire coerenza strutturale, usabilità e accessibilità.
+
+\begin{itemize}
+    \item \textbf{Gestione semantica del logo} \\
+    Il logo presente nell’header è marcato come elemento \texttt{<p>} e non come heading.
+    Gli strumenti di analisi dell’accessibilità (come WAVE) segnalano un warning di tipo \emph{``possible heading''}, poiché l’elemento ha un aspetto visivamente simile a un titolo.
+    Questa scelta è intenzionale: il progetto adotta la convenzione di utilizzare un unico \texttt{<h1>} per pagina, riservato esclusivamente al titolo principale del contenuto.
+    Il logo non viene quindi incluso nella gerarchia degli heading per evitare ambiguità semantiche e mantenere una struttura chiara e accessibile.
+    \item \textbf{Rappresentazione visiva dei collegamenti} \\
+    I collegamenti ipertestuali non visitati sono visualizzati come testo sottolineato.  
+    Il link relativo alla pagina corrente non è attivo e non presenta sottolineatura, al fine di evitare collegamenti circolari.  
+    I link visitati sono evidenziati in colore arancione, utilizzando due tonalità differenti per garantire un adeguato contrasto sia su sfondi chiari che scuri.  
+    Questa convenzione favorisce il riconoscimento visivo dei collegamenti già esplorati e mantiene coerenza cromatica nel sito.
+    \item \textbf{Denominazione delle immagini} \\
+    Le immagini degli animali sono archiviate nella cartella \texttt{img/assets}. Per convenzione, il nome del file immagine corrisponde all’\texttt{id} dell’animale nel database.  
+    Questa convenzione viene applicata anche in fase di inserimento di un nuovo animale: l’immagine associata viene salvata direttamente in tale cartella seguendo lo stesso criterio di denominazione.  
+    La scelta consente una gestione più semplice delle risorse e permette al codice PHP di determinare dinamicamente il percorso dell’immagine associata a ciascun animale.
+    \item \textbf{Prenotazione degli incontri} \\
+    Per la prenotazione degli incontri è richiesta unicamente l’indicazione della data.  
+    L’orario non viene specificato, in quanto è sufficiente presentarsi durante gli orari di apertura della struttura, indicati nel sito.
+
 
 \section{Implementazione back-end}
 \subsection{PHP}
@@ -209,6 +230,12 @@ Il database è popolato con dati di esempio per utenti, animali, prenotazioni e 
 Le relazioni tra le tabelle assicurano coerenza: un utente può avere più prenotazioni, ciascuna collegata a un solo animale, mentre le richieste di volontariato restano indipendenti dagli utenti registrati.
 
 \section{Accessibilità}
+
+\subsubsection{Validazione con WAVE}
+È stata eseguita una verifica automatica dell’accessibilità utilizzando lo strumento WAVE (Web Accessibility Evaluation Tool).
+Tutte le pagine hanno ottenuto una valutazione pari a 10/10 e non sono stati rilevati errori bloccanti.
+I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
+
 \subsection{Supporto alle tecnologie assistive}
 (Testo da inserire)
 
@@ -217,6 +244,9 @@ Per garantire leggibilità e accessibilità, il sito utilizza il font Atkinson H
 Questo font, progettato specificamente per una facile lettura, è applicato a tutti i testi del portale, migliorando l’esperienza d’uso per tutti gli utenti.
 
 \subsection{Contrasti e validazione}
+
+
+
 
 \subsubsection{Falsi Positivi di Total Validator}
 (Testo da inserire)

@@ -102,15 +102,15 @@ Tutte le pagine del portale condividono una struttura modulare pensata per assic
 \begin{itemize}
     \item \textbf{Header}: Costituisce il punto centrale della navigazione. Include un link di accesso rapido (``Salta al contenuto''), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
     \begin{itemize}
-        \item \textbf{Identità visiva}: Il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
+        \item \textbf{Identità visiva}: il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
         Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità dell’header.
-        \item \textbf{Menù di navigazione}: All’interno del tag \texttt{<nav id="menu">} è presente una lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
-        \item \textbf{Call to action dinamica}: Il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano ``Accedi'' (o ``Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione ``Profilo''.
-        \item \textbf{Ottimizzazione mobile}: Nelle risoluzioni ridotte viene visualizzato un menù hamburger gestito tramite script.
+        \item \textbf{Menù di navigazione}: all’interno del tag \texttt{<nav id="menu">} è presente una lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
+        \item \textbf{Call to action dinamica}: il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano ``Accedi'' (o ``Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione ``Profilo''.
+        \item \textbf{Ottimizzazione mobile}: nelle risoluzioni ridotte viene visualizzato un menù hamburger gestito tramite script.
     \end{itemize}
-    \item \textbf{Breadcrumb}: Posizionato immediatamente sotto l’header all’interno del tag \texttt{<nav id="breadcrumb">}, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari e migliorare l’esperienza di navigazione assistita.
-    \item \textbf{Main}: L’area principale dei contenuti, identificata dal tag \texttt{<main id="contenuto">}, ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
-    \item \textbf{Footer}: Chiude la struttura informativa del sito e include un’ancora di risalita (``Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright, i nomi degli sviluppatori e il disclaimer relativo alla natura universitaria e fittizia del progetto.
+    \item \textbf{Breadcrumb}: posizionato immediatamente sotto l’header all’interno del tag \texttt{<nav id="breadcrumb">}, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari e migliorare l’esperienza di navigazione assistita.
+    \item \textbf{Main}: l’area principale dei contenuti, identificata dal tag \texttt{<main id="contenuto">}, ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
+    \item \textbf{Footer}: chiude la struttura informativa del sito e include un’ancora di risalita (``Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright, i nomi degli sviluppatori e il disclaimer relativo alla natura universitaria e fittizia del progetto.
 \end{itemize}
 
 \subsubsection{Organizzazione delle pagine}
@@ -118,23 +118,23 @@ Il portale è suddiviso in tre macro-aree, differenziate in base alle funzionali
 
 \paragraph{Area informativa}
 \begin{itemize}
-    \item \textbf{Home (index)}: Presenta la missione del rifugio e alcuni dati sull’impatto sociale (il numero di animali salvati, le adozioni effettuate e i volontari attivi).
-    \item \textbf{Chi siamo}: Racconta la storia dell’associazione e presenta il team, composto da studenti universitari accomunati dalla passione per gli animali.
+    \item \textbf{Home (index)}: presenta la missione del rifugio e alcuni dati sull’impatto sociale (il numero di animali salvati, le adozioni effettuate e i volontari attivi).
+    \item \textbf{Chi siamo}: racconta la storia dell’associazione e presenta il team, composto da studenti universitari accomunati dalla passione per gli animali.
 \end{itemize}
 
 \paragraph{Area di coinvolgimento}
 \begin{itemize}
-    \item \textbf{I nostri animali}: Una sezione dinamica che consente di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio.
-    \item \textbf{Dettagli animale}: Fornisce informazioni approfondite e una foto identificativa del singolo animale.
-    \item \textbf{Volontariato}: Sezione dedicata a chi desidera offrire il proprio supporto. Include un form di candidatura con validazione dei campi e suggerimenti per l’inserimento dei dati principali.
+    \item \textbf{I nostri animali}: sezione dinamica che consente di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio.
+    \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale.
+    \item \textbf{Volontariato}: sezione dedicata a chi desidera offrire il proprio supporto. Include un form di candidatura con validazione dei campi e suggerimenti per l’inserimento dei dati principali.
 \end{itemize}
 
 \paragraph{Area riservata (utente autenticato)}
 \begin{itemize}
-    \item \textbf{Profilo utente}: Area personale per la visualizzazione dei dati dell’utente e delle visite prenotate.
-    \item \textbf{Modifica profilo}: Pagina dedicata all’aggiornamento delle informazioni personali.
-    \item \textbf{Prenotazione}: Sistema che consente di fissare un appuntamento in struttura selezionando una data e un animale.
-    \item \textbf{Modifica prenotazione}: Interfaccia per modificare o annullare le prenotazioni esistenti.
+    \item \textbf{Profilo utente}: area personale per la visualizzazione dei dati dell’utente e delle visite prenotate.
+    \item \textbf{Modifica profilo}: pagina dedicata all’aggiornamento delle informazioni personali.
+    \item \textbf{Prenotazione}: sistema che consente di fissare un appuntamento in struttura selezionando una data e un animale.
+    \item \textbf{Modifica prenotazione}: interfaccia per modificare o annullare le prenotazioni esistenti.
 \end{itemize}
 
 \subsubsection{Pagine di servizio}
@@ -143,10 +143,10 @@ Le pagine di errore (403, 404 e 500) sono state progettate ponendo particolare a
 \subsection{SEO}
 L’indicizzazione del portale è stata curata seguendo le principali linee guida SEO, con l’obiettivo di migliorare la visibilità sui motori di ricerca e garantire una corretta scansione delle pagine da parte dei crawler. Le strategie adottate comprendono:
 \begin{itemize}
-    \item \textbf{Markup semantico}: La struttura delle pagine utilizza in modo coerente i tag semantici HTML5 (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}). Questa scelta consente ai motori di ricerca di interpretare correttamente la gerarchia dei contenuti e di individuare più facilmente le informazioni rilevanti.
-    \item \textbf{Metadati descrittivi}: Ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Ciò favorisce un’indicizzazione accurata e contribuisce a rendere lo \textit{snippet} nei risultati di ricerca chiaro per l’utente.
-    \item \textbf{Responsive web design}: Il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile responsivi. Poiché la compatibilità mobile è un fattore rilevante per il posizionamento, questa scelta migliora sia l’esperienza di navigazione sia il ranking nei motori di ricerca.
-    \item \textbf{Presenza sui social}: Nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione contribuisce a rafforzare la visibilità del progetto e a trasmettere maggiore affidabilità e continuità del brand.
+    \item \textbf{Markup semantico}: la struttura delle pagine utilizza in modo coerente i tag semantici HTML5 (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}). Questa scelta consente ai motori di ricerca di interpretare correttamente la gerarchia dei contenuti e di individuare più facilmente le informazioni rilevanti.
+    \item \textbf{Metadati descrittivi}: ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Ciò favorisce un’indicizzazione accurata e contribuisce a rendere lo \textit{snippet} nei risultati di ricerca chiaro per l’utente.
+    \item \textbf{Responsive web design}: il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile responsivi. Poiché la compatibilità mobile è un fattore rilevante per il posizionamento, questa scelta migliora sia l’esperienza di navigazione sia il ranking nei motori di ricerca.
+    \item \textbf{Presenza sui social}: nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione contribuisce a rafforzare la visibilità del progetto e a trasmettere maggiore affidabilità e continuità del brand.
 \end{itemize}
 
 \section{Implementazione front-end}
@@ -231,7 +231,7 @@ Le relazioni tra le tabelle assicurano coerenza: un utente può avere più preno
 
 \section{Accessibilità}
 
-\subsubsection{Validazione con WAVE}
+\subsection{Validazione con WAVE}
 È stata eseguita una verifica automatica dell’accessibilità utilizzando lo strumento WAVE (Web Accessibility Evaluation Tool).
 Tutte le pagine hanno ottenuto una valutazione pari a 10/10 e non sono stati rilevati errori bloccanti.
 I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.

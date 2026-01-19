@@ -304,7 +304,7 @@ class DBAccess {
 	// Ritorna la lista delle prenotazioni in arrivo (non quelle passate), dato un id utente
 	public function getListaPrenotazioni($id_user)
 	{
-		$query = "SELECT p.ID, p.UtenteID, p.AnimaleID, p.DataOra, p.Note, a.Nome
+		$query = "SELECT p.ID, p.UtenteID, p.AnimaleID, p.DataOra, p.Note, a.Nome, a.Lingua
 				FROM Prenotazione p
 				JOIN Animale a ON p.AnimaleID = a.ID
 				WHERE UtenteID = ?

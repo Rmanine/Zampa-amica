@@ -99,7 +99,11 @@ if ($listaPrenotazioni == null) {
         // controllo che ogni prenotazione appartenga all'utente loggato
         if ($prenotazione['UtenteID'] == $idUtente) {
             $id = $prenotazione['ID'];
-            $nomeAnimale = $prenotazione['Nome'];
+            if ($prenotazione['Lingua'] == 'en') {
+                $nomeAnimale = '<span lang="en">' . $prenotazione['Nome'] . '</span>';
+            } else {
+                $nomeAnimale = $prenotazione['Nome'];
+            }
             $data = $prenotazione['DataOra'];
             $note = !empty($prenotazione['Note']) ? $prenotazione['Note'] : 'Nessuna nota';
             $note = troncaTesto($note);
@@ -111,7 +115,7 @@ if ($listaPrenotazioni == null) {
             $msgPrenotazioni .= "<p>Data: <time datetime='" . $data . "'>" . $dataFormatoIta . "</time></p>";
             $msgPrenotazioni .= "<p>Note: " . $note . "</p>";
             $msgPrenotazioni .= "</div>";
-            $msgPrenotazioni .= "<div>";
+            $msgPrenotazioni .= '<div class="account-buttons">';
             $msgPrenotazioni .= "<a class='stile-bottone-2' href='modifica_prenotazione.php?id=" . $id . "'>Gestisci appuntamento</a>";
             $msgPrenotazioni .= "</div>";
             $msgPrenotazioni .= "</li>";

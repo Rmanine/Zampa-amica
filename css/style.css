@@ -387,7 +387,7 @@ hr {
     object-fit: cover;
 }
 
-.elemento-galleria a > footer {
+.elemento-galleria a > div {
     position: relative;
     width: 100%;
     padding: 0.7rem 1.8rem;
@@ -648,7 +648,7 @@ form .req, .form-errors {
 }
 
 .prenotazioni {
-    width: 50%;
+    width: 60%;
     min-width: 450px;
     margin: auto;
     text-align: left;
@@ -667,6 +667,10 @@ form .req, .form-errors {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.prenotazioni li div:first-child {
+    flex: 0 0 200px;
 }
 
 .prenotazioni p:first-child {

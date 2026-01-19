@@ -34,13 +34,13 @@
         <h1>Modifica le impostazioni del profilo:</h1>
         <form action="modifica_profilo.php" method="post">
             <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
-            <input type="text" id="username" name="username" maxlength="50" autocomplete="username" value="[valUsername]" required/>
             <p class="info-form">Esempio: mario.rossi</p>
+            <input type="text" id="username" name="username" maxlength="50" autocomplete="username" value="[valUsername]" required/>
             <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo lettere, numeri o punti.</p>
 
             <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required>
             <p class="info-form">Esempio: mario.rossi@gmail.com</p>
+            <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required>
 
             <label for="new_password">Nuova <span lang="en">password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="new_password" name="new_password" autocomplete="new-password"/>

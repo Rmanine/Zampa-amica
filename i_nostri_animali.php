@@ -56,7 +56,7 @@ if ($filtri['taglia'] !== 'all') {
     $filtriAttiviArray[] = 'Taglia (' . $filtri['taglia'] . ')';
 }
 if ($filtri['eta'] !== 'all') {
-    $filtriAttiviArray[] = 'Età (' . $filtri['eta'] . ')';
+    $filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ')';
 }
 
 if (!empty($filtriAttiviArray)) {

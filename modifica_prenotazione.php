@@ -111,7 +111,7 @@ $data = is_null($prenotazione['DataOra']) ? '' : $prenotazione['DataOra'];
 $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
 $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
 $idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
-$imgAnimale = '<img src="./img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '">';
+$imgAnimale = '<img src="./img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '"/>';
 
 
 //Elimina appuntamento

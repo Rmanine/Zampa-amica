@@ -81,9 +81,9 @@ class DBAccess {
 			$query .= " WHERE " . implode(" AND ", $conditions);
 		}
 
-		$query .= " ORDER BY ID ASC";
+		$query .= " ORDER BY Nome ASC";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errorre in dbConnection: " . mysqli_error($this->connection));
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in dbConnection: " . mysqli_error($this->connection));
 		
 		if(mysqli_num_rows($queryResult) != 0) {
 			$result = array();

@@ -90,7 +90,7 @@ if (is_null($animale['Nome'])) {
 }
 $idAnimale = is_null($animale['ID']) ? '' : $animale['ID'];
 $idUtente = $_SESSION["logged_in_user"];
-$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '">';
+$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '"/>';
 
 // Invio form (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {

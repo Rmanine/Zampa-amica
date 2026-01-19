@@ -50,7 +50,7 @@ if ($connessioneOK && $id !== 0) {
         $titoloAnimale = '<h1>' . $nomeAnimale . '</h1>';
 
         $stringaAnimale .= '<div>';
-        $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="">';
+        $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="" />';
         $stringaAnimale .= '</div>';
 
         $stringaAnimale .= '<div>';

@@ -32,22 +32,17 @@
         <h1>Registrati</h1>
         <p>Hai già un <span lang="en">account</span>? <a href="./accedi.html">Accedi</a></p>
 
-        <div id="messaggi-form">
-            [messaggiForm]
-        </div>
-
-        <form action="../php/registrazione.php" method="post">
-            
+        <form action="" method="post">
             <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
-            <input type="text" id="username" name="username" autocomplete="username" value="[valUsername]" required>
+            <input type="text" id="username" name="username" autocomplete="username" value="[valUsername]" maxlength="50" required>
             <p class="info-form">Esempio: mario.rossi</p>
-            <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo lettere, numeri o punti.</p>
+            <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo lettere, numeri e punti.</p>
 
-            
+
             <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required>
             <p class="info-form">Esempio: mario.rossi@gmail.com</p>
-            
+            <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required>
+
             <label for="password"><span lang="en">Password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="password" name="password" autocomplete="new-password" required>
             <p class="info-form">La password deve contenere:</p>
@@ -58,9 +53,10 @@
                 <li>Un carattere speciale (! * + %)</li>
                 <li>Un numero (0-9)</li>
             </ul>
-            
             <label for="confirmed-password">Conferma <span lang="en">password: </span><span class="req">(richiesto)</span></label>
             <input type="password" id="confirmed-password" name="confirmed-password" autocomplete="new-password" required>
+            
+            [messaggiForm]
 
             <button type="submit" name="submit">Registrati</button>
         </form>

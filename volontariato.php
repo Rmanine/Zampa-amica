@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
         $messaggiPerForm .= "<li>Inserire il numero di telefono.</li>";
     } else {
         if (!preg_match("/^\d{10}$/", $telefono)) {
-            $messaggiPerForm .= "<li>Il numero di telefono deve contenere 10 cifre.</li>";
+            $messaggiPerForm .= "<li>Il numero di telefono deve contenere 10 cifre e non deve contenere il prefisso.</li>";
         }
     }
 

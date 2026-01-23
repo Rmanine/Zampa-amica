@@ -16,7 +16,7 @@ CREATE TABLE
 		Genere VARCHAR(50) NOT NULL,
 		Taglia VARCHAR(50), -- Opzionale poichè attributo legato solo ai cani
 		Descrizione VARCHAR(500), -- Opzionale
-		Immagine VARCHAR(255) -- Opzionale
+		Immagine VARCHAR(255) NOT NULL
 	);
 
 CREATE TABLE

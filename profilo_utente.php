@@ -112,7 +112,7 @@ if ($listaPrenotazioni == null) {
             $msgPrenotazioni .= "<li>";
             $msgPrenotazioni .= "<div>";
             $msgPrenotazioni .= "<h3>" . $nomeAnimale . "</h3>";
-            $msgPrenotazioni .= '<p>Data: <time datetime="' . $data . '">" . $dataFormatoIta . "</time></p>';
+            $msgPrenotazioni .= '<p>Data: <time datetime="' . $data . '">' . $dataFormatoIta . '</time></p>';
             $msgPrenotazioni .= "<p>Note: " . $note . "</p>";
             $msgPrenotazioni .= "</div>";
             $msgPrenotazioni .= '<div class="account-buttons">';

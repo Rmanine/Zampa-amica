@@ -84,7 +84,7 @@ header #menu button#hamburger {
 }
 
 .terzo-contenuto {
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .terzo-contenuto>* {
@@ -99,6 +99,11 @@ header #menu button#hamburger {
 
 .terzo-contenuto-sottocontenuto p {
   text-align: center;
+}
+
+.terzo-contenuto-sottocontenuto h2 {
+  margin: auto;
+  margin-bottom: 1em;
 }
 
 .piu-info {

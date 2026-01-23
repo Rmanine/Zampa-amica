@@ -25,7 +25,8 @@
     [header]
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="./index.html"><span lang="en">Home</span></a> / <a href="./accedi.html">Accedi</a> / Registrati</p>
+        <p>Ti trovi in: <a href="./index.html"><span lang="en">Home</span></a> / <a href="./accedi.html">Accedi</a> /
+            Registrati</p>
     </nav>
 
     <main id="contenuto">
@@ -33,32 +34,38 @@
         <p>Hai già un <span lang="en">account</span>? <a href="./accedi.html">Accedi</a></p>
 
         <form action="" method="post">
-            <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
-            <input type="text" id="username" name="username" autocomplete="username" value="[valUsername]" maxlength="50" required />
-            <p class="info-form">Esempio: mario.rossi</p>
-            <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo lettere, numeri e punti.</p>
+            <div>
+                <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
+                <input type="text" id="username" name="username" autocomplete="username" value="[valUsername]"
+                    maxlength="50" required />
+                <p class="info-form">Esempio: mario.rossi</p>
+                <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo
+                    lettere, numeri e punti.</p>
 
 
-            <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
-            <p class="info-form">Esempio: mario.rossi@gmail.com</p>
-            <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required />
+                <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
+                <p class="info-form">Esempio: mario.rossi@gmail.com</p>
+                <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required />
 
-            <label for="password"><span lang="en">Password: </span><span class="req">(richiesto)</span></label>
-            <input type="password" id="password" name="password" autocomplete="new-password" required />
-            <p class="info-form">La password deve contenere:</p>
-            <ul class="info-form">
-                <li>Almeno 8 caratteri</li>
-                <li>Una lettera minuscola (a-z)</li>
-                <li>Una lettera maiuscola (A-Z)</li>
-                <li>Un carattere speciale (! * + %)</li>
-                <li>Un numero (0-9)</li>
-            </ul>
-            <label for="confirmed-password">Conferma <span lang="en">password: </span><span class="req">(richiesto)</span></label>
-            <input type="password" id="confirmed-password" name="confirmed-password" autocomplete="new-password" required />
-            
-            [messaggiForm]
+                <label for="password"><span lang="en">Password: </span><span class="req">(richiesto)</span></label>
+                <input type="password" id="password" name="password" autocomplete="new-password" required />
+                <p class="info-form">La password deve contenere:</p>
+                <ul class="info-form">
+                    <li>Almeno 8 caratteri</li>
+                    <li>Una lettera minuscola (a-z)</li>
+                    <li>Una lettera maiuscola (A-Z)</li>
+                    <li>Un carattere speciale (! * + %)</li>
+                    <li>Un numero (0-9)</li>
+                </ul>
+                <label for="confirmed-password">Conferma <span lang="en">password: </span><span
+                        class="req">(richiesto)</span></label>
+                <input type="password" id="confirmed-password" name="confirmed-password" autocomplete="new-password"
+                    required />
 
-            <button type="submit" name="submit">Registrati</button>
+                [messaggiForm]
+
+                <button type="submit" name="submit">Registrati</button>
+            </div>
         </form>
     </main>
 

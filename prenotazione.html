@@ -40,21 +40,24 @@
             <div>
                 <h2>[NomeAnimale]</h2>
                 <form id="form_prenotazione" method="post" action="prenotazione.php">
-                    <input type="hidden" name="idAnimale" value="[idAnimale]" />
+                    <div>
+                        <input type="hidden" name="idAnimale" value="[idAnimale]" />
 
-                    <label for="date">Giorno della visita:<span class="req">(richiesto)</span></label>
-                    <input type="date" id="date" name="date" value="[data]" required />
-                    <p class="info-form">Selezionare un giorno valido partendo da domani.</p>
+                        <label for="date">Giorno della visita:<span class="req">(richiesto)</span></label>
+                        <input type="date" id="date" name="date" value="[data]" required />
+                        <p class="info-form">Selezionare un giorno valido partendo da domani.</p>
 
-                    <label for="note">Note:</label>
-                    <p class="info-form">Esempio: "Non ho mai avuto animali", "Preferirei un incontro guidato."</p>
-                    <textarea id="note" name="note" maxlength="255" rows="4" cols="50">[note]</textarea>
-                    <p class="info-form">Inserire un massimo di 255 caratteri.</p>
+                        <label for="note">Note:</label>
+                        <p class="info-form">Esempio: "Non ho mai avuto animali", "Preferirei un incontro guidato."</p>
+                        <textarea id="note" name="note" maxlength="255" rows="4" cols="50">[note]</textarea>
+                        <p class="info-form">Inserire un massimo di 255 caratteri.</p>
 
-                    [errors]
+                        [errors]
 
-                    <button class="stile-bottone-2" type="submit" name="submit">Prenota</button>
-                    <a class="stile-bottone-4" href="./dettagli_animale.php?id=[idAnimale]">Annulla la prenotazione</a>
+                        <button class="stile-bottone-2" type="submit" name="submit">Prenota</button>
+                        <a class="stile-bottone-4" href="./dettagli_animale.php?id=[idAnimale]">Annulla la
+                            prenotazione</a>
+                    </div>
                 </form>
             </div>
             <div>

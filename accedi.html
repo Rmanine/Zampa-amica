@@ -32,18 +32,20 @@
         <h1>Accedi</h1>
         [success]
         <p>Non hai ancora un <span lang="en">account</span>? <a href="./registrati.php">Registrati</a></p>
-        
+
         <form method="post">
-            <label for="username"><span lang="en">Username</span></label>
-            <input type="text" id="username" name="username" autocomplete="username" required />
-            <p class="info-form">Esempio: mario.rossi</p>
-            
-            <label for="password"><span lang="en">Password</span></label>
-            <input type="password" id="password" name="password" autocomplete="current-password" required />
+            <div>
+                <label for="username"><span lang="en">Username</span></label>
+                <input type="text" id="username" name="username" autocomplete="username" required />
+                <p class="info-form">Esempio: mario.rossi</p>
 
-            [messaggiForm]
+                <label for="password"><span lang="en">Password</span></label>
+                <input type="password" id="password" name="password" autocomplete="current-password" required />
 
-            <button type="submit" name="submit">Accedi</button>
+                [messaggiForm]
+
+                <button type="submit" name="submit">Accedi</button>
+            </div>
         </form>
     </main>
 

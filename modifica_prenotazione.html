@@ -25,38 +25,40 @@
     [header]
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../index.php"><span lang="en">Home</span></a> / <a
-                href="./profilo_utente.php">Profilo utente</a> / I tuoi appuntamenti</p>
+        <p>Ti trovi in: <a href="../index.php"><span lang="en">Home</span></a> / <a href="./profilo_utente.php">Profilo
+                utente</a> / I tuoi appuntamenti</p>
     </nav>
 
     <main id="contenuto">
         <h1>I tuoi appuntamenti</h1>
         <div class="pre-appuntamenti separatore">
-        <p>La nostra associazione &egrave; aperta dal Lunedì alla Domenica.</p>
-        <p>Nel giorno selezionato sarà possibile presentarsi in qualsiasi
-            momento all'interno della fascia oraria dedicata alle visite, dalle 15:00 alle 18:00.</p>
+            <p>La nostra associazione &egrave; aperta dal Lunedì alla Domenica.</p>
+            <p>Nel giorno selezionato sarà possibile presentarsi in qualsiasi
+                momento all'interno della fascia oraria dedicata alle visite, dalle 15:00 alle 18:00.</p>
         </div>
 
         <section class="form-appuntamenti">
             <div>
                 <h2>[NomeAnimale]</h2>
                 <form id="form_prenotazione" method="post" action="modifica_prenotazione.php">
-                    <input type="hidden" name="idPrenotazione" value="[idPrenotazione]" />
+                    <div>
+                        <input type="hidden" name="idPrenotazione" value="[idPrenotazione]" />
 
-                    <label for="date">Giorno della visita:<span class="req">(richiesto)</span></label>
-                    <input type="date" id="date" name="date" value="[data]" required />
-                    <p class="info-form">Selezionare un giorno valido partendo da domani.</p>
+                        <label for="date">Giorno della visita:<span class="req">(richiesto)</span></label>
+                        <input type="date" id="date" name="date" value="[data]" required />
+                        <p class="info-form">Selezionare un giorno valido partendo da domani.</p>
 
-                    <label for="note">Note:</label>
-                    <p class="info-form">Esempio: "Non ho mai avuto animali", "Preferirei un incontro guidato."</p>
-                    <textarea id="note" name="note" maxlength="255" rows="4" cols="50">[note]</textarea>
-                    <p class="info-form">Inserire un massimo di 255 caratteri.</p>
+                        <label for="note">Note:</label>
+                        <p class="info-form">Esempio: "Non ho mai avuto animali", "Preferirei un incontro guidato."</p>
+                        <textarea id="note" name="note" maxlength="255" rows="4" cols="50">[note]</textarea>
+                        <p class="info-form">Inserire un massimo di 255 caratteri.</p>
 
-                    [errors]
+                        [errors]
 
-                    <button class="stile-bottone-2" type="submit" name="submit">Salva modifiche</button>
-                    <button class="elimina" type="submit" name="delete">Elimina appuntamento</button>
-                    <a class="stile-bottone-4" href="./profilo_utente.php">Annulla modifiche</a>
+                        <button class="stile-bottone-2" type="submit" name="submit">Salva modifiche</button>
+                        <button class="elimina" type="submit" name="delete">Elimina appuntamento</button>
+                        <a class="stile-bottone-4" href="./profilo_utente.php">Annulla modifiche</a>
+                    </div>
                 </form>
             </div>
             <div>

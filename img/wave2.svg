@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140">
+    <path fill="#002b24" fill-opacity="1"
+        d="M0,50L80,57C160,64,320,80,480,67C640,50,800,15,960,10C1120,5,1280,25,1360,35L1440,50V0H0Z">
+    </path>
+</svg>

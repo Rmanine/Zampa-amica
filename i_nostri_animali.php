@@ -74,7 +74,7 @@ if ($connessioneOK) {
 		$stringaAnimali .= '<ul class="galleria">';
 		foreach ($animali as $animale) {
 			if ($animale['Lingua'] == 'en') {
-				$nomeAnimale = '<span lang=\'en\'>' . $animale['Nome'] . '</span>';
+				$nomeAnimale = '<span lang="en">' . $animale['Nome'] . '</span>';
 			} else {
 				$nomeAnimale = $animale['Nome'];
 			}

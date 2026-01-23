@@ -83,7 +83,7 @@ if (is_null($animale['Nome'])) {
     $nomeAnimale = '';
 } else {
     if ($animale['Lingua'] == 'en') {
-        $nomeAnimale = '<span lang=\'en\'>' . $animale['Nome'] . '</span>';
+        $nomeAnimale = '<span lang="en">' . $animale['Nome'] . '</span>';
     } else {
         $nomeAnimale = $animale['Nome'];
     }

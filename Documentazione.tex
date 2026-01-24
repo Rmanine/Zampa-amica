@@ -217,7 +217,13 @@ Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database s
 Il sito web si appoggia su un database relazionale per la gestione delle informazioni relative agli utenti, agli animali, alle prenotazioni e alle richieste di volontariato.
 
 \subsubsection{Struttura delle tabelle principali}
-Le tabelle fondamentali del database sono:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{./img/DB_ER.png}
+    \caption{Schema Entità-Relazione del database}
+    \label{fig:schema_er}
+\end{figure}
+Le tabelle fondamentali del database, rappresentate nello schema in Figura \ref{fig:schema_er}, sono:
 \begin{itemize}
     \item \textbf{Utente}: contiene le credenziali di accesso e le informazioni di registrazione. Ogni utente è identificato da un campo \texttt{ID} univoco, e dispone di \texttt{Email}, \texttt{Username} (entrambi unici) e \texttt{Password}, memorizzata in SHA-256 per sicurezza.
     \item \textbf{Animale}: memorizza i dati sugli animali presenti nel rifugio, tra cui \texttt{Nome}, \texttt{Specie}, \texttt{Genere}, \texttt{EtàMesi}, \texttt{Taglia} (quando l'animale è un cane) e \texttt{Descrizione}. L’attributo \texttt{Lingua} indica la lingua in cui è stato definito il nome dell’animale. A ciascun animale è associata anche un’immagine tramite l'attributo \texttt{Immagine}.

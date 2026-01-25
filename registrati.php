@@ -28,7 +28,6 @@ function pulisciInput($value)
     return $value;
 }
 
-
 if (isset($_POST['submit'])) {
     // Validazione Username
     $username = pulisciInput($_POST['username']);

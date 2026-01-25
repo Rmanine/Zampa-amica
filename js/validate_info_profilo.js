@@ -5,7 +5,7 @@ window.addEventListener('load', function () {
 
 var dettagli_form = {
 	username: ["/^[a-zA-Z0-9.]{4,50}$/",'<span lang="en">Username</span> non valido: usa 4–50 caratteri, solo lettere, numeri o punti.'],
-    email: ["/^[^\s@]+@[^\s@]+\.[^\s@]+$/",'Indirizzo <span lang="en">email</span> non valido.'],
+    email: ["/^[^\s@]+@[^\s@]+\.[^\s@]+$/",'Inserire un indirizzo <span lang="en">email</span> nel formato mario.rossi@gmail.com.'],
     new_password: ["/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!*+%]).{8,}$/","La password non rispetta i requisiti."],
     confirmed_password: [null,'Le <span lang="en">password</span> non coincidono.']
 }
@@ -65,6 +65,7 @@ function validazioneForm() {
 function messaggio(input) {
     var p = input.parentNode;
     var node = document.createElement("strong");
+    node.className("form-errors")
     node.textContent = dettagli_form[input.id][1];
     p.appendChild(node);
 }

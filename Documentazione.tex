@@ -176,7 +176,29 @@ Il foglio di stile è organizzato in sezioni tematiche (header, navigazione, bre
 Sono inoltre previsti stili specifici per gli stati di interazione (\texttt{:hover}, \texttt{:focus-visible}) degli elementi cliccabili, al fine di migliorare l’esperienza d’uso e l’accessibilità.
 
 \subsection{JavaScript}
-(Testo da inserire)
+Il linguaggio JavaScript è stato impiegato secondo il principio del \textit{progressive enhancement}, con l'obiettivo di arricchire l'interazione utente e, soprattutto, di garantire il rispetto dei criteri di accessibilità (WCAG) anche nelle componenti dinamiche.
+Le funzionalità principali implementate riguardano la validazione lato client, la gestione dei menu \textit{responsive} e il controllo del focus nelle finestre modali.
+
+\subsubsection{Validazione dei form}
+Per migliorare l'usabilità, è stata introdotta una validazione \textit{real-time} nei form, che fornisce un feedback immediato all'utente prima dell'invio dei dati al server.
+Un esempio ne è la gestione della prenotazione delle visite: uno script dedicato intercetta la selezione della data e impedisce la scelta di giorni passati o della data odierna, permettendo prenotazioni solo a partire dal giorno successivo.
+
+\subsubsection{Gestione dell'interfaccia mobile}
+L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
+\begin{itemize}
+    \item \textbf{Menu Hamburger}: lo script gestisce l'apertura e la chiusura del menu di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (``Apri menu'' / ``Chiudi menu'').
+    \item \textbf{Filtri di ricerca}: nella pagina ``I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script gestisce l'apertura e l'oscuramento dello sfondo, bloccando lo scorrimento della pagina (\texttt{body overflow: hidden}) quando il pannello è attivo.
+\end{itemize}
+
+\subsubsection{Accessibilità e finestre di dialogo (Focus Trap)}
+Particolare attenzione è stata dedicata alla funzionalità di eliminazione del profilo utente. Poiché si tratta di un'azione irreversibile, le linee guida WCAG richiedono meccanismi di prevenzione degli errori. È stata quindi implementata una finestra di dialogo che richiede una conferma esplicita.
+
+Per rendere questa finestra accessibile anche agli utenti che navigano tramite tastiera, è stato sviluppato un meccanismo di \textbf{Focus Trap} (trappola del focus):
+\begin{itemize}
+    \item All'apertura della finestra di dialogo, il focus viene spostato forzatamente al suo interno e il resto della pagina viene reso inerte.
+    \item Lo script intercetta la pressione del tasto \texttt{Tab} (e \texttt{Shift+Tab}): se l'utente tenta di uscire dalla finestra, il focus viene riportato ciclicamente al primo o all'ultimo elemento interattivo della finestra di dialogo.
+    \item Alla chiusura della finestra (tramite pulsante ``Annulla'' o tasto \texttt{Esc}), il focus viene riportato esattamente sull'elemento che aveva attivato l'azione (il pulsante ``Elimina profilo''), permettendo all'utente di riprendere la navigazione senza perdere il punto di riferimento.
+\end{itemize}
 
 \subsection{Convenzioni interne}
 Nel corso dello sviluppo del sito sono state adottate alcune convenzioni progettuali specifiche.
@@ -288,7 +310,7 @@ Per chiarezza, si specifica che:
 
 \subsubsection{Sara Ballardin}
 \begin{itemize}
-    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404, errore\_500;
+    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404 ed errore\_500 (in collaborazione);
     \item \textbf{HTML}: volontariato, chi\_siamo, errore\_404, collaborazione a errore\_500;
     \item \textbf{CSS}: stile di pulsanti e link, con attenzione alla coerenza visiva e all’accessibilità cromatica;
     \item \textbf{PHP}: gestione della pagina volontariato, funzioni utente (update, get, delete);
@@ -298,7 +320,7 @@ Per chiarezza, si specifica che:
 
 \subsubsection{Davide Loparco}
 \begin{itemize}
-    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali;
+    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali, errore\_404 ed errore\_500 (in collaborazione);
     \item \textbf{HTML}: dettagli\_animale, registrati, footer, collaborazione a errore\_500;
     \item \textbf{CSS}: stilizzazione unificata dei form (accedi, registrati, volontariato, modifica\_profilo);
     \item \textbf{PHP}: collaborazione all’autenticazione e alla gestione del database;

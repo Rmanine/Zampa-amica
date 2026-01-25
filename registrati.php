@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $username = pulisciInput($_POST['username']);
     $email = pulisciInput($_POST['email']);
     $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmed-password'];
+    $confirmPassword = $_POST['confirmed_password'];
 
     if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
         $messaggiPerForm .= '<li>Compilare tutti i campi</li>';

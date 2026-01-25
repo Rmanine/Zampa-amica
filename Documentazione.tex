@@ -193,7 +193,7 @@ L'adattamento del layout sui dispositivi mobili è gestito tramite script che ma
 \subsubsection{Accessibilità e finestre di dialogo (Focus Trap)}
 Particolare attenzione è stata dedicata alla funzionalità di eliminazione del profilo utente. Poiché si tratta di un'azione irreversibile, le linee guida WCAG richiedono meccanismi di prevenzione degli errori. È stata quindi implementata una finestra di dialogo che richiede una conferma esplicita.
 
-Per rendere questa finestra accessibile anche agli utenti che navigano tramite tastiera, è stato sviluppato un meccanismo di \textbf{Focus Trap} (trappola del focus):
+Per rendere questa finestra accessibile anche agli utenti che navigano tramite tastiera, è stato sviluppato un meccanismo di \textbf{Focus Trap}:
 \begin{itemize}
     \item All'apertura della finestra di dialogo, il focus viene spostato forzatamente al suo interno e il resto della pagina viene reso inerte.
     \item Lo script intercetta la pressione del tasto \texttt{Tab} (e \texttt{Shift+Tab}): se l'utente tenta di uscire dalla finestra, il focus viene riportato ciclicamente al primo o all'ultimo elemento interattivo della finestra di dialogo.
@@ -265,7 +265,34 @@ Tutte le pagine hanno ottenuto una valutazione pari a 10/10 e non sono stati ril
 I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
 
 \subsection{Supporto alle tecnologie assistive}
-(Testo da inserire)
+L'accessibilità è stata curata nativamente nella struttura HTML, nella logica di generazione delle pagine PHP e nell'interazione javascript:
+
+\begin{itemize}
+    \item \textbf{Navigazione rapida (Skip Link)}:
+    Come primo elemento del \texttt{<body>}, è stato inserito un collegamento nascosto (``Salta al contenuto'') che diventa visibile quando riceve il focus. Questo permette agli utenti che navigano da tastiera di scavalcare l'header e il menu di navigazione, saltando direttamente sul tag \texttt{<main id="contenuto">}.
+
+    \item \textbf{Descrizioni alternative dinamiche}:
+    Nella generazione della galleria animali (file \texttt{i\_nostri\_animali.php}), il testo alternativo delle immagini non è statico ma viene costruito dinamicamente dal server per fornire contesto.
+    \begin{itemize}
+        \item Per i cani, l'attributo \texttt{alt} combina specie e taglia (es. ``Cane di taglia piccola'').
+        \item Per le icone di genere, viene specificato esplicitamente ``Maschio'' o ``Femmina''.
+    \end{itemize}
+
+    \item \textbf{Supporto multilingua puntuale}:
+    Per garantire una corretta pronuncia da parte dei sintetizzatori vocali (screen reader), i termini inglesi inseriti nel contesto italiano sono stati marcati con il tag \texttt{<span lang="en">}.
+    Questa accortezza è applicata sia nei testi statici (es. ``Username'', ``Home'', ``account'') sia nei nomi degli animali recuperati dal database (se l'animale ha \texttt{Lingua = 'en'}).
+
+    \item \textbf{Accessibilità dei Form}:
+    Tutti i campi di input sono associati esplicitamente alle rispettive etichette tramite l'attributo \texttt{for} del tag \texttt{<label>}, garantendo che la descrizione venga letta quando il campo riceve il focus.
+    Sono stati inoltre implementati:
+    \begin{itemize}
+        \item L'attributo \texttt{autocomplete} (es. \texttt{username}, \texttt{new-password}) per facilitare la compilazione automatica da parte del browser.
+        \item L'indicazione testuale \texttt{(richiesto)} per i campi obbligatori, senza affidarsi esclusivamente al colore o agli asterischi.
+    \end{itemize}
+
+    \item \textbf{Focus visibile (CSS)}:
+    Nel foglio di stile \texttt{style.css} è stato personalizzato lo stato \texttt{:focus-visible} per bottoni e link. Il focus di default del browser è stato sostituito con un bordo solido di 2px (\texttt{outline: 2px solid}) di colore arancione scuro, separato dall'elemento tramite \texttt{outline-offset}, garantendo un elevato contrasto visivo durante la navigazione da tastiera.
+\end{itemize}
 
 \subsection{Font}
 Per garantire leggibilità e accessibilità, il sito utilizza il font Atkinson Hyperlegible, importato tramite Google Fonts. 

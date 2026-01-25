@@ -6,12 +6,12 @@ window.addEventListener('load', function () {
 var dettagli_form = {
 	username: ["/^[a-zA-Z0-9.]{4,50}$/",'<span lang="en">Username</span> non valido: usa 4–50 caratteri, solo lettere, numeri o punti.'],
     email: ["/^[^\s@]+@[^\s@]+\.[^\s@]+$/",'Inserire un indirizzo <span lang="en">email</span> nel formato mario.rossi@gmail.com.'],
-    new_password: ["/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!*+%]).{8,}$/","La password non rispetta i requisiti."],
+    password: ["/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!*+%]).{8,}$/","La password non rispetta i requisiti."],
     confirmed_password: [null,'Le <span lang="en">password</span> non coincidono.']
 }
 
-function validateProfilo(form) {
-    let form = document.getElementById(form);
+function validateProfilo(formId) {
+    let form = document.getElementById(formId);
 
     for (let key in dettagli_form) {
         let input = document.getElementById(key);
@@ -32,12 +32,9 @@ function validateProfilo(form) {
 function validazioneCampo(input) {
 	var regex = dettagli_form[input.id][0];
 	var text = input.value
-	var p = input.parentNode;
-	if (p.children[2]) {
-		p.removeChild(p.children[2]);
-    }
-    if (input.id === "repeat_new_password") {
-        let pwd = document.getElementById("new_password").value;
+    document.getElementById("error_" + input.id).textContent = "";
+    if (input.id === "confirmed_password") {
+        let pwd = document.getElementById("password").value;
         if (input.value !== pwd) {
             messaggio(input);
             return false;
@@ -63,9 +60,6 @@ function validazioneForm() {
 }
 
 function messaggio(input) {
-    var p = input.parentNode;
-    var node = document.createElement("strong");
-    node.className("form-errors")
-    node.textContent = dettagli_form[input.id][1];
-    p.appendChild(node);
+    var p = document.getElementById("error_" + input.id);
+    p.innerHTML = dettagli_form[input.id][1];
 }

@@ -36,16 +36,17 @@
             <div>
                 <label for="username"><span lang="en">Username: </span><span class="req">(richiesto)</span></label>
                 <p class="info-form">Esempio: mario.rossi</p>
-                <input type="text" id="username" name="username" maxlength="50" autocomplete="username"
-                    value="[valUsername]" required />
+                <input type="text" id="username" name="username" maxlength="50" autocomplete="username" value="[valUsername]" required />
                 <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo lettere, numeri o punti.</p>
+                <p id="error_username" class="form-errors" role="alert" aria-atomic="true"></p>
 
                 <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
                 <p class="info-form">Esempio: mario.rossi@gmail.com</p>
                 <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required />
+                <p id="error_email" class="form-errors" role="alert" aria-atomic="true"></p>
 
-                <label for="new_password">Nuova <span lang="en">password: </span><span class="req">(richiesto)</span></label>
-                <input type="password" id="new_password" name="new_password" autocomplete="new-password" />
+                <label for="password">Nuova <span lang="en">password: </span><span class="req">(richiesto)</span></label>
+                <input type="password" id="password" name="password" autocomplete="password" />
                 <p class="info-form">La password deve contenere:</p>
                 <ul class="info-form">
                     <li>Almeno 8 caratteri</li>
@@ -54,9 +55,11 @@
                     <li>Un carattere speciale (! * + %)</li>
                     <li>Un numero (0-9)</li>
                 </ul>
+                <p id="error_password" class="form-errors" role="alert" aria-atomic="true"></p>
 
                 <label for="confirmed_password">Conferma nuova <span lang="en">password: </span><span class="req">(richiesto)</span></label>
                 <input type="password" id="confirmed_password" name="confirmed_password" />
+                <p id="error_confirmed_password" class="form-errors" role="alert" aria-atomic="true"></p>
 
                 [messaggiForm]
 

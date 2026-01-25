@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
 
     $username_form = pulisciInput($_POST['username']);
     $email_form = pulisciInput($_POST['email']);
-    $new_password_form = $_POST['new_password'];
+    $new_password_form = $_POST['password'];
     $confirmPassword_form = $_POST['confirmed_password'];
 
     if (empty($username_form) || empty($email_form)) {

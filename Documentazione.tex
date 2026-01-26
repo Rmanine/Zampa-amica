@@ -268,7 +268,7 @@ I warning segnalati sono stati analizzati e risultano coerenti con scelte proget
 L'accessibilità è stata curata nativamente nella struttura HTML, nella logica di generazione delle pagine PHP e nell'interazione javascript:
 
 \begin{itemize}
-    \item \textbf{Navigazione rapida (Skip Link)}:
+    \item \textbf{Navigazione rapida}:
     Come primo elemento del \texttt{<body>}, è stato inserito un collegamento nascosto (``Salta al contenuto'') che diventa visibile quando riceve il focus. Questo permette agli utenti che navigano da tastiera di scavalcare l'header e il menu di navigazione, saltando direttamente sul tag \texttt{<main id="contenuto">}.
 
     \item \textbf{Descrizioni alternative dinamiche}:
@@ -279,7 +279,7 @@ L'accessibilità è stata curata nativamente nella struttura HTML, nella logica 
     \end{itemize}
 
     \item \textbf{Supporto multilingua puntuale}:
-    Per garantire una corretta pronuncia da parte dei sintetizzatori vocali (screen reader), i termini inglesi inseriti nel contesto italiano sono stati marcati con il tag \texttt{<span lang="en">}.
+    Per garantire una corretta pronuncia da parte dei sintetizzatori vocali, i termini inglesi inseriti nel contesto italiano sono stati marcati con il tag \texttt{<span lang="en">}.
     Questa accortezza è applicata sia nei testi statici (es. ``Username'', ``Home'', ``account'') sia nei nomi degli animali recuperati dal database (se l'animale ha \texttt{Lingua = 'en'}).
 
     \item \textbf{Accessibilità dei Form}:

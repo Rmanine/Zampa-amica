@@ -176,7 +176,29 @@ Il foglio di stile è organizzato in sezioni tematiche (header, navigazione, bre
 Sono inoltre previsti stili specifici per gli stati di interazione (\texttt{:hover}, \texttt{:focus-visible}) degli elementi cliccabili, al fine di migliorare l’esperienza d’uso e l’accessibilità.
 
 \subsection{JavaScript}
-(Testo da inserire)
+Il linguaggio JavaScript è stato impiegato secondo il principio del \textit{progressive enhancement}, con l'obiettivo di arricchire l'interazione utente e, soprattutto, di garantire il rispetto dei criteri di accessibilità (WCAG) anche nelle componenti dinamiche.
+Le funzionalità principali implementate riguardano la validazione lato client, la gestione dei menu \textit{responsive} e il controllo del focus nelle finestre modali.
+
+\subsubsection{Validazione dei form}
+Per migliorare l'usabilità, è stata introdotta una validazione \textit{real-time} nei form, che fornisce un feedback immediato all'utente prima dell'invio dei dati al server.
+Un esempio ne è la gestione della prenotazione delle visite: uno script dedicato intercetta la selezione della data e impedisce la scelta di giorni passati o della data odierna, permettendo prenotazioni solo a partire dal giorno successivo.
+
+\subsubsection{Gestione dell'interfaccia mobile}
+L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
+\begin{itemize}
+    \item \textbf{Menu Hamburger}: lo script gestisce l'apertura e la chiusura del menu di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (``Apri menu'' / ``Chiudi menu'').
+    \item \textbf{Filtri di ricerca}: nella pagina ``I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script gestisce l'apertura e l'oscuramento dello sfondo, bloccando lo scorrimento della pagina (\texttt{body overflow: hidden}) quando il pannello è attivo.
+\end{itemize}
+
+\subsubsection{Accessibilità e finestre di dialogo (Focus Trap)}
+Particolare attenzione è stata dedicata alla funzionalità di eliminazione del profilo utente. Poiché si tratta di un'azione irreversibile, le linee guida WCAG richiedono meccanismi di prevenzione degli errori. È stata quindi implementata una finestra di dialogo che richiede una conferma esplicita.
+
+Per rendere questa finestra accessibile anche agli utenti che navigano tramite tastiera, è stato sviluppato un meccanismo di \textbf{Focus Trap}:
+\begin{itemize}
+    \item All'apertura della finestra di dialogo, il focus viene spostato forzatamente al suo interno e il resto della pagina viene reso inerte.
+    \item Lo script intercetta la pressione del tasto \texttt{Tab} (e \texttt{Shift+Tab}): se l'utente tenta di uscire dalla finestra, il focus viene riportato ciclicamente al primo o all'ultimo elemento interattivo della finestra di dialogo.
+    \item Alla chiusura della finestra (tramite pulsante ``Annulla'' o tasto \texttt{Esc}), il focus viene riportato esattamente sull'elemento che aveva attivato l'azione (il pulsante ``Elimina profilo''), permettendo all'utente di riprendere la navigazione senza perdere il punto di riferimento.
+\end{itemize}
 
 \subsection{Convenzioni interne}
 Nel corso dello sviluppo del sito sono state adottate alcune convenzioni progettuali specifiche.
@@ -243,7 +265,34 @@ Tutte le pagine hanno ottenuto una valutazione pari a 10/10 e non sono stati ril
 I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
 
 \subsection{Supporto alle tecnologie assistive}
-(Testo da inserire)
+L'accessibilità è stata curata nativamente nella struttura HTML, nella logica di generazione delle pagine PHP e nell'interazione javascript:
+
+\begin{itemize}
+    \item \textbf{Navigazione rapida}:
+    Come primo elemento del \texttt{<body>}, è stato inserito un collegamento nascosto (``Salta al contenuto'') che diventa visibile quando riceve il focus. Questo permette agli utenti che navigano da tastiera di scavalcare l'header e il menu di navigazione, saltando direttamente sul tag \texttt{<main id="contenuto">}.
+
+    \item \textbf{Descrizioni alternative dinamiche}:
+    Nella generazione della galleria animali (file \texttt{i\_nostri\_animali.php}), il testo alternativo delle immagini non è statico ma viene costruito dinamicamente dal server per fornire contesto.
+    \begin{itemize}
+        \item Per i cani, l'attributo \texttt{alt} combina specie e taglia (es. ``Cane di taglia piccola'').
+        \item Per le icone di genere, viene specificato esplicitamente ``Maschio'' o ``Femmina''.
+    \end{itemize}
+
+    \item \textbf{Supporto multilingua puntuale}:
+    Per garantire una corretta pronuncia da parte dei sintetizzatori vocali, i termini inglesi inseriti nel contesto italiano sono stati marcati con il tag \texttt{<span lang="en">}.
+    Questa accortezza è applicata sia nei testi statici (es. ``Username'', ``Home'', ``account'') sia nei nomi degli animali recuperati dal database (se l'animale ha \texttt{Lingua = 'en'}).
+
+    \item \textbf{Accessibilità dei Form}:
+    Tutti i campi di input sono associati esplicitamente alle rispettive etichette tramite l'attributo \texttt{for} del tag \texttt{<label>}, garantendo che la descrizione venga letta quando il campo riceve il focus.
+    Sono stati inoltre implementati:
+    \begin{itemize}
+        \item L'attributo \texttt{autocomplete} (es. \texttt{username}, \texttt{new-password}) per facilitare la compilazione automatica da parte del browser.
+        \item L'indicazione testuale \texttt{(richiesto)} per i campi obbligatori, senza affidarsi esclusivamente al colore o agli asterischi.
+    \end{itemize}
+
+    \item \textbf{Focus visibile (CSS)}:
+    Nel foglio di stile \texttt{style.css} è stato personalizzato lo stato \texttt{:focus-visible} per bottoni e link. Il focus di default del browser è stato sostituito con un bordo solido di 2px (\texttt{outline: 2px solid}) di colore arancione scuro, separato dall'elemento tramite \texttt{outline-offset}, garantendo un elevato contrasto visivo durante la navigazione da tastiera.
+\end{itemize}
 
 \subsection{Font}
 Per garantire leggibilità e accessibilità, il sito utilizza il font Atkinson Hyperlegible, importato tramite Google Fonts. 
@@ -288,7 +337,7 @@ Per chiarezza, si specifica che:
 
 \subsubsection{Sara Ballardin}
 \begin{itemize}
-    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404, errore\_500;
+    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404 ed errore\_500 (in collaborazione);
     \item \textbf{HTML}: volontariato, chi\_siamo, errore\_404, collaborazione a errore\_500;
     \item \textbf{CSS}: stile di pulsanti e link, con attenzione alla coerenza visiva e all’accessibilità cromatica;
     \item \textbf{PHP}: gestione della pagina volontariato, funzioni utente (update, get, delete);
@@ -298,7 +347,7 @@ Per chiarezza, si specifica che:
 
 \subsubsection{Davide Loparco}
 \begin{itemize}
-    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali;
+    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali, errore\_404 ed errore\_500 (in collaborazione);
     \item \textbf{HTML}: dettagli\_animale, registrati, footer, collaborazione a errore\_500;
     \item \textbf{CSS}: stilizzazione unificata dei form (accedi, registrati, volontariato, modifica\_profilo);
     \item \textbf{PHP}: collaborazione all’autenticazione e alla gestione del database;

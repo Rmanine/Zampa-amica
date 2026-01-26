@@ -1,17 +1,16 @@
 window.addEventListener('load', function () {
-    validateProfilo('form_modifica_profilo');
-    validateProfilo('form_registrazione');
+    validateProfilo();
 });
 
 var dettagli_form = {
-	username: [/^[a-zA-Z0-9.]{4,50}$/,'<span lang="en">Username</span> non valido: usa 4–50 caratteri, solo lettere, numeri o punti.'],
-    email: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/,'Inserire un indirizzo <span lang="en">email</span> nel formato mario.rossi@gmail.com.'],
-    password: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!*+%]).{8,}$/,"La password non rispetta i requisiti."],
-    confirmed_password: [null,'Le <span lang="en">password</span> non coincidono.']
+	nome: [/^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[ '\-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/, 'Inserire un nome valido (solo lettere, spazi o apostrofi).'],
+    cognome: [/^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[ '\-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/, 'Inserire un cognome valido (sono ammessi cognomi composti).'],
+    telefono: [/^[0-9]{8,11}$/, 'Inserire un numero di telefono valido (solo cifre, senza spazi, massimo 11 numeri).'],
+    email: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/,'Inserire un indirizzo <span lang="en">email</span> nel formato mario.rossi@gmail.com.']
 }
 
-function validateProfilo(formId) {
-    let form = document.getElementById(formId);
+function validateProfilo() {
+    let form = document.getElementById("form_volontario");
 
     for (let key in dettagli_form) {
         let input = document.getElementById(key);
@@ -33,14 +32,6 @@ function validazioneCampo(input) {
 	var regex = dettagli_form[input.id][0];
 	var text = input.value
     document.getElementById("error_" + input.id).textContent = "";
-    if (input.id === "confirmed_password") {
-        let pwd = document.getElementById("password").value;
-        if (input.value !== pwd) {
-            messaggio(input);
-            return false;
-        }
-        return true;
-    }
 	if (regex && !regex.test(text)) {
 		messaggio(input);
 		return false;

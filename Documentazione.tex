@@ -226,15 +226,29 @@ Tali scelte mirano a garantire coerenza strutturale, usabilità e accessibilità
 
 \section{Implementazione back-end}
 \subsection{PHP}
-\subsubsection{Autenticazione}
-La gestione dell'autenticazione è stata implementata tramite una classe dedicata \texttt{Auth}, la quale si occupa di verificare le credenziali degli utenti e gestire la sessione. La funzione \texttt{authenticate} riceve lo username e la password inseriti dall’utente e recupera dal database la corrispondente password hashata. La verifica della corrispondenza tra la password fornita e quella memorizzata avviene tramite la funzione nativa \texttt{password\_verify}, garantendo la protezione contro l’accesso non autorizzato.
+Lo sviluppo back-end è stato realizzato adottando un approccio orientato agli oggetti per la gestione della logica di business e dell'accesso ai dati, mantenendo invece uno stile procedurale per i controller delle pagine.
+Il codice è suddiviso in moduli distinti per garantire manutenibilità e separazione delle responsabilità.
 
-L’avvio della sessione è gestito all’interno della classe, verificando lo stato della sessione e registrando l’ID dell’utente autenticato nella variabile \texttt{\$\_SESSION}. L’identificazione dell’utente loggato viene fornita da un metodo \texttt{logged\_in\_user}, che restituisce l’ID dell’utente se presente, altrimenti \texttt{false}.
+\subsubsection{Accesso ai dati (Classe DBAccess)}
+L'interazione con il database MySQL è interamente incapsulata nella classe \texttt{DBAccess} (namespace \texttt{DB}). Questa classe funge da interfaccia unica verso il database, nascondendo i dettagli implementativi delle query al resto dell'applicazione.
+Le principali caratteristiche implementative includono:
+\begin{itemize}
+    \item \textbf{Gestione della connessione}: Il metodo \texttt{openDBConnection} inizializza la connessione tramite la libreria \texttt{mysqli}, attivando il report degli errori (\texttt{MYSQLI\_REPORT\_ERROR}) per facilitare il debugging in fase di sviluppo.
+    \item \textbf{Query parametriche}: Per tutte le operazioni che coinvolgono input utente (es. \texttt{getUser}, \texttt{addPrenotazione}, \texttt{updateUser}), vengono utilizzati i \textit{Prepared Statements}. I metodi \texttt{mysqli\_prepare} e \texttt{mysqli\_stmt\_bind\_param} associano i valori alle query in modo sicuro, specificando il tipo di dato atteso (interi o stringhe).
+    \item \textbf{Costruzione dinamica delle query}: Il metodo \texttt{getList} implementa una logica condizionale per costruire dinamicamente la query SQL in base ai filtri selezionati dall'utente (specie, sesso, taglia, età). Le clausole \texttt{WHERE} vengono aggiunte progressivamente all'array \texttt{\$conditions} e poi unite, permettendo una ricerca flessibile e combinata.
+\end{itemize}
 
-La sanificazione dei dati in input avviene tramite la funzione \texttt{pulisciInput}, che rimuove spazi superflui e tag HTML. Lo username e la password vengono validati per verificare l’assenza di spazi interni e la correttezza minima della lunghezza, garantendo al contempo la possibilità di utilizzare caratteri speciali nelle password per aumentare l’entropia. In caso di errori di login o di input non valido, viene fornito un messaggio generico per non divulgare informazioni sensibili sull’esistenza degli account.
+\subsubsection{Gestione dell'Autenticazione (Classe Login)}
+La logica di autenticazione è gestita dalla classe \texttt{Login}, che opera in stretta collaborazione con \texttt{DBAccess}.
+\begin{itemize}
+    \item \textbf{Verifica delle credenziali}: Il metodo \texttt{authenticate} recupera i dati dell'utente tramite username e verifica la correttezza della password. La sicurezza delle password è garantita tramite l'algoritmo di hashing \textbf{SHA-256}.
+    \item \textbf{Gestione della sessione}: La persistenza dell'autenticazione è gestita tramite le sessioni native di PHP. I metodi \texttt{log\_user\_in} e \texttt{logged\_in\_user} si occupano rispettivamente di salvare e recuperare l'ID dell'utente dalla variabile superglobale \texttt{\$\_SESSION}, verificando preventivamente lo stato della sessione (\texttt{PHP\_SESSION\_NONE}) per evitare conflitti.
+    \item \textbf{Logout ed eliminazione}: Il logout (gestito in \texttt{logout.php}) e l'eliminazione dell'account (\texttt{elimina\_user.php}) provvedono alla corretta distruzione della sessione tramite \texttt{session\_unset()} e \texttt{session\_destroy()}, impedendo accessi successivi non autorizzati.
+\end{itemize}
 
-Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database sono state realizzate tramite \textit{prepared statements} nativi di PHP (mysqli). Questo approccio permette di separare la struttura della query dai dati forniti dall'utente, garantendo che questi ultimi non vengano mai interpretati come codice SQL eseguibile.
-
+\subsubsection{Sicurezza}
+Oltre all'uso dei Prepared Statements per prevenire la SQL Injection, il codice implementa controlli sui permessi di accesso.
+Pagine riservate, come \texttt{elimina\_user.php}, verificano all'inizio dell'esecuzione la presenza della variabile di sessione \texttt{logged\_in\_user}. Se l'utente non è autenticato, viene effettuato un reindirizzamento immediato alla pagina di errore 403 o alla pagina di login, proteggendo le funzionalità sensibili da accessi diretti non autorizzati.
 \subsection{Database}
 Il sito web si appoggia su un database relazionale per la gestione delle informazioni relative agli utenti, agli animali, alle prenotazioni e alle richieste di volontariato.
 

@@ -254,14 +254,6 @@ Le pagine riservate verificano la presenza della sessione utente (\texttt{logged
 \subsection{Database}
 Il sito web si appoggia su un database relazionale per la gestione delle informazioni relative agli utenti, agli animali, alle prenotazioni e alle richieste di volontariato.
 
-\subsubsection{Struttura delle tabelle principali}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{./img/DB_ER.png}
-    \caption{Schema Entità-Relazione del database}
-    \label{fig:schema_er}
-\end{figure}
-
 Le tabelle fondamentali del database, rappresentate nello schema in figura \ref{fig:schema_er}, sono:
 \begin{itemize}
     \item \textbf{Utente}: contiene le credenziali di accesso e le informazioni di registrazione. Ogni utente è identificato da un campo \texttt{ID} univoco e dispone di \texttt{Email}, \texttt{Username} (entrambi unici) e \texttt{Password}, memorizzata in SHA-256 per sicurezza.
@@ -269,6 +261,9 @@ Le tabelle fondamentali del database, rappresentate nello schema in figura \ref{
     \item \textbf{Prenotazione}: registra gli appuntamenti per visite conoscitive o adozioni. La tabella collega un \texttt{UtenteID} a un \texttt{AnimaleID} e memorizza la \texttt{Data} della prenotazione ed eventuali note aggiuntive.
     \item \textbf{Richiesta\_Volontariato}: conserva le informazioni relative alle candidature di volontari, tra cui \texttt{Email}, \texttt{Nome}, \texttt{Cognome}, \texttt{Telefono} e la data di invio della richiesta.
 \end{itemize}
+
+\noindent
+\includegraphics[width=\textwidth]{./docs_assets/schema_ER.png}
 
 \subsubsection{Popolamento e relazioni}
 Il database è popolato con dati di esempio per utenti, animali, prenotazioni e volontariato, garantendo il corretto funzionamento delle pagine dinamiche. 
@@ -299,18 +294,14 @@ Per garantire leggibilità e accessibilità il sito utilizza il font Atkinson Hy
 Questo font, progettato per una facile lettura, è applicato ai testi del portale migliorando l’esperienza d’uso per tutti gli utenti.
 
 \subsection{Contrasti e validazione}
-La palette cromatica del sito è composta dai colori mostrati in figura~\ref{fig:colori}. Il colore dominante è il verde, scelto per il suo significato di speranza e armonia. 
+La palette cromatica del sito è composta dai colori mostrati in figura. Il colore dominante è il verde, scelto per il suo significato di speranza e armonia. 
 
 Le combinazioni di colori presenti nell’interfaccia sono state verificate tramite lo strumento di controllo del contrasto di WebAIM. 
 Il rapporto di contrasto più basso riscontrato è quello tra l’arancione chiaro (\#dd6a38) e il verde scuro (\#002b24), pari a 4.51:1, conforme ai requisiti WCAG di livello AA per il testo normale e AAA per il testo di grandi dimensioni. 
 Le altre combinazioni presentano rapporti di contrasto più elevati, superando ampiamente le soglie richieste dagli standard di accessibilità.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{./docs_assets/colori.png}
-    \caption{Palette cromatica del sito}
-    \label{fig:colori}
-\end{figure}
+\noindent
+\includegraphics[width=\textwidth]{./docs_assets/colori.png}
 
 \subsection{Falsi Positivi di Total Validator}
 (Testo da inserire)

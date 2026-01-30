@@ -53,13 +53,11 @@ a:visited {
     color: var(--visitedlinkcolor1);
 }
 
-/* HEADER */
 header {
     padding: 0em 1em;
     margin: 1em auto;
 }
 
-/* MENU */
 #menu {
     background-color: var(--widgetcolor);
     color: var(--bgcolor);
@@ -187,15 +185,6 @@ a.stile-bottone-3:hover {
     float: left;
 }
 
-/* MENU PER MOBILE */
-/* #ham-menu {
-    position: absolute;
-    height: 0;
-    overflow: hidden;
-} */
-
-/* BREADCRUMB */
-
 #breadcrumb {
     display: inline-block;
     white-space: nowrap;
@@ -217,8 +206,6 @@ a.stile-bottone-3:hover {
 #breadcrumb a:visited {
     color: var(--visitedlinkcolor1);
 }
-
-/* MAIN */
 
 main {
     padding: 0.8em;
@@ -363,8 +350,6 @@ main h1 {
     display: block;
 }
 
-/* GALLERIA ANIMALI */
-
 .galleria {
     display: flex;
     flex-wrap: wrap;
@@ -421,8 +406,6 @@ main h1 {
     text-align: center;
 }
 
-/* DETTAGLI ANIMALE */
-
 .dettagli-animale {
     max-width: 1200px;
     margin: auto;
@@ -467,8 +450,6 @@ main h1 {
     margin-top: 10%;
     margin-bottom: 10%;
 }
-
-/* FOOTER */
 
 footer {
     color: var(--bgcolor);
@@ -528,8 +509,6 @@ footer .crediti {
 .crediti:visited {
     color: var(--visitedlinkcolor2);
 }
-
-/*FORM*/
 
 form {
     border: 3px solid var(--widgetcolor);
@@ -666,7 +645,7 @@ form .req, .form-errors {
 }
 
 .piu-info {
-    clear: both; /* Lo forzo ad andare giù per non seguire il float */
+    clear: both;
 }
 
 .prenotazioni {
@@ -763,7 +742,6 @@ form .req, .form-errors {
     font-weight: bold;
 }
 
-/* Dialog modale */
 .dialog-overlay {
     position: fixed;
     top: 0;

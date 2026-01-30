@@ -6,6 +6,27 @@ require_once "template.php";
 
 use DB\DBAccess;
 
+function createStringaEtaAnimale($etaAnimale)
+{
+    $stringaEta = '';
+    if ($etaAnimale < 12) {
+        $stringaEta .= $etaAnimale;
+        if($stringaEta == 1) {
+            $stringaEta .= ' mese';
+        } else {
+            $stringaEta .= ' mesi';
+        }
+    } elseif ($etaAnimale >= 12) {
+        $stringaEta = intdiv(intval($etaAnimale), 12);
+        if($stringaEta == 1) {
+            $stringaEta .= ' anno';
+        } else {
+            $stringaEta .= ' anni';
+        }
+    }
+    return $stringaEta;
+}
+
 session_start();
 
 $paginaHTML = file_get_contents('i_nostri_animali.html');
@@ -56,7 +77,11 @@ if ($filtri['taglia'] !== 'all') {
     $filtriAttiviArray[] = 'Taglia (' . $filtri['taglia'] . ')';
 }
 if ($filtri['eta'] !== 'all') {
-    $filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ')';
+	if($filtri['eta'] == "0-12") {
+		$filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ' mesi)';
+	} else {
+		$filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ' anni)';
+	}
 }
 
 if (!empty($filtriAttiviArray)) {
@@ -80,9 +105,9 @@ if ($connessioneOK) {
 			}
 			$stringaAnimali .= '<li class="elemento-galleria">';
 			if($animale['Specie'] == "Cane"){
-				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . '" />';
+				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) .'" />';
 			} else {
-				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '" />';
+				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) .'" />';
 			}
 			$stringaAnimali .= '<div>';
 			$stringaAnimali .= '<h3 class="label-elemento"><a href="dettagli_animale.php?id=' . $animale['ID'] . '">' . $nomeAnimale . '</a></h3>';

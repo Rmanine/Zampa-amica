@@ -30,8 +30,18 @@ function createStringaEtaAnimale($etaAnimale)
     $stringaEta = '';
     if ($etaAnimale < 12) {
         $stringaEta .= $etaAnimale . ' mesi';
+        if($stringaEta == 1) {
+            $stringaEta .= ' mese';
+        } else {
+            $stringaEta .= ' mesi';
+        }
     } elseif ($etaAnimale >= 12) {
-        $stringaEta = intdiv(intval($etaAnimale), 12) . ' anni';
+        $stringaEta = intdiv(intval($etaAnimale), 12);
+        if($stringaEta == 1) {
+            $stringaEta .= ' anno';
+        } else {
+            $stringaEta .= ' anni';
+        }
     }
     return $stringaEta;
 }

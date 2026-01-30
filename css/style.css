@@ -457,6 +457,7 @@ footer {
     text-align: center;
     position: relative;
     margin-top: 8%;
+    clear: both;
 }
 
 footer > * {
@@ -585,6 +586,7 @@ form .req, .form-errors {
     width: 20%;
     margin-top: 2em;
     box-sizing: border-box;
+    margin-bottom: 6em;
 }
 
 #filtri h2 {

@@ -355,39 +355,38 @@ main h1 {
     flex-wrap: wrap;
     list-style: none;
     justify-content: space-evenly;
-    min-height: 400px; /* Aggiungi un'altezza minima */
-    align-items: center; /* Centra verticalmente il contenuto */
+    min-height: 400px;
+    align-items: center;
 }
 
-.elemento-galleria a, .card {
+.elemento-galleria {
     display: flex;
     flex-direction: column;
     margin: 1em;
 }
 
-.elemento-galleria a:link {
-    color: var(--bgcolor);
-}
-
 .elemento-galleria img {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-radius: 12px 12px 0 0;
     object-fit: cover;
 }
 
-.elemento-galleria a > div {
+.elemento-galleria > div {
     position: relative;
     width: 100%;
     padding: 0.7rem 1.8rem;
     color: var(--bgcolor);
     background-color: var(--widgetcolor);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-radius: 0 0 12px 12px;
 }
 
 .label-elemento {
     text-align: center;
     font-size: 1.5em;
+    margin: 0;
+}
+
+.label-elemento a:link {
+    color: var(--bgcolor);
 }
 
 .elemento-galleria .genere {

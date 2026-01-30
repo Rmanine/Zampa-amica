@@ -79,17 +79,15 @@ if ($connessioneOK) {
 				$nomeAnimale = $animale['Nome'];
 			}
 			$stringaAnimali .= '<li class="elemento-galleria">';
-			$stringaAnimali .= '<a href="dettagli_animale.php?id=' . $animale['ID'] . '">';
 			if($animale['Specie'] == "Cane"){
 				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . '" />';
 			} else {
 				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . '" />';
 			}
 			$stringaAnimali .= '<div>';
-			$stringaAnimali .= '<h3 class="label-elemento">' . $nomeAnimale . '</h3>';
+			$stringaAnimali .= '<h3 class="label-elemento"><a href="dettagli_animale.php?id=' . $animale['ID'] . '">' . $nomeAnimale . '</a></h3>';
 			$stringaAnimali .= '<img width="20" height="20" class="genere" src="./' . getIconGenere($animale['Genere']) . '" alt="' . $animale['Genere'] . '" />';
 			$stringaAnimali .= '</div>';
-			$stringaAnimali .= '</a>';
 			$stringaAnimali .= '</li>';
 		}
 		$stringaAnimali .= '</ul>';

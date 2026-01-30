@@ -12,7 +12,7 @@ function pulisciInput($value)
     return $value;
 }
 
-$tagPermessi = '<em><strong><ul><li>';
+$tagPermessi = '<em><strong>';
 function pulisciNote($value)
 {
     global $tagPermessi;

@@ -4,13 +4,8 @@ header {
 }
 
 #breadcrumb {
-  display: block;
   white-space: normal;
-  transform: none;
-  width: 70%;
-  margin: auto;
   text-align: center;
-  margin-bottom: 2em;
 }
 
 #menu {
@@ -27,7 +22,8 @@ header {
   padding-bottom: 0;
 }
 
-#menu>a, #menu>p {
+#menu>a,
+#menu>p {
   order: 1;
 }
 
@@ -57,7 +53,9 @@ header #menu button#hamburger {
   flex-direction: column;
 }
 
-.bar1, .bar2, .bar3 {
+.bar1,
+.bar2,
+.bar3 {
   width: 35px;
   height: 5px;
   background-color: var(--widgettxtcolor);
@@ -114,7 +112,8 @@ form label {
   width: 80%;
 }
 
-input, textarea {
+input,
+textarea {
   width: 80%;
 }
 
@@ -150,54 +149,56 @@ input, textarea {
   }
 }
 
-#toggle-filtri {
-  display: block;
-  margin: auto;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
+@media screen and (max-width: 768px) {
+  #toggle-filtri {
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
 
-#chiudi-filtri {
-  display: block;
-  margin: auto;
-}
+  #chiudi-filtri {
+    display: block;
+    margin: auto;
+  }
 
-#overlay-filtri.attivo {
-  display: block;
-}
+  #overlay-filtri.attivo {
+    display: block;
+  }
 
-#filtri {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100vh;
-  background-color: var(--bgcolor);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-  overflow-y: auto;
-  transition: left 0.3s ease;
-  z-index: 1000;
-  margin: 0;
-  padding: 1em;
-  float: none;
-}
+  #filtri {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bgcolor);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    margin: 0;
+    padding: 1em;
+    float: none;
+  }
 
-#filtri.aperto {
-  left: 0;
-}
+  #filtri.aperto {
+    left: 0;
+  }
 
-#filtri h2 {
-  margin-top: 2em;
-}
+  #filtri h2 {
+    margin-top: 2em;
+  }
 
-#filtri fieldset {
-  gap: 1em;
-  margin: auto;
-}
+  #filtri fieldset {
+    gap: 1em;
+    margin: auto;
+  }
 
-#filtri label {
-  width: 50%;
-  gap: 0;
+  #filtri label {
+    width: 50%;
+    gap: 0;
+  }
 }
 
 .profilo-contenitore {

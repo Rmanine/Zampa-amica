@@ -86,7 +86,6 @@ header {
 #menu ul {
     display: flex;
     overflow-x: hidden;
-    padding: 0 2em;
     gap: 3em;
     list-style: none;
 }

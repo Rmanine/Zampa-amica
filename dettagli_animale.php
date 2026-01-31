@@ -29,7 +29,7 @@ function createStringaEtaAnimale($etaAnimale)
 {
     $stringaEta = '';
     if ($etaAnimale < 12) {
-        $stringaEta .= $etaAnimale . ' mesi';
+        $stringaEta .= $etaAnimale;
         if($stringaEta == 1) {
             $stringaEta .= ' mese';
         } else {

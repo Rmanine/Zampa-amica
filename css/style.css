@@ -389,6 +389,10 @@ main h1 {
     color: var(--bgcolor);
 }
 
+.label-elemento a:visited {
+    color: var(--visitedlinkcolor2);
+}
+
 .elemento-galleria .genere {
     position: absolute;
     right: 1rem;

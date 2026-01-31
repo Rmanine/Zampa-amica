@@ -79,6 +79,8 @@ if ($filtri['taglia'] !== 'all') {
 if ($filtri['eta'] !== 'all') {
 	if($filtri['eta'] == "0-12") {
 		$filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ' mesi)';
+	} else if($filtri['eta'] == "8+") {
+		$filtriAttiviArray[] = 'Et&agrave; (Pi&ugrave; di 8 anni)';
 	} else {
 		$filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ' anni)';
 	}

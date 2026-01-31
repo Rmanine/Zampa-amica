@@ -71,7 +71,7 @@ header {
     justify-content: space-between;
 }
 
-#menu p, a.logo-menu {
+#menu .logo, a.logo-menu {
     width: 60px;
     height: 60px;
     min-width: 60px; /* Dimensione fissa perché non vogliamo che rimpicciolisca */

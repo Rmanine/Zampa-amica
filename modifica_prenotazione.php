@@ -107,7 +107,7 @@ if (is_null($animale['Nome'])) {
 }
 
 //$nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
-$data = is_null($prenotazione['DataOra']) ? '' : $prenotazione['DataOra'];
+$data = is_null($prenotazione['Data']) ? '' : $prenotazione['Data'];
 $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
 $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
 $idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     if ($prenotazioniUtente != null) {
         foreach ($prenotazioniUtente as $prenotazione) {
-            if ($prenotazione['AnimaleID'] == $idAnimale && $prenotazione['DataOra'] == $dataPost && $prenotazione['ID'] != $idPrenotazione) {
+            if ($prenotazione['AnimaleID'] == $idAnimale && $prenotazione['Data'] == $dataPost && $prenotazione['ID'] != $idPrenotazione) {
                 $prenotazioneEsistente = true;
                 break;
             }

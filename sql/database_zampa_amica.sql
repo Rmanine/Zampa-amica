@@ -24,7 +24,7 @@ CREATE TABLE
 		ID INT AUTO_INCREMENT PRIMARY KEY,
 		UtenteID INT NOT NULL,
 		AnimaleID INT NOT NULL,
-		DataOra DATE NOT NULL,
+		Data DATE NOT NULL,
 		Note VARCHAR(255) NULL,
 		FOREIGN KEY (UtenteID) REFERENCES Utente (ID) ON DELETE CASCADE,
 		FOREIGN KEY (AnimaleID) REFERENCES Animale (ID) ON DELETE CASCADE
@@ -36,7 +36,7 @@ CREATE TABLE
 		Nome VARCHAR(50) NOT NULL,
 		Cognome VARCHAR(50) NOT NULL,
 		Telefono VARCHAR(20) NOT NULL,
-		DataOra TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+		Data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 	);
 
 INSERT INTO
@@ -69,10 +69,11 @@ VALUES
     ('Ombra','it','Gatto',48,'Femmina',NULL,'Con il suo manto grigio vellutato e gli occhi color ambra, Ombra è l''eleganza fatta gatto. È una presenza discreta e silenziosa, quasi mistica. Non ama il caos, ma si lega profondamente a chi sa rispettare i suoi tempi, diventando un''ombra affettuosa che ti segue per casa.','19.jpg');
 
 INSERT INTO 
-	Prenotazione (UtenteID, AnimaleID, DataOra, Note)
+	Prenotazione (UtenteID, AnimaleID, Data, Note)
 VALUES 
-    (1, 3, '2025-12-31', 'Prenotazione per visita conoscitiva'),
-    (1, 2, '2026-01-15', NULL);
+    (1, 3, '2026-03-29', 'Prenotazione per visita conoscitiva, spero di trovare un amico dei sogni!'),
+    (1, 8, '2026-03-29', 'Purtroppo non ho mai avuto un animale, non so come comportarmi.'),
+    (1, 2, '2026-04-01', NULL);
 
 INSERT INTO
 	Richiesta_Volontariato (Email, Nome, Cognome, Telefono)

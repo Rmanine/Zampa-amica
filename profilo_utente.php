@@ -96,7 +96,7 @@ if ($listaPrenotazioni == null) {
             } else {
                 $nomeAnimale = $prenotazione['Nome'];
             }
-            $data = $prenotazione['DataOra'];
+            $data = $prenotazione['Data'];
             $note = !empty($prenotazione['Note']) ? $prenotazione['Note'] : 'Nessuna nota';
             $dataFormatoIta = formattaData($data);
 

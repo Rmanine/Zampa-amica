@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     if ($prenotazioniUtente != null) {
         foreach ($prenotazioniUtente as $prenotazione) {
-            if ($prenotazione['AnimaleID'] == $idAnimale && $prenotazione['DataOra'] == $dataPost) {
+            if ($prenotazione['AnimaleID'] == $idAnimale && $prenotazione['Data'] == $dataPost) {
                 $prenotazioneEsistente = true;
                 break;
             }

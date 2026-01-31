@@ -56,8 +56,6 @@ function validateProfilo() {
     }
 
     form.addEventListener('submit', function (event) {
-        if (!event.submitter || event.submitter.name !== "submit") return;
-
         if (!validazioneForm()) {
             event.preventDefault();
         }

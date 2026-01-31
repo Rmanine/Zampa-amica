@@ -9,13 +9,6 @@ const rules = {
             test: value => validateDate(value),
             message: 'La data selezionata deve essere un giorno valido a partire da domani.'
         }
-    ],
-
-    note: [
-        {
-            test: value => /^.{0,255}$/.test(value),
-            message: 'Messaggio troppo lungo, inserire massimo 255 caratteri.'
-        }
     ]
 };
 
@@ -30,11 +23,6 @@ function validatePrenotazione() {
     }
 
     form.addEventListener('submit', function (event) {
-
-        if (!event.submitter || event.submitter.name !== "submit") {
-            return;
-        }
-
         if (!validazioneForm()) {
             event.preventDefault();
         }

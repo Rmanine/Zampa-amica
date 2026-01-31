@@ -83,7 +83,7 @@ function validazioneCampo(input) {
 
 	const value = input.value;
     const fieldRules = rules[input.id];
-    let  isValid = true;
+    let isValid = true;
     const errors = [];
 
     for (let i = 0; i < fieldRules.length; i++) {

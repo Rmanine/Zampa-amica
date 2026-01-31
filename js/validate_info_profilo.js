@@ -4,9 +4,9 @@ window.addEventListener('load', function () {
 });
 
 var dettagli_form = {
-	username: [/^[a-zA-Z0-9.]{4,50}$/,'<span lang="en">Username</span> non valido: usa 4–50 caratteri, solo lettere, numeri o punti.'],
+	username: [/^[a-zA-Z0-9.]{4,50}$/,'<span lang="en">Username</span> non valido: usa dai 4 ai 50 caratteri, solo lettere, numeri o punti.'],
     email: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/,'Inserire un indirizzo <span lang="en">email</span> nel formato mario.rossi@gmail.com.'],
-    password: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!*+%]).{8,}$/,"La password non rispetta i requisiti."],
+    password: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[*+%]).{8,}$/,"La password non rispetta i requisiti."],
     confirmed_password: [null,'Le <span lang="en">password</span> non coincidono.']
 }
 

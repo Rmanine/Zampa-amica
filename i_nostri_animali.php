@@ -126,7 +126,6 @@ if ($connessioneOK) {
 		}
 	}
 } else {
-	//$stringaAnimali = '<p>I sistemi sono momentaneamente fuori servizio, ci stiamo occupando del problema. Riprova più tardi oppure contattaci a questa email miao@gmail.com</p>';
 	header("Location: errore_500.html");
     exit();
 }

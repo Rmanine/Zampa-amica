@@ -83,7 +83,8 @@ if ($connessioneOK && $id !== 0) {
         $stringaAnimale = '<p>Le informazioni per questo amico a quattro zampe non sono disponibili</p>';
     }
 } else {
-    $stringaAnimale = '<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio. Riprova pi&ugrave; tardi oppure contattaci a questa <span lang="en">email</span> <a href:"mailto:zampaamicainfo@gmail.com">zampaamicainfo@gmail.com</a>.</p>';
+    header("Location: errore_500.html");
+    exit();
 }
 
 $template = new Template();

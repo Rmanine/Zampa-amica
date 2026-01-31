@@ -318,6 +318,11 @@ main h1 {
     border-radius: 30px;
 }
 
+.form-appuntamenti img {
+    width: 100%;
+    max-width: 300px;
+}
+
 .terzo-contenuto-sottocontenuto p {
     font-size: 1.1em;
     text-align: left;

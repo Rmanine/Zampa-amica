@@ -194,11 +194,6 @@ textarea {
     gap: 1em;
     margin: auto;
   }
-
-  #filtri label {
-    width: 50%;
-    gap: 0;
-  }
 }
 
 .profilo-contenitore {

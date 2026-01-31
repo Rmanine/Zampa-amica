@@ -778,3 +778,10 @@ dialog[open] {
     margin: 0;
     max-width: none;
 }
+
+.note {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

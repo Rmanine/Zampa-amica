@@ -3,17 +3,65 @@ window.addEventListener('load', function () {
     validateProfilo('form_registrazione');
 });
 
-var dettagli_form = {
-	username: [/^[a-zA-Z0-9.]{4,50}$/,'<span lang="en">Username</span> non valido: usa 4–50 caratteri, solo lettere, numeri o punti.'],
-    email: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/,'Inserire un indirizzo <span lang="en">email</span> nel formato mario.rossi@gmail.com.'],
-    password: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!*+%]).{8,}$/,"La password non rispetta i requisiti."],
-    confirmed_password: [null,'Le <span lang="en">password</span> non coincidono.']
-}
+const rules = {
+    username: [
+        {
+            test: value => value.length >= 4,
+            message: 'Lo <span lang="en">username</span> deve contenere almeno 4 caratteri.'
+        },
+        {
+            test: value => value.length <= 50,
+            message: 'Lo <span lang="en">username</span> deve contenere al massimo 50 caratteri.'
+        },
+        {
+            test: value => /^[a-zA-Z0-9.]+$/.test(value),
+            message: 'Lo <span lang="en">username</span> può contenere solo lettere, numeri o punti.'
+        }
+    ],
+
+    email: [
+        {
+            test: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+            message: 'Formato <span lang="en">email</span> non valido.'
+        }
+    ],
+
+    password: [
+        {
+            test: value => value.length >= 8,
+            message: 'La <span lang="en">password</span> deve contenere almeno 8 caratteri.'
+        },
+        {
+            test: value => /[a-z]/.test(value),
+            message: 'La <span lang="en">password</span> deve contenere almeno una lettera minuscola.'
+        },
+        {
+            test: value => /[A-Z]/.test(value),
+            message: 'La <span lang="en">password</span> deve contenere almeno una lettera maiuscola.'
+        },
+        {
+            test: value => /[*+%]/.test(value),
+            message: 'La <span lang="en">password</span> deve contenere almeno un carattere speciale tra * + %.'
+        },
+        {
+            test: value => /[0-9]/.test(value),
+            message: 'La <span lang="en">password</span> deve contenere almeno un numero.'
+        }
+    ],
+
+    confirmed_password: [
+        {
+            test: value =>
+                value === document.getElementById('password').value,
+            message: 'Le due <span lang="en">password</span> non coincidono.'
+        }
+    ]
+};
 
 function validateProfilo(formId) {
     let form = document.getElementById(formId);
 
-    for (let key in dettagli_form) {
+    for (let key in rules) {
         let input = document.getElementById(key);
         input.addEventListener("blur", function () {
             validazioneCampo(this);
@@ -30,36 +78,34 @@ function validateProfilo(formId) {
 }
 
 function validazioneCampo(input) {
-	var regex = dettagli_form[input.id][0];
-	var text = input.value
-    document.getElementById("error_" + input.id).textContent = "";
-    if (input.id === "confirmed_password") {
-        let pwd = document.getElementById("password").value;
-        if (input.value !== pwd) {
-            messaggio(input);
-            return false;
+    const errorList = document.getElementById("error_" + input.id);
+    errorList.innerHTML = "";
+
+	const value = input.value;
+    const fieldRules = rules[input.id];
+    let  isValid = true;
+    for (let i = 0; i < fieldRules.length; i++) {
+        if (!fieldRules[i].test(value)) {
+            const li = document.createElement('li');
+            li.innerHTML = fieldRules[i].message;
+            errorList.appendChild(li);
+            isValid = false;
         }
-        return true;
     }
-	if (regex && !regex.test(text)) {
-		messaggio(input);
-		return false;
-	}
-	return true;
+
+    input.setAttribute('aria-invalid', String(!isValid));
+    return isValid;
 }
 
 function validazioneForm() {
-	var errori = true
-	for (var key in dettagli_form) {
-		var input = document.getElementById(key);
-		errori = validazioneCampo(input) && errori;
-	}
-	return errori;
-}
+	let valid = true;
 
-function messaggio(input) {
-    var p = document.getElementById("error_" + input.id);
-    if (p) {
-        p.innerHTML = dettagli_form[input.id][1];
+    for (let id in rules) {
+        const input = document.getElementById(id);
+        if (input) {
+            valid = validazioneCampo(input) && valid;
+        }
     }
+
+    return valid;
 }

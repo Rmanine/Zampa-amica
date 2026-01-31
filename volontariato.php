@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
             $connessione->closeConnection();
 
             if ($risultato) {
-                $info = '<p class="success" role="status">Richiesta inviata con successo.</p>';
+                $info = '<p class="success" role="alert">Richiesta inviata con successo.</p>';
                 $nome = $cognome = $email = $telefono = "";
             } else {
                 $messaggiPerForm .= '<li>&Egrave; gi&agrave; stata effettuata una richiesta di volontariato con l\'indirizzo <span lang="en">email</span> inserito.</li>';

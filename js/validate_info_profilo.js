@@ -100,7 +100,6 @@ function validateProfilo(formId) {
 }
 
 function validazioneCampo(input) {
-<<<<<<< HEAD
     const errorList = document.getElementById("error_" + input.id);
     errorList.innerHTML = "";
 
@@ -113,31 +112,9 @@ function validazioneCampo(input) {
         if (!fieldRules[i].test(value)) {
             errors.push(fieldRules[i].message);
             isValid = false;
-=======
-    document.getElementById("error_" + input.id).textContent = "";
-
-    // PASSWORD
-    if (input.id === "password") {
-        for (let check of passwordChecks) {
-            if (!check.test(input.value)) {
-                mostraMessaggioPersonalizzato(input, check.msg);
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // CONFERMA PASSWORD
-    if (input.id === "confirmed_password") {
-        let pwd = document.getElementById("password").value;
-        if (input.value !== pwd) {
-            messaggio(input);
-            return false;
->>>>>>> 5f3cddb9cd2daeeb7d5fd002d5045da94a2d21f8
         }
     }
 
-<<<<<<< HEAD
     if (errors.length > 0) {
         const ul = document.createElement('ul');
 
@@ -152,33 +129,11 @@ function validazioneCampo(input) {
 
     input.setAttribute('aria-invalid', String(!isValid));
     return isValid;
-=======
-    // ALTRI CAMPI
-    var regex = dettagli_form[input.id][0];
-    if (regex && !regex.test(input.value)) {
-        messaggio(input);
-        return false;
-    }
-
-    return true;
->>>>>>> 5f3cddb9cd2daeeb7d5fd002d5045da94a2d21f8
 }
 
 
 function validazioneForm() {
-<<<<<<< HEAD
 	let valid = true;
-=======
-    var errori = true;
-    for (var key in dettagli_form) {
-        var input = document.getElementById(key);
-        if (!validazioneCampo(input)) {
-            errori = false;
-        }
-    }
-    return errori;
-}
->>>>>>> 5f3cddb9cd2daeeb7d5fd002d5045da94a2d21f8
 
     for (let id in rules) {
         const input = document.getElementById(id);

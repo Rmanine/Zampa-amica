@@ -84,13 +84,25 @@ function validazioneCampo(input) {
 	const value = input.value;
     const fieldRules = rules[input.id];
     let  isValid = true;
+    const errors = [];
+
     for (let i = 0; i < fieldRules.length; i++) {
         if (!fieldRules[i].test(value)) {
-            const li = document.createElement('li');
-            li.innerHTML = fieldRules[i].message;
-            errorList.appendChild(li);
+            errors.push(fieldRules[i].message);
             isValid = false;
         }
+    }
+
+    if (errors.length > 0) {
+        const ul = document.createElement('ul');
+
+        for (let i = 0; i < errors.length; i++) {
+            const li = document.createElement('li');
+            li.innerHTML = errors[i];
+            ul.appendChild(li);
+        }
+
+        errorList.appendChild(ul);
     }
 
     input.setAttribute('aria-invalid', String(!isValid));

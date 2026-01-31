@@ -41,12 +41,12 @@
                     maxlength="50" required />
                 <p class="info-form">Esempio: mario.rossi</p>
                 <p class="info-form">Deve contenere almeno 4 caratteri e massimo 50 caratteri. Può includere solo lettere, numeri e punti.</p>
-                <ul id="error_username" class="form-errors" role="alert" aria-atomic="true"></ul>
+                <div id="error_username" class="form-errors" role="alert" aria-atomic="true"></div>
 
                 <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
                 <p class="info-form">Esempio: mario.rossi@gmail.com</p>
                 <input type="email" id="email" name="email" autocomplete="email" value="[valEmail]" required />
-                <ul id="error_email" class="form-errors" role="alert" aria-atomic="true"></ul>
+                <div id="error_email" class="form-errors" role="alert" aria-atomic="true"></div>
 
                 <label for="password"><span lang="en">Password: </span><span class="req">(richiesto)</span></label>
                 <input type="password" id="password" name="password" autocomplete="password" required />
@@ -58,11 +58,11 @@
                     <li>Un carattere speciale (* + %)</li>
                     <li>Un numero (0-9)</li>
                 </ul>
-                <ul id="error_password" class="form-errors" role="alert" aria-atomic="true"></ul>
+                <div id="error_password" class="form-errors" role="alert" aria-atomic="true"></div>
                 
                 <label for="confirmed_password">Conferma <span lang="en">password: </span><span class="req">(richiesto)</span></label>
                 <input type="password" id="confirmed_password" name="confirmed_password" autocomplete="new-password" required />
-                <ul id="error_confirmed_password" class="form-errors" role="alert" aria-atomic="true"></ul>
+                <div id="error_confirmed_password" class="form-errors" role="alert" aria-atomic="true"></div>
 
                 [messaggiForm]
 

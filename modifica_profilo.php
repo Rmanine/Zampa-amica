@@ -107,8 +107,8 @@ if (isset($_POST['submit'])) {
             if (!preg_match("/[A-Z]/", $new_password_form)) {
                 $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno una lettera maiuscola.</li>';
             }
-            if (!preg_match("/[!*+%]/", $new_password_form)) {
-                $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un carattere speciale tra ! * + %.</li>';
+            if (!preg_match("/[*+%]/", $new_password_form)) {
+                $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un carattere speciale tra * + %.</li>';
             }
             if (!preg_match("/[0-9]/", $new_password_form)) {
                 $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un numero.</li>';

@@ -430,7 +430,7 @@ main h1 {
 }
 
 .dettagli-animale img {
-    width: 300px;
+    max-width: 300px;
     object-fit: cover;
     border-radius: 8px;
 }

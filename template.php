@@ -42,10 +42,10 @@ class Template
                 $chisiamo = 'Chi siamo';
                 break;
             case 'profilo_utente':
-                $accediProfilo = 'Profilo';
+                $accediProfilo = '<p class="accediprofilo">Profilo</p>';
                 break;
             case 'accedi':
-                $accediProfilo = 'Accedi';
+                $accediProfilo = '<p class="accediprofilo">Accedi</p>';
                 break;
         }
 

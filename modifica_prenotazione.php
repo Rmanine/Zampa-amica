@@ -106,7 +106,6 @@ if (is_null($animale['Nome'])) {
     }
 }
 
-//$nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
 $data = is_null($prenotazione['Data']) ? '' : $prenotazione['Data'];
 $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
 $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
@@ -157,6 +156,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 $errors .= '<li>La data deve corrispondere ad un giorno valido, partendo da domani.</li>';
             }
         }
+    }
+
+    if(strlen($notePost) > 255) {
+        $errors .= '<li>Inserire un massimo di 255 caratteri nelle note.</li>';
     }
 
     $connessioneOK = $connessione->openDBConnection();

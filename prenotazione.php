@@ -112,6 +112,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         }
     }
 
+    if(strlen($notePost) > 255) {
+        $errors .= '<li>Inserire un massimo di 255 caratteri nelle note.</li>';
+    }
+
     $connessioneOK = $connessione->openDBConnection();
 
     if (!$connessioneOK) {

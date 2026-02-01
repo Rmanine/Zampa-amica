@@ -125,6 +125,10 @@ textarea {
   flex-direction: column-reverse;
 }
 
+.form-appuntamenti img {
+    max-width: 350px;
+}
+
 .form-appuntamenti div {
   flex: 1 1 50px;
 }

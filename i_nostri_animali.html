@@ -31,10 +31,6 @@
     <main id="contenuto">
         <h1>I nostri animali</h1>
         <p>Seleziona le tue preferenze attraverso i filtri ed esplora i cani e i gatti in cerca di una casa.</p>
-
-        <button id="toggle-filtri" aria-expanded="false" aria-controls="filtri">
-            Mostra i filtri
-        </button>
         <div id="overlay-filtri" aria-hidden="true"></div>
 
         <form id="filtri" aria-label="Filtri animali" role="dialog" aria-modal="true">
@@ -85,7 +81,10 @@
             <button type="submit" name="submit-filters">Applica filtri</button>
             <button type="button" id="chiudi-filtri">Chiudi filtri</button>
         </form>
-        <h2>Risultati</h2>
+        <h2 class="elenco-animali">Elenco animali</h2>
+        <button id="toggle-filtri" aria-expanded="false" aria-controls="filtri">
+            Mostra i filtri
+        </button>
         <p>[filtriAttivi]</p>
         [listaAnimali]
     </main>

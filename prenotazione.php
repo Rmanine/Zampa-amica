@@ -4,6 +4,41 @@ require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnec
 require_once "template.php";
 use DB\DBAccess;
 
+function getTagliaFemminile($taglia)
+{
+	if ($taglia == "Piccolo") {
+		return "piccola";
+	}
+	if ($taglia == "Medio") {
+		return "media";
+	}
+	if ($taglia == "Grande") {
+		return "grande";
+	}
+	return $taglia;
+}
+
+function createStringaEtaAnimale($etaAnimale)
+{
+	$stringaEta = '';
+	if ($etaAnimale < 12) {
+		$stringaEta .= $etaAnimale;
+		if ($stringaEta == 1) {
+			$stringaEta .= ' mese';
+		} else {
+			$stringaEta .= ' mesi';
+		}
+	} elseif ($etaAnimale >= 12) {
+		$stringaEta = intdiv(intval($etaAnimale), 12);
+		if ($stringaEta == 1) {
+			$stringaEta .= ' anno';
+		} else {
+			$stringaEta .= ' anni';
+		}
+	}
+	return $stringaEta;
+}
+
 function pulisciInput($value)
 {
     $value = trim($value);
@@ -90,7 +125,15 @@ if (is_null($animale['Nome'])) {
 }
 $idAnimale = is_null($animale['ID']) ? '' : $animale['ID'];
 $idUtente = $_SESSION["logged_in_user"];
-$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '"/>';
+if (empty($animale['Immagine']) || !file_exists('./img/assets/' . $animale['Immagine'])) {
+	$imgAnimale = '<img src="./img/assets/noimg.jpg" alt=""/>';
+} else {
+	if ($animale['Specie'] == "Cane") {
+		$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) . '" />';
+	} else {
+		$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) . '" />';
+	}
+}
 
 // Invio form (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {

@@ -320,7 +320,6 @@ main h1 {
 
 .form-appuntamenti img {
     width: 100%;
-    max-width: 300px;
 }
 
 .terzo-contenuto-sottocontenuto p {
@@ -352,6 +351,10 @@ main h1 {
 
 .piu-info span {
     display: block;
+}
+
+.elenco-animali {
+    margin-top: 1.5em;
 }
 
 .galleria {
@@ -434,6 +437,7 @@ main h1 {
 
 .dettagli-animale > div:last-child {
     flex: 1;
+    align-self: baseline;
 }
 
 .dettagli-animale dl {

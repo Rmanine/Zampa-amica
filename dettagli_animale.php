@@ -19,7 +19,7 @@ $success = '';
 
 session_start();
 $_SESSION['return_url'] = $_SERVER['REQUEST_URI']; // Permette di tornare indietro a questa pagina, se l'utente fa l'accesso
-if(isset($_SESSION["logged_in_user"])) {
+if (isset($_SESSION["logged_in_user"])) {
     $stringaPrenota .= '<a class="stile-bottone-2" href="./prenotazione.php?id=' . $id . '">Prenota un incontro</a>';
 } else {
     $stringaPrenota .= '<p>Per prenotare un incontro è necessario effettuare l\'accesso.</p>';
@@ -36,14 +36,14 @@ function createStringaEtaAnimale($etaAnimale)
     $stringaEta = '';
     if ($etaAnimale < 12) {
         $stringaEta .= $etaAnimale;
-        if($stringaEta == 1) {
+        if ($stringaEta == 1) {
             $stringaEta .= ' mese';
         } else {
             $stringaEta .= ' mesi';
         }
     } elseif ($etaAnimale >= 12) {
         $stringaEta = intdiv(intval($etaAnimale), 12);
-        if($stringaEta == 1) {
+        if ($stringaEta == 1) {
             $stringaEta .= ' anno';
         } else {
             $stringaEta .= ' anni';
@@ -66,7 +66,11 @@ if ($connessioneOK && $id !== 0) {
         $titoloAnimale = '<h1>' . $nomeAnimale . '</h1>';
 
         $stringaAnimale .= '<div>';
-        $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="" />';
+        if (empty($animale['Immagine']) || !file_exists('./img/assets/' . $animale['Immagine'])) {
+            $stringaAnimale .= '<img src="./img/assets/noimg.jpg" alt=""/>';
+        } else {
+            $stringaAnimale .= '<img src="./img/assets/' . $animale['Immagine'] . '" alt="" />';
+        }
         $stringaAnimale .= '</div>';
 
         $stringaAnimale .= '<div>';
@@ -77,7 +81,7 @@ if ($connessioneOK && $id !== 0) {
         $stringaAnimale .= '<dd>' . createStringaEtaAnimale($animale['EtaMesi']) . '</dd>';
         $stringaAnimale .= '<dt>Sesso: </dt>';
         $stringaAnimale .= '<dd>' . $animale['Genere'] . '</dd>';
-        if(!is_null($animale['Taglia'])) {
+        if (!is_null($animale['Taglia'])) {
             $stringaAnimale .= '<dt>Taglia: </dt>';
             $stringaAnimale .= '<dd>' . $animale['Taglia'] . '</dd>';
         }

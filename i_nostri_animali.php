@@ -1,6 +1,5 @@
 <?php
 
-require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "session.php";
 require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnection.php";
 require_once "template.php";
 
@@ -8,23 +7,23 @@ use DB\DBAccess;
 
 function createStringaEtaAnimale($etaAnimale)
 {
-    $stringaEta = '';
-    if ($etaAnimale < 12) {
-        $stringaEta .= $etaAnimale;
-        if($stringaEta == 1) {
-            $stringaEta .= ' mese';
-        } else {
-            $stringaEta .= ' mesi';
-        }
-    } elseif ($etaAnimale >= 12) {
-        $stringaEta = intdiv(intval($etaAnimale), 12);
-        if($stringaEta == 1) {
-            $stringaEta .= ' anno';
-        } else {
-            $stringaEta .= ' anni';
-        }
-    }
-    return $stringaEta;
+	$stringaEta = '';
+	if ($etaAnimale < 12) {
+		$stringaEta .= $etaAnimale;
+		if ($stringaEta == 1) {
+			$stringaEta .= ' mese';
+		} else {
+			$stringaEta .= ' mesi';
+		}
+	} elseif ($etaAnimale >= 12) {
+		$stringaEta = intdiv(intval($etaAnimale), 12);
+		if ($stringaEta == 1) {
+			$stringaEta .= ' anno';
+		} else {
+			$stringaEta .= ' anni';
+		}
+	}
+	return $stringaEta;
 }
 
 session_start();
@@ -68,18 +67,18 @@ function getIconGenere($genere)
 }
 
 if ($filtri['tipo'] !== 'all') {
-    $filtriAttiviArray[] = 'Tipo (' . $filtri['tipo'] . ')';
+	$filtriAttiviArray[] = 'Tipo (' . $filtri['tipo'] . ')';
 }
 if ($filtri['sesso'] !== 'all') {
-    $filtriAttiviArray[] = 'Sesso (' . $filtri['sesso'] . ')';
+	$filtriAttiviArray[] = 'Sesso (' . $filtri['sesso'] . ')';
 }
 if ($filtri['taglia'] !== 'all') {
-    $filtriAttiviArray[] = 'Taglia (' . $filtri['taglia'] . ')';
+	$filtriAttiviArray[] = 'Taglia (' . $filtri['taglia'] . ')';
 }
 if ($filtri['eta'] !== 'all') {
-	if($filtri['eta'] == "0-12") {
+	if ($filtri['eta'] == "0-12") {
 		$filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ' mesi)';
-	} else if($filtri['eta'] == "8+") {
+	} else if ($filtri['eta'] == "8+") {
 		$filtriAttiviArray[] = 'Et&agrave; (Pi&ugrave; di 8 anni)';
 	} else {
 		$filtriAttiviArray[] = 'Et&agrave; (' . $filtri['eta'] . ' anni)';
@@ -87,9 +86,9 @@ if ($filtri['eta'] !== 'all') {
 }
 
 if (!empty($filtriAttiviArray)) {
-    $filtriAttivi .= '<span class="importante">Filtri attivi</span>: ' . implode(', ', $filtriAttiviArray);
+	$filtriAttivi .= '<span class="importante">Filtri attivi</span>: ' . implode(', ', $filtriAttiviArray);
 } else {
-    $filtriAttivi = 'Nessun filtro attivo';
+	$filtriAttivi = 'Nessun filtro attivo';
 }
 
 $connessioneOK = $connessione->openDBConnection();
@@ -106,10 +105,14 @@ if ($connessioneOK) {
 				$nomeAnimale = $animale['Nome'];
 			}
 			$stringaAnimali .= '<li class="elemento-galleria">';
-			if($animale['Specie'] == "Cane"){
-				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) .'" />';
+			if (empty($animale['Immagine']) || !file_exists('./img/assets/' . $animale['Immagine'])) {
+				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/noimg.jpg" alt=""/>';
 			} else {
-				$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) .'" />';
+				if ($animale['Specie'] == "Cane") {
+					$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) . '" />';
+				} else {
+					$stringaAnimali .= '<img width="250" height="250" src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) . '" />';
+				}
 			}
 			$stringaAnimali .= '<div>';
 			$stringaAnimali .= '<h3 class="label-elemento"><a href="dettagli_animale.php?id=' . $animale['ID'] . '">' . $nomeAnimale . '</a></h3>';
@@ -119,7 +122,7 @@ if ($connessioneOK) {
 		}
 		$stringaAnimali .= '</ul>';
 	} else {
-		if(!empty($filtriAttiviArray)){
+		if (!empty($filtriAttiviArray)) {
 			$stringaAnimali = '<p class="galleria no-result">Non abbiamo trovato animali con le caratteristiche che hai scelto. Prova a modificare i filtri: potresti scoprire nuovi amici in cerca di una casa.</p>';
 		} else {
 			$stringaAnimali = '<p class="galleria no-result">Nessun animale presente</p>';
@@ -127,7 +130,7 @@ if ($connessioneOK) {
 	}
 } else {
 	header("Location: errore_500.html");
-    exit();
+	exit();
 }
 
 $template = new Template();

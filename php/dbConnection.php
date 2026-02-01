@@ -83,8 +83,8 @@ class DBAccess {
 
 		$query .= " ORDER BY Nome ASC";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in dbConnection: " . mysqli_error($this->connection));
-		
+		$queryResult = mysqli_query($this->connection, $query);
+
 		if(mysqli_num_rows($queryResult) != 0) {
 			$result = array();
 			while ($row = mysqli_fetch_assoc($queryResult)) { 
@@ -112,6 +112,7 @@ class DBAccess {
 
 		if ($result && mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_assoc($result);
+			mysqli_free_result($result);
 			mysqli_stmt_close($stmt);
 			return $row;
 		}
@@ -138,6 +139,7 @@ class DBAccess {
 
 		if ($result && mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_assoc($result);
+			mysqli_free_result($result);
 			mysqli_stmt_close($stmt);
 			return $row;
 		}
@@ -165,6 +167,7 @@ class DBAccess {
 
 		if ($result && mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_assoc($result);
+			mysqli_free_result($result);
 			mysqli_stmt_close($stmt);
 			return $row;
 		}

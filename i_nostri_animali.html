@@ -33,54 +33,56 @@
         <p>Seleziona le tue preferenze attraverso i filtri ed esplora i cani e i gatti in cerca di una casa.</p>
         <div id="overlay-filtri" aria-hidden="true"></div>
 
-        <form id="filtri" aria-label="Filtri animali" role="dialog" aria-modal="true">
+        <div id="filtri-dialog" role="dialog" aria-modal="true" aria-labelledby="titolo-filtri">
+            <form id="filtri" aria-label="Filtri animali">
+                <h2 id="titolo-filtri">Filtri</h2>
+                <details>
+                    <summary>Tipo</summary>
+                    <fieldset>
+                        <legend>Tipo</legend>
+                        <label><input type="radio" name="tipo" value="all" checked /> Tutti</label>
+                        <label><input type="radio" name="tipo" value="cane" />Cane</label>
+                        <label><input type="radio" name="tipo" value="gatto" />Gatto</label>
+                    </fieldset>
+                </details>
 
-            <h2>Filtri</h2>
-            <details>
-                <summary>Tipo</summary>
-                <fieldset>
-                    <legend>Tipo</legend>
-                    <label><input type="radio" name="tipo" value="all" checked /> Tutti</label>
-                    <label><input type="radio" name="tipo" value="cane" />Cane</label>
-                    <label><input type="radio" name="tipo" value="gatto" />Gatto</label>
-                </fieldset>
-            </details>
+                <details>
+                    <summary>Sesso</summary>
+                    <fieldset>
+                        <legend>Sesso</legend>
+                        <label><input type="radio" name="sesso" value="all" checked /> Tutti</label>
+                        <label><input type="radio" name="sesso" value="maschio" />Maschio</label>
+                        <label><input type="radio" name="sesso" value="femmina" />Femmina</label>
+                    </fieldset>
+                </details>
 
-            <details>
-                <summary>Sesso</summary>
-                <fieldset>
-                    <legend>Sesso</legend>
-                    <label><input type="radio" name="sesso" value="all" checked /> Tutti</label>
-                    <label><input type="radio" name="sesso" value="maschio" />Maschio</label>
-                    <label><input type="radio" name="sesso" value="femmina" />Femmina</label>
-                </fieldset>
-            </details>
+                <details>
+                    <summary>Taglia</summary>
+                    <fieldset>
+                        <legend>Taglia</legend>
+                        <label><input type="radio" name="taglia" value="all" checked /> Tutti</label>
+                        <label><input type="radio" name="taglia" value="piccola" />Piccola</label>
+                        <label><input type="radio" name="taglia" value="media" />Media</label>
+                        <label><input type="radio" name="taglia" value="grande" />Grande</label>
+                    </fieldset>
+                </details>
 
-            <details>
-                <summary>Taglia</summary>
-                <fieldset>
-                    <legend>Taglia</legend>
-                    <label><input type="radio" name="taglia" value="all" checked /> Tutti</label>
-                    <label><input type="radio" name="taglia" value="piccola" />Piccola</label>
-                    <label><input type="radio" name="taglia" value="media" />Media</label>
-                    <label><input type="radio" name="taglia" value="grande" />Grande</label>
-                </fieldset>
-            </details>
-
-            <details>
-                <summary>Et&agrave;</summary>
-                <fieldset>
-                    <legend>Et&agrave;</legend>
-                    <label><input type="radio" name="eta" value="all" checked /> Tutti</label>
-                    <label><input type="radio" name="eta" value="0-12" aria-label="Fino a 12 mesi"/>0-12 mesi</label>
-                    <label><input type="radio" name="eta" value="1-3" aria-label="Da 1 a 3 anni"/>1-3 anni</label>
-                    <label><input type="radio" name="eta" value="4-8" aria-label="Da 4 a 8 anni"/>4-8 anni</label>
-                    <label><input type="radio" name="eta" value="8+" />Pi&ugrave; di 8 anni</label>
-                </fieldset>
-            </details>
-            <button type="submit" name="submit-filters">Applica filtri</button>
-            <button type="button" id="chiudi-filtri">Chiudi filtri</button>
-        </form>
+                <details>
+                    <summary>Et&agrave;</summary>
+                    <fieldset>
+                        <legend>Et&agrave;</legend>
+                        <label><input type="radio" name="eta" value="all" checked /> Tutti</label>
+                        <label><input type="radio" name="eta" value="0-12" aria-label="Fino a 12 mesi" />0-12
+                            mesi</label>
+                        <label><input type="radio" name="eta" value="1-3" aria-label="Da 1 a 3 anni" />1-3 anni</label>
+                        <label><input type="radio" name="eta" value="4-8" aria-label="Da 4 a 8 anni" />4-8 anni</label>
+                        <label><input type="radio" name="eta" value="8+" />Pi&ugrave; di 8 anni</label>
+                    </fieldset>
+                </details>
+                <button type="submit" name="submit-filters">Applica filtri</button>
+                <button type="button" id="chiudi-filtri">Chiudi filtri</button>
+            </form>
+        </div>
         <h2 class="elenco-animali">Elenco animali</h2>
         <button id="toggle-filtri" aria-expanded="false" aria-controls="filtri">
             Mostra i filtri

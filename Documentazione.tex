@@ -101,16 +101,16 @@ Questa scelta garantire uniformità e facilità di utilizzo.
 \subsubsection{Scheletro comune}
 Tutte le pagine del sito condividono una struttura modulare pensata per assicurare continuità visiva. I principali elementi che compongono il layout sono:
 \begin{itemize}
-    \item \textbf{Header}: costituisce il punto centrale della navigazione. Include un link di accesso rapido (''Salta al contenuto''), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
+    \item \textbf{Header}: costituisce il punto centrale della navigazione. Include un link di accesso rapido (“Salta al contenuto''), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
     \begin{itemize}
         \item \textbf{Identità visiva}: il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
         Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità.
         \item \textbf{Menù di navigazione}: lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
-        \item \textbf{Call to action dinamica}: il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano ''Accedi'' (o ''Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione ''Profilo''.
+        \item \textbf{Call to action dinamica}: il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano “Accedi'' (o “Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione “Profilo''.
     \end{itemize}
     \item \textbf{Breadcrumb}: posizionato immediatamente sotto l’header, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari.
     \item \textbf{Main}: l’area principale dei contenuti ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
-    \item \textbf{Footer}: chiude la struttura informativa del sito e include un’ancora di risalita (''Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright e i nomi degli sviluppatori.
+    \item \textbf{Footer}: chiude la struttura informativa del sito e include un’ancora di risalita (“Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright e i nomi degli sviluppatori.
 \end{itemize}
 
 \subsubsection{Organizzazione delle pagine}
@@ -191,8 +191,8 @@ Un esempio è la gestione della prenotazione delle visite: uno script dedicato i
 \subsubsection{Gestione dell'interfaccia mobile}
 L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA, per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
 \begin{itemize}
-    \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (''Apri menù''/''Chiudi menù'').
-    \item \textbf{Filtri di ricerca}: nella pagina ''I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script gestisce l'apertura e l'oscuramento dello sfondo, bloccando lo scorrimento della pagina quando il pannello è attivo.
+    \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
+    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script gestisce l'apertura e l'oscuramento dello sfondo, bloccando lo scorrimento della pagina quando il pannello è attivo.
 \end{itemize}
 
 \subsubsection{Accessibilità e finestre di dialogo}
@@ -212,7 +212,7 @@ Tali scelte mirano a garantire coerenza strutturale, usabilità e accessibilità
 \begin{itemize}
     \item \textbf{Gestione semantica del logo} \\
     Il logo presente nell’header è marcato come elemento \texttt{<p>} e non come heading. 
-    Gli strumenti di analisi dell’accessibilità (come WAVE) segnalano un warning di tipo \emph{''possible heading''}, poiché l’elemento ha un aspetto visivamente simile a un titolo. 
+    Gli strumenti di analisi dell’accessibilità (come WAVE) segnalano un warning di tipo \emph{“possible heading''}, poiché l’elemento ha un aspetto visivamente simile a un titolo. 
     Questa scelta è intenzionale: il progetto adotta la convenzione di utilizzare un unico \texttt{<h1>} per pagina, riservato esclusivamente al titolo principale del contenuto. 
     Il logo non viene quindi incluso nella gerarchia degli heading per evitare ambiguità semantiche e mantenere una struttura chiara.
     \item \textbf{Rappresentazione visiva dei collegamenti} \\
@@ -320,7 +320,7 @@ Durante la validazione del sito è stato utilizzato lo strumento Total Validator
 \begin{itemize}
     \item \textbf{Controllo ortografico}: parole in lingua italiana correttamente scritte sono state segnalate come errate (ad esempio “gatto” suggerito come “ghetto”).
     \item \textbf{Div dell'hamburger}: il div contenente l'icona hamburger del menù è strutturato correttamente e permette il corretto funzionamento del menù.
-    \item \textbf{Link a Pixabay}: il collegamento presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come "forbidden".
+    \item \textbf{Link a Pixabay}: il collegamento presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come “forbidden".
     \item \textbf{Attributo \texttt{autocomplete}}: il valore utilizzato (\texttt{autocomplete="tel-national"}) è conforme alle specifiche HTML e consente l'autocompletamento corretto dei numeri di telefono nazionali.
 \end{itemize}
 

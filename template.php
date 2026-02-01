@@ -45,7 +45,10 @@ class Template
                 $accediProfilo = '<p class="accediprofilo">Profilo</p>';
                 break;
             case 'accedi':
-                $accediProfilo = '<p class="accediprofilo">Accedi</p>';
+                $accediProfilo = '<a class="stile-bottone-1" href="./registrati.php">Registrati</a>';
+                break;
+            case 'registrati':
+                $accediProfilo = '<a class="stile-bottone-1" href="./accedi.php">Accedi</a>';
                 break;
         }
 

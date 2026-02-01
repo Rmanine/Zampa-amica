@@ -125,6 +125,10 @@ La piattaforma web è suddivisa in tre macro-aree, differenziate in base alle fu
 \paragraph{Area di coinvolgimento}
 \begin{itemize}
     \item \textbf{I nostri animali}: sezione dinamica che permette di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio.
+    \begin{itemize}
+        \item \textbf{Schema esatto}: la lista degli animali è ordinata alfabeticamente per nome (A-Z).
+        \item \textbf{Schema ambiguo}: i filtri consentono di modificare la visualizzazione senza garantire un ordinamento prevedibile.
+    \end{itemize}
     \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale.
     \item \textbf{Volontariato}: pagina dedicata a chi desidera offrire il proprio supporto. 
 \end{itemize}
@@ -311,9 +315,14 @@ Per indicare campi obbligatori, messaggi di errore e l’azione di eliminazione 
 Tale combinazione garantisce un rapporto di contrasto pari a 4.78:1, risultando conforme ai requisiti WCAG di livello AA per il testo normale.
 
 \subsection{Falsi positivi di Total Validator}
-Durante la validazione del sito è stato utilizzato lo strumento Total Validator, che ha segnalato alcuni falsi positivi.
-In particolare, il controllo ortografico ha generato numerosi avvisi su parole in lingua italiana correttamente scritte: ad esempio, la parola “gatto” è stata indicata come errata e suggerita come “ghetto”.
-Tali segnalazioni sono state considerate falsi positivi, in quanto i termini risultano corretti e coerenti con il contesto.
+Durante la validazione del sito è stato utilizzato lo strumento Total Validator, che ha segnalato alcuni falsi positivi:
+
+\begin{itemize}
+    \item \textbf{Controllo ortografico}: parole in lingua italiana correttamente scritte sono state segnalate come errate (ad esempio “gatto” suggerito come “ghetto”).
+    \item \textbf{Div dell'hamburger}: il div contenente l'icona hamburger del menù è strutturato correttamente e permette il corretto funzionamento del menù.
+    \item \textbf{Link a Pixabay}: il collegamento presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come "forbidden".
+    \item \textbf{Attributo \texttt{autocomplete}}: il valore utilizzato (\texttt{autocomplete="tel-national"}) è conforme alle specifiche HTML e consente l'autocompletamento corretto dei numeri di telefono nazionali.
+\end{itemize}
 
 \section{Organizzazione del gruppo}
 \subsection{Modalità di lavoro}

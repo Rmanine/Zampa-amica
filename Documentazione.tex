@@ -105,12 +105,12 @@ Tutte le pagine del sito condividono una struttura modulare pensata per assicura
     \begin{itemize}
         \item \textbf{Identità visiva}: il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
         Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità.
-        \item \textbf{Menù di navigazione}: lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
+        \item \textbf{menù di navigazione}: lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
         \item \textbf{Call to action dinamica}: il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano “Accedi'' (o “Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione “Profilo''.
     \end{itemize}
     \item \textbf{Breadcrumb}: posizionato immediatamente sotto l’header, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari.
     \item \textbf{Main}: l’area principale dei contenuti ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
-    \item \textbf{Footer}: chiude la struttura informativa del sito e include un’ancora di risalita (“Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright e i nomi degli sviluppatori.
+    \item \textbf{Footer}: chiude la struttura informativa del sito e include un’ancora di risalita (“Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright e i nomi degli sviluppatori. Nel footer non è stata aggiunta la mappa del sito poiché la struttura del sito è semplice e poco profonda, rendendo la navigazione immediata attraverso il menù principale senza la necessità di ulteriori strumenti di orientamento.
 \end{itemize}
 
 \subsubsection{Organizzazione delle pagine}
@@ -170,7 +170,7 @@ L’indicizzazione del sito è stata curata seguendo le principali linee guida S
 \subsection{HTML}
 Le pagine del sito sono state realizzate seguendo lo standard HTML5.
 
-Ogni pagina adotta uno scheletro comune composto dai principali elementi: \texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}. L’header ospita il menu di navigazione, comprensivo del pulsante hamburger per dispositivi mobile.
+Ogni pagina adotta uno scheletro comune composto dai principali elementi: \texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}. L’header ospita il menù di navigazione, comprensivo del pulsante hamburger per dispositivi mobile.
 Il contenuto principale è punto di arrivo per i link di salto (“Salta al contenuto” e “Torna al contenuto”), che migliorano la navigazione tramite tastiera e tecnologie assistive. All’interno del main, i contenuti sono organizzati in \texttt{<section>} o \texttt{<div>} per evidenziare le parti semanticamente distinte del sito.
 
 Per facilitare stili e interazioni, vengono utilizzati gli attributi \texttt{id} e \texttt{class}, che permettono di identificare i blocchi e di applicare CSS e script in maniera modulare.
@@ -203,7 +203,7 @@ Un esempio è la gestione della prenotazione delle visite: uno script dedicato i
 \subsubsection{Gestione dell'interfaccia mobile}
 L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA, per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
 \begin{itemize}
-    \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
+    \item \textbf{menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
     \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script permette di rendere visibile un bottone "Mostra filtri" che permette la visualizzazione del form relativo ai filtri di ricerca. Lo script, inoltre, utilizza una funzione che, nel momento dell'apertura dell'overlay, "blocca" il focus all'interno di quest'ultimo. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG (POUR), essa è in realtà coerente con le linee guida sull’accessibilità, in quanto impedisce all’utente di interagire con contenuti non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. Il focus viene infatti ripristinato sull’elemento di attivazione alla chiusura dell’overlay. Non abbiamo potuto utilizzare direttamente il tag \texttt{dialog} per implementare il form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma come un elemento sempre visibile all’interno del layout della pagina. L’utilizzo del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay solo nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
 \end{itemize}
 
@@ -276,12 +276,6 @@ Le relazioni tra le tabelle assicurano coerenza: un utente può avere più preno
 
 
 \section{Accessibilità}
-
-\subsection{Validazione con WAVE}
-È stata eseguita una verifica automatica dell’accessibilità utilizzando lo strumento WAVE (Web Accessibility Evaluation Tool).
-Tutte le pagine hanno ottenuto una valutazione pari a 10/10 e non sono stati rilevati errori bloccanti.
-I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
-
 \subsection{Supporto alle tecnologie assistive}
 L'accessibilità è stata curata nativamente nella struttura HTML, nella logica di generazione delle pagine PHP e nell'interazione JavaScript:
 
@@ -298,10 +292,24 @@ L'accessibilità è stata curata nativamente nella struttura HTML, nella logica 
 Per garantire leggibilità e accessibilità il sito utilizza il font Atkinson Hyperlegible, importato tramite Google Fonts. 
 Questo font, progettato per una facile lettura, è applicato ai testi del portale migliorando l’esperienza d’uso per tutti gli utenti.
 
+\section{Test effettuati}
+\subsection{Navigabilità e accessibilità}
+È stata eseguita una verifica dell’accessibilità e della navigabilità utilizzando i seguenti strumenti: 
+\begin{itemize}
+\item \textbf{WAVE} di WebAIM. Tutte le pagine hanno ottenuto una valutazione pari o superiore a 9.8/10 e non sono stati rilevati errori bloccanti. I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
+\item \textbf{Checklist WCAG 2.1 - European Accessibility Act 2025} (pubblicata come risorsa nel sito del corso di Tecnologie Web 2025/2026). La seguente lista di controllo è stata adattata ai requisiti del nostro sito (per esempio, non sono stati considerati i controlli sui video poiché non presenti nel nostro progetto) ed è stata applicata dopo ogni modifica delle pagine.
+\item \textbf{W3C Validator} per HTML e CSS, non vengono segnalati errori.
+\item \textbf{Google Lighthouse} per la velocità di caricamento. Non vengono segnalati problemi, ad eccezione della pagina "I nostri animali" che, a causa delle numerose immagini, necessità di più tempo per il caricamento della pagina.
+\item \textbf{Total Validator} per HTML.
+\item \textbf{W3b1y} per HTML.
+\item \textbf{Compatibilità con diversi browser}: Google Chrome, Microsoft Edge, Mozilla Firefox, Apple Safari e Opera.
+\item \textbf{Compatibilità con diversi schermi}: ogni pagina è correttamente visualizzabile ed accessibile per tutte le tipologie di schermo. In particolare, abbiamo testato il sito fino a schermi molto piccoli come iPhone 5 (320x568).
+\end{itemize}
+
 \subsection{Contrasti e validazione}
 La palette cromatica del sito è composta dai colori mostrati in figura. Il colore dominante è il verde, scelto per il suo significato di speranza e armonia. 
 
-Le combinazioni di colori presenti nell’interfaccia sono state verificate tramite lo strumento di controllo del contrasto di \href{https://webaim.org/resources/contrastchecker/}{WebAIM} e \href{https://coolors.co/contrast-checker/dd6a38-002b24}{Coolors}.
+Le combinazioni di colori presenti nell’interfaccia sono state verificate tramite lo strumento di controllo del contrasto di \textbf{WebAIM} e \textbf{Coolors Contrast Checker}.
 Il rapporto di contrasto più basso riscontrato è quello tra l’arancione chiaro (\#dd6a38) e il verde scuro (\#002b24), pari a 4.51:1, conforme ai requisiti WCAG di livello AA per il testo normale e AAA per il testo di grandi dimensioni. 
 Le altre combinazioni presentano rapporti di contrasto più elevati, superando ampiamente le soglie richieste dagli standard di accessibilità.
 
@@ -320,9 +328,8 @@ Durante la validazione del sito è stato utilizzato lo strumento Total Validator
 
 \begin{itemize}
     \item \textbf{Controllo ortografico}: parole in lingua italiana correttamente scritte sono state segnalate come errate (ad esempio “gatto” suggerito come “ghetto”).
-    \item \textbf{Div dell'hamburger}: il div contenente l'icona hamburger del menù è strutturato correttamente e permette il corretto funzionamento del menù.
-    \item \textbf{Link a Pixabay}: il collegamento presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come “forbidden".
-    \item \textbf{Attributo \texttt{autocomplete}}: il valore utilizzato (\texttt{autocomplete="tel-national"}) è conforme alle specifiche HTML e consente l'autocompletamento corretto dei numeri di telefono nazionali.
+    \item \textbf{Div dell'hamburger}: lo strumento Total Validator segnala come errato l’uso di un elemento div per l’icona hamburger del menù. Tuttavia, tale segnalazione costituisce un falso positivo. Il div è utilizzato correttamente come contenitore strutturale e viene reso interattivo tramite CSS e JavaScript, rispettando la separazione tra struttura, presentazione e comportamento. Inoltre, al div sono associati gli opportuni attributi ARIA e i gestori di evento necessari, garantendo sia il corretto funzionamento del menù sia l’accessibilità per gli utenti. Pertanto, la scelta del div è tecnicamente corretta e conforme alle buone pratiche di sviluppo web moderno.
+    \item \textbf{Link a Pixabay}: il collegamento a pixabay presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come “forbidden".
 \end{itemize}
 
 \section{Organizzazione del gruppo}

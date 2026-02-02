@@ -192,7 +192,7 @@ Il foglio di stile è organizzato in sezioni tematiche, facilitando la manutenzi
 Sono inoltre previsti stili specifici per gli stati di interazione degli elementi cliccabili, al fine di migliorare l’esperienza d’uso e l’accessibilità.
 
 \subsection{JavaScript}
-Il linguaggio JavaScript è stato impiegato con l'obiettivo di arricchire l'interazione utente e garantire il rispetto dei criteri di accessibilità nelle componenti dinamiche.
+Il linguaggio JavaScript è stato impiegato con l'obiettivo di arricchire l'interazione utente, validare l'input dell'utente e garantire il rispetto dei criteri di accessibilità nelle componenti dinamiche.
 Le funzionalità principali implementate riguardano: la validazione lato client, la gestione dei menù e il controllo del focus nelle finestre di dialogo.
 
 \subsubsection{Validazione dei form}
@@ -203,7 +203,7 @@ Un esempio è la gestione della prenotazione delle visite: uno script dedicato i
 L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA, per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
 \begin{itemize}
     \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
-    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script gestisce l'apertura e l'oscuramento dello sfondo, bloccando lo scorrimento della pagina quando il pannello è attivo.
+    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script permette di rendere visibile un bottone "Mostra filtri" che permette la visualizzazione del form relativo ai filtri di ricerca. Lo script, inoltre, utilizza una funzione che, nel momento dell'apertura dell'overlay, "blocca" il focus all'interno di quest'ultimo. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG 2.0, essa è in realtà coerente con le linee guida sull’accessibilità, in quanto impedisce all’utente di interagire con contenuti non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. Il focus viene infatti ripristinato sull’elemento di attivazione alla chiusura dell’overlay. Non abbiamo potuto utilizzare direttamente il tag \texttt{dialog} per implementare il form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma come un elemento sempre visibile all’interno del layout della pagina. L’utilizzo del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay solo nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
 \end{itemize}
 
 \subsubsection{Accessibilità e finestre di dialogo}

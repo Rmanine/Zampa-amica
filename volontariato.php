@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         $messaggiPerForm .= "<li>Inserire il nome.</li>";
     } else {
         if (preg_match("/\d/", $nome)) {
-            $messaggiPerForm .= "<li>Il nome non pu&ograve; contenere numeri.</li>";
+            $messaggiPerForm .= "<li>Il nome non pu&ograve; contenere numeri o caratteri speciali.</li>";
         }
     }
 

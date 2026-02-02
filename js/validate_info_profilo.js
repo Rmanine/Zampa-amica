@@ -87,26 +87,35 @@ function validateProfilo(formId) {
 
     for (let key in rules) {
         let input = document.getElementById(key);
-        input.addEventListener("blur", function () {
-            validazioneCampo(this);
+        input.addEventListener("change", function () {
+            validazioneCampo(this, formId);
         });
     }
 
     form.addEventListener('submit', function (event) {
-        if (!validazioneForm()) {
+        if (!validazioneForm(formId)) {
             event.preventDefault();
         }
     });
 }
 
-function validazioneCampo(input) {
+function validazioneCampo(input, formId) {
     const errorList = document.getElementById("error_" + input.id);
     errorList.innerHTML = "";
 
-	const value = input.value;
+    const value = input.value;
     const fieldRules = rules[input.id];
     let isValid = true;
     const errors = [];
+
+    if (
+        formId === 'form_modifica_profilo' &&
+        (input.id === 'password' || input.id === 'confirmed_password') &&
+        value === ""
+    ) {
+        input.setAttribute('aria-invalid', 'false');
+        return true;
+    }
 
     for (let i = 0; i < fieldRules.length; i++) {
         if (!fieldRules[i].test(value)) {
@@ -132,13 +141,13 @@ function validazioneCampo(input) {
 }
 
 
-function validazioneForm() {
-	let valid = true;
+function validazioneForm(formId) {
+    let valid = true;
 
     for (let id in rules) {
         const input = document.getElementById(id);
         if (input) {
-            valid = validazioneCampo(input) && valid;
+            valid = validazioneCampo(input, formId) && valid;
         }
     }
 

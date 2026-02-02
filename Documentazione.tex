@@ -96,7 +96,7 @@ Il sito mette a disposizione un insieme di funzionalità pensate per rispondere 
 \section{Progettazione}
 \subsection{Struttura del sito}
 L’architettura del portale è stata progettata per offrire un orientamento immediato: la navigazione si basa su una gerarchia chiara e su una struttura HTML5 semantica condivisa da tutte le pagine.
-Questa scelta garantire uniformità e facilità di utilizzo.
+Questa scelta garantisce uniformità e facilità di utilizzo.
 
 \subsubsection{Scheletro comune}
 Tutte le pagine del sito condividono una struttura modulare pensata per assicurare continuità visiva. I principali elementi che compongono il layout sono:
@@ -124,20 +124,29 @@ La piattaforma web è suddivisa in tre macro-aree, differenziate in base alle fu
 
 \paragraph{Area di coinvolgimento}
 \begin{itemize}
-    \item \textbf{I nostri animali}: sezione dinamica che permette di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio.
+    \item \textbf{I nostri animali}: sezione dinamica che permette di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio. Le informazioni, cioè gli animali del rifugio, sono organizzati secondo uno schema ibrido:
     \begin{itemize}
-        \item \textbf{Schema esatto}: la lista degli animali è ordinata alfabeticamente per nome (A-Z).
-        \item \textbf{Schema ambiguo}: i filtri consentono di modificare la visualizzazione senza garantire un ordinamento prevedibile.
+        \item \textbf{Schema esatto}: la lista degli animali è sempre ordinata alfabeticamente per nome (A-Z).
+        \item \textbf{Schema ambiguo}: i filtri consentono di modificare la visualizzazione della lista degli animali in base alle seguenti categorie:
+        \begin{enumerate}
+            \item \textbf{Tipo}: rappresenta la specie dell'animale (cane o gatto);
+            \item \textbf{Sesso}: rappresenta il sesso dell'animale (femmina o maschio);
+            \item \textbf{Taglia}: rappresenta la grandezza dell'animale. Poiché tale classificazione è associata solo ai cani, è visibile solamente se viene precendemente selezionata la categoria Tipo - cane;
+            \item \textbf{Età}: rappresenta l'età dell'animale.
+        \end{enumerate}
+        Le categorie di filtraggio sono ordinate in base alla frequenza di utilizzo attesa, dalla più scelta alla meno scelta. In particolare, il \textbf{Tipo} è il filtro principale (ad esempio utenti interessati esclusivamente a cani), seguito da \textbf{Sesso}, \textbf{Taglia} ed \textbf{Età}, che permettono un affinamento della ricerca.
     \end{itemize}
-    \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale.
-    \item \textbf{Volontariato}: pagina dedicata a chi desidera offrire il proprio supporto. 
+    \\Lo schema ibrido è stato scelto perché combina i vantaggi di uno schema esatto, che garantisce coerenza e prevedibilità nella visualizzazione dell’elenco, con quelli di uno schema ambiguo, che supporta modalità di ricerca più flessibili. Trattandosi di un elenco di animali, nella maggior parte dei casi gli utenti non conoscono il nome dell’animale a priori e quindi non effettuano una navigazione "a tiro perfetto", ma basano la navigazione su caratteristiche generali come specie, età, sesso o taglia ed esplorano il più possibile gli animali. 
+        \\Nel momento in cui un utente è molto interessato ad un determinato animale del rifugio potrà prenotare un appuntamento e visualizzarlo nel proprio profilo utente.
+    \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale. Se l'utente è autenticato ha la possibilità di prenotare un appuntamento per poter incontrare l'animale direttamente al rifugio.
+    \item \textbf{Volontariato}: pagina dedicata a coloro che desiderano offrire il proprio supporto come volontaria o volontario, compilando l'apposito form. La gestione delle richieste di volontariato non viene gestita dal sito: un'amministratore del rifugio sarà incaricato a controllare il database per visualizzare le eventuali nuove richieste arrivate dagli utenti e contattarli se necessario.
 \end{itemize}
 
 \paragraph{Area riservata (utente autenticato)}
 \begin{itemize}
-    \item \textbf{Profilo utente}: area per la visualizzazione dei dati personali e delle visite prenotate.
+    \item \textbf{Profilo utente}: area per la visualizzazione dei dati personali e degli appuntamenti in arrivo (cioè con data maggiore rispetto a quella corrente). Gli appuntamenti sono organizzati secondo uno schema esatto, poiché sono ordinati in maniera descrescente in base alla data dell'appuntamento.
     \item \textbf{Modifica profilo}: pagina dedicata all’aggiornamento delle proprie informazioni.
-    \item \textbf{Prenotazione}: sistema che consente di fissare un appuntamento in struttura selezionando una data e un animale.
+    \item \textbf{Prenotazione}: sistema che consente, dato un animale, di fissare un appuntamento in struttura selezionando una data ed eventualmente aggiungendo delle note.
     \item \textbf{Modifica prenotazione}: interfaccia per modificare o annullare le prenotazioni esistenti.
 \end{itemize}
 
@@ -149,21 +158,23 @@ Queste pagine mantengono lo scheletro comune, consentendo di riprendere facilmen
 L’indicizzazione del sito è stata curata seguendo le principali linee guida SEO, con l’obiettivo di migliorare la visibilità sui motori di ricerca. Le strategie adottate comprendono:
 \begin{itemize}
     \item \textbf{Markup semantico}: la struttura delle pagine utilizza in modo coerente i tag semantici HTML5. Questa scelta consente ai motori di ricerca di interpretare correttamente la gerarchia dei contenuti e di individuare più facilmente le informazioni rilevanti.
-    \item \textbf{Metadati descrittivi}: ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Questo permette di rendere l'anteprimaa della pagina chiara per l’utente.
-    \item \textbf{Design responsivo}: il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile responsivi. 
+    \item \textbf{Metadati descrittivi}: ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Questo permette di rendere l'anteprima della pagina chiara per l’utente.
+    \item \textbf{Design responsivo}: il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile CSS responsivi, che consentono una corretta visualizzazione dei contenuti su desktop, tablet e smartphone.
     \item \textbf{Presenza sui social}: nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione trasmette maggiore affidabilità nall'associazione.
+    \item \textbf{Tempo di raggiungimento delle informazioni}: il sito è progettato in maniera tale da essere poco profondo, permettendo il raggiungimento di qualsiasi informazione con un massimo di 4 click.
+    \item \textbf{Velocità di caricamento}: ogni pagina del sito ha un tempo di caricamento molto basso, rendendo il sito affidabile e facilmente navigabile. Una piccola eccezione viene fatta per la pagina "i nostri animali" che, contenendo molte immagini, ha un tempo di caricamento leggermente più lento ma comunque non tale da compromettere l’esperienza di navigazione dell’utente.
 \end{itemize}
 
 \section{Implementazione front-end}
 \subsection{HTML}
 Le pagine del sito sono state realizzate seguendo lo standard HTML5.
 
-Ogni pagina adotta uno scheletro comune composto dai principali elementi: \texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}. L’header ospita il menu di navigazione, comprensivo del pulsante hamburger per dispositivi mobili.
-Il contenuto principale è punto di arrivo per i link di salto (“Salta al contenuto” e “Torna al contenuto”), che migliorano la navigazione tramite tastiera e tecnologie assistive. All’interno del main, i contenuti sono organizzati in \texttt{<section>} per evidenziare le parti semanticamente distinte del sito.
+Ogni pagina adotta uno scheletro comune composto dai principali elementi: \texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}. L’header ospita il menu di navigazione, comprensivo del pulsante hamburger per dispositivi mobile.
+Il contenuto principale è punto di arrivo per i link di salto (“Salta al contenuto” e “Torna al contenuto”), che migliorano la navigazione tramite tastiera e tecnologie assistive. All’interno del main, i contenuti sono organizzati in \texttt{<section>} o \texttt{<div>} per evidenziare le parti semanticamente distinte del sito.
 
 Per facilitare stili e interazioni, vengono utilizzati gli attributi \texttt{id} e \texttt{class}, che permettono di identificare i blocchi e di applicare CSS e script in maniera modulare.
 
-Tutte le pagine sono validate secondo lo standard W3C e arricchite con metadati descrittivi e l’attributo \texttt{lang}, per garantire compatibilità, accessibilità e corretto supporto multilingua.
+Tutte le pagine sono validate secondo lo standard W3C e arricchite con metadati descrittivi e l’attributo \texttt{lang} per parole diverse dall'italiano, per garantire compatibilità, accessibilità e corretto supporto multilingua.
 
 \subsection{CSS}
 Lo stile grafico del sito è stato sviluppato seguendo il principio di separazione tra struttura e presentazione, utilizzando fogli di stile esterni. Il portale si basa su tre file CSS distinti:

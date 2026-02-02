@@ -204,7 +204,7 @@ Un esempio è la gestione della prenotazione delle visite: uno script dedicato i
 \subsubsection{Gestione dell'interfaccia mobile}
 L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA, per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
 \begin{itemize}
-    \item \textbf{menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
+    \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
     \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile è implementato come un overlay. Lo script permette di rendere visibile un bottone “Mostra filtri" che consente di visualizzare il form dedicato ai filtri di ricerca. Lo stesso script gestisce il focus: al momento dell’apertura dell’overlay, questo viene confinato al suo interno. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG (POUR), risulta in realtà conforme alle linee guida sull’accessibilità, in quanto evita che l’utente interagisca con elementi non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. 
     Alla chiusura dell'overlay il focus viene correttamente ripristinato sull'elemento che ha attivato l'apertura. Non è stato possibile utilizzare direttamente il tag \texttt{dialog} per l'implementazione del form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma rimane sempre visibile all’interno del layout della pagina. 
     L'uso del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay esclusivamente nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
@@ -306,7 +306,7 @@ Questo font, progettato per una facile lettura, è applicato ai testi del portal
 \item \textbf{Total Validator} per HTML.
 \item \textbf{W3b1y} per HTML.
 \item \textbf{Compatibilità con diversi browser}: Google Chrome, Microsoft Edge, Mozilla Firefox, Apple Safari e Opera.
-\item \textbf{Compatibilità con diversi schermi}: ogni pagina è correttamente visualizzabile ed accessibile su tutte le tipologie di schermo. In particolare, il sito è stato testato anche su schermi di dimensioni molto ridotte, come quelli di dispositivi quali iPhone 5 (320×568).
+\item \textbf{Compatibilità con diversi schermi}: ogni pagina è correttamente visualizzabile ed accessibile su tutte le tipologie di schermo. In particolare, il sito è stato testato anche su schermi di dimensioni molto ridotte, come quelli di dispositivi come iPhone 5 (320×568).
 \end{itemize}
 
 \subsection{Contrasti e validazione}

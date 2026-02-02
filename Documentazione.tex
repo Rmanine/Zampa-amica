@@ -51,7 +51,8 @@
     {\large \textbf{Sito web}} \\\href{http://tecweb.studenti.math.unipd.it/vbaleanu}{tecweb.studenti.math.unipd.it/vbaleanu}
     \\[0.5cm]
     {\large \textbf{Credenziali}}\\
-    Username: \textit{user}, Password: \textit{user}
+    Username: \textit{user}, Password: \textit{user}\\
+    Username: \textit{user1}, Password: \textit{user1}
     \end{center}
 \end{titlepage}
 
@@ -105,7 +106,7 @@ Tutte le pagine del sito condividono una struttura modulare pensata per assicura
     \begin{itemize}
         \item \textbf{Identità visiva}: il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
         Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità.
-        \item \textbf{menù di navigazione}: lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
+        \item \textbf{Menù di navigazione}: lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
         \item \textbf{Call to action dinamica}: il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano “Accedi'' (o “Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione “Profilo''.
     \end{itemize}
     \item \textbf{Breadcrumb}: posizionato immediatamente sotto l’header, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari.
@@ -140,7 +141,7 @@ La piattaforma web è suddivisa in tre macro-aree, differenziate in base alle fu
 Lo schema ibrido è stato scelto perché combina i vantaggi di uno schema esatto, che garantisce coerenza e prevedibilità nella visualizzazione dell’elenco, con quelli di uno schema ambiguo, che supporta modalità di ricerca più flessibili. Trattandosi di un elenco di animali, nella maggior parte dei casi gli utenti non conoscono il nome dell’animale a priori e, di conseguenza, non effettuano una navigazione "a tiro perfetto". La navigazione si basa invece su caratteristiche generali quali specie, età, sesso o taglia, favorendo un'esplorazione più ampia degli animali disponibili.
 Nel momento in cui un utente manifesta un forte interesse per un determinato animale del rifugio, ha la possibilità di prenotare un appuntamento e di visualizzarlo successivamente all'interno del proprio profilo utente.
     \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale. Se l'utente è autenticato ha la possibilità di prenotare un appuntamento per poter incontrare l'animale direttamente al rifugio.
-    \item \textbf{Volontariato}: pagina dedicata a coloro che desiderano offrire il proprio supporto come volontaria o volontario, compilando l'apposito form. La gestione delle richieste di volontariato non viene gestita dal sito: un'amministratore del rifugio sarà incaricato a controllare il database per visualizzare le eventuali nuove richieste arrivate dagli utenti e contattarli se necessario.
+    \item \textbf{Volontariato}: pagina dedicata a coloro che desiderano offrire il proprio supporto come volontaria o volontario, compilando l'apposito form. La gestione delle richieste di volontariato non viene gestita dal sito: un amministratore del rifugio sarà incaricato a controllare il database per visualizzare le eventuali nuove richieste arrivate dagli utenti e contattarli se necessario.
 \end{itemize}
 
 \paragraph{Area riservata (utente autenticato)}
@@ -161,7 +162,7 @@ L’indicizzazione del sito è stata curata seguendo le principali linee guida S
     \item \textbf{Markup semantico}: la struttura delle pagine utilizza in modo coerente i tag semantici HTML5. Questa scelta consente ai motori di ricerca di interpretare correttamente la gerarchia dei contenuti e di individuare più facilmente le informazioni rilevanti.
     \item \textbf{Metadati descrittivi}: ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Questo permette di rendere l'anteprima della pagina chiara per l’utente.
     \item \textbf{Design responsivo}: il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile CSS responsivi, che consentono una corretta visualizzazione dei contenuti su desktop, tablet e smartphone.
-    \item \textbf{Presenza sui social}: nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione trasmette maggiore affidabilità nall'associazione.
+    \item \textbf{Presenza sui social}: nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione trasmette maggiore affidabilità nell'associazione.
     \item \textbf{Tempo di raggiungimento delle informazioni}: il sito è progettato in maniera tale da essere poco profondo, permettendo il raggiungimento di qualsiasi informazione con un massimo di 4 click.
     \item \textbf{Velocità di caricamento}: ogni pagina del sito ha un tempo di caricamento molto basso, rendendo il sito affidabile e facilmente navigabile. Una piccola eccezione viene fatta per la pagina "i nostri animali" che, contenendo molte immagini, ha un tempo di caricamento leggermente più lento ma comunque non tale da compromettere l’esperienza di navigazione dell’utente.
 \end{itemize}

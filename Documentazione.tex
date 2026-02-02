@@ -124,21 +124,21 @@ La piattaforma web è suddivisa in tre macro-aree, differenziate in base alle fu
 
 \paragraph{Area di coinvolgimento}
 \begin{itemize}
-    \item \textbf{I nostri animali}: sezione dinamica che permette di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio. Le informazioni, cioè gli animali del rifugio, sono organizzati secondo uno schema ibrido:
+    \item \textbf{I nostri animali}: sezione dinamica che permette di consultare le schede degli animali ospitati nel rifugio attraverso l'esplorazione dell’elenco o tramite un sistema di filtraggio. Le informazioni sono organizzate secondo uno schema ibrido:
     \begin{itemize}
-        \item \textbf{Schema esatto}: la lista degli animali è sempre ordinata alfabeticamente per nome (A-Z).
-        \item \textbf{Schema ambiguo}: i filtri consentono di modificare la visualizzazione della lista degli animali in base alle seguenti categorie:
+        \item \textbf{Schema esatto}: la lista degli animali è ordinata alfabeticamente per nome (A–Z), garantendo una semplice consultazione.
+        \item \textbf{Schema ambiguo}: l'utente può modificare la visualizzazione della lista degli animali attraverso una serie di filtri:
         \begin{enumerate}
             \item \textbf{Tipo}: rappresenta la specie dell'animale (cane o gatto);
             \item \textbf{Sesso}: rappresenta il sesso dell'animale (femmina o maschio);
-            \item \textbf{Taglia}: rappresenta la grandezza dell'animale. Poiché tale classificazione è associata solo ai cani, è visibile solamente se viene precendemente selezionata la categoria Tipo - cane;
+            \item \textbf{Taglia}: rappresenta la grandezza dell'animale. La categoria taglia è applicabile esclusivamente ai cani e diventa visibile solo dopo aver selezionato il tipo “cane”;
             \item \textbf{Età}: rappresenta l'età dell'animale.
         \end{enumerate}
-        Le categorie di filtraggio sono ordinate in base alla frequenza di utilizzo attesa, dalla più scelta alla meno scelta. In particolare, il \textbf{Tipo} è il filtro principale (ad esempio utenti interessati esclusivamente a cani), seguito da \textbf{Sesso}, \textbf{Taglia} ed \textbf{Età}, che permettono un affinamento della ricerca.
+        Le categorie di filtraggio sono ordinate in base alla frequenza di utilizzo attesa, dalla più scelta alla meno scelta. Il filtro \textbf{Tipo} rappresenta il filtro principale (ad esempio per utenti interessati esclusivamente ai cani), seguito da \textbf{Sesso}, \textbf{Taglia} ed \textbf{Età}, che consentono un progressivo affinamento della ricerca.
     \end{itemize}
 
-Lo schema ibrido è stato scelto perché combina i vantaggi di uno schema esatto, che garantisce coerenza e prevedibilità nella visualizzazione dell’elenco, con quelli di uno schema ambiguo, che supporta modalità di ricerca più flessibili. Trattandosi di un elenco di animali, nella maggior parte dei casi gli utenti non conoscono il nome dell’animale a priori e quindi non effettuano una navigazione "a tiro perfetto", ma basano la navigazione su caratteristiche generali come specie, età, sesso o taglia ed esplorano il più possibile gli animali. 
-Nel momento in cui un utente è molto interessato ad un determinato animale del rifugio potrà prenotare un appuntamento e visualizzarlo nel proprio profilo utente.
+Lo schema ibrido è stato scelto perché combina i vantaggi di uno schema esatto, che garantisce coerenza e prevedibilità nella visualizzazione dell’elenco, con quelli di uno schema ambiguo, che supporta modalità di ricerca più flessibili. Trattandosi di un elenco di animali, nella maggior parte dei casi gli utenti non conoscono il nome dell’animale a priori e, di conseguenza, non effettuano una navigazione "a tiro perfetto". La navigazione si basa invece su caratteristiche generali quali specie, età, sesso o taglia, favorendo un'esplorazione più ampia degli animali disponibili.
+Nel momento in cui un utente manifesta un forte interesse per un determinato animale del rifugio, ha la possibilità di prenotare un appuntamento e di visualizzarlo successivamente all'interno del proprio profilo utente.
     \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale. Se l'utente è autenticato ha la possibilità di prenotare un appuntamento per poter incontrare l'animale direttamente al rifugio.
     \item \textbf{Volontariato}: pagina dedicata a coloro che desiderano offrire il proprio supporto come volontaria o volontario, compilando l'apposito form. La gestione delle richieste di volontariato non viene gestita dal sito: un'amministratore del rifugio sarà incaricato a controllare il database per visualizzare le eventuali nuove richieste arrivate dagli utenti e contattarli se necessario.
 \end{itemize}
@@ -204,11 +204,13 @@ Un esempio è la gestione della prenotazione delle visite: uno script dedicato i
 L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA, per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
 \begin{itemize}
     \item \textbf{menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
-    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script permette di rendere visibile un bottone "Mostra filtri" che permette la visualizzazione del form relativo ai filtri di ricerca. Lo script, inoltre, utilizza una funzione che, nel momento dell'apertura dell'overlay, "blocca" il focus all'interno di quest'ultimo. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG (POUR), essa è in realtà coerente con le linee guida sull’accessibilità, in quanto impedisce all’utente di interagire con contenuti non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. Il focus viene infatti ripristinato sull’elemento di attivazione alla chiusura dell’overlay. Non abbiamo potuto utilizzare direttamente il tag \texttt{dialog} per implementare il form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma come un elemento sempre visibile all’interno del layout della pagina. L’utilizzo del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay solo nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
+    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile è implementato come un overlay. Lo script permette di rendere visibile un bottone “Mostra filtri" che consente di visualizzare il form dedicato ai filtri di ricerca. Lo stesso script gestisce il focus: al momento dell’apertura dell’overlay, questo viene confinato al suo interno. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG (POUR), risulta in realtà conforme alle linee guida sull’accessibilità, in quanto evita che l’utente interagisca con elementi non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. 
+    Alla chiusura dell'overlay il focus viene correttamente ripristinato sull'elemento che ha attivato l'apertura. Non è stato possibile utilizzare direttamente il tag \texttt{dialog} per l'implementazione del form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma rimane sempre visibile all’interno del layout della pagina. 
+    L'uso del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay esclusivamente nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
 \end{itemize}
 
 \subsubsection{Accessibilità e finestre di dialogo}
-Particolare attenzione è stata riservata alla funzionalità di eliminazione del profilo utente: trattandosi di un’operazione irreversibile, è stata implementata una finestra di dialogo modale che richiede una conferma esplicita da parte dell’utente. Questa scelta consente di garantire la comprensibilità dell’azione e delle sue conseguenze (\emph{Understandable}), il controllo dell’interazione da parte dell’utente (\emph{Operable}) e la robustezza del sistema nel prevenire attivazioni accidentali (\emph{Robust}), in conformità ai principi POUR delle WCAG.
+Particolare attenzione è stata riservata alla funzionalità di eliminazione del profilo utente: trattandosi di un’operazione irreversibile, è stata implementata una finestra di dialogo modale che richiede una conferma esplicita da parte dell’utente. Questa scelta progettuale garantisce la comprensibilità dell’azione e delle sue conseguenze (\emph{Understandable}), assicura il controllo dell’interazione da parte dell’utente (\emph{Operable}) e aumenta la robustezza del sistema nel prevenire attivazioni accidentali (\emph{Robust}), in conformità con i principi POUR delle WCAG.
 
 \subsection{Convenzioni interne}
 Nel corso dello sviluppo del sito sono state adottate alcune convenzioni progettuali specifiche.
@@ -294,16 +296,16 @@ Questo font, progettato per una facile lettura, è applicato ai testi del portal
 
 \section{Test effettuati}
 \subsection{Navigabilità e accessibilità}
-È stata eseguita una verifica dell’accessibilità e della navigabilità utilizzando i seguenti strumenti: 
+È stata eseguita una verifica dell’accessibilità e della navigabilità del sito utilizzando i seguenti strumenti: 
 \begin{itemize}
 \item \textbf{WAVE} di WebAIM. Tutte le pagine hanno ottenuto una valutazione pari o superiore a 9.8/10 e non sono stati rilevati errori bloccanti. I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
-\item \textbf{Checklist WCAG 2.1 - European Accessibility Act 2025} (pubblicata come risorsa nel sito del corso di Tecnologie Web 2025/2026). La seguente lista di controllo è stata adattata ai requisiti del nostro sito (per esempio, non sono stati considerati i controlli sui video poiché non presenti nel nostro progetto) ed è stata applicata dopo ogni modifica delle pagine.
+\item \textbf{Checklist WCAG 2.1 - European Accessibility Act 2025} (pubblicata come risorsa nel sito del corso di Tecnologie Web 2025/2026). La seguente lista di controllo è stata adattata ai requisiti del nostro sito (ad esempio, non sono stati considerati i controlli relativi ai video poiché non presenti nel sito) ed è stata utilizzata dopo ogni modifica delle pagine.
 \item \textbf{W3C Validator} per HTML e CSS, non vengono segnalati errori.
-\item \textbf{Google Lighthouse} per la velocità di caricamento. Non vengono segnalati problemi, ad eccezione della pagina "I nostri animali" che, a causa delle numerose immagini, necessità di più tempo per il caricamento della pagina.
+\item \textbf{Google Lighthouse} per la velocità di caricamento. Non sono stati riscontrati problemi, ad eccezione della pagina "I nostri animali" che richiede un tempo di caricamento maggiore a causa dell'elevato numero di immagini presenti. 
 \item \textbf{Total Validator} per HTML.
 \item \textbf{W3b1y} per HTML.
 \item \textbf{Compatibilità con diversi browser}: Google Chrome, Microsoft Edge, Mozilla Firefox, Apple Safari e Opera.
-\item \textbf{Compatibilità con diversi schermi}: ogni pagina è correttamente visualizzabile ed accessibile per tutte le tipologie di schermo. In particolare, abbiamo testato il sito fino a schermi molto piccoli come iPhone 5 (320x568).
+\item \textbf{Compatibilità con diversi schermi}: ogni pagina è correttamente visualizzabile ed accessibile su tutte le tipologie di schermo. In particolare, il sito è stato testato anche su schermi di dimensioni molto ridotte, come quelli di dispositivi quali iPhone 5 (320×568).
 \end{itemize}
 
 \subsection{Contrasti e validazione}
@@ -328,7 +330,8 @@ Durante la validazione del sito è stato utilizzato lo strumento Total Validator
 
 \begin{itemize}
     \item \textbf{Controllo ortografico}: parole in lingua italiana correttamente scritte sono state segnalate come errate (ad esempio “gatto” suggerito come “ghetto”).
-    \item \textbf{Div dell'hamburger}: lo strumento Total Validator segnala come errato l’uso di un elemento div per l’icona hamburger del menù. Tuttavia, tale segnalazione costituisce un falso positivo. Il div è utilizzato correttamente come contenitore strutturale e viene reso interattivo tramite CSS e JavaScript, rispettando la separazione tra struttura, presentazione e comportamento. Inoltre, al div sono associati gli opportuni attributi ARIA e i gestori di evento necessari, garantendo sia il corretto funzionamento del menù sia l’accessibilità per gli utenti. Pertanto, la scelta del div è tecnicamente corretta e conforme alle buone pratiche di sviluppo web moderno.
+    \item \textbf{Div dell'hamburger}: lo strumento Total Validator segnala come errato l’uso di un elemento div per l’icona hamburger del menù. Tuttavia, tale segnalazione costituisce un falso positivo. Il div è impiegato correttamente come contenitore strutturale e viene reso interattivo tramite CSS e JavaScript, rispettando la separazione tra struttura, presentazione e comportamento. 
+    Inoltre, all'elemento sono associati gli opportuni attributi ARIA e i necessari gestori di evento, garantendo sia il corretto funzionamento del menù sia l’accessibilità per gli utenti. Di conseguenza, l'utilizzo del div risulta una scelta tecnicamente valida e conforme alle buone pratiche dello sviluppo web moderno.
     \item \textbf{Link a Pixabay}: il collegamento a pixabay presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come “forbidden".
 \end{itemize}
 

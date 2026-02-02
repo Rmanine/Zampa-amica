@@ -146,7 +146,7 @@ Nel momento in cui un utente manifesta un forte interesse per un determinato ani
 
 \paragraph{Area riservata (utente autenticato)}
 \begin{itemize}
-    \item \textbf{Profilo utente}: area per la visualizzazione dei dati personali e degli appuntamenti in arrivo (cioè con data maggiore rispetto a quella corrente). Gli appuntamenti sono organizzati secondo uno schema esatto, poiché sono ordinati in maniera descrescente in base alla data.
+    \item \textbf{Profilo utente}: area per la visualizzazione dei dati personali e degli appuntamenti in arrivo (con data maggiore rispetto a quella corrente). Gli appuntamenti sono organizzati secondo uno schema esatto, poiché sono ordinati in maniera descrescente in base alla data.
     \item \textbf{Modifica profilo}: pagina dedicata all’aggiornamento delle proprie informazioni.
     \item \textbf{Prenotazione}: sistema che consente, dato un animale, di fissare un appuntamento in struttura selezionando una data ed eventualmente aggiungendo delle note.
     \item \textbf{Modifica prenotazione}: interfaccia per modificare o annullare le prenotazioni esistenti.
@@ -194,7 +194,7 @@ Il foglio di stile è organizzato in sezioni tematiche, facilitando la manutenzi
 Sono inoltre previsti stili specifici per gli stati di interazione degli elementi cliccabili, al fine di migliorare l’esperienza d’uso e l’accessibilità.
 
 \subsection{JavaScript}
-Il linguaggio JavaScript è stato impiegato con l'obiettivo di arricchire l'interazione utente, validare l'input dell'utente e garantire il rispetto dei criteri di accessibilità nelle componenti dinamiche.
+Il linguaggio JavaScript è stato impiegato con l'obiettivo di arricchire l'interazione utente, validare l'input e garantire il rispetto dei criteri di accessibilità nelle componenti dinamiche.
 Le funzionalità principali implementate riguardano: la validazione lato client, la gestione dei menù e il controllo del focus nelle finestre di dialogo.
 
 \subsubsection{Validazione dei form}
@@ -206,7 +206,9 @@ L'adattamento del layout sui dispositivi mobili è gestito tramite script che ma
 \begin{itemize}
     \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
     \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile è implementato come un overlay. Lo script permette di rendere visibile un bottone “Mostra filtri" che consente di visualizzare il form dedicato ai filtri di ricerca. Lo stesso script gestisce il focus: al momento dell’apertura dell’overlay, questo viene confinato al suo interno. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG (POUR), risulta in realtà conforme alle linee guida sull’accessibilità, in quanto evita che l’utente interagisca con elementi non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. 
-    Alla chiusura dell'overlay il focus viene correttamente ripristinato sull'elemento che ha attivato l'apertura. Non è stato possibile utilizzare direttamente il tag \texttt{dialog} per l'implementazione del form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma rimane sempre visibile all’interno del layout della pagina. 
+    Alla chiusura dell'overlay il focus viene correttamente ripristinato sull'elemento che ha attivato l'apertura. 
+    
+    Non è stato possibile utilizzare direttamente il tag \texttt{dialog} per l'implementazione del form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma rimane sempre visibile all’interno del layout della pagina. 
     L'uso del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay esclusivamente nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
 \end{itemize}
 
@@ -285,9 +287,9 @@ L'accessibilità è stata curata nativamente nella struttura HTML, nella logica 
 \begin{itemize}
     \item \textbf{Navigazione rapida}: un link nascosto all'inizio della pagina permette agli utenti da tastiera di saltare direttamente al contenuto principale.
     \item \textbf{Testo alternativo dinamico}: nelle immagini della galleria animali, l'attributo \texttt{alt} è costruito dinamicamente per fornire contesto. 
-    Per i cani l'attributo combina specie, taglia ed età mentre il genere viene rappresentato da un'altra immagine (l'icona, appunto, del genere).
+    Per i cani l'attributo combina specie, taglia ed età mentre il genere viene rappresentato dall'icona corrispondente.
     \item \textbf{Supporto multilingua}: i termini inglesi sono marcati con \texttt{lang="en"} per una corretta pronuncia dai sintetizzatori vocali. Per garantire la corretta pronuncia anche dei nomi degli animali si è memorizzato all'interno del database l'attributo 'Lingua'.
-    \item \textbf{Accessibilità dei form}: i campi obbligatori sono indicati testualmente, è supportato l'autocompletamento dei campi e sono presenti istruzioni chiare per la corretta compilazione dei campi.
+    \item \textbf{Accessibilità dei form}: i campi obbligatori sono indicati testualmente, è supportato l'autocompletamento e sono presenti istruzioni chiare per la corretta compilazione.
     \item \textbf{Focus visibile (CSS)}: lo stato \texttt{:focus-visible} è personalizzato con un bordo arancione solido, garantendo alto contrasto durante la navigazione da tastiera.
 \end{itemize}
 
@@ -300,7 +302,7 @@ Questo font, progettato per una facile lettura, è applicato ai testi del portal
 È stata eseguita una verifica dell’accessibilità e della navigabilità del sito utilizzando i seguenti strumenti: 
 \begin{itemize}
 \item \textbf{WAVE} di WebAIM. Tutte le pagine hanno ottenuto una valutazione pari o superiore a 9.8/10 e non sono stati rilevati errori bloccanti. I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
-\item \textbf{Checklist WCAG 2.1 - European Accessibility Act 2025} (pubblicata come risorsa nel sito del corso di Tecnologie Web 2025/2026). La seguente lista di controllo è stata adattata ai requisiti del nostro sito (ad esempio, non sono stati considerati i controlli relativi ai video poiché non presenti nel sito) ed è stata utilizzata dopo ogni modifica delle pagine.
+\item \textbf{Checklist WCAG 2.1 - European Accessibility Act 2025} (pubblicata come risorsa nel sito del corso di Tecnologie Web 2025/2026). La seguente lista di controllo è stata adattata ai requisiti del nostro sito (ad esempio, non sono stati considerati i controlli relativi ai video poiché non presenti) ed è stata utilizzata dopo ogni modifica delle pagine.
 \item \textbf{W3C Validator} per HTML e CSS, non vengono segnalati errori.
 \item \textbf{Google Lighthouse} per la velocità di caricamento. Non sono stati riscontrati problemi, ad eccezione della pagina "I nostri animali" che richiede un tempo di caricamento maggiore a causa dell'elevato numero di immagini presenti. 
 \item \textbf{Total Validator} per HTML.
@@ -333,7 +335,7 @@ Durante la validazione del sito è stato utilizzato lo strumento Total Validator
     \item \textbf{Controllo ortografico}: parole in lingua italiana correttamente scritte sono state segnalate come errate (ad esempio “gatto” suggerito come “ghetto”).
     \item \textbf{Div dell'hamburger}: lo strumento Total Validator segnala come errato l’uso di un elemento div per l’icona hamburger del menù. Tuttavia, tale segnalazione costituisce un falso positivo. Il div è impiegato correttamente come contenitore strutturale e viene reso interattivo tramite CSS e JavaScript, rispettando la separazione tra struttura, presentazione e comportamento. 
     Inoltre, all'elemento sono associati gli opportuni attributi ARIA e i necessari gestori di evento, garantendo sia il corretto funzionamento del menù sia l’accessibilità per gli utenti. Di conseguenza, l'utilizzo del div risulta una scelta tecnicamente valida e conforme alle buone pratiche dello sviluppo web moderno.
-    \item \textbf{Link a Pixabay}: il collegamento a pixabay presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come “forbidden".
+    \item \textbf{Link a Pixabay}: il collegamento a Pixabay presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come “forbidden".
 \end{itemize}
 
 \section{Organizzazione del gruppo}

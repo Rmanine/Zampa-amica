@@ -182,7 +182,7 @@ Lo stile grafico del sito è stato sviluppato seguendo il principio di separazio
 \begin{itemize}
     \item \texttt{style.css} per la versione desktop;
     \item \texttt{mobile.css} per la visualizzazione su dispositivi mobili;
-    \item \texttt{print.css} per l’ottimizzazione della stampa.
+    \item \texttt{print.css} per la visualizzazione delle pagine sulla stampa.
 \end{itemize}
 
 L’approccio adottato consente al layout di adattarsi dinamicamente alle diverse dimensioni dello schermo. 
@@ -204,18 +204,11 @@ Un esempio è la gestione della prenotazione delle visite: uno script dedicato i
 L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA, per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
 \begin{itemize}
     \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
-    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script permette di rendere visibile un bottone "Mostra filtri" che permette la visualizzazione del form relativo ai filtri di ricerca. Lo script, inoltre, utilizza una funzione che, nel momento dell'apertura dell'overlay, "blocca" il focus all'interno di quest'ultimo. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG 2.0, essa è in realtà coerente con le linee guida sull’accessibilità, in quanto impedisce all’utente di interagire con contenuti non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. Il focus viene infatti ripristinato sull’elemento di attivazione alla chiusura dell’overlay. Non abbiamo potuto utilizzare direttamente il tag \texttt{dialog} per implementare il form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma come un elemento sempre visibile all’interno del layout della pagina. L’utilizzo del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay solo nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
+    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile agisce come un overlay. Lo script permette di rendere visibile un bottone "Mostra filtri" che permette la visualizzazione del form relativo ai filtri di ricerca. Lo script, inoltre, utilizza una funzione che, nel momento dell'apertura dell'overlay, "blocca" il focus all'interno di quest'ultimo. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG (POUR), essa è in realtà coerente con le linee guida sull’accessibilità, in quanto impedisce all’utente di interagire con contenuti non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. Il focus viene infatti ripristinato sull’elemento di attivazione alla chiusura dell’overlay. Non abbiamo potuto utilizzare direttamente il tag \texttt{dialog} per implementare il form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma come un elemento sempre visibile all’interno del layout della pagina. L’utilizzo del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay solo nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
 \end{itemize}
 
 \subsubsection{Accessibilità e finestre di dialogo}
-Particolare attenzione è stata dedicata alla funzionalità di eliminazione del profilo utente: l'azione è irreversibile ed è stata implementata una finestra di dialogo che richiede una conferma esplicita.
-
-Per rendere questa finestra accessibile anche agli utenti che navigano tramite tastiera, è stato sviluppato un meccanismo di \textbf{Focus trap}:
-\begin{itemize}
-    \item All'apertura della finestra di dialogo, il focus viene spostato forzatamente al suo interno e il resto della pagina viene reso immobile.
-    \item Lo script gestisce la navigazione tramite il tasto \texttt{Tab} (e \texttt{Shift+Tab}), impedendo all’utente di spostare il focus al di fuori della finestra di dialogo.
-    \item Alla chiusura della finestra, il focus viene ripristinato sull’elemento che ha avviato l’azione, consentendo di riprendere la navigazione in modo naturale.
-\end{itemize}
+Particolare attenzione è stata riservata alla funzionalità di eliminazione del profilo utente: trattandosi di un’operazione irreversibile, è stata implementata una finestra di dialogo modale che richiede una conferma esplicita da parte dell’utente. Questa scelta consente di garantire la comprensibilità dell’azione e delle sue conseguenze (\emph{Understandable}), il controllo dell’interazione da parte dell’utente (\emph{Operable}) e la robustezza del sistema nel prevenire attivazioni accidentali (\emph{Robust}), in conformità ai principi POUR delle WCAG.
 
 \subsection{Convenzioni interne}
 Nel corso dello sviluppo del sito sono state adottate alcune convenzioni progettuali specifiche.
@@ -232,10 +225,6 @@ Tali scelte mirano a garantire coerenza strutturale, usabilità e accessibilità
     Il link relativo alla pagina corrente non è attivo e non presenta sottolineatura, al fine di evitare collegamenti circolari.  
     I link visitati sono evidenziati in colore arancione, utilizzando due tonalità differenti per garantire un adeguato contrasto sia su sfondi chiari che scuri.  
     Questa convenzione favorisce il riconoscimento visivo dei collegamenti già esplorati e mantiene coerenza cromatica nel sito.
-    \item \textbf{Denominazione delle immagini} \\
-    Le immagini degli animali sono archiviate nella cartella \texttt{img/assets}. Per convenzione, il nome del file immagine corrisponde all’\texttt{id} dell’animale nel database.  
-    Questa convenzione viene applicata anche in fase di inserimento di un nuovo animale: l’immagine associata viene salvata direttamente in tale cartella seguendo lo stesso criterio di denominazione.  
-    La scelta consente una gestione più semplice delle risorse e permette al codice PHP di determinare dinamicamente il percorso dell’immagine associata a ciascun animale.
     \item \textbf{Prenotazione degli incontri} \\
     Per la prenotazione degli incontri è richiesta unicamente l’indicazione della data.  
     L’orario non viene specificato, in quanto è sufficiente presentarsi durante gli orari di apertura della struttura, indicati nel sito.
@@ -299,9 +288,9 @@ L'accessibilità è stata curata nativamente nella struttura HTML, nella logica 
 \begin{itemize}
     \item \textbf{Navigazione rapida}: un link nascosto all'inizio della pagina permette agli utenti da tastiera di saltare direttamente al contenuto principale.
     \item \textbf{Testo alternativo dinamico}: nelle immagini della galleria animali, l'attributo \texttt{alt} è costruito dinamicamente per fornire contesto. 
-    Per i cani l'attributo combina specie e taglia mentre per le icone di genere viene specificato esplicitamente.
-    \item \textbf{Supporto multilingua}: i termini inglesi sono marcati con \texttt{lang="en"} per una corretta pronuncia dai sintetizzatori vocali.
-    \item \textbf{Accessibilità dei form}: tutte le etichette sono associate ai campi tramite \texttt{for}; i campi obbligatori sono indicati testualmente ed è supportato l'autocompletamento del browser.
+    Per i cani l'attributo combina specie, taglia ed età mentre il genere viene rappresentato da un'altra immagine (l'icona, appunto, del genere).
+    \item \textbf{Supporto multilingua}: i termini inglesi sono marcati con \texttt{lang="en"} per una corretta pronuncia dai sintetizzatori vocali. Per garantire la corretta pronuncia anche dei nomi degli animali si è memorizzato all'interno del database l'attributo 'Lingua'.
+    \item \textbf{Accessibilità dei form}: i campi obbligatori sono indicati testualmente, è supportato l'autocompletamento dei campi e sono presenti istruzioni chiare per la corretta compilazione dei campi.
     \item \textbf{Focus visibile (CSS)}: lo stato \texttt{:focus-visible} è personalizzato con un bordo arancione solido, garantendo alto contrasto durante la navigazione da tastiera.
 \end{itemize}
 
@@ -312,7 +301,7 @@ Questo font, progettato per una facile lettura, è applicato ai testi del portal
 \subsection{Contrasti e validazione}
 La palette cromatica del sito è composta dai colori mostrati in figura. Il colore dominante è il verde, scelto per il suo significato di speranza e armonia. 
 
-Le combinazioni di colori presenti nell’interfaccia sono state verificate tramite lo strumento di controllo del contrasto di WebAIM. 
+Le combinazioni di colori presenti nell’interfaccia sono state verificate tramite lo strumento di controllo del contrasto di \href{https://webaim.org/resources/contrastchecker/}{WebAIM} e \href{https://coolors.co/contrast-checker/dd6a38-002b24}{Coolors}.
 Il rapporto di contrasto più basso riscontrato è quello tra l’arancione chiaro (\#dd6a38) e il verde scuro (\#002b24), pari a 4.51:1, conforme ai requisiti WCAG di livello AA per il testo normale e AAA per il testo di grandi dimensioni. 
 Le altre combinazioni presentano rapporti di contrasto più elevati, superando ampiamente le soglie richieste dagli standard di accessibilità.
 

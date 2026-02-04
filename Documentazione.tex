@@ -51,7 +51,8 @@
     {\large \textbf{Sito web}} \\\href{http://tecweb.studenti.math.unipd.it/vbaleanu}{tecweb.studenti.math.unipd.it/vbaleanu}
     \\[0.5cm]
     {\large \textbf{Credenziali}}\\
-    Username: \textit{user}, Password: \textit{user}
+    Username: \textit{user}, Password: \textit{user}\\
+    Username: \textit{user1}, Password: \textit{user1}
     \end{center}
 \end{titlepage}
 
@@ -62,32 +63,32 @@
 \newpage
 \section{Introduzione}
 \subsection{Scopo del prodotto}
-Zampa Amica è una piattaforma web progettata per aumentare la visibilità di un rifugio per animali domestici situato nel territorio di Padova (struttura fittizia, realizzata esclusivamente a fini didattici).
+Zampa Amica è una piattaforma web progettata per un rifugio di animali domestici situato nel territorio di Padova (struttura fittizia, realizzata esclusivamente a fini didattici).
 
-L’obiettivo principale del sito è facilitare l’incontro tra il rifugio e le persone interessate all’adozione, offrendo una vetrina digitale che consente di consultare in modo semplice e intuitivo le schede dei cani e dei gatti ospitati.
+L’obiettivo principale del sito è facilitare l’incontro tra il rifugio e le persone interessate all’adozione, offrendo una vetrina digitale che permette di consultare le schede dei cani e dei gatti ospitati.
 
 Oltre alla funzione informativa, la piattaforma promuove il coinvolgimento della comunità locale: gli utenti possono candidarsi per supportare le attività del rifugio, contribuendo in modo concreto al benessere degli animali.
 
 \section{Analisi dei requisiti}
 \subsection{Analisi del target}
-Il progetto è stato pensato per rivolgersi a un’utenza ampia ed eterogenea. In linea con le finalità del portale, il target include utenti di ogni fascia d’età, dai più giovani agli anziani in cerca di compagnia, senza distinzioni di genere, provenienza culturale o livello di istruzione.
+Il progetto è stato pensato per rivolgersi a un’utenza ampia ed eterogenea: il target include utenti di ogni fascia d’età, dai più giovani agli anziani in cerca di compagnia, senza distinzioni di genere, provenienza culturale o livello di istruzione.
 
-Per questo motivo, l’interfaccia adotta un linguaggio semplice e una gerarchia visiva chiara. Queste scelte mirano a ridurre il carico cognitivo e a rendere la navigazione fluida anche per utenti con competenze informatiche limitate, garantendo un accesso equo alle informazioni e alle funzionalità offerte dal sito.
+Per questo motivo, l’interfaccia adotta un linguaggio semplice e una gerarchia visiva chiara. Queste scelte mirano a ridurre il carico cognitivo e a rendere la navigazione fluida anche per utenti con competenze informatiche limitate.
 
 \subsection{Tipi di utente}
 Il portale prevede due principali tipologie di utenti, differenziate in base ai permessi di accesso e alle funzionalità disponibili:
 \begin{itemize}
-    \item \textbf{Utente non registrato}: può accedere ai contenuti informativi e consultare il catalogo completo degli animali presenti nella struttura. Ha inoltre la possibilità di manifestare il proprio interesse per l’attività di volontariato compilando l’apposito form.
+    \item \textbf{Utente non registrato}: può accedere ai contenuti informativi e consultare il catalogo degli animali presenti nella struttura. Ha inoltre la possibilità di manifestare il proprio interesse per l’attività di volontariato compilando l’apposito form.
     \item \textbf{Utente registrato}: oltre alle funzionalità disponibili per gli utenti non registrati, dispone di un’area personale per la visualizzazione e la modifica dei propri dati. Può inoltre prenotare e gestire le visite presso la struttura.
 \end{itemize}
 
 La candidatura per il volontariato può essere inviata sia dagli utenti non registrati sia da quelli autenticati.
 
 \subsection{Funzionalità}
-Il portale mette a disposizione un insieme di funzionalità pensate per rispondere alle esigenze delle diverse tipologie di utenti e offrire un’esperienza completa e intuitiva:
+Il sito mette a disposizione un insieme di funzionalità pensate per rispondere alle esigenze delle diverse tipologie di utenti:
 \begin{itemize}
     \item \textbf{Autenticazione e profilo}: gestione della registrazione e dell’accesso al sistema. Gli utenti autenticati dispongono di un’area personale per la gestione dei propri dati.
-    \item \textbf{Gestione delle prenotazioni}: funzionalità riservata agli utenti registrati che consente di prenotare visite in struttura e di visualizzare, modificare o annullare gli appuntamenti tramite operazioni di tipo CRUD (Create, Read, Update, Delete).
+    \item \textbf{Gestione delle prenotazioni}: funzionalità riservata agli utenti registrati che consente di prenotare visite in struttura e di visualizzare, modificare o annullare gli appuntamenti.
     \item \textbf{Candidatura al volontariato}: sistema dedicato alla raccolta delle richieste di collaborazione. Gli utenti possono inviare la propria candidatura inserendo nome, cognome e recapiti (telefono ed email), permettendo al personale della struttura di ricontattarli per un colloquio conoscitivo.
     \item \textbf{Catalogo animali}: sezione dinamica per la consultazione degli animali presenti nel rifugio, supportata da un sistema di filtraggio per specie, sesso, taglia ed età, che facilita una ricerca mirata.
     \item \textbf{Schede di dettaglio}: pagine dedicate ai singoli animali, contenenti informazioni descrittive e una foto identificativa.
@@ -95,88 +96,131 @@ Il portale mette a disposizione un insieme di funzionalità pensate per risponde
 
 \section{Progettazione}
 \subsection{Struttura del sito}
-L’architettura del portale è stata progettata per offrire un’esperienza d’uso coerente e un orientamento immediato. La navigazione si basa su una gerarchia chiara e su una struttura HTML5 semantica condivisa da tutte le pagine, così da garantire uniformità e facilità di utilizzo.
+L’architettura del portale è stata progettata per offrire un orientamento immediato: la navigazione si basa su una gerarchia chiara e su una struttura HTML5 semantica condivisa da tutte le pagine.
+Questa scelta garantisce uniformità e facilità di utilizzo.
 
 \subsubsection{Scheletro comune}
-Tutte le pagine del portale condividono una struttura modulare pensata per assicurare continuità visiva e accessibilità. I principali elementi che compongono il layout sono:
+Tutte le pagine del sito condividono una struttura modulare pensata per assicurare continuità visiva. I principali elementi che compongono il layout sono:
 \begin{itemize}
-    \item \textbf{Header}: Costituisce il punto centrale della navigazione. Include un link di accesso rapido (``Salta al contenuto''), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
+    \item \textbf{Header}: costituisce il punto centrale della navigazione. Include un link di accesso rapido (“Salta al contenuto"), che consente agli utenti che utilizzano tastiera o tecnologie assistive di saltare i blocchi di navigazione ripetitivi. Al suo interno sono presenti i seguenti elementi:
     \begin{itemize}
         \item \textbf{Identità visiva}: il logo del rifugio è utilizzato come elemento di riconoscimento dell’associazione. Si è scelto di non renderlo un collegamento alla pagina Home per evitare link ridondanti verso la stessa destinazione.
-        Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità dell’header.
-        \item \textbf{Menù di navigazione}: all’interno del tag \texttt{<nav id="menu">} è presente una lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
-        \item \textbf{Call to action dinamica}: il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano ``Accedi'' (o ``Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione ``Profilo''.
-        \item \textbf{Ottimizzazione mobile}: nelle risoluzioni ridotte viene visualizzato un menù hamburger gestito tramite script.
+        Questa scelta riduce il rischio di confusione durante la navigazione con tecnologie assistive e contribuisce a migliorare l’accessibilità.
+        \item \textbf{Menù di navigazione}: lista non ordinata di collegamenti alle principali sezioni del sito, accompagnata da un pulsante di azione.
+        \item \textbf{Call to action dinamica}: il pulsante di accesso modifica testo e destinazione in base allo stato dell’utente. Gli utenti non autenticati visualizzano “Accedi'' (o “Registrati'' nella pagina di login), mentre gli utenti autenticati possono accedere direttamente alla sezione “Profilo''.
     \end{itemize}
-    \item \textbf{Breadcrumb}: posizionato immediatamente sotto l’header all’interno del tag \texttt{<nav id="breadcrumb">}, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari e migliorare l’esperienza di navigazione assistita.
-    \item \textbf{Main}: l’area principale dei contenuti, identificata dal tag \texttt{<main id="contenuto">}, ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
-    \item \textbf{Footer}: chiude la struttura informativa del sito e include un’ancora di risalita (``Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright, i nomi degli sviluppatori e il disclaimer relativo alla natura universitaria e fittizia del progetto.
+    \item \textbf{Breadcrumb}: posizionato immediatamente sotto l’header, fornisce un riferimento chiaro sulla posizione dell’utente all’interno del sito. La pagina corrente è mostrata come testo semplice per evitare link circolari.
+    \item \textbf{Main}: l’area principale dei contenuti ospita le informazioni specifiche di ogni pagina ed è il punto di arrivo dei link di salto presenti nell’header e nel footer.
+    \item \textbf{Footer}: chiude la struttura informativa del sito e include un’ancora di risalita (“Torna al contenuto'') per facilitare la navigazione da tastiera, i crediti delle immagini (Pixabay), le informazioni di copyright e i nomi degli sviluppatori. Nel footer non è stata inserita una mappa del sito, poiché la struttura è semplice e poco profonda, rendendo la navigazione immediata attraverso il menù principale senza la necessità di strumenti aggiuntivi di orientamento.
 \end{itemize}
 
 \subsubsection{Organizzazione delle pagine}
-Il portale è suddiviso in tre macro-aree, differenziate in base alle funzionalità offerte e ai permessi di accesso.
+La piattaforma web è suddivisa in tre macro-aree, differenziate in base alle funzionalità offerte e ai permessi di accesso.
 
 \paragraph{Area informativa}
 \begin{itemize}
-    \item \textbf{Home (index)}: presenta la missione del rifugio e alcuni dati sull’impatto sociale (il numero di animali salvati, le adozioni effettuate e i volontari attivi).
-    \item \textbf{Chi siamo}: racconta la storia dell’associazione e presenta il team, composto da studenti universitari accomunati dalla passione per gli animali.
+    \item \textbf{Home (index)}: presenta la missione del rifugio e alcuni dati sull’impatto sociale.
+    \item \textbf{Chi siamo}: racconta la storia dell’associazione e presenta il team.
 \end{itemize}
 
 \paragraph{Area di coinvolgimento}
 \begin{itemize}
-    \item \textbf{I nostri animali}: sezione dinamica che consente di consultare le schede degli animali ospitati nel rifugio attraverso la semplice esplorazione dell’elenco o tramite un sistema di filtraggio.
-    \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale.
-    \item \textbf{Volontariato}: sezione dedicata a chi desidera offrire il proprio supporto. Include un form di candidatura con validazione dei campi e suggerimenti per l’inserimento dei dati principali.
+    \item \textbf{I nostri animali}: sezione dinamica che permette di consultare le schede degli animali ospitati nel rifugio attraverso l'esplorazione dell’elenco o tramite un sistema di filtraggio. Le informazioni sono organizzate secondo uno schema ibrido:
+    \begin{itemize}
+        \item \textbf{Schema esatto}: la lista degli animali è ordinata alfabeticamente per nome (A–Z), garantendo una semplice consultazione.
+        \item \textbf{Schema ambiguo}: l'utente può modificare la visualizzazione della lista degli animali attraverso una serie di filtri:
+        \begin{enumerate}
+            \item \textbf{Tipo}: rappresenta la specie dell'animale (cane o gatto);
+            \item \textbf{Sesso}: rappresenta il sesso dell'animale (femmina o maschio);
+            \item \textbf{Taglia}: rappresenta la grandezza dell'animale. La categoria taglia è applicabile esclusivamente ai cani e diventa visibile solo dopo aver selezionato il tipo “cane”;
+            \item \textbf{Età}: rappresenta l'età dell'animale.
+        \end{enumerate}
+        Le categorie di filtraggio sono ordinate in base alla frequenza di utilizzo attesa, dalla più scelta alla meno scelta. Il filtro \textbf{Tipo} rappresenta il filtro principale (ad esempio per utenti interessati esclusivamente ai cani), seguito da \textbf{Sesso}, \textbf{Taglia} ed \textbf{Età}, che consentono un progressivo affinamento della ricerca.
+    \end{itemize}
+
+Lo schema ibrido è stato scelto perché combina i vantaggi di uno schema esatto, che garantisce coerenza e prevedibilità nella visualizzazione dell’elenco, con quelli di uno schema ambiguo, che supporta modalità di ricerca più flessibili. Trattandosi di un elenco di animali, nella maggior parte dei casi gli utenti non conoscono il nome dell’animale a priori e, di conseguenza, non effettuano una navigazione “a tiro perfetto". La navigazione si basa invece su caratteristiche generali quali specie, età, sesso o taglia, favorendo un'esplorazione più ampia degli animali disponibili.
+Nel momento in cui un utente manifesta un forte interesse per un determinato animale del rifugio, ha la possibilità di prenotare un appuntamento e di visualizzarlo successivamente all'interno del proprio profilo.
+    \item \textbf{Dettagli animale}: fornisce informazioni approfondite e una foto identificativa del singolo animale. Se l'utente è autenticato ha la possibilità di prenotare un appuntamento per poter incontrare l'animale direttamente al rifugio.
+    \item \textbf{Volontariato}: pagina dedicata a coloro che desiderano offrire il proprio supporto come volontaria o volontario, compilando l'apposito form. La gestione delle richieste di volontariato non viene gestita dal sito: un amministratore del rifugio sarà incaricato a controllare il database per visualizzare le eventuali nuove richieste arrivate dagli utenti e contattarli se necessario.
 \end{itemize}
 
 \paragraph{Area riservata (utente autenticato)}
 \begin{itemize}
-    \item \textbf{Profilo utente}: area personale per la visualizzazione dei dati dell’utente e delle visite prenotate.
-    \item \textbf{Modifica profilo}: pagina dedicata all’aggiornamento delle informazioni personali.
-    \item \textbf{Prenotazione}: sistema che consente di fissare un appuntamento in struttura selezionando una data e un animale.
+    \item \textbf{Profilo utente}: area per la visualizzazione dei dati personali e degli appuntamenti in arrivo (con data maggiore rispetto a quella corrente). Gli appuntamenti sono organizzati secondo uno schema esatto, poiché sono ordinati in maniera descrescente in base alla data.
+    \item \textbf{Modifica profilo}: pagina dedicata all’aggiornamento delle proprie informazioni.
+    \item \textbf{Prenotazione}: sistema che consente, dato un animale, di fissare un appuntamento in struttura selezionando una data ed eventualmente aggiungendo delle note.
     \item \textbf{Modifica prenotazione}: interfaccia per modificare o annullare le prenotazioni esistenti.
 \end{itemize}
 
 \subsubsection{Pagine di servizio}
-Le pagine di errore (403, 404 e 500) sono state progettate ponendo particolare attenzione all’esperienza utente. Utilizzano un linguaggio semplice e rassicurante per spiegare l’errore e guidare l’utente verso una navigazione sicura. Queste pagine mantengono lo stesso scheletro delle altre pagine, consentendo di riprendere facilmente l’esplorazione del sito e riducendo il senso di smarrimento.
+Le pagine di errore (403, 404 e 500) sono state progettate ponendo particolare attenzione all’esperienza utente: utilizzano un linguaggio semplice e rassicurante per spiegare l’errore e guidare l’utente verso una navigazione sicura. 
+Queste pagine mantengono lo scheletro comune, consentendo di riprendere facilmente l’esplorazione del sito e riducendo il senso di smarrimento.
 
 \subsection{SEO}
-L’indicizzazione del portale è stata curata seguendo le principali linee guida SEO, con l’obiettivo di migliorare la visibilità sui motori di ricerca e garantire una corretta scansione delle pagine da parte dei crawler. Le strategie adottate comprendono:
+L’indicizzazione del sito è stata curata seguendo le principali linee guida SEO, con l’obiettivo di migliorare la visibilità sui motori di ricerca. Le strategie adottate comprendono:
 \begin{itemize}
-    \item \textbf{Markup semantico}: la struttura delle pagine utilizza in modo coerente i tag semantici HTML5 (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}). Questa scelta consente ai motori di ricerca di interpretare correttamente la gerarchia dei contenuti e di individuare più facilmente le informazioni rilevanti.
-    \item \textbf{Metadati descrittivi}: ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Ciò favorisce un’indicizzazione accurata e contribuisce a rendere lo \textit{snippet} nei risultati di ricerca chiaro per l’utente.
-    \item \textbf{Responsive web design}: il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile responsivi. Poiché la compatibilità mobile è un fattore rilevante per il posizionamento, questa scelta migliora sia l’esperienza di navigazione sia il ranking nei motori di ricerca.
-    \item \textbf{Presenza sui social}: nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione contribuisce a rafforzare la visibilità del progetto e a trasmettere maggiore affidabilità e continuità del brand.
+    \item \textbf{Markup semantico}: la struttura delle pagine utilizza in modo coerente i tag semantici HTML5. Questa scelta consente ai motori di ricerca di interpretare correttamente la gerarchia dei contenuti e di individuare più facilmente le informazioni rilevanti.
+    \item \textbf{Metadati descrittivi}: ogni pagina è dotata di tag \texttt{<title>} e \texttt{<meta name="description">} univoci e coerenti con il contenuto. Questo permette di rendere l'anteprima della pagina chiara per l’utente.
+    \item \textbf{Design responsivo}: il sito è stato progettato per adattarsi a dispositivi con diverse risoluzioni tramite fogli di stile CSS responsivi, che consentono una corretta visualizzazione dei contenuti su desktop, tablet e smartphone.
+    \item \textbf{Presenza sui social}: nel \textit{footer} sono presenti collegamenti diretti al profilo Instagram dell’associazione. Questa integrazione trasmette maggiore affidabilità nell'associazione.
+    \item \textbf{Tempo di raggiungimento delle informazioni}: il sito è progettato in maniera tale da essere poco profondo, permettendo il raggiungimento di qualsiasi informazione con un massimo di 4 click.
+    \item \textbf{Velocità di caricamento}: ogni pagina del sito ha un tempo di caricamento molto basso, rendendo il sito affidabile e facilmente navigabile. Una piccola eccezione viene fatta per la pagina “I nostri animali" che, contenendo molte immagini, ha un tempo di caricamento leggermente più lento ma comunque non tale da compromettere l’esperienza di navigazione dell’utente.
+    \item \textbf{Query di ricerca}: la definizione dei metadati tiene conto delle principali intenzioni di ricerca degli utenti. In particolare, il sito risponde a:
+    \begin{itemize}
+        \item Ricerche generiche sull’associazione, come \textit{“Zampa Amica”} o \textit{“associazione Zampa Amica Padova”};
+        \item Ricerche legate all’adozione di animali domestici, ad esempio \textit{“adozione cani Padova”}, \textit{“adozione gatti”} o \textit{“animali da adottare”};
+        \item Ricerche informative sugli animali ospitati, come \textit{“animali Zampa Amica”} o \textit{“cani e gatti in adozione”};
+        \item Ricerche che combinano il nome dell’associazione con una specifica funzionalità, come \textit{“Zampa Amica accedi”}, \textit{“Zampa Amica prenotazione”} o \textit{“Zampa Amica volontariato”}, che permettono all’utente di essere reindirizzato direttamente alla pagina più pertinente.
+    \end{itemize}
 \end{itemize}
 
 \section{Implementazione front-end}
 \subsection{HTML}
-Le pagine del sito sono state realizzate seguendo lo standard HTML5, con un approccio modulare e semantico. Questa scelta garantisce leggibilità del codice, facilità di manutenzione e supporto per l’accessibilità.
+Le pagine del sito sono state realizzate seguendo lo standard HTML5.
 
-Ogni pagina adotta uno scheletro comune composto dai principali elementi: \texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}. L’header ospita il menu di navigazione, comprensivo del pulsante “hamburger” per dispositivi mobili. La voce relativa alla pagina corrente è mostrata come testo semplice, evitando collegamenti ridondanti.
-Il contenuto principale è racchiuso nel tag \texttt{<main id="contenuto">}, punto di arrivo per i link di salto (“Salta al contenuto” e “Torna al contenuto”), che migliorano la navigazione tramite tastiera e tecnologie assistive. All’interno del main, i blocchi di contenuto sono organizzati in \texttt{<section>} per evidenziare le parti semanticamente distinte del sito.
+Ogni pagina adotta uno scheletro comune composto dai principali elementi: \texttt{<header>}, \texttt{<nav>}, \texttt{<main>} e \texttt{<footer>}. L’header ospita il menù di navigazione, comprensivo del pulsante hamburger per dispositivi mobile.
+Il contenuto principale è punto di arrivo per i link di salto (“Salta al contenuto” e “Torna al contenuto”), che migliorano la navigazione tramite tastiera e tecnologie assistive. All’interno del main, i contenuti sono organizzati in \texttt{<section>} o \texttt{<div>} per evidenziare le parti semanticamente distinte del sito.
 
 Per facilitare stili e interazioni, vengono utilizzati gli attributi \texttt{id} e \texttt{class}, che permettono di identificare i blocchi e di applicare CSS e script in maniera modulare.
 
-Tutte le pagine sono validate secondo lo standard W3C e arricchite con metadati descrittivi (\texttt{<title>}, \texttt{<meta description>}, \texttt{<meta keywords>}) e l’attributo \texttt{lang}, per garantire compatibilità, accessibilità e corretto supporto multilingua.
+Tutte le pagine sono validate secondo lo standard W3C e arricchite con metadati descrittivi e l’attributo \texttt{lang} per parole diverse dall'italiano, per garantire compatibilità, accessibilità e corretto supporto multilingua.
 
 \subsection{CSS}
-Lo stile grafico del sito è stato sviluppato seguendo il principio di separazione tra struttura e presentazione, utilizzando fogli di stile esterni. In particolare, il progetto si basa su tre file CSS distinti:
+Lo stile grafico del sito è stato sviluppato seguendo il principio di separazione tra struttura e presentazione, utilizzando fogli di stile esterni. Il portale si basa su tre file CSS distinti:
 \begin{itemize}
     \item \texttt{style.css} per la versione desktop;
     \item \texttt{mobile.css} per la visualizzazione su dispositivi mobili;
-    \item \texttt{print.css} per l’ottimizzazione della stampa.
+    \item \texttt{print.css} per la visualizzazione delle pagine sulla stampa.
 \end{itemize}
 
-L’approccio adottato è quello del \textit{Responsive Web Design}, che consente al layout di adattarsi dinamicamente alle diverse dimensioni dello schermo. Per la disposizione degli elementi sono stati utilizzati Flexbox e, in alcune sezioni, tecniche di layout fluido basate sulla larghezza della viewport.
+L’approccio adottato consente al layout di adattarsi dinamicamente alle diverse dimensioni dello schermo. 
 
-La coerenza visiva è garantita dall’uso di variabili CSS definite nel selettore \texttt{:root}, che centralizzano la gestione dei colori principali e permettono di mantenere un’identità grafica uniforme in tutte le pagine. 
+La coerenza visiva è garantita dall’uso di variabili CSS che centralizzano la gestione dei colori principali e permettono di mantenere un’identità grafica uniforme in tutte le pagine. 
 
-Il foglio di stile è organizzato in sezioni tematiche (header, navigazione, breadcrumb, contenuto principale, footer, form, pagine di dettaglio), facilitando la manutenzione del codice e l’estensione futura del progetto.
-Sono inoltre previsti stili specifici per gli stati di interazione (\texttt{:hover}, \texttt{:focus-visible}) degli elementi cliccabili, al fine di migliorare l’esperienza d’uso e l’accessibilità.
+Il foglio di stile è organizzato in sezioni tematiche, facilitando la manutenzione del codice e l’estensione futura del progetto.
+Sono inoltre previsti stili specifici per gli stati di interazione degli elementi cliccabili, al fine di migliorare l’esperienza d’uso e l’accessibilità.
 
 \subsection{JavaScript}
-(Testo da inserire)
+Il linguaggio JavaScript è stato impiegato con l'obiettivo di arricchire l'interazione utente, validare l'input e garantire il rispetto dei criteri di accessibilità nelle componenti dinamiche.
+Le funzionalità principali implementate riguardano: la validazione lato client, la gestione dei menù e il controllo del focus nelle finestre di dialogo.
+
+\subsubsection{Validazione dei form}
+Per migliorare l'usabilità, è stata introdotta una validazione nei form che fornisce un feedback all'utente prima dell'invio dei dati al server.
+Un esempio è la gestione della prenotazione delle visite: uno script dedicato intercetta la selezione della data e impedisce la scelta di giorni passati o della data odierna, permettendo prenotazioni solo a partire dal giorno successivo.
+
+\subsubsection{Gestione dell'interfaccia mobile}
+L'adattamento del layout sui dispositivi mobili è gestito tramite script che manipolano le classi CSS e gli attributi ARIA, per garantire che le tecnologie assistive interpretino correttamente lo stato degli elementi.
+\begin{itemize}
+    \item \textbf{Menù hamburger}: il codice gestisce l'apertura e la chiusura del menù di navigazione, alternando l'attributo \texttt{aria-expanded} (true/false) e aggiornando dinamicamente l'\texttt{aria-label} del pulsante (“Apri menù''/“Chiudi menù'').
+    \item \textbf{Filtri di ricerca}: nella pagina “I nostri animali'', il pannello dei filtri su mobile è implementato come un overlay. Lo script permette di rendere visibile un bottone “Mostra filtri" che consente di visualizzare il form dedicato ai filtri di ricerca. Lo stesso script gestisce il focus: al momento dell’apertura dell’overlay, questo viene confinato al suo interno. Nonostante questa scelta possa sembrare contraria al principio \emph{Operable} delle WCAG (POUR), risulta in realtà conforme alle linee guida sull’accessibilità, in quanto evita che l’utente interagisca con elementi non visibili o non pertinenti, garantendo una navigazione da tastiera controllata e prevedibile. 
+    Alla chiusura dell'overlay il focus viene correttamente ripristinato sull'elemento che ha attivato l'apertura. 
+    
+    Non è stato possibile utilizzare direttamente il tag \texttt{dialog} per l'implementazione del form perché, se non si è su mobile, il pannello dei filtri non si comporta come una finestra modale ma rimane sempre visibile all’interno del layout della pagina. 
+    L'uso del tag \texttt{dialog} avrebbe quindi introdotto un comportamento modale non coerente con la versione desktop, rendendo necessaria una gestione separata ed errata degli stati di apertura e chiusura. Per questo motivo si è scelto di implementare manualmente il comportamento dell’overlay esclusivamente nella visualizzazione mobile, mantenendo una struttura semantica coerente e un’esperienza utente uniforme sui diversi dispositivi.
+\end{itemize}
+
+\subsubsection{Accessibilità e finestre di dialogo}
+Particolare attenzione è stata riservata alla funzionalità di eliminazione del profilo utente: trattandosi di un’operazione irreversibile, è stata implementata una finestra di dialogo modale che richiede una conferma esplicita da parte dell’utente. Questa scelta progettuale garantisce la comprensibilità dell’azione e delle sue conseguenze (\emph{Understandable}), assicura il controllo dell’interazione da parte dell’utente (\emph{Operable}) e aumenta la robustezza del sistema nel prevenire attivazioni accidentali (\emph{Robust}), in conformità con i principi POUR delle WCAG.
 
 \subsection{Convenzioni interne}
 Nel corso dello sviluppo del sito sono state adottate alcune convenzioni progettuali specifiche.
@@ -185,18 +229,14 @@ Tali scelte mirano a garantire coerenza strutturale, usabilità e accessibilità
 \begin{itemize}
     \item \textbf{Gestione semantica del logo} \\
     Il logo presente nell’header è marcato come elemento \texttt{<p>} e non come heading. 
-    Gli strumenti di analisi dell’accessibilità (come WAVE) segnalano un warning di tipo \emph{``possible heading''}, poiché l’elemento ha un aspetto visivamente simile a un titolo. 
+    Gli strumenti di analisi dell’accessibilità (come WAVE) segnalano un warning di tipo \emph{“possible heading''}, poiché l’elemento ha un aspetto visivamente simile a un titolo. 
     Questa scelta è intenzionale: il progetto adotta la convenzione di utilizzare un unico \texttt{<h1>} per pagina, riservato esclusivamente al titolo principale del contenuto. 
-    Il logo non viene quindi incluso nella gerarchia degli heading per evitare ambiguità semantiche e mantenere una struttura chiara e accessibile.
+    Il logo non viene quindi incluso nella gerarchia degli heading per evitare ambiguità semantiche e mantenere una struttura chiara.
     \item \textbf{Rappresentazione visiva dei collegamenti} \\
-    I collegamenti ipertestuali non visitati sono visualizzati come testo sottolineato.  
+    I collegamenti ipertestuali sono visualizzati come testo sottolineato.  
     Il link relativo alla pagina corrente non è attivo e non presenta sottolineatura, al fine di evitare collegamenti circolari.  
     I link visitati sono evidenziati in colore arancione, utilizzando due tonalità differenti per garantire un adeguato contrasto sia su sfondi chiari che scuri.  
     Questa convenzione favorisce il riconoscimento visivo dei collegamenti già esplorati e mantiene coerenza cromatica nel sito.
-    \item \textbf{Denominazione delle immagini} \\
-    Le immagini degli animali sono archiviate nella cartella \texttt{img/assets}. Per convenzione, il nome del file immagine corrisponde all’\texttt{id} dell’animale nel database.  
-    Questa convenzione viene applicata anche in fase di inserimento di un nuovo animale: l’immagine associata viene salvata direttamente in tale cartella seguendo lo stesso criterio di denominazione.  
-    La scelta consente una gestione più semplice delle risorse e permette al codice PHP di determinare dinamicamente il percorso dell’immagine associata a ciascun animale.
     \item \textbf{Prenotazione degli incontri} \\
     Per la prenotazione degli incontri è richiesta unicamente l’indicazione della data.  
     L’orario non viene specificato, in quanto è sufficiente presentarsi durante gli orari di apertura della struttura, indicati nel sito.
@@ -204,71 +244,124 @@ Tali scelte mirano a garantire coerenza strutturale, usabilità e accessibilità
 
 \section{Implementazione back-end}
 \subsection{PHP}
-\subsubsection{Autenticazione}
-La gestione dell'autenticazione è stata implementata tramite una classe dedicata \texttt{Auth}, la quale si occupa di verificare le credenziali degli utenti e gestire la sessione. La funzione \texttt{authenticate} riceve lo username e la password inseriti dall’utente e recupera dal database la corrispondente password hashata. La verifica della corrispondenza tra la password fornita e quella memorizzata avviene tramite la funzione nativa \texttt{password\_verify}, garantendo la protezione contro l’accesso non autorizzato.
+Il codice è organizzato in moduli distinti per facilitare la manutenibilità.
 
-L’avvio della sessione è gestito all’interno della classe, verificando lo stato della sessione e registrando l’ID dell’utente autenticato nella variabile \texttt{\$\_SESSION}. L’identificazione dell’utente loggato viene fornita da un metodo \texttt{logged\_in\_user}, che restituisce l’ID dell’utente se presente, altrimenti \texttt{false}.
+\subsubsection{Accesso ai dati (Classe DBAccess)}
+L'interazione con il database avviene tramite la classe \texttt{DBAccess}, che funge da interfaccia tra l'applicazione e il database, nascondendo i dettagli delle query.  
+Le principali caratteristiche implementative sono:
+\begin{itemize}
+    \item \textbf{Gestione della connessione}: il metodo \texttt{openDBConnection} apre la connessione al database. 
+    \item \textbf{Query parametriche}: i metodi principali usano \textit{Prepared Statements} per proteggere dagli input dell'utente.
+    \item \textbf{Costruzione dinamica delle query}: il metodo \texttt{getList} costruisce le query in base ai filtri selezionati dall'utente, permettendo ricerche flessibili.
+\end{itemize}
 
-La sanificazione dei dati in input avviene tramite la funzione \texttt{pulisciInput}, che rimuove spazi superflui e tag HTML. Lo username e la password vengono validati per verificare l’assenza di spazi interni e la correttezza minima della lunghezza, garantendo al contempo la possibilità di utilizzare caratteri speciali nelle password per aumentare l’entropia. In caso di errori di login o di input non valido, viene fornito un messaggio generico per non divulgare informazioni sensibili sull’esistenza degli account.
+\subsubsection{Gestione dell'autenticazione (Classe Login)}
+La classe \texttt{Login} gestisce l'autenticazione collaborando con la classe \texttt{DBAccess}.
+\begin{itemize}
+    \item \textbf{Verifica delle credenziali}: il metodo \texttt{authenticate} controlla username e password, con password protette tramite hashing \textbf{SHA-256}.
+    \item \textbf{Gestione della sessione}: i metodi \texttt{log\_user\_in} e \texttt{logged\_in\_user} salvano e recuperano l'ID utente tramite \texttt{\$\_SESSION}. 
+    \item \textbf{Logout ed eliminazione}: la sessione viene distrutta correttamente con \texttt{logout} o \texttt{elimina\_user} per prevenire accessi non autorizzati.
+\end{itemize}
 
-Per prevenire vulnerabilità di tipo SQL Injection, tutte le query al database sono state realizzate tramite \textit{prepared statements} nativi di PHP (mysqli). Questo approccio permette di separare la struttura della query dai dati forniti dall'utente, garantendo che questi ultimi non vengano mai interpretati come codice SQL eseguibile.
+\subsubsection{Sicurezza}
+Oltre ai \textit{Prepared Statements} per prevenire la SQL Injection, il codice controlla i permessi di accesso.  
+Le pagine riservate verificano la presenza della sessione utente (\texttt{logged\_in\_user}) e, in caso contrario, reindirizzano a una pagina di login o di errore, proteggendo le funzionalità sensibili.
+
 
 \subsection{Database}
 Il sito web si appoggia su un database relazionale per la gestione delle informazioni relative agli utenti, agli animali, alle prenotazioni e alle richieste di volontariato.
 
-\subsubsection{Struttura delle tabelle principali}
 Le tabelle fondamentali del database sono:
 \begin{itemize}
-    \item \textbf{Utente}: contiene le credenziali di accesso e le informazioni di registrazione. Ogni utente è identificato da un campo \texttt{ID} univoco, e dispone di \texttt{Email}, \texttt{Username} (entrambi unici) e \texttt{Password}, memorizzata in SHA-256 per sicurezza.
+    \item \textbf{Utente}: contiene le credenziali di accesso e le informazioni di registrazione. Ogni utente è identificato da un campo \texttt{ID} univoco e dispone di \texttt{Email}, \texttt{Username} (entrambi unici) e \texttt{Password}, memorizzata in SHA-256 per sicurezza.
     \item \textbf{Animale}: memorizza i dati sugli animali presenti nel rifugio, tra cui \texttt{Nome}, \texttt{Specie}, \texttt{Genere}, \texttt{EtàMesi}, \texttt{Taglia} (quando l'animale è un cane) e \texttt{Descrizione}. L’attributo \texttt{Lingua} indica la lingua in cui è stato definito il nome dell’animale. A ciascun animale è associata anche un’immagine tramite l'attributo \texttt{Immagine}.
-    \item \textbf{Prenotazione}: registra gli appuntamenti per visite conoscitive o adozioni. La tabella collega un \texttt{UtenteID} a un \texttt{AnimaleID} e memorizza la \texttt{Data} della prenotazione e eventuali note aggiuntive. Le chiavi esterne assicurano l’integrità referenziale con le tabelle \texttt{Utente} e \texttt{Animale}.
+    \item \textbf{Prenotazione}: registra gli appuntamenti per visite conoscitive o adozioni. La tabella collega un \texttt{UtenteID} a un \texttt{AnimaleID} e memorizza la \texttt{Data} della prenotazione ed eventuali note aggiuntive.
     \item \textbf{Richiesta\_Volontariato}: conserva le informazioni relative alle candidature di volontari, tra cui \texttt{Email}, \texttt{Nome}, \texttt{Cognome}, \texttt{Telefono} e la data di invio della richiesta.
 \end{itemize}
+
+\noindent
+\includegraphics[width=\textwidth]{./docs_assets/schema_ER.png}
 
 \subsubsection{Popolamento e relazioni}
 Il database è popolato con dati di esempio per utenti, animali, prenotazioni e volontariato, garantendo il corretto funzionamento delle pagine dinamiche. 
 Le relazioni tra le tabelle assicurano coerenza: un utente può avere più prenotazioni, ciascuna collegata a un solo animale, mentre le richieste di volontariato restano indipendenti dagli utenti registrati.
 
+
 \section{Accessibilità}
-
-\subsection{Validazione con WAVE}
-È stata eseguita una verifica automatica dell’accessibilità utilizzando lo strumento WAVE (Web Accessibility Evaluation Tool).
-Tutte le pagine hanno ottenuto una valutazione pari a 10/10 e non sono stati rilevati errori bloccanti.
-I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
-
 \subsection{Supporto alle tecnologie assistive}
-(Testo da inserire)
+L'accessibilità è stata curata nativamente nella struttura HTML, nella logica di generazione delle pagine PHP e nell'interazione JavaScript:
+
+\begin{itemize}
+    \item \textbf{Navigazione rapida}: un link nascosto all'inizio della pagina permette agli utenti da tastiera di saltare direttamente al contenuto principale.
+    \item \textbf{Testo alternativo dinamico}: nelle immagini della galleria animali, l'attributo \texttt{alt} è costruito dinamicamente per fornire contesto. 
+    Per i cani l'attributo combina specie, taglia ed età mentre il genere viene rappresentato dall'icona corrispondente.
+    \item \textbf{Supporto multilingua}: i termini inglesi sono marcati con \texttt{lang="en"} per una corretta pronuncia dai sintetizzatori vocali. Per garantire la corretta pronuncia anche dei nomi degli animali si è memorizzato all'interno del database l'attributo 'Lingua'.
+    \item \textbf{Accessibilità dei form}: i campi obbligatori sono indicati testualmente, è supportato l'autocompletamento e sono presenti istruzioni chiare per la corretta compilazione.
+    \item \textbf{Focus visibile (CSS)}: lo stato \texttt{:focus-visible} è personalizzato con un bordo arancione solido, garantendo alto contrasto durante la navigazione da tastiera.
+\end{itemize}
 
 \subsection{Font}
-Per garantire leggibilità e accessibilità, il sito utilizza il font Atkinson Hyperlegible, importato tramite Google Fonts. 
-Questo font, progettato specificamente per una facile lettura, è applicato a tutti i testi del portale, migliorando l’esperienza d’uso per tutti gli utenti.
+Per garantire leggibilità e accessibilità il sito utilizza il font Atkinson Hyperlegible, importato tramite Google Fonts. 
+Questo font, progettato per una facile lettura, è applicato ai testi del portale migliorando l’esperienza d’uso per tutti gli utenti.
+
+\section{Test effettuati}
+\subsection{Navigabilità e accessibilità}
+È stata eseguita una verifica dell’accessibilità e della navigabilità del sito utilizzando i seguenti strumenti: 
+\begin{itemize}
+\item \textbf{WAVE} di WebAIM. Tutte le pagine hanno ottenuto una valutazione pari o superiore a 9.8/10 e non sono stati rilevati errori bloccanti. I warning segnalati sono stati analizzati e risultano coerenti con scelte progettuali del gruppo, senza rappresentare violazioni delle linee guida di accessibilità.
+\item \textbf{Checklist WCAG 2.1 - European Accessibility Act 2025} (pubblicata come risorsa nel sito del corso di Tecnologie Web 2025/2026). La seguente lista di controllo è stata adattata ai requisiti del nostro sito (ad esempio, non sono stati considerati i controlli relativi ai video poiché non presenti) ed è stata utilizzata dopo ogni modifica delle pagine.
+\item \textbf{W3C Validator} per HTML e CSS, non vengono segnalati errori.
+\item \textbf{Google Lighthouse} per la velocità di caricamento. Non sono stati riscontrati problemi, ad eccezione della pagina "I nostri animali" che richiede un tempo di caricamento maggiore a causa dell'elevato numero di immagini presenti. 
+\item \textbf{Total Validator} per HTML.
+\item \textbf{W3b1y} per HTML.
+\item \textbf{Compatibilità con diversi browser}: Google Chrome, Microsoft Edge, Mozilla Firefox, Apple Safari e Opera.
+\item \textbf{Compatibilità con diversi schermi}: ogni pagina è correttamente visualizzabile ed accessibile su tutte le tipologie di schermo. In particolare, il sito è stato testato anche su schermi di dimensioni molto ridotte, come quelli di dispositivi come iPhone 5 (320×568).
+\end{itemize}
 
 \subsection{Contrasti e validazione}
+La palette cromatica del sito è composta dai colori mostrati in figura. Il colore dominante è il verde, scelto per il suo significato di speranza e armonia. 
 
+Le combinazioni di colori presenti nell’interfaccia sono state verificate tramite lo strumento di controllo del contrasto di \textbf{WebAIM} e \textbf{Coolors Contrast Checker}.
+Il rapporto di contrasto più basso riscontrato è quello tra l’arancione chiaro (\#dd6a38) e il verde scuro (\#002b24), pari a 4.51:1, conforme ai requisiti WCAG di livello AA per il testo normale e AAA per il testo di grandi dimensioni. 
+Le altre combinazioni presentano rapporti di contrasto più elevati, superando ampiamente le soglie richieste dagli standard di accessibilità.
 
+\begin{center}
+\vspace{\baselineskip}
+\noindent
+\includegraphics[width=0.7\textwidth]{./docs_assets/colori.png}
+\vspace{\baselineskip}
+\end{center}
 
+Per indicare campi obbligatori, messaggi di errore e l’azione di eliminazione dell’utente è stato utilizzato il colore rosso (\#db0000), impiegato esclusivamente su sfondo chiaro. 
+Tale combinazione garantisce un rapporto di contrasto pari a 4.78:1, risultando conforme ai requisiti WCAG di livello AA per il testo normale.
 
-\subsubsection{Falsi Positivi di Total Validator}
-(Testo da inserire)
+\subsection{Falsi positivi di Total Validator}
+Durante la validazione del sito è stato utilizzato lo strumento Total Validator, che ha segnalato alcuni falsi positivi:
+
+\begin{itemize}
+    \item \textbf{Controllo ortografico}: parole in lingua italiana correttamente scritte sono state segnalate come errate (ad esempio “gatto” suggerito come “ghetto”).
+    \item \textbf{Div dell'hamburger}: lo strumento Total Validator segnala come errato l’uso di un elemento div per l’icona hamburger del menù. Tuttavia, tale segnalazione costituisce un falso positivo. Il div è impiegato correttamente come contenitore strutturale e viene reso interattivo tramite CSS e JavaScript, rispettando la separazione tra struttura, presentazione e comportamento. 
+    Inoltre, all'elemento sono associati gli opportuni attributi ARIA e i necessari gestori di evento, garantendo sia il corretto funzionamento del menù sia l’accessibilità per gli utenti. Di conseguenza, l'utilizzo del div risulta una scelta tecnicamente valida e conforme alle buone pratiche dello sviluppo web moderno.
+    \item \textbf{Link a Pixabay}: il collegamento a Pixabay presente nel footer funziona correttamente e porta alla risorsa desiderata, nonostante sia stato segnalato come “forbidden".
+\end{itemize}
 
 \section{Organizzazione del gruppo}
 \subsection{Modalità di lavoro}
 La gestione dei file è stata effettuata tramite Git, utilizzando GitHub come piattaforma di collaborazione. 
 Questa scelta ha consentito ai membri del gruppo di lavorare in parallelo sulle diverse componenti del sito e della documentazione, mantenendo il codice sincronizzato.
 
-La comunicazione interna è avvenuta tramite messaggistica e incontri periodici, che hanno consentito di monitorare l’avanzamento del progetto e affrontare tempestivamente eventuali criticità.
-
 \subsection{Suddivisione dei compiti}
-La definizione del layout generale, la scelta del nome del progetto e lo studio della palette cromatica sono stati il risultato di un lavoro condiviso.
-La ripartizione delle attività è stata pianificata con l’obiettivo di bilanciare il carico di lavoro e valorizzare le competenze e gli interessi di ciascun componente, garantendo il coinvolgimento di tutti nelle diverse fasi del progetto.
+La definizione del layout generale, la scelta del nome del progetto e la creazione dell'identità visiva sono stati il risultato di un lavoro condiviso.
+La ripartizione delle attività è stata pianificata con l’obiettivo di bilanciare il carico di lavoro e valorizzare le competenze e gli interessi di ciascun componente.
 
 Per chiarezza, si specifica che:
 \begin{itemize}
     \item \textbf{Design}: comprende la scelta dei contenuti e la progettazione del layout delle pagine tramite Canva; non tutte le pagine dispongono di un modello dedicato, in quanto per alcune sezioni ci si è basati su strutture già progettate in precedenza per pagine con funzionalità simili.
-    \item \textbf{HTML} riguarda la realizzazione della struttura delle pagine tramite codice;
-    \item \textbf{CSS} concerne la definizione dello stile grafico e dell’impaginazione;
-    \item \textbf{PHP} fa riferimento allo sviluppo della logica lato server;
-    \item \textbf{SQL} riguarda la progettazione e la gestione della base di dati.
+    \item \textbf{HTML}: riguarda la realizzazione della struttura delle pagine tramite codice.
+    \item \textbf{CSS}: concerne la definizione dello stile grafico e dell’impaginazione.
+    \item \textbf{PHP}: fa riferimento allo sviluppo della logica lato server.
+    \item \textbf{SQL}: riguarda la progettazione e la gestione della base di dati.
+    \item \textbf{JavaScript}: si occupa della gestione delle interazioni dinamiche lato client.
 \end{itemize}
 
 \subsubsection{Valeria Baleanu}
@@ -277,12 +370,13 @@ Per chiarezza, si specifica che:
     \item \textbf{HTML}: index, errore\_403, modifica\_profilo, prenotazione, modifica\_prenotazione;
     \item \textbf{CSS}: i\_nostri\_animali (sistema di filtri e menù hamburger), menù di navigazione principale, collaborazione a print.css, layout strutturale delle pagine;
     \item \textbf{PHP}: gestione prenotazioni (CRUD), logica dei filtri di ricerca;
+    \item \textbf{JavaScript}: validazione della prenotazione, gestione dell’eliminazione dell’utente e dei filtri di ricerca;
     \item \textbf{Altro}: ottimizzazione SEO e revisione del codice SQL.
 \end{itemize}
 
 \subsubsection{Sara Ballardin}
 \begin{itemize}
-    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404, errore\_500;
+    \item \textbf{Design}: palette cromatica, set di icone personalizzate, asset grafici, index, chi\_siamo, errore\_404 ed errore\_500 (in collaborazione);
     \item \textbf{HTML}: volontariato, chi\_siamo, errore\_404, collaborazione a errore\_500;
     \item \textbf{CSS}: stile di pulsanti e link, con attenzione alla coerenza visiva e all’accessibilità cromatica;
     \item \textbf{PHP}: gestione della pagina volontariato, funzioni utente (update, get, delete);
@@ -292,7 +386,7 @@ Per chiarezza, si specifica che:
 
 \subsubsection{Davide Loparco}
 \begin{itemize}
-    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali;
+    \item \textbf{Design}: dettagli\_animale, i\_nostri\_animali, errore\_404 ed errore\_500 (in collaborazione);
     \item \textbf{HTML}: dettagli\_animale, registrati, footer, collaborazione a errore\_500;
     \item \textbf{CSS}: stilizzazione unificata dei form (accedi, registrati, volontariato, modifica\_profilo);
     \item \textbf{PHP}: collaborazione all’autenticazione e alla gestione del database;
@@ -306,6 +400,7 @@ Per chiarezza, si specifica che:
     \item \textbf{HTML}: profilo\_utente, i\_nostri\_animali, accedi;
     \item \textbf{CSS}: responsive design (mobile.css), collaborazione a print.css;
     \item \textbf{PHP}: classe DBAccess, gestione sessioni (login/logout), popolamento dinamico di i\_nostri\_animali;
+    \item \textbf{JavaScript}: gestione accessibile del menù mobile, validazione dei form di candidatura al volontariato, registrazione e modifica del profilo;
     \item \textbf{Altro}: organizzazione delle directory del repository e configurazione iniziale dell’ambiente di sviluppo.
 \end{itemize}
 

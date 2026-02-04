@@ -69,8 +69,8 @@ if (isset($_POST['submit'])) {
 
     $username_form = pulisciInput($_POST['username']);
     $email_form = pulisciInput($_POST['email']);
-    $new_password_form = $_POST['new_password'];
-    $confirmPassword_form = $_POST['repeat_new_password'];
+    $new_password_form = $_POST['password'];
+    $confirmPassword_form = $_POST['confirmed_password'];
 
     if (empty($username_form) || empty($email_form)) {
         $messaggiPerForm .= '<li>Compilare i campi richiesti.</li>';
@@ -107,8 +107,8 @@ if (isset($_POST['submit'])) {
             if (!preg_match("/[A-Z]/", $new_password_form)) {
                 $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno una lettera maiuscola.</li>';
             }
-            if (!preg_match("/[!*+%]/", $new_password_form)) {
-                $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un carattere speciale tra ! * + %.</li>';
+            if (!preg_match("/[*+%]/", $new_password_form)) {
+                $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un carattere speciale tra * + %.</li>';
             }
             if (!preg_match("/[0-9]/", $new_password_form)) {
                 $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un numero.</li>';

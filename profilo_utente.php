@@ -4,14 +4,6 @@ require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnec
 require_once "template.php";
 use DB\DBAccess;
 
-function troncaTesto($testo, $maxlength = 40)
-{
-    if (strlen($testo) > $maxlength) {
-        return substr($testo, 0, $maxlength) . '...';
-    }
-    return $testo;
-}
-
 function formattaData($data)
 {
     $mesi = [
@@ -61,12 +53,12 @@ $note = "";
 
 if (isset($_GET['update'])) {
     if ($_GET['update'] == 1) {
-        $success = '<p class="success" role="status">Modifica avvenuta con successo.</p>';
+        $success = '<p class="success" role="alert">Modifica avvenuta con successo.</p>';
     }
 }
 if (isset($_GET['delete'])) {
     if ($_GET['delete'] == 1) {
-        $success = '<p class="success" role="status">Eliminazione avvenuta con successo.</p>';
+        $success = '<p class="success" role="alert">Eliminazione avvenuta con successo.</p>';
     }
 }
 
@@ -104,19 +96,18 @@ if ($listaPrenotazioni == null) {
             } else {
                 $nomeAnimale = $prenotazione['Nome'];
             }
-            $data = $prenotazione['DataOra'];
+            $data = $prenotazione['Data'];
             $note = !empty($prenotazione['Note']) ? $prenotazione['Note'] : 'Nessuna nota';
-            $note = troncaTesto($note);
             $dataFormatoIta = formattaData($data);
 
             $msgPrenotazioni .= "<li>";
             $msgPrenotazioni .= "<div>";
             $msgPrenotazioni .= "<h3>" . $nomeAnimale . "</h3>";
-            $msgPrenotazioni .= "<p>Data: <time datetime='" . $data . "'>" . $dataFormatoIta . "</time></p>";
-            $msgPrenotazioni .= "<p>Note: " . $note . "</p>";
+            $msgPrenotazioni .= '<p>Data: <time datetime="' . $data . '">' . $dataFormatoIta . '</time></p>';
+            $msgPrenotazioni .= '<p class="note">Note: ' . $note . "</p>";
             $msgPrenotazioni .= "</div>";
             $msgPrenotazioni .= '<div class="account-buttons">';
-            $msgPrenotazioni .= "<a class='stile-bottone-2' href='modifica_prenotazione.php?id=" . $id . "'>Gestisci appuntamento</a>";
+            $msgPrenotazioni .= '<a class="stile-bottone-2" href="modifica_prenotazione.php?id=' . $id . '">Gestisci appuntamento</a>';
             $msgPrenotazioni .= "</div>";
             $msgPrenotazioni .= "</li>";
         }

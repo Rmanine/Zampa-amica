@@ -28,13 +28,12 @@ function pulisciInput($value)
     return $value;
 }
 
-
 if (isset($_POST['submit'])) {
     // Validazione Username
     $username = pulisciInput($_POST['username']);
     $email = pulisciInput($_POST['email']);
     $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmed-password'];
+    $confirmPassword = $_POST['confirmed_password'];
 
     if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
         $messaggiPerForm .= '<li>Compilare tutti i campi</li>';
@@ -64,8 +63,8 @@ if (isset($_POST['submit'])) {
         if (!preg_match("/[A-Z]/", $password)) {
             $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno una lettera maiuscola.</li>';
         }
-        if (!preg_match("/[!*+%]/", $password)) {
-            $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un carattere speciale tra ! * + %.</li>';
+        if (!preg_match("/[*+%]/", $password)) {
+            $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un carattere speciale tra * + %.</li>';
         }
         if (!preg_match("/[0-9]/", $password)) {
             $messaggiPerForm .= '<li>La <span lang="en">password</span> deve contenere almeno un numero.</li>';

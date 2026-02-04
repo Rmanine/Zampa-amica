@@ -4,6 +4,41 @@ require_once "." . DIRECTORY_SEPARATOR . "php" . DIRECTORY_SEPARATOR . "dbConnec
 require_once "template.php";
 use DB\DBAccess;
 
+function getTagliaFemminile($taglia)
+{
+	if ($taglia == "Piccolo") {
+		return "piccola";
+	}
+	if ($taglia == "Medio") {
+		return "media";
+	}
+	if ($taglia == "Grande") {
+		return "grande";
+	}
+	return $taglia;
+}
+
+function createStringaEtaAnimale($etaAnimale)
+{
+	$stringaEta = '';
+	if ($etaAnimale < 12) {
+		$stringaEta .= $etaAnimale;
+		if ($stringaEta == 1) {
+			$stringaEta .= ' mese';
+		} else {
+			$stringaEta .= ' mesi';
+		}
+	} elseif ($etaAnimale >= 12) {
+		$stringaEta = intdiv(intval($etaAnimale), 12);
+		if ($stringaEta == 1) {
+			$stringaEta .= ' anno';
+		} else {
+			$stringaEta .= ' anni';
+		}
+	}
+	return $stringaEta;
+}
+
 function pulisciInput($value)
 {
     $value = trim($value);
@@ -12,7 +47,7 @@ function pulisciInput($value)
     return $value;
 }
 
-$tagPermessi = '<em><strong><ul><li>';
+$tagPermessi = '<em><strong>';
 function pulisciNote($value)
 {
     global $tagPermessi;
@@ -48,13 +83,13 @@ $paginaHTML = str_replace('[footer]', $footerProcessato, $paginaHTML);
 $connessione = new DBAccess();
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') { // Se è GET
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (!isset($_GET['id'])) {
         header("Location: profilo_utente.php");
         exit();
     }
     $idPrenotazione = intval($_GET['id']);
-} else if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Se è POST (sumbit form o elimina appuntamento)
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['idPrenotazione'])) {
         header("Location: profilo_utente.php");
         exit();
@@ -90,7 +125,6 @@ if (!$connessioneOK) {
 $animale = $connessione->getAnimale($prenotazione['AnimaleID']);
 $connessione->closeConnection();
 
-// Verifica che la prenotazione appartenga all'utente loggato
 if ($prenotazione['UtenteID'] != $_SESSION["logged_in_user"]) {
     header("Location: errore_403.html");
     exit();
@@ -100,21 +134,26 @@ if (is_null($animale['Nome'])) {
     $nomeAnimale = '';
 } else {
     if ($animale['Lingua'] == 'en') {
-        $nomeAnimale = '<span lang=\'en\'>' . $animale['Nome'] . '</span>';
+        $nomeAnimale = '<span lang="en">' . $animale['Nome'] . '</span>';
     } else {
         $nomeAnimale = $animale['Nome'];
     }
 }
 
-//$nomeAnimale = is_null($prenotazione['NomeAnimale']) ? '' : $prenotazione['NomeAnimale'];
-$data = is_null($prenotazione['DataOra']) ? '' : $prenotazione['DataOra'];
+$data = is_null($prenotazione['Data']) ? '' : $prenotazione['Data'];
 $note = is_null($prenotazione['Note']) ? '' : $prenotazione['Note'];
 $idAnimale = is_null($prenotazione['AnimaleID']) ? '' : $prenotazione['AnimaleID'];
 $idUtente = is_null($prenotazione['UtenteID']) ? '' : $prenotazione['UtenteID'];
-$imgAnimale = '<img src="./img/assets/' . $prenotazione['ImmagineAnimale'] . '" alt="' . $animale['Specie'] . ' di taglia ' . $animale['Taglia'] . '"/>';
+if (empty($animale['Immagine']) || !file_exists('./img/assets/' . $animale['Immagine'])) {
+	$imgAnimale = '<img src="./img/assets/noimg.jpg" alt=""/>';
+} else {
+	if ($animale['Specie'] == "Cane") {
+		$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di taglia ' . getTagliaFemminile($animale['Taglia']) . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) . '" />';
+	} else {
+		$imgAnimale = '<img src="./img/assets/' . $animale['Immagine'] . '" alt="' . $animale['Specie'] . ' di ' . createStringaEtaAnimale($animale['EtaMesi']) . '" />';
+	}
+}
 
-
-//Elimina appuntamento
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
     $connessioneOK = $connessione->openDBConnection();
 
@@ -159,6 +198,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         }
     }
 
+    if(strlen($notePost) > 255) {
+        $errors .= '<li>Inserire un massimo di 255 caratteri nelle note.</li>';
+    }
+
     $connessioneOK = $connessione->openDBConnection();
 
     if (!$connessioneOK) {
@@ -173,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     if ($prenotazioniUtente != null) {
         foreach ($prenotazioniUtente as $prenotazione) {
-            if ($prenotazione['AnimaleID'] == $idAnimale && $prenotazione['DataOra'] == $dataPost && $prenotazione['ID'] != $idPrenotazione) {
+            if ($prenotazione['AnimaleID'] == $idAnimale && $prenotazione['Data'] == $dataPost && $prenotazione['ID'] != $idPrenotazione) {
                 $prenotazioneEsistente = true;
                 break;
             }

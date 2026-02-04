@@ -3,21 +3,23 @@
 
 <head>
     <title>Volontariato | Zampa Amica</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Scopri come fare volontariato e aiuta Zampa Amica nelle adozioni degli animali recuperati.">
-    <meta name="keywords" content="Zampa Amica, volontariato, animali, adozioni, desiderio, donare, tempo, unisciti, volontario, cani, gatti">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" media="screen and (max-width:768px)" href="./css/mobile.css">
-    <link rel="stylesheet" media="print" href="./css/print.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        content="Scopri come fare volontariato e aiuta Zampa Amica nelle adozioni degli animali recuperati." />
+    <meta name="keywords"
+        content="Zampa Amica, volontariato, animali, adozioni, desiderio, donare, tempo, unisciti, volontario, cani, gatti" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" media="screen and (max-width:900px)" href="./css/mobile.css" />
+    <link rel="stylesheet" media="print" href="./css/print.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
+        rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico" />
     <script async src="js/scripts.js"></script>
+    <script src="js/validate_volontario.js"></script>
 </head>
 
 <body>
@@ -30,7 +32,7 @@
 
     <main id="contenuto">
         <h1>Fai volontariato</h1>
-        <section class="terzo-contenuto">
+        <div class="terzo-contenuto separatore">
             <div class="terzo-contenuto-sottocontenuto">
                 <h2>Unisciti a noi</h2>
                 <p>
@@ -39,7 +41,8 @@
                 </p>
                 <p>
                     Fare volontariato significa <strong>donare il proprio tempo</strong>, la propria presenza e
-                    il proprio affetto. Non servono esperienze particolari, ma solo il <strong>desiderio di esserci</strong>.
+                    il proprio affetto. Non servono esperienze particolari, ma solo il <strong>desiderio di
+                        esserci</strong>.
                     Ogni gesto, anche il più piccolo, può davvero fare la differenza.
                 </p>
                 <p>
@@ -50,35 +53,43 @@
             <div>
                 <img src="./img/volontariato.jpg" alt="" />
             </div>
-        </section>
-        <hr>
+        </div>
         <div class="terzo-contenuto">
             <h2>Compila il modulo a seguire e unisciti a noi</h2>
             <p>
-                Ti contatteremo presto per conoscerti e accompagnarti nei primi passi come <strong>volontaria</strong> o <strong>volontario</strong>.
+                Ti contatteremo presto per conoscerti e accompagnarti nei primi passi come <strong>volontaria</strong> o
+                <strong>volontario</strong>.
             </p>
         </div>
 
-        <form method="POST">
-            [info]
-            <label for="nome">Nome: <span class="req">(richiesto)</span></label>
-            <p class="info-form">Esempio: Mario</p>
-            <input type="text" id="nome" name="nome" value="[valNome]" autocomplete="given-name" spellcheck="false" required />
+        <form id="form_volontario" method="POST">
+            <div>
+                [info]
+                <label for="nome">Nome: <span class="req">(richiesto)</span></label>
+                <p class="info-form">Esempio: Mario</p>
+                <input type="text" id="nome" name="nome" value="[valNome]" autocomplete="given-name" spellcheck="false" required />
+                <div id="error_nome" class="form-errors" role="alert" aria-atomic="true"></div>
 
-            <label for="cognome">Cognome: <span class="req">(richiesto)</span></label>
-            <p class="info-form">Esempio: Rossi</p>
-            <input type="text" id="cognome" name="cognome" value="[valCognome]" autocomplete="family-name" spellcheck="false" required />
+                <label for="cognome">Cognome: <span class="req">(richiesto)</span></label>
+                <p class="info-form">Esempio: Rossi</p>
+                <input type="text" id="cognome" name="cognome" value="[valCognome]" autocomplete="family-name" spellcheck="false" required />
+                <div id="error_cognome" class="form-errors" role="alert" aria-atomic="true"></div>
 
-            <label for="telefono">Numero di telefono: <span class="req">(richiesto)</span></label>
-            <p class="info-form">Esempio: 1234567890</p>
-            <input type="tel" id="telefono" name="telefono" value="[valTelefono]" autocomplete="tel-national" inputmode="numeric" required />
-            <p class="info-form">Inserire il proprio numero di telefono senza spazi e senza prefisso.</p>
+                <label for="telefono">Numero di telefono: <span class="req">(richiesto)</span></label>
+                <p class="info-form">Esempio: 1234567890</p>
+                <input type="tel" id="telefono" name="telefono" value="[valTelefono]" autocomplete="tel" inputmode="numeric" required />
+                <p class="info-form">Inserire il proprio numero di telefono senza spazi e senza prefisso.</p>
+                <div id="error_telefono" class="form-errors" role="alert" aria-atomic="true"></div>
 
-            <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
-            <p class="info-form">Esempio: mario.rossi@gmail.com</p>
-            <input type="email" id="email" name="email" value="[valEmail]" autocomplete="email" required />
-            [messaggiForm]
-            <button type="submit" name="submit">Invia</button>
+                <label for="email">Indirizzo <span lang="en">e-mail: </span><span class="req">(richiesto)</span></label>
+                <p class="info-form">Esempio: mario.rossi@gmail.com</p>
+                <input type="email" id="email" name="email" value="[valEmail]" autocomplete="email" required />
+                <div id="error_email" class="form-errors" role="alert" aria-atomic="true"></div>
+
+                [messaggiForm]
+
+                <button type="submit" name="submit">Invia</button>
+            </div>
         </form>
     </main>
 

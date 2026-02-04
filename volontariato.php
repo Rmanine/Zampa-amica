@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         $messaggiPerForm .= "<li>Inserire il nome.</li>";
     } else {
         if (preg_match("/\d/", $nome)) {
-            $messaggiPerForm .= "<li>Il nome non pu&ograve; contenere numeri.</li>";
+            $messaggiPerForm .= "<li>Il nome non pu&ograve; contenere numeri o caratteri speciali.</li>";
         }
     }
 
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
             $connessione->closeConnection();
 
             if ($risultato) {
-                $info = '<p class="success" role="status">Richiesta inviata con successo.</p>';
+                $info = '<p class="success" role="alert">Richiesta inviata con successo.</p>';
                 $nome = $cognome = $email = $telefono = "";
             } else {
                 $messaggiPerForm .= '<li>&Egrave; gi&agrave; stata effettuata una richiesta di volontariato con l\'indirizzo <span lang="en">email</span> inserito.</li>';

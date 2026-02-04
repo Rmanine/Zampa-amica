@@ -62,6 +62,37 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+            chiudiFiltriFunc();
+        }
+    };
+
+    const tagliaDetails = document.getElementById('taglia');
+    const radiosTipo = document.querySelectorAll('input[name="tipo"]');
+
+    const aggiornaVisibilitaTaglia = () => {
+        const tipoSelezionato = document.querySelector('input[name="tipo"]:checked')?.value;
+        
+        if (tagliaDetails) {
+            if (tipoSelezionato === 'cane') {
+                tagliaDetails.style.display = '';
+                tagliaDetails.removeAttribute('aria-hidden');
+            } else {
+                tagliaDetails.style.display = 'none';
+                tagliaDetails.setAttribute('aria-hidden', 'true');
+                // Reset della selezione taglia quando nascosta
+                const tagliaAll = tagliaDetails.querySelector('input[name="taglia"][value="all"]');
+                if (tagliaAll) tagliaAll.checked = true;
+            }
+        }
+    };
+
+    radiosTipo.forEach(radio => {
+        radio.addEventListener('change', aggiornaVisibilitaTaglia);
+    });
+    aggiornaVisibilitaTaglia();
+
     const apriFiltri = () => {
         if (!isMobile()) return;
 

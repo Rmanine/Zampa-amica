@@ -53,13 +53,11 @@ a:visited {
     color: var(--visitedlinkcolor1);
 }
 
-/* HEADER */
 header {
     padding: 0em 1em;
     margin: 1em auto;
 }
 
-/* MENU */
 #menu {
     background-color: var(--widgetcolor);
     color: var(--bgcolor);
@@ -73,7 +71,7 @@ header {
     justify-content: space-between;
 }
 
-#menu p, a.logo-menu {
+#menu .logo, a.logo-menu {
     width: 60px;
     height: 60px;
     min-width: 60px; /* Dimensione fissa perché non vogliamo che rimpicciolisca */
@@ -88,7 +86,6 @@ header {
 #menu ul {
     display: flex;
     overflow-x: hidden;
-    padding: 0 2em;
     gap: 3em;
     list-style: none;
 }
@@ -187,15 +184,6 @@ a.stile-bottone-3:hover {
     float: left;
 }
 
-/* MENU PER MOBILE */
-#ham-menu {
-    position: absolute;
-    height: 0;
-    overflow: hidden;
-}
-
-/* BREADCRUMB */
-
 #breadcrumb {
     display: inline-block;
     white-space: nowrap;
@@ -217,8 +205,6 @@ a.stile-bottone-3:hover {
 #breadcrumb a:visited {
     color: var(--visitedlinkcolor1);
 }
-
-/* MAIN */
 
 main {
     padding: 0.8em;
@@ -332,10 +318,24 @@ main h1 {
     border-radius: 30px;
 }
 
+.form-appuntamenti img {
+    width: 100%;
+}
+
 .terzo-contenuto-sottocontenuto p {
     font-size: 1.1em;
     text-align: left;
     margin-bottom: 0.5em;
+}
+
+.separatore::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border: 3px solid var(--widgetcolor);
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 3em 0;
 }
 
 .piu-info {
@@ -353,53 +353,51 @@ main h1 {
     display: block;
 }
 
-hr {
-    border: 3px solid var(--widgetcolor);
-    border-radius: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin: 3em;
+.elenco-animali {
+    margin-top: 1.5em;
 }
-
-/* GALLERIA ANIMALI */
 
 .galleria {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     justify-content: space-evenly;
-    min-height: 400px; /* Aggiungi un'altezza minima */
-    align-items: center; /* Centra verticalmente il contenuto */
+    min-height: 400px;
+    align-items: center;
 }
 
-.elemento-galleria a, .card {
+.elemento-galleria {
     display: flex;
     flex-direction: column;
     margin: 1em;
 }
 
-.elemento-galleria a:link {
-    color: var(--bgcolor);
-}
-
 .elemento-galleria img {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-radius: 12px 12px 0 0;
     object-fit: cover;
 }
 
-.elemento-galleria a > div {
+.elemento-galleria > div {
     position: relative;
     width: 100%;
     padding: 0.7rem 1.8rem;
     color: var(--bgcolor);
     background-color: var(--widgetcolor);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-radius: 0 0 12px 12px;
 }
 
 .label-elemento {
     text-align: center;
     font-size: 1.5em;
+    margin: 0;
+}
+
+.label-elemento a:link {
+    color: var(--bgcolor);
+}
+
+.label-elemento a:visited {
+    color: var(--visitedlinkcolor2);
 }
 
 .elemento-galleria .genere {
@@ -418,8 +416,6 @@ hr {
     text-align: center;
 }
 
-/* DETTAGLI ANIMALE */
-
 .dettagli-animale {
     max-width: 1200px;
     margin: auto;
@@ -434,13 +430,14 @@ hr {
 }
 
 .dettagli-animale img {
-    width: 300px;
+    max-width: 300px;
     object-fit: cover;
     border-radius: 8px;
 }
 
 .dettagli-animale > div:last-child {
     flex: 1;
+    align-self: baseline;
 }
 
 .dettagli-animale dl {
@@ -459,13 +456,20 @@ hr {
     margin-bottom: 0.5em;
 }
 
-/* FOOTER */
+.wave {
+    position: relative;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
 
 footer {
     color: var(--bgcolor);
     background-color: var(--widgetcolor);
-    padding: 2em;
+    padding: 1.5em;
     text-align: center;
+    position: relative;
+    margin-top: 8%;
+    clear: both;
 }
 
 footer > * {
@@ -476,6 +480,26 @@ footer > * {
 
 footer .stile-bottone-3 {
     margin-bottom: 3em;
+}
+
+footer::before, .wave::before, .wave::after {
+    content: "";
+    position: absolute;
+    top: 0.12em;
+    left: 0;
+    width: 100%;
+    padding-top: 7%;
+    background-image: url("../img/wave.svg");
+    background-size: cover;
+    background-position: bottom;
+    transform: translateY(-100%);
+}
+
+.wave::after {
+    top: auto;
+    left: 50%;
+    transform: translate(-50%, 100%) rotate(180deg);
+    bottom: 0.12em;
 }
 
 .torna-su::before {
@@ -497,8 +521,6 @@ footer .crediti {
 .crediti:visited {
     color: var(--visitedlinkcolor2);
 }
-
-/*FORM*/
 
 form {
     border: 3px solid var(--widgetcolor);
@@ -571,20 +593,13 @@ form .req, .form-errors {
     color: var(--visitedlinkcolor1);
 }
 
-.wave {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    display: block;
-    margin-top: -0.1em;
-    margin-bottom: -0.1em;
-}
-
 #filtri {
     float: left;
     width: 20%;
     margin-top: 2em;
     box-sizing: border-box;
+    margin-bottom: 6em;
+    min-width: 250px;
 }
 
 #filtri h2 {
@@ -618,9 +633,7 @@ form .req, .form-errors {
 
 #filtri fieldset {
     border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+    padding: 0;
 }
 
 #filtri input[type="radio"] {
@@ -631,12 +644,57 @@ form .req, .form-errors {
 #filtri label {
     display: flex;
     align-items: center;
+    gap: 0.6em;
     cursor: pointer;
     font-weight: normal;
     text-align: left;
     width: 100%;
+    margin: 0 0 0.8em 0;
+    padding: 0.3em;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    justify-content: center;
+}
+
+#filtri label:hover {
+    background-color: rgba(0, 43, 36, 0.05);
+}
+
+#filtri input[type="radio"] {
+    width: 1.2em;
+    height: 1.2em;
+    border: 2px solid var(--widgetcolor);
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
     margin: 0;
-    gap: 0.3em;
+    transition: all 0.2s;
+}
+
+#filtri input[type="radio"]:checked {
+    background-color: var(--widgetcolor);
+    border-color: var(--widgetcolor);
+}
+
+#filtri input[type="radio"]:checked::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.5em;
+    height: 0.5em;
+    background-color: var(--bgcolor);
+    border-radius: 50%;
+}
+
+#filtri input[type="radio"]:hover {
+    border-color: var(--visitedlinkcolor1);
+}
+
+#filtri input[type="radio"]:focus-visible {
+    outline: 2px solid var(--visitedlinkcolor1);
+    outline-offset: 2px;
 }
 
 #toggle-filtri, #chiudi-filtri, #overlay-filtri {
@@ -644,7 +702,7 @@ form .req, .form-errors {
 }
 
 .piu-info {
-    clear: both; /* Lo forzo ad andare giù per non seguire il float */
+    clear: both;
 }
 
 .prenotazioni {
@@ -741,31 +799,30 @@ form .req, .form-errors {
     font-weight: bold;
 }
 
-/* Dialog modale */
-.dialog-overlay {
+dialog {
+    border: none;
+    border-radius: 30px;
+    max-width: 1200px;
+    width: 90%;
+    padding: 0;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
 }
 
-.dialog-overlay[hidden] {
-    display: none;
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+dialog[open] {
+    display: flex;
 }
 
 .dialog-content {
-    background-color: var(--bgcolor);
-    border: 3px solid var(--widgetcolor);
-    border-radius: 30px;
     padding: 2em;
-    max-width: 1200px;
-    width: 90%;
+    width: 100%;
 }
 
 #form-elimina-profilo {
@@ -773,4 +830,11 @@ form .req, .form-errors {
     padding: 0;
     margin: 0;
     max-width: none;
+}
+
+.note {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

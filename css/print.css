@@ -1,18 +1,101 @@
 * {
     font-family: "Times New Roman", Times, serif;
     text-decoration: none;
-    color: #000;
-    background: #fff;
 }
 
-nav, #menu, .stile-bottone-1, .stile-bottone-2, .stile-bottone-3, #hamburger, .wave, hr, .terzo-contenuto img, .terzo-contenuto-sottocontenuto img {
+#breadcrumb {
+    box-shadow: none;
+    border: none;
+}
+
+header, main, footer {
+    color: #000 !important;
+}
+
+body, #menu
+#menu #menu-list,
+#breadcrumb p, #breadcrumb a:visited, #breadcrumb a:link {
+    color: #000;
+    background-color: #fff;
+}
+
+#hamburger,
+.separatore::after,
+.terzo-contenuto img,
+.terzo-contenuto-sottocontenuto img,
+#filtri,
+.genere {
     display: none !important;
 }
 
-form, img, footer {
+#menu, #breadcrumb {
+    justify-content: center;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+
+#menu ul,
+#menu a.stile-bottone-1,
+#menu a.stile-bottone-3, 
+#menu .accediprofilo {
+    display: none;
+}
+
+a:link, a:visited {
+    color: #000;
+}
+
+#menu .logo {
+    background-image: url("../img/logo_print.svg");
+}
+
+.secondo-contenuto, .secondo-contenuto ol li {
+    color: #000;
+    background-color: #fff;
+    text-align: justify;
+}
+
+.secondo-contenuto ol li strong, .secondo-contenuto ol li::before, .secondo-contenuto {
+    text-align: center;
+    color: #000;
+}
+
+.elemento-galleria > div {
+    background-color: #fff;
+}
+
+.elemento-galleria > div > h3 a, .elemento-galleria > div > h3 a:visited, .elemento-galleria > div > h3 a:link {
+    color: #000;
+    background-color: #fff;
+}
+
+img,
+footer {
     page-break-inside: avoid;
 }
 
-footer {
+footer, form, input {
+    border: 2px solid #000;
+    background-color: #fff;
+}
+
+footer p, .crediti:visited, .crediti:link, form .req, form button {
+    color: #000;
+}
+
+form button {
+    border: 2px solid #000;
+}
+
+footer::before, .wave::before, .wave::after {
+    content: none;
+}
+
+button, #logout-form button, #btn-elimina-profilo.elimina, .stile-bottone-1, .stile-bottone-2, .stile-bottone-3, .stile-bottone-4,
+.account-buttons a.stile-bottone-2, a.stile-bottone-2:link, a.stile-bottone-2:visited, footer .stile-bottone-3, .elimina{
+    background-color: #fff;
+    color: #000;
     border: 2px solid #000;
 }

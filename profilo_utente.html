@@ -3,20 +3,20 @@
 
 <head>
     <title>Profilo utente | Zampa Amica</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Gestisci il tuo profilo utente di Zampa Amica e le visite prenotate con i nostri animali.">
-    <meta name="keywords" content="Zampa Amica, visite, animali, profilo, utente, appuntamenti">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" media="screen and (max-width:768px)" href="./css/mobile.css">
-    <link rel="stylesheet" media="print" href="./css/print.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        content="Gestisci il tuo profilo utente di Zampa Amica e le visite prenotate con i nostri animali." />
+    <meta name="keywords" content="Zampa Amica, visite, animali, profilo, utente, appuntamenti" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" media="screen and (max-width:900px)" href="./css/mobile.css" />
+    <link rel="stylesheet" media="print" href="./css/print.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico">
+        rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="./img/icona_logo.ico" />
     <script src="js/elimina_profilo.js" defer></script>
     <script async src="js/scripts.js"></script>
 </head>
@@ -33,13 +33,13 @@
         [success]
         <h1>Profilo utente</h1>
         <div class="profilo-contenitore">
-            <section class="profilo">
+            <div class="profilo">
                 <img src="./img/profilo_utente.svg" alt="" />
                 <div>
                     <h2>[username]</h2>
                     <p>[email]</p>
                 </div>
-            </section>
+            </div>
             <div class="account-buttons">
                 <a href="./modifica_profilo.php" class="stile-bottone-2">Modifica profilo</a>
                 <form id="logout-form" action="php/logout.php" method="post">
@@ -50,8 +50,7 @@
             </div>
         </div>
 
-        <div id="dialog-elimina-profilo" class="dialog-overlay" role="dialog" aria-labelledby="dialog-title"
-            aria-describedby="dialog-desc" aria-modal="true" hidden>
+        <dialog id="dialog-elimina-profilo" class="dialog-overlay" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
             <div class="dialog-content">
                 <h2 id="dialog-title">Conferma eliminazione profilo</h2>
                 <p id="dialog-desc">Sei sicuro di voler eliminare il tuo profilo? Questa azione &egrave; irreversibile e
@@ -63,14 +62,14 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </dialog>
 
-        <section class="appuntamenti">
+        <div class="appuntamenti">
             <h2>I tuoi appuntamenti</h2>
             <div class="prenotazioni">
                 [Lista Prenotazioni]
             </div>
-        </section>
+        </div>
     </main>
 
     [footer]

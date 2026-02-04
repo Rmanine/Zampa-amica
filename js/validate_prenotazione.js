@@ -1,55 +1,80 @@
 
 window.addEventListener('load', function () {
     validatePrenotazione();
-    setupRealtimeValidation();
 });
+
+const rules = {
+    date: [
+        {
+            test: value => validateDate(value),
+            message: 'La data selezionata deve essere un giorno valido a partire da domani.'
+        }
+    ]
+};
 
 function validatePrenotazione() {
     let form = document.getElementById('form_prenotazione');
+
+    for (let key in rules) {
+        let input = document.getElementById(key);
+        input.addEventListener('blur', function (event) {
+            validazioneCampo(this)
+        });
+    }
+
     form.addEventListener('submit', function (event) {
-
-        if (!event.submitter || event.submitter.name !== "submit") {
-            return;
-        }
-
-        let err = document.getElementsByClassName("form-errors")[0];
-        err.innerHTML = "";
-
-        let msg = "<ul>";
-        let validated = true;
-
-        if (!validateDate()) {
-            msg += "<li>La data selezionata deve essere un giorno valido a partire da domani.</li>";
-            validated = false;
-        }
-        msg += "</ul>";
-
-        if (!validated) {
-            err.innerHTML += msg;
+        if (!validazioneForm()) {
             event.preventDefault();
         }
     })
 }
 
-function setupRealtimeValidation() {
-    const dateInput = document.getElementById("date");
-    const err = document.getElementsByClassName("form-errors")[0];
+function validazioneCampo(input) {
+    const errorList = document.getElementById("error_" + input.id);
+    errorList.innerHTML = "";
 
-    // Si attiva quando l'utente cambia la data
-    dateInput.addEventListener('change', function () {
-        err.innerHTML = "";
+	const value = input.value;
+    const fieldRules = rules[input.id];
+    let isValid = true;
+    const errors = [];
 
-        if (!validateDate()) {
-            err.innerHTML = "<ul><li>La data selezionata deve essere un giorno valido a partire da domani.</li></ul>";
+    for (let i = 0; i < fieldRules.length; i++) {
+        if (!fieldRules[i].test(value)) {
+            errors.push(fieldRules[i].message);
+            isValid = false;
         }
-    });
+    }
+    if (errors.length > 0) {
+        const ul = document.createElement('ul');
+
+        for (let i = 0; i < errors.length; i++) {
+            const li = document.createElement('li');
+            li.innerHTML = errors[i];
+            ul.appendChild(li);
+        }
+
+        errorList.appendChild(ul);
+    }
+
+    input.setAttribute('aria-invalid', String(!isValid));
+    return isValid;
 }
 
-function validateDate() {
-    const input = document.getElementById("date").value;
-    if (!input) return false;
+function validazioneForm() {
+	let valid = true;
+    for (let id in rules) {
+        const input = document.getElementById(id);
+        if (input) {
+            valid = validazioneCampo(input) && valid;
+        }
+    }
+    return valid;
+}
 
-    const selectedDate = new Date(input);
+function validateDate(value) {
+    if (!value) return false;
+
+    const selectedDate = new Date(value);
     selectedDate.setHours(0, 0, 0, 0);
 
     const tomorrow = new Date();
